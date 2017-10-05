@@ -8,7 +8,7 @@ resource "aws_cloudformation_stack" "ecs_asg" {
 }
 
 data "template_file" "cluster_ecs_asg" {
-  template = "${file("${path.module}/asg.json.template")}"
+  template = "${file("${path.module}/ecs_asg/ecs_asg_cf_stack/asg.json.template")}"
 
   vars {
     launch_config_name   = "${var.launch_config_name}"
