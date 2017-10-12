@@ -13,3 +13,7 @@ output "cloudwatch_id" {
 output "dns_name" {
   value = "${aws_alb.ecs_service.dns_name}"
 }
+
+output "id" {
+  value = "${aws_alb.ecs_service.id}"
+}
