@@ -48,3 +48,5 @@ variable "ebs_size" {}
 variable "ebs_volume_type" {}
 
 variable "ebs_iops" {}
+variable "root_ebs_iops" {
+}

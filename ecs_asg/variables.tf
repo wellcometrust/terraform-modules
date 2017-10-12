@@ -91,3 +91,7 @@ variable "ebs_volume_type" {
 variable "ebs_iops" {
   default = ""
 }
+
+variable "root_ebs_iops" {
+  default = "false"
+}
