@@ -12,7 +12,7 @@ resource "aws_lambda_function" "lambda_function" {
   s3_object_version = "${data.aws_s3_bucket_object.package.version_id}"
 
   role    = "${aws_iam_role.iam_role.arn}"
-  handler = "${var.name}.main"
+  handler = "${var.module_name == "" ? "${var.name}.main": "${var.module_name}.main"}"
   runtime = "python3.6"
   timeout = "${var.timeout}"
 
