@@ -9,3 +9,7 @@ output "user_secret" {
 output "password" {
   value = "${aws_iam_user_login_profile.admin.encrypted_password}"
 }
+
+output "name" {
+  value = "${aws_iam_user.admin.name}"
+}
