@@ -11,7 +11,7 @@ Create a Terraform module like this in your existing infrastructure description.
 
 ```tf
 module "my_route53_iam_role" {
-  source         = "github.com/wellcometrust/tf_cross_account_route53_hosted_zones"
+  source         = "git::https://github.com/wellcometrust/terraform.git//terraform/route53_cross_account_hosted_zone?ref=v1.0.4"
   account_id     = "4w54cc0un71d"
   hosted_zone_id = "H0573DZ0N31D"
   role_name      = "my_role_name"
