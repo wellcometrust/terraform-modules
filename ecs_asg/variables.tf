@@ -91,3 +91,9 @@ variable "ebs_volume_type" {
 variable "ebs_iops" {
   default = ""
 }
+
+variable "alb_security_groups" {
+  description = "ALB security group to allow docker port access for healthchecks"
+  type        = "list"
+  default     = []
+}

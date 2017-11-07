@@ -20,6 +20,7 @@ resource "aws_security_group" "instance_sg" {
 
     security_groups = [
       "${aws_security_group.https.id}",
+      "${var.alb_security_groups}",
     ]
   }
 
