@@ -4,7 +4,7 @@ variable "name" {
 
 variable "module_name" {
   description = "Name of the python module where the handler function lives"
-  default = ""
+  default     = ""
 }
 
 variable "description" {
