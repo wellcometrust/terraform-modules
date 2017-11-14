@@ -18,9 +18,7 @@ resource "aws_security_group" "database_sg" {
     to_port   = 3306
     protocol  = "tcp"
 
-    security_groups = [
-      "${var.db_access_security_group}",
-    ]
+    security_groups = ["${var.db_access_security_group}"]
   }
 
   egress {
