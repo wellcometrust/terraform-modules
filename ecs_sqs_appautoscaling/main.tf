@@ -8,6 +8,7 @@ resource "aws_cloudwatch_metric_alarm" "queue_high" {
     QueueName = "${var.queue_name}"
   }
 
+  statistic = "Minimum"
   namespace = "AWS/SQS"
   period    = "30"
   threshold = 1
@@ -27,6 +28,7 @@ resource "aws_cloudwatch_metric_alarm" "queue_low" {
     QueueName = "feeds-qaConvertQueueConsumer"
   }
 
+  statistic = "Maximum"
   namespace = "AWS/SQS"
   period    = "600"
   threshold = 0
@@ -72,7 +74,6 @@ resource "aws_appautoscaling_policy" "service_down" {
   name               = "${var.name}-scale-down"
   service_namespace  = "ecs"
   scalable_dimension = "ecs:service:DesiredCount"
-  service_namespace  = "ecs"
   resource_id        = "service/${var.cluster_name}/${var.service_name}"
 
   step_scaling_policy_configuration {
