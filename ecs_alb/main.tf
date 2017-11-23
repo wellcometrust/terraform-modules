@@ -44,7 +44,7 @@ resource "aws_alb_target_group" "ecs_service_default" {
   vpc_id   = "${var.vpc_id}"
 
   health_check {
-    path = "${var.health_check_path}"
+    path    = "${var.health_check_path}"
     matcher = "200"
   }
 }

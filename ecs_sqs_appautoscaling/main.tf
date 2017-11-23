@@ -36,6 +36,10 @@ resource "aws_cloudwatch_metric_alarm" "queue_low" {
   alarm_actions = [
     "${aws_appautoscaling_policy.service_down.arn}",
   ]
+
+  insufficient_data_actions = [
+    "${aws_appautoscaling_policy.service_down.arn}",
+  ]
 }
 
 resource "aws_appautoscaling_target" "service_scale_target" {
