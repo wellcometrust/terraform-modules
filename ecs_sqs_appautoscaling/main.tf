@@ -31,7 +31,7 @@ resource "aws_cloudwatch_metric_alarm" "queue_low" {
   statistic = "Maximum"
   namespace = "AWS/SQS"
   period    = "600"
-  threshold = 0
+  threshold = 1
 
   alarm_actions = [
     "${aws_appautoscaling_policy.service_down.arn}",
