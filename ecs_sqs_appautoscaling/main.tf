@@ -33,11 +33,9 @@ resource "aws_cloudwatch_metric_alarm" "queue_low" {
   period    = "600"
   threshold = 1
 
-  alarm_actions = [
-    "${aws_appautoscaling_policy.service_down.arn}",
-  ]
+  treat_missing_data = "breaching"
 
-  insufficient_data_actions = [
+  alarm_actions = [
     "${aws_appautoscaling_policy.service_down.arn}",
   ]
 }
@@ -62,7 +60,7 @@ resource "aws_appautoscaling_policy" "service_up" {
     adjustment_type         = "ChangeInCapacity"
     cooldown                = 60
     metric_aggregation_type = "Average"
-    
+
     step_adjustment {
       metric_interval_upper_bound = 0
       scaling_adjustment          = 1
