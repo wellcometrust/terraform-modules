@@ -10,7 +10,7 @@ resource "aws_cloudwatch_metric_alarm" "queue_high" {
 
   statistic = "Minimum"
   namespace = "AWS/SQS"
-  period    = "30"
+  period    = "60"
   threshold = 1
 
   alarm_actions = [
