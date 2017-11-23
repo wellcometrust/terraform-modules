@@ -8,7 +8,7 @@ resource "aws_cloudwatch_metric_alarm" "queue_high" {
     QueueName = "${var.queue_name}"
   }
 
-  statistic = "Minimum"
+  statistic = "Average"
   namespace = "AWS/SQS"
   period    = "60"
   threshold = 1
@@ -28,7 +28,7 @@ resource "aws_cloudwatch_metric_alarm" "queue_low" {
     QueueName = "feeds-qaConvertQueueConsumer"
   }
 
-  statistic = "Maximum"
+  statistic = "Average"
   namespace = "AWS/SQS"
   period    = "600"
   threshold = 1
@@ -62,7 +62,7 @@ resource "aws_appautoscaling_policy" "service_up" {
     metric_aggregation_type = "Average"
 
     step_adjustment {
-      metric_interval_upper_bound = 0
+      metric_interval_lower_bound = 0
       scaling_adjustment          = 1
     }
   }
