@@ -7,7 +7,7 @@ Intended for ECS worker service pattern where services are fed from a queue.
 ## Usage:
 ```tf
 module "my_service_sqs_appautoscaling" {
-  source  = "git::https://github.com/wellcometrust/terraform.git//ecs_alb?ref=v1.0.0"
+  source  = "git::https://github.com/wellcometrust/terraform.git//ecs_sqs_appautoscaling?ref=ecs-sqs-autoscaling-policy"
   name    = "api"
 
   queue_name   = "my_queue"
