@@ -28,7 +28,7 @@ module "sqs_alarm" "queue_low" {
 }
 
 module "appautoscaling" {
-  source = "../appautoscaling"
+  source = "git::https://github.com/wellcometrust/terraform.git//ecs_appautoscaling/appautoscaling?ref=ecs-sqs-autoscaling-policy"
   name = "${var.name}"
 
   cluster_name = "${var.cluster_name}"
