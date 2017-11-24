@@ -25,7 +25,7 @@ resource "aws_cloudwatch_metric_alarm" "queue_low" {
   metric_name         = "ApproximateNumberOfMessagesVisible"
 
   dimensions {
-    QueueName = "feeds-qaConvertQueueConsumer"
+    QueueName = "${var.queue_name}"
   }
 
   statistic = "Average"
