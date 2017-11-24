@@ -16,7 +16,7 @@ resource "aws_iam_role" "ecs_autoscale_role" {
 }
 
 resource "aws_iam_policy_attachment" "ecs_autoscale_role_attach" {
-  name = "ecs-autoscale-role-attach"
+  name = "${var.name}_ecs-autoscale-role-attach"
 
   roles = [
     "${aws_iam_role.ecs_autoscale_role.name}",
