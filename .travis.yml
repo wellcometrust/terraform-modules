@@ -1,0 +1,19 @@
+language: sh
+
+sudo: required
+
+services:
+  - docker
+
+dist: trusty
+
+branches:
+  only:
+    - master
+
+env:
+  matrix:
+    - TASK=check-format
+
+script:
+  - make "$TASK"
