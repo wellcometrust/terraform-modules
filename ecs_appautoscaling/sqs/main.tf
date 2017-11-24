@@ -1,4 +1,4 @@
-module "sqs_alarm" "queue_high" {
+module "queue_high" {
   source = "./sqs_alarm"
   name = "${var.name}-queue_high"
 
@@ -12,7 +12,7 @@ module "sqs_alarm" "queue_high" {
   target_arn = "${module.appautoscaling.scale_up_arn}"
 }
 
-module "sqs_alarm" "queue_low" {
+module "queue_low" {
   source = "./sqs_alarm"
   name = "${var.name}-queue_low"
 
