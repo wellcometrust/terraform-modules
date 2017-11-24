@@ -1,6 +1,6 @@
-module "scale_up"{
+module "scale_up" {
   source = "./appautoscaling_policy"
-  name = "${var.name}-scale-up"
+  name   = "${var.name}-scale-up"
 
   cluster_name = "${var.cluster_name}"
   service_name = "${var.service_name}"
@@ -10,9 +10,9 @@ module "scale_up"{
   depends_on = ["${aws_appautoscaling_target.service_scale_target.id}"]
 }
 
-module "scale_down"{
+module "scale_down" {
   source = "./appautoscaling_policy"
-  name = "${var.name}-scale-up"
+  name   = "${var.name}-scale-up"
 
   cluster_name = "${var.cluster_name}"
   service_name = "${var.service_name}"

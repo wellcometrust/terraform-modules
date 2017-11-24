@@ -15,4 +15,3 @@ resource "aws_appautoscaling_policy" "policy" {
     }
   }
 }
-

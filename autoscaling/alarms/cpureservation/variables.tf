@@ -16,6 +16,7 @@ variable "treat_missing_data_low" {
 variable "scale_up_adjustment" {
   default = 1
 }
+
 variable "scale_down_adjustment" {
   default = -1
 }
@@ -23,6 +24,7 @@ variable "scale_down_adjustment" {
 variable "high_period" {
   default = "60"
 }
+
 variable "high_threshold" {
   default = "80"
 }
@@ -30,6 +32,7 @@ variable "high_threshold" {
 variable "low_period" {
   default = "600"
 }
+
 variable "low_threshold" {
   default = "80"
 }
