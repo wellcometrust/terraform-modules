@@ -1,15 +1,16 @@
-resource "aws_cloudwatch_metric_alarm" "queue_high" {
-  alarm_name          = "${var.name}-queue_high"
+resource "aws_cloudwatch_metric_alarm" "ecs_cpureservation_high" {
+  alarm_name          = "${var.name}-ecs_cpureservation_high"
   comparison_operator = "${var.comparison_operator}"
   evaluation_periods  = "1"
-  metric_name         = "ApproximateNumberOfMessagesVisible"
+  metric_name         = "CPUReservation"
 
   dimensions {
-    QueueName = "${var.queue_name}"
+    ClusterName = "${var.cluster_name}"
   }
 
   statistic = "Average"
-  namespace = "AWS/SQS"
+  namespace = "AWS/ECS"
+
   period    = "${var.period}"
   threshold = "${var.threshold}"
 
