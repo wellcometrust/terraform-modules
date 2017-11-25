@@ -1,4 +1,4 @@
-module "aws_totalinstances_high" {
+module "asg_totalinstances_high" {
   source = "./asg_totalinstances_alarm"
   name   = "${var.name}-aws_totalinstances_high"
 
@@ -13,7 +13,7 @@ module "aws_totalinstances_high" {
   target_arn = "${var.scale_up_arn}"
 }
 
-module "aws_totalinstances_low" {
+module "asg_totalinstances_low" {
   source = "./asg_totalinstances_alarm"
   name   = "${var.name}-aws_totalinstances_low"
 

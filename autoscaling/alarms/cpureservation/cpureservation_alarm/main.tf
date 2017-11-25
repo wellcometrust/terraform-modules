@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_metric_alarm" "ecs_cpureservation_high" {
-  alarm_name          = "${var.name}-ecs_cpureservation_high"
+  alarm_name          = "${var.name}-ecs_cpureservation_${var.comparison_operator}"
   comparison_operator = "${var.comparison_operator}"
   evaluation_periods  = "1"
   metric_name         = "CPUReservation"
