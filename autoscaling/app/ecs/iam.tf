@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "ecs_autoscale_policy" {
+data "aws_iam_policy_document" "ecs_autoscale_assume_role_policy" {
   statement {
     actions = ["sts:AssumeRole"]
 
@@ -9,19 +9,38 @@ data "aws_iam_policy_document" "ecs_autoscale_policy" {
   }
 }
 
+data "aws_iam_policy_document" "ecs_autoscale_policy" {
+  statement {
+    actions = [
+      "ecs:DescribeServices",
+      "ecs:UpdateService"
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+
+  statement {
+    actions = [
+      "cloudwatch:DescribeAlarms"
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+}
+
 resource "aws_iam_role" "ecs_autoscale_role" {
   name = "${var.name}_ecsAutoscaleRole"
 
-  assume_role_policy = "${data.aws_iam_policy_document.ecs_autoscale_policy.json}"
+  assume_role_policy = "${data.aws_iam_policy_document.ecs_autoscale_assume_role_policy.json}"
 }
 
-resource "aws_iam_policy_attachment" "ecs_autoscale_role_attach" {
-  name = "${var.name}_ecs-autoscale-role-attach"
-
-  roles = [
-    "${aws_iam_role.ecs_autoscale_role.name}",
-  ]
-
-  # Managed policy: http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_managed_policies.html#AmazonEC2ContainerServiceAutoscaleRole
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceAutoscaleRole"
+resource "aws_iam_role_policy" "ecs_autoscale_role_policy" {
+  name   = "${var.name}_ecsAutoscaleRole_policy"
+  
+  role   = "${aws_iam_role.ecs_autoscale_role.id}"
+  policy = "${data.aws_iam_policy_document.ecs_autoscale_policy.json}"
 }
