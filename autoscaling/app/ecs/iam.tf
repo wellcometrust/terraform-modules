@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "ecs_autoscale_policy" {
   statement {
     actions = [
       "ecs:DescribeServices",
-      "ecs:UpdateService"
+      "ecs:UpdateService",
     ]
 
     resources = [
@@ -23,7 +23,7 @@ data "aws_iam_policy_document" "ecs_autoscale_policy" {
 
   statement {
     actions = [
-      "cloudwatch:DescribeAlarms"
+      "cloudwatch:DescribeAlarms",
     ]
 
     resources = [
@@ -39,8 +39,8 @@ resource "aws_iam_role" "ecs_autoscale_role" {
 }
 
 resource "aws_iam_role_policy" "ecs_autoscale_role_policy" {
-  name   = "${var.name}_ecsAutoscaleRole_policy"
-  
+  name = "${var.name}_ecsAutoscaleRole_policy"
+
   role   = "${aws_iam_role.ecs_autoscale_role.id}"
   policy = "${data.aws_iam_policy_document.ecs_autoscale_policy.json}"
 }

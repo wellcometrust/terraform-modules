@@ -12,7 +12,7 @@ module "scale_up" {
 
 module "scale_down" {
   source = "./appautoscaling_policy"
-  name   = "${var.name}-scale-up"
+  name   = "${var.name}-scale-down"
 
   cluster_name = "${var.cluster_name}"
   service_name = "${var.service_name}"
