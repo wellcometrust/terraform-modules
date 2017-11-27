@@ -32,8 +32,8 @@ variable "metric_interval_upper_bound_scale_up" {
 }
 
 variable "metric_interval_lower_bound_scale_down" {
-  default = 0
+  default = -1
 }
 variable "metric_interval_upper_bound_scale_down" {
-  default = 1
+  default = 0
 }
