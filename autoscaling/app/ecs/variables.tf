@@ -25,15 +25,9 @@ variable "depends_on" {
 }
 
 variable "metric_interval_lower_bound_scale_up" {
-  default = -1
-}
-variable "metric_interval_upper_bound_scale_up" {
   default = 0
 }
 
-variable "metric_interval_lower_bound_scale_down" {
-  default = -1
-}
 variable "metric_interval_upper_bound_scale_down" {
   default = 0
 }

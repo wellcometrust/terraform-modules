@@ -1,31 +1,37 @@
-module "scale_up" {
-  source = "./appautoscaling_policy"
-  name   = "${var.name}-scale-up"
+resource "aws_appautoscaling_policy" "scale_up" {
+  name               = "${var.name}-scale(${var.scale_up_adjustment})"
+  scalable_dimension = "ecs:service:DesiredCount"
+  service_namespace  = "ecs"
+  resource_id        = "service/${var.cluster_name}/${var.service_name}"
 
-  cluster_name = "${var.cluster_name}"
-  service_name = "${var.service_name}"
+  step_scaling_policy_configuration {
+    adjustment_type         = "ChangeInCapacity"
+    cooldown                = 60
+    metric_aggregation_type = "Average"
 
-  scaling_adjustment = "${var.scale_up_adjustment}"
-
-  metric_interval_lower_bound = "${var.metric_interval_lower_bound_scale_up}"
-  metric_interval_upper_bound = "${var.metric_interval_upper_bound_scale_up}"
-
-  depends_on = ["${aws_appautoscaling_target.service_scale_target.id}"]
+    step_adjustment {
+      metric_interval_lower_bound = "${var.metric_interval_lower_bound_scale_up}"
+      scaling_adjustment          = "${var.scale_up_adjustment}"
+    }
+  }
 }
 
-module "scale_down" {
-  source = "./appautoscaling_policy"
-  name   = "${var.name}-scale-down"
+resource "aws_appautoscaling_policy" "scale_down" {
+  name               = "${var.name}-scale(${var.scale_down_adjustment})"
+  scalable_dimension = "ecs:service:DesiredCount"
+  service_namespace  = "ecs"
+  resource_id        = "service/${var.cluster_name}/${var.service_name}"
 
-  cluster_name = "${var.cluster_name}"
-  service_name = "${var.service_name}"
+  step_scaling_policy_configuration {
+    adjustment_type         = "ChangeInCapacity"
+    cooldown                = 60
+    metric_aggregation_type = "Average"
 
-  scaling_adjustment = "${var.scale_down_adjustment}"
-
-  metric_interval_lower_bound = "${var.metric_interval_lower_bound_scale_down}"
-  metric_interval_upper_bound = "${var.metric_interval_upper_bound_scale_down}"
-
-  depends_on = ["${aws_appautoscaling_target.service_scale_target.id}"]
+    step_adjustment {
+      metric_interval_upper_bound = "${var.metric_interval_upper_bound_scale_down}"
+      scaling_adjustment          = "${var.scale_down_adjustment}"
+    }
+  }
 }
 
 resource "aws_appautoscaling_target" "service_scale_target" {
