@@ -7,8 +7,8 @@ module "scale_up" {
 
   scaling_adjustment = "${var.scale_up_adjustment}"
 
-  metric_interval_lower_bound = "${var.metric_interval_lower_bound}"
-  metric_interval_upper_bound = "${var.metric_interval_upper_bound}"
+  metric_interval_lower_bound = "${var.metric_interval_lower_bound_scale_up}"
+  metric_interval_upper_bound = "${var.metric_interval_upper_bound_scale_up}"
 
   depends_on = ["${aws_appautoscaling_target.service_scale_target.id}"]
 }
@@ -22,8 +22,8 @@ module "scale_down" {
 
   scaling_adjustment = "${var.scale_down_adjustment}"
 
-  metric_interval_lower_bound = "${var.metric_interval_lower_bound}"
-  metric_interval_upper_bound = "${var.metric_interval_upper_bound}"
+  metric_interval_lower_bound = "${var.metric_interval_lower_bound_scale_down}"
+  metric_interval_upper_bound = "${var.metric_interval_upper_bound_scale_down}"
 
   depends_on = ["${aws_appautoscaling_target.service_scale_target.id}"]
 }

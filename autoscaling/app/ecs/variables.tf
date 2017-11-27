@@ -24,9 +24,16 @@ variable "depends_on" {
   type = "list"
 }
 
-variable "metric_interval_lower_bound" {
+variable "metric_interval_lower_bound_scale_up" {
+  default = -1
+}
+variable "metric_interval_upper_bound_scale_up" {
   default = 0
 }
-variable "metric_interval_upper_bound" {
+
+variable "metric_interval_lower_bound_scale_down" {
+  default = 0
+}
+variable "metric_interval_upper_bound_scale_down" {
   default = 1
 }
