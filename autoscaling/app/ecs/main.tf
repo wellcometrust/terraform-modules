@@ -2,7 +2,7 @@ resource "aws_appautoscaling_policy" "scale_up" {
   name               = "${var.name}-scale(${var.scale_up_adjustment})"
   scalable_dimension = "ecs:service:DesiredCount"
   service_namespace  = "ecs"
-  resource_id        = "service/${var.cluster_name}/${var.service_name}"
+  resource_id        = "${local.resource_id}"
 
   step_scaling_policy_configuration {
     adjustment_type         = "ChangeInCapacity"
@@ -14,13 +14,15 @@ resource "aws_appautoscaling_policy" "scale_up" {
       scaling_adjustment          = "${var.scale_up_adjustment}"
     }
   }
+
+  depends_on = ["aws_appautoscaling_target.service_scale_target"]
 }
 
 resource "aws_appautoscaling_policy" "scale_down" {
   name               = "${var.name}-scale(${var.scale_down_adjustment})"
   scalable_dimension = "ecs:service:DesiredCount"
   service_namespace  = "ecs"
-  resource_id        = "service/${var.cluster_name}/${var.service_name}"
+  resource_id        = "${local.resource_id}"
 
   step_scaling_policy_configuration {
     adjustment_type         = "ChangeInCapacity"
@@ -32,6 +34,8 @@ resource "aws_appautoscaling_policy" "scale_down" {
       scaling_adjustment          = "${var.scale_down_adjustment}"
     }
   }
+
+  depends_on = ["aws_appautoscaling_target.service_scale_target"]
 }
 
 resource "aws_appautoscaling_target" "service_scale_target" {

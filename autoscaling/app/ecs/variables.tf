@@ -18,12 +18,6 @@ variable "max_capacity" {
   default = 3
 }
 
-variable "depends_on" {
-  default = []
-
-  type = "list"
-}
-
 variable "metric_interval_lower_bound_scale_up" {
   default = 0
 }
