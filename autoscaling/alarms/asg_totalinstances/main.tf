@@ -10,7 +10,7 @@ module "asg_totalinstances_high" {
   comparison_operator = "GreaterThanOrEqualToThreshold"
   treat_missing_data  = "${var.treat_missing_data_high}"
 
-  target_arn = "${var.scale_up_arn}"
+  target_arn = "${var.scale_down_arn}"
 }
 
 module "asg_totalinstances_low" {
@@ -25,5 +25,5 @@ module "asg_totalinstances_low" {
   comparison_operator = "LessThanThreshold"
   treat_missing_data  = "${var.treat_missing_data_low}"
 
-  target_arn = "${var.scale_down_arn}"
+  target_arn = "${var.scale_up_arn}"
 }
