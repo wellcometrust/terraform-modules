@@ -1,0 +1,38 @@
+variable "name" {}
+
+variable "cluster_name" {}
+
+variable "scale_up_arn" {}
+variable "scale_down_arn" {}
+
+variable "treat_missing_data_high" {
+  default = "missing"
+}
+
+variable "treat_missing_data_low" {
+  default = "missing"
+}
+
+variable "scale_up_adjustment" {
+  default = 1
+}
+
+variable "scale_down_adjustment" {
+  default = -1
+}
+
+variable "high_period" {
+  default = "60"
+}
+
+variable "high_threshold" {
+  default = "80"
+}
+
+variable "low_period" {
+  default = "300"
+}
+
+variable "low_threshold" {
+  default = "80"
+}
