@@ -8,3 +8,6 @@ variable "depends_on" {
 
   type = "list"
 }
+
+variable "metric_interval_lower_bound" {}
+variable "metric_interval_upper_bound" {}

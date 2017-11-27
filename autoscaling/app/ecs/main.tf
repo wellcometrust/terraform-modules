@@ -7,6 +7,9 @@ module "scale_up" {
 
   scaling_adjustment = "${var.scale_up_adjustment}"
 
+  metric_interval_lower_bound = "${var.metric_interval_lower_bound}"
+  metric_interval_upper_bound = "${var.metric_interval_upper_bound}"
+
   depends_on = ["${aws_appautoscaling_target.service_scale_target.id}"]
 }
 
@@ -18,6 +21,9 @@ module "scale_down" {
   service_name = "${var.service_name}"
 
   scaling_adjustment = "${var.scale_down_adjustment}"
+
+  metric_interval_lower_bound = "${var.metric_interval_lower_bound}"
+  metric_interval_upper_bound = "${var.metric_interval_upper_bound}"
 
   depends_on = ["${aws_appautoscaling_target.service_scale_target.id}"]
 }

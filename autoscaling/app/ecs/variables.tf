@@ -23,3 +23,10 @@ variable "depends_on" {
 
   type = "list"
 }
+
+variable "metric_interval_lower_bound" {
+  default = 0
+}
+variable "metric_interval_upper_bound" {
+  default = 1
+}
