@@ -1,5 +1,5 @@
-resource "aws_cloudwatch_metric_alarm" "queue_high" {
-  alarm_name          = "${var.name}-queue_high"
+resource "aws_cloudwatch_metric_alarm" "queue" {
+  alarm_name          = "${var.name}-queue_${var.comparison_operator}"
   comparison_operator = "${var.comparison_operator}"
   evaluation_periods  = "1"
   metric_name         = "ApproximateNumberOfMessagesVisible"
