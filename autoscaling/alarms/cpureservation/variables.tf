@@ -30,7 +30,7 @@ variable "high_threshold" {
 }
 
 variable "low_period" {
-  default = "600"
+  default = "300"
 }
 
 variable "low_threshold" {

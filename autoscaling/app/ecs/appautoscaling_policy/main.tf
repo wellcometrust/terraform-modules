@@ -10,7 +10,6 @@ resource "aws_appautoscaling_policy" "policy" {
     metric_aggregation_type = "Average"
 
     step_adjustment {
-      metric_interval_lower_bound = 0
       scaling_adjustment          = "${var.scaling_adjustment}"
     }
   }
