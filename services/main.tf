@@ -50,7 +50,7 @@ module "task" {
 }
 
 locals {
-  default_path         = "templates/${var.app_name}.ini.template"
+  default_path         = "templates/${var.name}.ini.template"
   config_template_path = "${var.config_template_path == "" ? local.default_path : var.config_template_path}"
 }
 
