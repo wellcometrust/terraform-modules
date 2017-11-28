@@ -1,6 +1,6 @@
 locals {
   default_path = "templates/${var.app_name}.ini.template"
-  actual_path  = "${var.config_template_path == "" ? var.config_template_path : local.default_path}"
+  actual_path  = "${var.config_template_path == "" ? local.default_path : var.config_template_path}"
 }
 
 data "template_file" "config" {
