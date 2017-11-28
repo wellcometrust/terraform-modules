@@ -1,5 +1,5 @@
 data "template_file" "file_contents" {
-  template = "${file("${path.cwd}/${local.emplate_path}")}"
+  template = "${file("${path.cwd}/${local.template_path}")}"
   vars     = "${var.template_vars}"
 }
 
