@@ -19,3 +19,8 @@ variable "is_config_managed" {
   description = "Flag to tell whether the config should be generated using templates and put in S3"
   default     = true
 }
+
+variable "config_template_path" {
+  description = "Path to the config template, relative to the current working directory"
+  default     = ""
+}

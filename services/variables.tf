@@ -152,3 +152,8 @@ variable "deployment_maximum_percent" {
 variable "enable_alb_alarm" {
   default = 1
 }
+
+variable "config_template_path" {
+  description = "Path to the config template, relative to the current working directory"
+  default     = ""
+}

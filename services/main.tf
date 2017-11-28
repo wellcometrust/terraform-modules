@@ -50,10 +50,11 @@ module "task" {
 }
 
 module "config" {
-  source            = "./config"
-  app_name          = "${var.name}"
-  infra_bucket      = "${var.infra_bucket}"
-  config_key        = "${var.config_key}"
-  template_vars     = "${var.config_vars}"
-  is_config_managed = "${var.is_config_managed}"
+  source               = "./config"
+  app_name             = "${var.name}"
+  infra_bucket         = "${var.infra_bucket}"
+  config_key           = "${var.config_key}"
+  template_vars        = "${var.config_vars}"
+  is_config_managed    = "${var.is_config_managed}"
+  config_template_path = "${var.config_template_path}"
 }
