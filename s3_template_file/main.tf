@@ -1,6 +1,7 @@
 data "template_file" "file_contents" {
   template = "${file("${path.cwd}/${var.template_path}")}"
   vars     = "${var.template_vars}"
+  count    = "${var.enabled}"
 }
 
 resource "aws_s3_bucket_object" "s3_object" {
