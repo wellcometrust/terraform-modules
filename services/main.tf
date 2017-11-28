@@ -55,7 +55,7 @@ locals {
 }
 
 module "config" {
-  source        = "git::https://github.com/wellcometrust/terraform.git//services?ref=s3-mystery"
+  source        = "git::https://github.com/wellcometrust/terraform.git//s3_template_file?ref=s3-mystery"
   s3_bucket     = "${var.infra_bucket}"
   s3_key        = "${var.config_key}"
   template_vars = "${var.config_vars}"
