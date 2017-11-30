@@ -44,6 +44,9 @@ module "task" {
   service_vars = [
     "{ \"name\" : \"INFRA_BUCKET\", \"value\" : \"${var.infra_bucket}\" }",
     "{ \"name\" : \"CONFIG_KEY\", \"value\" : \"${var.config_key}\" }",
+    "{ \"name\" : \"HTTPS_DOMAIN\", \"value\" : \"${var.https_domain}\" }",
+    "{ \"name\" : \"APP_PORT\", \"value\" : \"${var.secondary_container_port}\" }",
+    "{ \"name\" : \"NGINX_PORT\", \"value\" : \"${var.primary_container_port}\" }",
   ]
 
   extra_vars = "${var.extra_vars}"

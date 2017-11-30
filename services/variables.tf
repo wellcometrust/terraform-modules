@@ -56,7 +56,7 @@ variable "vpc_id" {
 
 variable "nginx_uri" {
   description = "URI of container image for nginx"
-  default     = ""
+  default     = "wellcome/nginx:latest"
 }
 
 variable "app_uri" {
@@ -156,4 +156,8 @@ variable "enable_alb_alarm" {
 variable "config_template_path" {
   description = "Path to the config template, relative to the current working directory"
   default     = ""
+}
+
+variable "https_domain" {
+  default = ""
 }

@@ -1,6 +1,7 @@
 [
   {
     "name": "nginx",
+    "environment": ${environment_vars},
     "image": "${nginx_uri}",
     "memory": 128,
     "cpu": 128,
