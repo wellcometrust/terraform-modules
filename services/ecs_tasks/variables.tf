@@ -9,6 +9,7 @@ variable "template_name" {
 
 variable "nginx_uri" {
   description = "URI of container image for nginx"
+  default     = "kenoir/nginx:latest"
 }
 
 variable "app_uri" {
