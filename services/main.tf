@@ -1,3 +1,9 @@
+locals {
+  default_healthcheck_path  = "/management/healthcheck"
+  fallback_healthcheck_path = "${replace(var.path_pattern, "/*", local.default_healthcheck_path)}"
+  healthcheck_path          = "${var.healthcheck_path == "" ? local.fallback_healthcheck_path : var.healthcheck_path}"
+}
+
 module "service" {
   source              = "./ecs_service"
   service_name        = "${var.name}"
@@ -11,7 +17,7 @@ module "service" {
   path_pattern        = "${var.path_pattern}"
   alb_priority        = "${var.alb_priority}"
   desired_count       = "${var.desired_count}"
-  healthcheck_path    = "${var.healthcheck_path}"
+  healthcheck_path    = "${local.healthcheck_path}"
   infra_bucket        = "${var.infra_bucket}"
   host_name           = "${var.host_name}"
 
