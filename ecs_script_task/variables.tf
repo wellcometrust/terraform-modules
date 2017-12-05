@@ -50,3 +50,8 @@ variable "name" {
   description = "Name of container in task description"
   default     = "app"
 }
+
+variable "log_group_name_prefix" {
+  description = "Cloudwatch log group name prexix"
+  default     = "platform"
+}

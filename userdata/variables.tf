@@ -27,3 +27,8 @@ variable "ebs_cache_max_age_days" {
 variable "ebs_cache_max_size" {
   default = ""
 }
+
+variable "log_group_name_prefix" {
+  description = "Cloudwatch log group name prexix"
+  default     = "platform"
+}
