@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "repository" {
-  name = "uk.ac.wellcome/${var.name}"
+  name = "${var.namespace}/${var.id}"
 
   lifecycle {
     prevent_destroy = true
