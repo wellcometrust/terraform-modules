@@ -82,8 +82,8 @@ variable "path_pattern" {
 }
 
 variable "healthcheck_path" {
-  description = "path for ECS healthcheck endpoint"
-  default     = "/management/healthcheck"
+  description = "Path for ECS healthcheck endpoint.  Defaults to /management/healthcheck."
+  default     = ""
 }
 
 variable "infra_bucket" {
