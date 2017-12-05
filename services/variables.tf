@@ -161,3 +161,8 @@ variable "config_template_path" {
 variable "https_domain" {
   default = ""
 }
+
+variable "log_group_name_prefix" {
+  description = "Cloudwatch log group name prexix"
+  default     = "platform"
+}

@@ -1,3 +1,3 @@
 resource "aws_cloudwatch_log_group" "ecs_agent" {
-  name = "platform/ecs-agent-${var.cluster_name}"
+  name = "${var.log_group_name_prefix}/ecs-agent-${var.cluster_name}"
 }

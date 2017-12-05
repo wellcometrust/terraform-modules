@@ -67,3 +67,7 @@ variable "memory" {
 variable "cpu" {
   description = "How much CPU to allocate to the app"
 }
+
+variable "log_group_name_prefix" {
+  description = "Cloudwatch log group name prexix"
+}
