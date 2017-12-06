@@ -56,6 +56,7 @@ module "task" {
   ]
 
   extra_vars = "${var.extra_vars}"
+  log_group_name_prefix = "${var.log_group_name_prefix}"
 }
 
 locals {
