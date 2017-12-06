@@ -20,10 +20,6 @@ data "aws_ecs_cluster" "cluster" {
   cluster_name = "${var.cluster_name}"
 }
 
-data "aws_iam_role" "task_role" {
-  name = "${var.task_role_name}"
-}
-
 locals {
   config_template = "${var.config_template == "" ? var.name : var.config_template}"
 }
