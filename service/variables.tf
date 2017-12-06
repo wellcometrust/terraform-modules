@@ -21,8 +21,8 @@ variable "template_name" {
   default     = "default"
 }
 
-variable "task_role_arn" {
-  description = "ARN of the task definition to run in this service"
+variable "task_role_name" {
+  description = "Name of the IAM role for this service"
 }
 
 variable "volume_name" {
