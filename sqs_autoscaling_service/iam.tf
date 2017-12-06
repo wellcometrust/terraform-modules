@@ -3,7 +3,6 @@ module "ecs_iam" {
   name   = "${var.name}"
 }
 
-
 data "aws_iam_policy_document" "read_from_q" {
   statement {
     actions = [
