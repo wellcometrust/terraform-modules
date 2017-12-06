@@ -11,5 +11,5 @@ resource "aws_ecs_task_definition" "task" {
 
 module "iam_role" {
   source = "iam_role"
-  name = "${var.name}"
+  name   = "${var.name}"
 }

@@ -35,5 +35,5 @@ module "launch_config" {
 
 module "instance_profile" {
   source = "instance_profile"
-  name = "${var.name}"
+  name   = "${var.name}"
 }

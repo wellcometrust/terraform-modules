@@ -32,18 +32,18 @@ module "service" {
 }
 
 module "task" {
-  source           = "ecs_task"
-  name             = "${var.name}"
+  source = "ecs_task"
+  name   = "${var.name}"
 
   volume_name      = "${var.volume_name}"
   volume_host_path = "${var.volume_host_path}"
 
-  app_uri          = "${var.app_uri}"
-  nginx_uri        = "${var.nginx_uri}"
+  app_uri   = "${var.app_uri}"
+  nginx_uri = "${var.nginx_uri}"
 
-  template_name    = "${var.template_name}"
-  cpu              = "${var.cpu}"
-  memory           = "${var.memory}"
+  template_name = "${var.template_name}"
+  cpu           = "${var.cpu}"
+  memory        = "${var.memory}"
 
   primary_container_port   = "${var.primary_container_port}"
   secondary_container_port = "${var.secondary_container_port}"
