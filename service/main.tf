@@ -34,7 +34,7 @@ module "service" {
 module "task" {
   source           = "./ecs_tasks"
   task_name        = "${var.name}"
-  task_role_arn    = "${var.task_role_arn}"
+  task_role_arn    = "${data.aws_iam_role.task_role.arn}"
   volume_name      = "${var.volume_name}"
   volume_host_path = "${var.volume_host_path}"
   app_uri          = "${var.app_uri}"
