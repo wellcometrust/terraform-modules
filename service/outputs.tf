@@ -11,7 +11,7 @@ output "service_role_name" {
 }
 
 output "task_role_name" {
-  value = "${module.task_role.name}"
+  value = "${module.task.role_name}"
 }
 
 output "host_name" {
