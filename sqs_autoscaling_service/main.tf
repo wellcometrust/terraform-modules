@@ -25,17 +25,21 @@ locals {
 }
 
 module "service" {
-  source             = "git::https://github.com/wellcometrust/terraform-modules.git//services?ref=v1.3.1"
-  name               = "${var.name}"
-  cluster_id         = "${data.aws_ecs_cluster.cluster.arn}"
-  task_role_arn      = "${module.ecs_iam.task_role_arn}"
-  vpc_id             = "${var.vpc_id}"
-  app_uri            = "${var.ecr_repository_url}:${var.release_id}"
+  source = "git::https://github.com/wellcometrust/terraform-modules.git//services?ref=v3.0.0"
+  name   = "${var.name}"
+
+  cluster_id = "${data.aws_ecs_cluster.cluster.arn}"
+  vpc_id     = "${var.vpc_id}"
+
+  app_uri = "${var.ecr_repository_url}:${var.release_id}"
+
   listener_https_arn = "${var.alb_listener_https_arn}"
   listener_http_arn  = "${var.alb_listener_http_arn}"
-  path_pattern       = "/${var.name}/*"
-  alb_priority       = "${var.alb_priority}"
-  infra_bucket       = "${var.infra_bucket}"
+
+  path_pattern = "/${var.name}/*"
+  alb_priority = "${var.alb_priority}"
+
+  infra_bucket = "${var.infra_bucket}"
 
   config_key           = "config/${var.build_env}/${var.name}.ini"
   config_template_path = "config/${local.config_template}.ini.template"
