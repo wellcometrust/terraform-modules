@@ -5,7 +5,7 @@ module "cloudformation_stack" {
   alarm_topic_arn       = "${var.alarm_topic_arn}"
   sns_topic_arn         = "${var.sns_topic_arn}"
   subnet_list           = "${var.subnet_list}"
-  asg_name              = "${var.asg_name}"
+  asg_name              = "${var.name}"
   launch_config_name    = "${module.launch_config.name}"
 
   asg_max     = "${var.asg_max}"
@@ -16,9 +16,9 @@ module "cloudformation_stack" {
 module "launch_config" {
   source = "ecs_asg_launch_config"
 
-  instance_profile_name = "${var.instance_profile_name}"
+  instance_profile_name = "${module.instance_profile.name}"
   vpc_id                = "${var.vpc_id}"
-  asg_name              = "${var.asg_name}"
+  asg_name              = "${var.name}"
   image_id              = "${var.image_id}"
   user_data             = "${var.user_data}"
   key_name              = "${var.key_name}"
@@ -31,4 +31,9 @@ module "launch_config" {
   public_ip             = "${var.public_ip}"
   ebs_volume_type       = "${var.ebs_volume_type}"
   ebs_iops              = "${var.ebs_iops}"
+}
+
+module "instance_profile" {
+  source = "instance_profile"
+  name = "${var.name}"
 }

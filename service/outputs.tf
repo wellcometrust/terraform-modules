@@ -6,8 +6,12 @@ output "target_group_arn" {
   value = "${module.service.target_group_arn}"
 }
 
-output "role_name" {
+output "service_role_name" {
   value = "${module.service.role_name}"
+}
+
+output "task_role_name" {
+  value = "${module.task_role.name}"
 }
 
 output "host_name" {

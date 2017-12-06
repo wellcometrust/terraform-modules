@@ -21,10 +21,6 @@ variable "template_name" {
   default     = "default"
 }
 
-variable "task_role_name" {
-  description = "Name of the IAM role for this service"
-}
-
 variable "volume_name" {
   description = "Name of volume to mount (if required)"
   default     = "ephemera"
