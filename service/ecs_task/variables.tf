@@ -1,4 +1,4 @@
-variable "task_name" {
+variable "name" {
   description = "Name of the task to create"
 }
 
@@ -19,10 +19,6 @@ variable "app_uri" {
 variable "aws_region" {
   description = "AWS Region the task will run in"
   default     = "eu-west-1"
-}
-
-variable "task_role_arn" {
-  description = "ARN of IAM Role for task"
 }
 
 variable "volume_name" {

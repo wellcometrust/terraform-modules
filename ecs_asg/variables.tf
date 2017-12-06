@@ -1,4 +1,4 @@
-variable "asg_name" {
+variable "name" {
   description = "Name of the ASG to create"
 }
 

@@ -4,10 +4,13 @@ locals {
 }
 
 module "config" {
-  source        = "../s3_template_file"
-  s3_bucket     = "${var.infra_bucket}"
-  s3_key        = "${var.config_key}"
+  source = "../s3_template_file"
+
+  s3_bucket = "${var.infra_bucket}"
+  s3_key    = "${var.config_key}"
+
   template_vars = "${var.config_vars}"
   template_path = "${local.config_template_path}"
-  enabled       = "${var.is_config_managed}"
+
+  enabled = "${var.is_config_managed}"
 }

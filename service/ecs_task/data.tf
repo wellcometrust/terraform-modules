@@ -18,3 +18,7 @@ data "template_file" "definition" {
     memory = "${var.memory}"
   }
 }
+
+data "aws_iam_role" "task_role" {
+  name = "${module.iam_role.name}"
+}

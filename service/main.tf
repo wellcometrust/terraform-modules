@@ -4,12 +4,8 @@ locals {
   healthcheck_path          = "${var.healthcheck_path == "" ? local.fallback_healthcheck_path : var.healthcheck_path}"
 }
 
-data "aws_iam_role" "task_role" {
-  name = "${var.task_role_name}"
-}
-
 module "service" {
-  source              = "./ecs_service"
+  source              = "ecs_service"
   service_name        = "${var.name}"
   cluster_id          = "${var.cluster_id}"
   task_definition_arn = "${module.task.arn}"
@@ -36,16 +32,18 @@ module "service" {
 }
 
 module "task" {
-  source           = "./ecs_tasks"
-  task_name        = "${var.name}"
-  task_role_arn    = "${data.aws_iam_role.task_role.arn}"
+  source = "ecs_task"
+  name   = "${var.name}"
+
   volume_name      = "${var.volume_name}"
   volume_host_path = "${var.volume_host_path}"
-  app_uri          = "${var.app_uri}"
-  nginx_uri        = "${var.nginx_uri}"
-  template_name    = "${var.template_name}"
-  cpu              = "${var.cpu}"
-  memory           = "${var.memory}"
+
+  app_uri   = "${var.app_uri}"
+  nginx_uri = "${var.nginx_uri}"
+
+  template_name = "${var.template_name}"
+  cpu           = "${var.cpu}"
+  memory        = "${var.memory}"
 
   primary_container_port   = "${var.primary_container_port}"
   secondary_container_port = "${var.secondary_container_port}"
