@@ -1,5 +1,6 @@
 variable "cluster_name" {}
 variable "source_queue_name" {}
+variable "source_queue_arn" {}
 variable "name" {}
 variable "vpc_id" {}
 variable "ecr_repository_url" {}

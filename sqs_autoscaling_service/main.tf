@@ -32,7 +32,7 @@ module "service" {
   source             = "git::https://github.com/wellcometrust/terraform-modules.git//services?ref=v1.3.1"
   name               = "${var.name}"
   cluster_id         = "${data.aws_ecs_cluster.cluster.arn}"
-  task_role_arn      = "${data.aws_iam_role.task_role.arn}"
+  task_role_arn      = "${module.ecs_iam.task_role_arn}"
   vpc_id             = "${var.vpc_id}"
   app_uri            = "${var.ecr_repository_url}:${var.release_id}"
   listener_https_arn = "${var.alb_listener_https_arn}"
