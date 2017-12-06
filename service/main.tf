@@ -55,7 +55,7 @@ module "task" {
     "{ \"name\" : \"NGINX_PORT\", \"value\" : \"${var.primary_container_port}\" }",
   ]
 
-  extra_vars = "${var.extra_vars}"
+  extra_vars            = "${var.extra_vars}"
   log_group_name_prefix = "${var.log_group_name_prefix}"
 }
 
