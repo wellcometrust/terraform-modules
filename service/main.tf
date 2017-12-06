@@ -4,6 +4,10 @@ locals {
   healthcheck_path          = "${var.healthcheck_path == "" ? local.fallback_healthcheck_path : var.healthcheck_path}"
 }
 
+data "aws_iam_role" "task_role" {
+  name = "${var.task_role_name}"
+}
+
 module "service" {
   source              = "./ecs_service"
   service_name        = "${var.name}"
@@ -57,18 +61,4 @@ module "task" {
 
   extra_vars            = "${var.extra_vars}"
   log_group_name_prefix = "${var.log_group_name_prefix}"
-}
-
-locals {
-  default_path         = "templates/${var.name}.ini.template"
-  config_template_path = "${var.config_template_path == "" ? local.default_path : var.config_template_path}"
-}
-
-module "config" {
-  source        = "../s3_template_file"
-  s3_bucket     = "${var.infra_bucket}"
-  s3_key        = "${var.config_key}"
-  template_vars = "${var.config_vars}"
-  template_path = "${local.config_template_path}"
-  enabled       = "${var.is_config_managed}"
 }
