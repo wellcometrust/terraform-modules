@@ -30,10 +30,6 @@ variable "key_name" {
   description = "SSH key pair name for instance sign-in"
 }
 
-variable "instance_profile_name" {
-  description = "Instance profile for ec2 container hosts"
-}
-
 variable "user_data" {
   description = "User data for ec2 container hosts"
 }

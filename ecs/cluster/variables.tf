@@ -1,0 +1,23 @@
+variable "name" {
+  description = "Name of the ECS cluster to create"
+}
+
+variable "key_name" {
+  description = "SSH key pair name for instance sign-in"
+}
+
+variable "admin_cidr_ingress" {
+  default     = "0.0.0.0/0"
+  description = "CIDR for SSH access to EC2 instances"
+}
+
+variable "vpc_id" {}
+variable "vpc_subnets" {
+  type = "list"
+}
+
+variable "alb_log_bucket_id" {}
+
+variable "ec2_terminating_topic_arn" {}
+variable "ec2_terminating_topic_publish_policy" {}
+variable "ec2_instance_terminating_for_too_long_alarm_arn" {}
