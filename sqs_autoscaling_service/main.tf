@@ -25,7 +25,7 @@ locals {
 }
 
 module "service" {
-  source = "git::https://github.com/wellcometrust/terraform-modules.git//services?ref=v3.0.0"
+  source = "git::https://github.com/wellcometrust/terraform-modules.git//service?ref=v3.0.0"
   name   = "${var.name}"
 
   cluster_id = "${data.aws_ecs_cluster.cluster.arn}"
