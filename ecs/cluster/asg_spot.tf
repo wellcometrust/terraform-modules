@@ -16,15 +16,15 @@ module "cluster_asg_spot_cpureservation_autoscaling_alarms" {
 }
 
 module "cluster_asg_spot" {
-  source                = "asg"
-  name                  = "${var.name}-cluster-spot"
+  source = "asg"
+  name   = "${var.name}-cluster-spot"
 
-  subnet_list           = ["${var.vpc_subnets}"]
-  key_name              = "${var.key_name}"
+  subnet_list = ["${var.vpc_subnets}"]
+  key_name    = "${var.key_name}"
 
-  user_data             = "${module.cluster_userdata.rendered}"
-  vpc_id                = "${var.vpc_id}"
-  admin_cidr_ingress    = "${var.admin_cidr_ingress}"
+  user_data          = "${module.cluster_userdata.rendered}"
+  vpc_id             = "${var.vpc_id}"
+  admin_cidr_ingress = "${var.admin_cidr_ingress}"
 
   asg_min     = "1"
   asg_desired = "2"

@@ -12,6 +12,7 @@ variable "admin_cidr_ingress" {
 }
 
 variable "vpc_id" {}
+
 variable "vpc_subnets" {
   type = "list"
 }

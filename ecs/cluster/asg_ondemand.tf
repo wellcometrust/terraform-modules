@@ -16,15 +16,15 @@ module "cluster_asg_on_demand_asg_totalinstances_autoscaling_alarms" {
 }
 
 module "cluster_asg_on_demand" {
-  source                = "asg"
-  name                  = "${var.name}-cluster-on-demand"
+  source = "asg"
+  name   = "${var.name}-cluster-on-demand"
 
-  subnet_list           = ["${var.vpc_subnets}"]
-  key_name              = "${var.key_name}"
+  subnet_list = ["${var.vpc_subnets}"]
+  key_name    = "${var.key_name}"
 
-  user_data             = "${module.cluster_userdata.rendered}"
-  vpc_id                = "${var.vpc_id}"
-  admin_cidr_ingress    = "${var.admin_cidr_ingress}"
+  user_data          = "${module.cluster_userdata.rendered}"
+  vpc_id             = "${var.vpc_id}"
+  admin_cidr_ingress = "${var.admin_cidr_ingress}"
 
   asg_min     = "0"
   asg_desired = "0"
@@ -36,5 +36,5 @@ module "cluster_asg_on_demand" {
   sns_topic_arn         = "${var.ec2_terminating_topic_arn}"
   publish_to_sns_policy = "${var.ec2_terminating_topic_publish_policy}"
 
-  alarm_topic_arn       = "${var.ec2_instance_terminating_for_too_long_alarm_arn}"
+  alarm_topic_arn = "${var.ec2_instance_terminating_for_too_long_alarm_arn}"
 }
