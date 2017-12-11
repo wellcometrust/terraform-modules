@@ -10,7 +10,7 @@ module "cluster_alb" {
     "${module.cluster_asg_on_demand.loadbalancer_sg_http_id}",
   ]
 
-  certificate_domain = "services.wellcomecollection.org"
+  certificate_domain = "${var.alb_certificate_domain}"
   vpc_id             = "${var.vpc_id}"
 
   alb_access_log_bucket = "${var.alb_log_bucket_id}"

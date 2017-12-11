@@ -17,6 +17,8 @@ variable "vpc_subnets" {
   type = "list"
 }
 
+variable "alb_certificate_domain" {}
+
 variable "alb_log_bucket_id" {}
 
 variable "ec2_terminating_topic_arn" {}
