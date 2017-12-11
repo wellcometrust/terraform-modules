@@ -11,6 +11,42 @@ variable "admin_cidr_ingress" {
   description = "CIDR for SSH access to EC2 instances"
 }
 
+variable "asg_on_demand_min" {
+  default = "0"
+}
+
+variable "asg_on_demand_desired" {
+  default = "0"
+}
+
+variable "asg_on_demand_max" {
+  default = "1"
+}
+
+variable "asg_on_demand_instance_type" {
+  default = "m4.xlarge"
+}
+
+variable "asg_spot_min" {
+  default = "1"
+}
+
+variable "asg_spot_desired" {
+  default = "2"
+}
+
+variable "asg_spot_max" {
+  default = "4"
+}
+
+variable "asg_spot_instance_type" {
+  default = "m4.xlarge"
+}
+
+variable "asg_spot_price" {
+  default = "0.1"
+}
+
 variable "vpc_id" {}
 
 variable "vpc_subnets" {
