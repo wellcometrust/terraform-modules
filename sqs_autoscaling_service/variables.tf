@@ -6,14 +6,6 @@ variable "vpc_id" {}
 variable "ecr_repository_url" {}
 variable "release_id" {}
 
-variable "infra_bucket" {
-  default = "platform-infra"
-}
-
-variable "config_template" {
-  default = ""
-}
-
 variable "cpu" {
   default = 256
 }
@@ -22,25 +14,10 @@ variable "memory" {
   default = 1024
 }
 
-variable "extra_vars" {
+variable "config_vars" {
   description = "Environment variables to pass to the container"
   type        = "list"
   default     = []
-}
-
-variable "config_vars" {
-  description = "Variables for the config template"
-  type        = "map"
-  default     = {}
-}
-
-variable "is_config_managed" {
-  description = "Flag to tell whether the config should be generated using templates and put in S3"
-  default     = true
-}
-
-variable "build_env" {
-  default = "prod"
 }
 
 variable "alb_priority" {}
