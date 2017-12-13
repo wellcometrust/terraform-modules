@@ -29,7 +29,9 @@ variable "extra_vars" {
 }
 
 variable "config_vars" {
-  type = "map"
+  description = "Variables for the config template"
+  type        = "map"
+  default     = {}
 }
 
 variable "build_env" {
