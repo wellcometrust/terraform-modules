@@ -16,8 +16,7 @@ variable "memory" {
 
 variable "config_vars" {
   description = "Environment variables to pass to the container"
-  type        = "list"
-  default     = []
+  type        = "map"
 }
 
 variable "alb_priority" {}
