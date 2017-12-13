@@ -18,7 +18,6 @@ module "service" {
   alb_priority        = "${var.alb_priority}"
   desired_count       = "${var.desired_count}"
   healthcheck_path    = "${local.healthcheck_path}"
-  infra_bucket        = "${var.infra_bucket}"
   host_name           = "${var.host_name}"
 
   client_error_alarm_topic_arn = "${var.client_error_alarm_topic_arn}"
@@ -41,7 +40,6 @@ module "task" {
   app_uri   = "${var.app_uri}"
   nginx_uri = "${var.nginx_uri}"
 
-  template_name = "${var.template_name}"
   cpu           = "${var.cpu}"
   memory        = "${var.memory}"
 
@@ -50,13 +48,21 @@ module "task" {
   container_path           = "${var.container_path}"
 
   service_vars = [
-    "{ \"name\" : \"INFRA_BUCKET\", \"value\" : \"${var.infra_bucket}\" }",
-    "{ \"name\" : \"CONFIG_KEY\", \"value\" : \"${var.config_key}\" }",
-    "{ \"name\" : \"HTTPS_DOMAIN\", \"value\" : \"${var.https_domain}\" }",
-    "{ \"name\" : \"APP_PORT\", \"value\" : \"${var.secondary_container_port}\" }",
-    "{ \"name\" : \"NGINX_PORT\", \"value\" : \"${var.primary_container_port}\" }",
+    {
+      name  = "HTTPS_DOMAIN"
+      value = "${var.https_domain}"
+    },
+    {
+      name  = "APP_PORT"
+      value = "${var.secondary_container_port}"
+    },
+    {
+      name  = "NGINX_PORT"
+      value = "${var.primary_container_port}"
+    }
   ]
 
-  extra_vars            = "${var.extra_vars}"
+  config_vars            = "${var.config_vars}"
+
   log_group_name_prefix = "${var.log_group_name_prefix}"
 }

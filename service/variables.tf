@@ -16,11 +16,6 @@ variable "cluster_id" {
   description = "ID of the cluster which this service should run in"
 }
 
-variable "template_name" {
-  description = "Name of the template to use"
-  default     = "default"
-}
-
 variable "volume_name" {
   description = "Name of volume to mount (if required)"
   default     = "ephemera"
@@ -82,36 +77,15 @@ variable "healthcheck_path" {
   default     = ""
 }
 
-variable "infra_bucket" {
-  description = "Name of the S3 infra bucket"
-  default     = ""
-}
-
-variable "config_key" {
-  description = "Location of config file within S3"
-  default     = ""
-}
-
-variable "config_vars" {
-  description = "Variables for the config template"
-  type        = "map"
-  default     = {}
-}
-
 variable "container_path" {
   description = "Path of the mounted volume in the docker container"
   default     = "/tmp"
 }
 
-variable "extra_vars" {
+variable "config_vars" {
   description = "Environment variables to pass to the container"
   type        = "list"
   default     = []
-}
-
-variable "is_config_managed" {
-  description = "Flag to tell whether the config should be generated using templates and put in S3"
-  default     = true
 }
 
 variable "host_name" {
@@ -147,11 +121,6 @@ variable "deployment_maximum_percent" {
 
 variable "enable_alb_alarm" {
   default = 1
-}
-
-variable "config_template_path" {
-  description = "Path to the config template, relative to the current working directory"
-  default     = ""
 }
 
 variable "https_domain" {

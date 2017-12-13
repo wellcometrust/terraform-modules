@@ -51,7 +51,7 @@ variable "service_vars" {
   type        = "list"
 }
 
-variable "extra_vars" {
+variable "config_vars" {
   description = "Environment variables to pass to the container"
   type        = "list"
 }
