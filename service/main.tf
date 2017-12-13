@@ -40,8 +40,8 @@ module "task" {
   app_uri   = "${var.app_uri}"
   nginx_uri = "${var.nginx_uri}"
 
-  cpu           = "${var.cpu}"
-  memory        = "${var.memory}"
+  cpu    = "${var.cpu}"
+  memory = "${var.memory}"
 
   primary_container_port   = "${var.primary_container_port}"
   secondary_container_port = "${var.secondary_container_port}"
@@ -59,10 +59,10 @@ module "task" {
     {
       name  = "NGINX_PORT"
       value = "${var.primary_container_port}"
-    }
+    },
   ]
 
-  config_vars            = "${var.config_vars}"
+  config_vars = "${var.config_vars}"
 
   log_group_name_prefix = "${var.log_group_name_prefix}"
 }
