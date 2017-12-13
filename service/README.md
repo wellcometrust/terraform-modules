@@ -14,10 +14,7 @@ module "my_service" {
   cluster_id = "${var.cluster_id}"
   vpc_id     = "${var.vpc_id}"
 
-  infra_bucket = "${var.infra_bucket}"
-  config_key   = "${var.config_key}"
-
-  config_vars = {
+  env_vars = {
     IP_ADDRESS = "192.0.2.6"
     HOST       = "localhost"
     ...

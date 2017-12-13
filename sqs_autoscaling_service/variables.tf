@@ -14,7 +14,7 @@ variable "memory" {
   default = 1024
 }
 
-variable "config_vars" {
+variable "env_vars" {
   description = "Environment variables to pass to the container"
   type        = "map"
 }

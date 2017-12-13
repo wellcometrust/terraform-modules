@@ -82,7 +82,7 @@ variable "container_path" {
   default     = "/tmp"
 }
 
-variable "config_vars" {
+variable "env_vars" {
   description = "Environment variables to pass to the container"
   type        = "map"
   default     = {}
