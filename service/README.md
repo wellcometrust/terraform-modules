@@ -17,12 +17,11 @@ module "my_service" {
   infra_bucket = "${var.infra_bucket}"
   config_key   = "${var.config_key}"
 
-  config_vars = [
-    {
-      name  = "MY_VAR"
-      value = "${var.my_config_var}"
-    }
-  ]
+  config_vars = {
+    IP_ADDRESS = "192.0.2.6"
+    HOST       = "localhost"
+    ...
+  }
 
   listener_https_arn = "${var.listener_https_arn}"
   listener_http_arn  = "${var.listener_http_arn}"
