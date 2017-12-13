@@ -51,6 +51,7 @@ module "service" {
   deployment_maximum_percent         = "200"
 
   config_vars = "${var.config_vars}"
+  extra_vars  = "${var.extra_vars}"
 
   loadbalancer_cloudwatch_id   = "${var.alb_cloudwatch_id}"
   server_error_alarm_topic_arn = "${var.alb_server_error_alarm_arn}"

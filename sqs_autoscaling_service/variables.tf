@@ -22,6 +22,12 @@ variable "memory" {
   default = 1024
 }
 
+variable "extra_vars" {
+  description = "Environment variables to pass to the container"
+  type        = "list"
+  default     = []
+}
+
 variable "config_vars" {
   type = "map"
 }
