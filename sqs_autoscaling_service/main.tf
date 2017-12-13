@@ -53,6 +53,8 @@ module "service" {
   config_vars = "${var.config_vars}"
   extra_vars  = "${var.extra_vars}"
 
+  is_config_managed = "${var.is_config_managed}"
+
   loadbalancer_cloudwatch_id   = "${var.alb_cloudwatch_id}"
   server_error_alarm_topic_arn = "${var.alb_server_error_alarm_arn}"
   client_error_alarm_topic_arn = "${var.alb_client_error_alarm_arn}"
