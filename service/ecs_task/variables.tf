@@ -48,12 +48,12 @@ variable "container_path" {
 
 variable "service_vars" {
   description = "Environment variables to pass to the container"
-  type        = "list"
+  type        = "map"
 }
 
 variable "config_vars" {
   description = "Environment variables to pass to the container"
-  type        = "list"
+  type        = "map"
 }
 
 variable "memory" {

@@ -47,20 +47,11 @@ module "task" {
   secondary_container_port = "${var.secondary_container_port}"
   container_path           = "${var.container_path}"
 
-  service_vars = [
-    {
-      name  = "HTTPS_DOMAIN"
-      value = "${var.https_domain}"
-    },
-    {
-      name  = "APP_PORT"
-      value = "${var.secondary_container_port}"
-    },
-    {
-      name  = "NGINX_PORT"
-      value = "${var.primary_container_port}"
-    },
-  ]
+  service_vars = {
+    HTTPS_DOMAIN = "${var.https_domain}"
+    APP_PORT     = "${var.secondary_container_port}"
+    NGINX_PORT   = "${var.primary_container_port}"
+  }
 
   config_vars = "${var.config_vars}"
 

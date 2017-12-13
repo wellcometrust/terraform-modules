@@ -84,8 +84,8 @@ variable "container_path" {
 
 variable "config_vars" {
   description = "Environment variables to pass to the container"
-  type        = "list"
-  default     = []
+  type        = "map"
+  default     = {}
 }
 
 variable "host_name" {
