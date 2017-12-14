@@ -73,7 +73,7 @@ variable "path_pattern" {
 }
 
 variable "healthcheck_path" {
-  description = "Path for ECS healthcheck endpoint.  Defaults to replace(var.path_pattern, "/*", "/healthcheck/path")."
+  description = "Path for ECS healthcheck endpoint.  Defaults to path_pattern.replace('/*', '/managment/healthcheck')."
   default     = ""
 }
 
