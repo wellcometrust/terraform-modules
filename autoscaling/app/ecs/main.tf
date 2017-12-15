@@ -46,4 +46,8 @@ resource "aws_appautoscaling_target" "service_scale_target" {
 
   min_capacity = "${var.min_capacity}"
   max_capacity = "${var.max_capacity}"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }

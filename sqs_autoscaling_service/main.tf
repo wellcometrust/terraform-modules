@@ -1,5 +1,5 @@
 module "appautoscaling" {
-  source = "git::https://github.com/wellcometrust/terraform-modules.git//autoscaling/app/ecs?ref=v1.1.0"
+  source = "git::https://github.com/wellcometrust/terraform-modules.git//autoscaling/app/ecs?ref=v5.0.2"
   name   = "${var.name}"
 
   cluster_name = "${var.cluster_name}"
@@ -7,7 +7,7 @@ module "appautoscaling" {
 }
 
 module "sqs_autoscaling_alarms" {
-  source = "git::https://github.com/wellcometrust/terraform-modules.git//autoscaling/alarms/sqs?ref=v1.1.0"
+  source = "git::https://github.com/wellcometrust/terraform-modules.git//autoscaling/alarms/sqs?ref=v5.0.2"
   name   = "${var.name}"
 
   queue_name = "${var.source_queue_name}"
@@ -21,7 +21,7 @@ data "aws_ecs_cluster" "cluster" {
 }
 
 module "service" {
-  source = "git::https://github.com/wellcometrust/terraform-modules.git//service?ref=v5.0.0"
+  source = "git::https://github.com/wellcometrust/terraform-modules.git//service?ref=v5.0.2"
   name   = "${var.name}"
 
   cluster_id = "${data.aws_ecs_cluster.cluster.arn}"
