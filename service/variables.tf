@@ -88,6 +88,8 @@ variable "env_vars" {
   default     = {}
 }
 
+variable "env_vars_length" {}
+
 variable "host_name" {
   description = "Hostname to be matched in the host condition"
   default     = ""

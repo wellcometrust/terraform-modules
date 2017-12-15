@@ -21,7 +21,7 @@ data "aws_ecs_cluster" "cluster" {
 }
 
 module "service" {
-  source = "git::https://github.com/wellcometrust/terraform-modules.git//service?ref=v4.0.0"
+  source = "git::https://github.com/wellcometrust/terraform-modules.git//service?ref=env_vars_length"
   name   = "${var.name}"
 
   cluster_id = "${data.aws_ecs_cluster.cluster.arn}"
@@ -41,7 +41,8 @@ module "service" {
   deployment_minimum_healthy_percent = "0"
   deployment_maximum_percent         = "200"
 
-  env_vars = "${var.env_vars}"
+  env_vars        = "${var.env_vars}"
+  env_vars_length = "${var.env_vars_length}"
 
   loadbalancer_cloudwatch_id   = "${var.alb_cloudwatch_id}"
   server_error_alarm_topic_arn = "${var.alb_server_error_alarm_arn}"

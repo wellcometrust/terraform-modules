@@ -19,6 +19,8 @@ variable "env_vars" {
   type        = "map"
 }
 
+variable "env_vars_length" {}
+
 variable "alb_priority" {}
 variable "alb_listener_https_arn" {}
 variable "alb_listener_http_arn" {}

@@ -56,6 +56,8 @@ variable "config_vars" {
   type        = "map"
 }
 
+variable "config_vars_length" {}
+
 variable "memory" {
   description = "How much memory to allocate to the app"
 }
