@@ -72,7 +72,7 @@ data "aws_iam_role" "task_role" {
 # docs: https://www.terraform.io/docs/configuration/interpolation.html
 
 data "template_file" "name_val_pair" {
-  count    = "${length(local.env_vars)}"
+  count    = "${var.env_vars_length}"
   template = "{\"name\": $${jsonencode(key)}, \"value\": $${jsonencode(value)}}"
 
   vars {

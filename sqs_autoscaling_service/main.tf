@@ -21,7 +21,7 @@ data "aws_ecs_cluster" "cluster" {
 }
 
 module "service" {
-  source = "git::https://github.com/wellcometrust/terraform-modules.git//service?ref=v4.0.0"
+  source = "git::https://github.com/wellcometrust/terraform-modules.git//service?ref=env_vars_length"
   name   = "${var.name}"
 
   cluster_id = "${data.aws_ecs_cluster.cluster.arn}"
