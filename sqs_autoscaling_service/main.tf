@@ -41,7 +41,8 @@ module "service" {
   deployment_minimum_healthy_percent = "0"
   deployment_maximum_percent         = "200"
 
-  env_vars = "${var.env_vars}"
+  env_vars        = "${var.env_vars}"
+  env_vars_length = "${var.env_vars_length}"
 
   loadbalancer_cloudwatch_id   = "${var.alb_cloudwatch_id}"
   server_error_alarm_topic_arn = "${var.alb_server_error_alarm_arn}"
