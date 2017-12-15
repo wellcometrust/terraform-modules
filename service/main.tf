@@ -53,8 +53,8 @@ module "task" {
     NGINX_PORT   = "${var.primary_container_port}"
   }
 
-  config_vars       = "${var.env_vars}"
-  config_var_length = "${var.env_vars_length}"
+  config_vars        = "${var.env_vars}"
+  config_vars_length = "${var.env_vars_length}"
 
   log_group_name_prefix = "${var.log_group_name_prefix}"
 }
