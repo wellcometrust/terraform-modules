@@ -1,5 +1,7 @@
 resource "aws_alb" "ecs_service" {
-  name            = "${var.name}"
+  # This name can only contain alphanumerics and hyphens
+  name = "${replace("${var.name}", "_", "-")}"
+
   subnets         = ["${var.subnets}"]
   security_groups = ["${var.loadbalancer_security_groups}"]
 
