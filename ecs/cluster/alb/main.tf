@@ -42,7 +42,7 @@ resource "aws_alb_listener" "http" {
 resource "aws_alb_target_group" "ecs_service_default" {
   # This name has to be at most 32 characters, and it only allows
   # alphanumeric characters and hyphens.
-  name     = "${replace("${var.name}-default", "_", "-")}"
+  name = "${replace("${var.name}-default", "_", "-")}"
 
   port     = 80
   protocol = "HTTP"
