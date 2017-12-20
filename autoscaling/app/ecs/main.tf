@@ -49,5 +49,6 @@ resource "aws_appautoscaling_target" "service_scale_target" {
 
   lifecycle {
     create_before_destroy = true
+    ignore_changes        = ["resource_id", "role_arn"]
   }
 }
