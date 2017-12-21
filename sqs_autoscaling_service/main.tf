@@ -1,5 +1,5 @@
 module "appautoscaling" {
-  source = "git::https://github.com/wellcometrust/terraform-modules.git//autoscaling/app/ecs?ref=v5.0.2"
+  source = "../autoscaling/app/ecs?ref=v5.0.2"
   name   = "${var.name}"
 
   cluster_name = "${var.cluster_name}"
