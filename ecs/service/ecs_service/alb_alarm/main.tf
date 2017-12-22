@@ -8,7 +8,7 @@ resource "aws_cloudwatch_metric_alarm" "alb_alarm" {
   namespace           = "AWS/ApplicationELB"
   period              = "60"
   statistic           = "Sum"
-  threshold           = "1"
+  threshold           = "${var.threshold}"
 
   dimensions {
     LoadBalancer = "${var.lb_dimension}"
