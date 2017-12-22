@@ -23,3 +23,16 @@ module "alb_target_400_errors" {
   tg_dimension = "${aws_alb_target_group.ecs_service.arn_suffix}"
   lb_dimension = "${var.loadbalancer_cloudwatch_id}"
 }
+
+module "unhealthy_hosts_alarm" {
+  enable_alarm = "${var.enable_alb_alarm}"
+
+  source = "./alarms"
+  name   = "${var.service_name}-alb-unhealthy-hosts"
+
+  metric    = "UnHealthyHostCount"
+  topic_arn = "${var.client_error_alarm_topic_arn}"
+
+  tg_dimension = "${aws_alb_target_group.ecs_service.arn_suffix}"
+  lb_dimension = "${var.loadbalancer_cloudwatch_id}"
+}
