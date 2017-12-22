@@ -37,3 +37,20 @@ module "unhealthy_hosts_alarm" {
   lb_dimension = "${var.loadbalancer_cloudwatch_id}"
 }
 
+module "healthy_hosts_alarm" {
+  enable_alarm = "${var.enable_alb_alarm}"
+
+  source = "./alb_alarm"
+  name   = "${var.service_name}-alb-not-enough-healthy-hosts"
+
+  comparison_operator = "LessThanOrEqualToThreshold"
+  metric              = "HealthyHostCount"
+  topic_arn           = "${var.client_error_alarm_topic_arn}"
+
+  # The metric here is: if we have less than the desired healthy number
+  # of hosts, we should alarm.
+  threshold = "${var.deployment_minimum_healthy_percent * var.desired_count / 100.0}"
+
+  tg_dimension = "${aws_alb_target_group.ecs_service.arn_suffix}"
+  lb_dimension = "${var.loadbalancer_cloudwatch_id}"
+}

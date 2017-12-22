@@ -21,3 +21,7 @@ variable "metric" {}
 variable "threshold" {
   default = 1
 }
+
+variable "comparison_operator" {
+  default = "GreaterThanOrEqualToThreshold"
+}
