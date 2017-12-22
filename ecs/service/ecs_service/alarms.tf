@@ -33,9 +33,7 @@ module "unhealthy_hosts_alarm" {
   metric    = "UnHealthyHostCount"
   topic_arn = "${var.client_error_alarm_topic_arn}"
 
-  dimensions = {
-    LoadBalancer = "${var.loadbalancer_cloudwatch_id}"
-    TargetGroup  = "${aws_alb_target_group.ecs_service.arn_suffix}"
-  }
+  tg_dimension = "${aws_alb_target_group.ecs_service.arn_suffix}"
+  lb_dimension = "${var.loadbalancer_cloudwatch_id}"
 }
 
