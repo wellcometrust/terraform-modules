@@ -1,7 +1,7 @@
 module "alb_target_500_errors" {
   enable_alarm = "${var.enable_alb_alarm}"
 
-  source = "./alb_alarms"
+  source = "./alb_alarm"
   name   = "${var.service_name}-alb-target-500-errors"
 
   metric    = "HTTPCode_Target_5XX_Count"
@@ -14,7 +14,7 @@ module "alb_target_500_errors" {
 module "alb_target_400_errors" {
   enable_alarm = "${var.enable_alb_alarm}"
 
-  source = "./alb_alarms"
+  source = "./alb_alarm"
   name   = "${var.service_name}-alb-target-400-errors"
 
   metric    = "HTTPCode_Target_4XX_Count"
@@ -27,7 +27,7 @@ module "alb_target_400_errors" {
 module "unhealthy_hosts_alarm" {
   enable_alarm = "${var.enable_alb_alarm}"
 
-  source = "./alb_alarms"
+  source = "./alb_alarm"
   name   = "${var.service_name}-alb-unhealthy-hosts"
 
   namespace           = "AWS/ApplicationELB"
