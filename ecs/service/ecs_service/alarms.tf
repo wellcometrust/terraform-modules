@@ -30,10 +30,7 @@ module "unhealthy_hosts_alarm" {
   source = "./alb_alarm"
   name   = "${var.service_name}-alb-unhealthy-hosts"
 
-  namespace           = "AWS/ApplicationELB"
-  metric              = "UnHealthyHostCount"
-  comparison_operator = "GreaterThanOrEqualToThreshold"
-
+  metric    = "UnHealthyHostCount"
   topic_arn = "${var.client_error_alarm_topic_arn}"
 
   dimensions = {
