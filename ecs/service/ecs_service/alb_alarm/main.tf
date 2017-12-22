@@ -9,6 +9,7 @@ resource "aws_cloudwatch_metric_alarm" "alb_alarm" {
   period              = "60"
   statistic           = "Sum"
   threshold           = "${var.threshold}"
+  treat_missing_data  = "${var.treat_missing_data}"
 
   dimensions {
     LoadBalancer = "${var.lb_dimension}"

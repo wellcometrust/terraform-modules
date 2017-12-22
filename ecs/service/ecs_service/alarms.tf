@@ -51,6 +51,11 @@ module "healthy_hosts_alarm" {
   # of hosts, we should alarm.
   threshold = "${var.deployment_minimum_healthy_percent * var.desired_count / 100.0}"
 
+  # There have been scenarios where HealthyHostCount doesn't report any data
+  # (e.g. when an invalid container definition was pushed).  In this case,
+  # we still want an alarm!  So if we don't have data, assume something is up.
+  treat_missing_data = "breaching"
+
   tg_dimension = "${aws_alb_target_group.ecs_service.arn_suffix}"
   lb_dimension = "${var.loadbalancer_cloudwatch_id}"
 }

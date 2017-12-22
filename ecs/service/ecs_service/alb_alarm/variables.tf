@@ -25,3 +25,7 @@ variable "threshold" {
 variable "comparison_operator" {
   default = "GreaterThanOrEqualToThreshold"
 }
+
+variable "treat_missing_data" {
+  default = "missing"
+}
