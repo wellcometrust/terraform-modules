@@ -21,15 +21,11 @@ from __future__ import division, print_function, absolute_import
 
 import os
 import sys
-import shutil
 import subprocess
 
 import hypothesistooling as tools
 
 sys.path.append(os.path.dirname(__file__))  # noqa
-
-
-DIST = os.path.join(tools.ROOT, 'dist')
 
 
 PENDING_STATUS = ('started', 'created')
@@ -53,15 +49,6 @@ if __name__ == '__main__':
     if has_release:
         print('Updating changelog and version')
         tools.update_for_pending_release()
-
-    print('Building an sdist...')
-
-    if os.path.exists(DIST):
-        shutil.rmtree(DIST)
-
-    subprocess.check_call([
-        sys.executable, 'setup.py', 'sdist', '--dist-dir', DIST,
-    ])
 
     if not on_master:
         print('Not deploying due to not being on master')
@@ -94,14 +81,5 @@ if __name__ == '__main__':
     print('Release seems good. Pushing to GitHub now.')
 
     tools.create_tag_and_push()
-
-    print('Now uploading to pypi.')
-
-    subprocess.check_call([
-        sys.executable, '-m', 'twine', 'upload',
-        '--username', os.environ['PYPI_USERNAME'],
-        '--password', os.environ['PYPI_PASSWORD'],
-        os.path.join(DIST, '*'),
-    ])
 
     sys.exit(0)

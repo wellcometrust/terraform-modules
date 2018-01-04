@@ -103,20 +103,9 @@ def changelog():
         return i.read()
 
 
-def merge_base(a, b):
-    return subprocess.check_output([
-        'git', 'merge-base', a, b,
-    ]).strip()
-
-
 def has_source_changes(version=None):
     if version is None:
         version = latest_version()
-
-    # Check where we branched off from the version. We're only interested
-    # in whether *we* introduced any source changes, so we check diff from
-    # there rather than the diff to the other side.
-    point_of_divergence = merge_base('HEAD', version)
 
     tf_files = [
         f for f in modified_files() if f.strip().endswith('.tf')
