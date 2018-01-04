@@ -11,11 +11,11 @@ branches:
   only:
     - master
 
-env:
-  matrix:
-    - TASK=check-format
-    - TASK=check-release-file
-    - TASK=deploy
+jobs:
+  include:
+    - env: TASK=check-format
+    - env: TASK=check-release-file
+    - env: TASK=deploy
       stage: deploy
 
 script:
