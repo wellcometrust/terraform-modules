@@ -14,6 +14,14 @@ branches:
 env:
   matrix:
     - TASK=check-format
+    - TASK=check-release-file
+    - TASK=deploy
+      stage: deploy
 
 script:
   - make "$TASK"
+
+stages:
+  - test
+  - name: deploy
+    if: type = push
