@@ -35,25 +35,21 @@ def tags():
         'git', 'tag'
     ]).split(b"\n")]
     assert len(set(result)) == len(result)
+
     return set(result)
 
 
 ROOT = subprocess.check_output([
     'git', 'rev-parse', '--show-toplevel']).decode('ascii').strip()
-SRC = os.path.join(ROOT, 'src')
-
-assert os.path.exists(SRC)
 
 
 __version__ = None
 __version_info__ = None
 
-VERSION_FILE = os.path.join(ROOT, 'src/wellcome_aws_utils/version.py')
+VERSION_FILE = os.path.join(ROOT, 'version.txt')
 
-DOCS_CONF_FILE = os.path.join(ROOT, 'docs/conf.py')
-
-with open(VERSION_FILE) as o:
-    exec(o.read())
+__version__ = open(VERSION_FILE).read().strip()
+__version_info__ = [int(i) for i in __version__.lstrip('v').split('.')]
 
 assert __version__ is not None
 assert __version_info__ is not None
@@ -71,6 +67,7 @@ def latest_version():
         parts = t.split('.')
         if len(parts) != 3:
             continue
+        parts[0] = parts[0].lstrip('v')
         try:
             v = tuple(map(int, parts))
         except ValueError:
@@ -98,7 +95,7 @@ def is_ancestor(a, b):
     return check == 0
 
 
-CHANGELOG_FILE = os.path.join(ROOT, 'docs', 'changes.rst')
+CHANGELOG_FILE = os.path.join(ROOT, 'CHANGELOG.md')
 
 
 def changelog():
@@ -121,15 +118,10 @@ def has_source_changes(version=None):
     # there rather than the diff to the other side.
     point_of_divergence = merge_base('HEAD', version)
 
-    return subprocess.call([
-        'git', 'diff', '--exit-code', point_of_divergence, 'HEAD', '--', SRC,
-    ]) != 0
-
-
-def has_uncommitted_changes(filename):
-    return subprocess.call([
-        'git', 'diff', '--exit-code', filename
-    ]) != 0
+    tf_files = [
+        f for f in modified_files() if f.strip().endswith('.tf')
+    ]
+    return len(tf_files) != 0
 
 
 def git(*args):
@@ -143,7 +135,7 @@ def create_tag_and_push():
     git('config', 'core.sshCommand', 'ssh -i deploy_key')
     git(
         'remote', 'add', 'ssh-origin',
-        'git@github.com:wellcometrust/aws_utils.git'
+        'git@github.com:wellcometrust/terraform-modules.git'
     )
     git('tag', __version__)
 
@@ -167,20 +159,14 @@ def modified_files():
     return files
 
 
-def all_files():
-    return subprocess.check_output(['git', 'ls-files']).decode(
-        'ascii').splitlines()
-
-
-RELEASE_FILE = os.path.join(ROOT, 'RELEASE.rst')
+RELEASE_FILE = os.path.join(ROOT, 'RELEASE.md')
 
 
 def has_release():
     return os.path.exists(RELEASE_FILE)
 
 
-CHANGELOG_BORDER = re.compile(r"^-+$")
-CHANGELOG_HEADER = re.compile(r"^\d+\.\d+\.\d+ - \d\d\d\d-\d\d-\d\d$")
+CHANGELOG_HEADER = re.compile(r"^## v\d+\.\d+\.\d+ - \d\d\d\d-\d\d-\d\d$")
 RELEASE_TYPE = re.compile(r"^RELEASE_TYPE: +(major|minor|patch)")
 
 
@@ -207,7 +193,7 @@ def parse_release_file():
         release_contents = '\n'.join(release_lines).strip()
     else:
         print(
-            'RELEASE.rst does not start by specifying release type. The first '
+            'RELEASE.md does not start by specifying release type. The first '
             'line of the file should be RELEASE_TYPE: followed by one of '
             'major, minor, or patch, to specify the type of release that '
             'this is (i.e. which version number to increment). Instead the '
@@ -228,9 +214,7 @@ def update_changelog_and_version():
     lines = contents.split('\n')
     assert contents == '\n'.join(lines)
     for i, l in enumerate(lines):
-        if CHANGELOG_BORDER.match(l):
-            assert CHANGELOG_HEADER.match(lines[i + 1]), repr(lines[i + 1])
-            assert CHANGELOG_BORDER.match(lines[i + 2]), repr(lines[i + 2])
+        if CHANGELOG_HEADER.match(l):
             beginning = '\n'.join(lines[:i])
             rest = '\n'.join(lines[i:])
             assert '\n'.join((beginning, rest)) == contents
@@ -244,22 +228,11 @@ def update_changelog_and_version():
     for i in range(bump + 1, len(new_version)):
         new_version[i] = 0
     new_version = tuple(new_version)
-    new_version_string = '.'.join(map(str, new_version))
+    new_version_string = 'v' + '.'.join(map(str, new_version))
 
-    __version_info__ = new_version
     __version__ = new_version_string
 
-    for version_file in [VERSION_FILE, DOCS_CONF_FILE]:
-        with open(version_file) as i:
-            version_lines = i.read().split('\n')
-
-        for i, l in enumerate(version_lines):
-            if 'version_info' in l:
-                version_lines[i] = '__version_info__ = %r' % (new_version,)
-                break
-
-        with open(version_file, 'w') as o:
-            o.write('\n'.join(version_lines))
+    open(VERSION_FILE, 'w').write(new_version)
 
     now = datetime.utcnow()
 
@@ -267,15 +240,12 @@ def update_changelog_and_version():
         d.strftime('%Y-%m-%d') for d in (now, now + timedelta(hours=1))
     ])
 
-    heading_for_new_version = ' - '.join((new_version_string, date))
-    border_for_new_version = '-' * len(heading_for_new_version)
+    heading_for_new_version = '## ' + ' - '.join((new_version_string, date))
 
     new_changelog_parts = [
         beginning.strip(),
         '',
-        border_for_new_version,
         heading_for_new_version,
-        border_for_new_version,
         '',
         release_contents,
         '',
