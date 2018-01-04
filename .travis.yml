@@ -11,9 +11,17 @@ branches:
   only:
     - master
 
-env:
-  matrix:
-    - TASK=check-format
+jobs:
+  include:
+    - env: TASK=check-format
+    - env: TASK=check-release-file
+    - env: TASK=deploy
+      stage: deploy
 
 script:
   - make "$TASK"
+
+stages:
+  - test
+  - name: deploy
+    if: type = push
