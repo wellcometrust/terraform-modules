@@ -21,7 +21,7 @@ data "aws_ecs_cluster" "cluster" {
 }
 
 module "service" {
-  source = "../service"
+  source = "../ecs/service"
   name   = "${var.name}"
 
   cluster_id = "${data.aws_ecs_cluster.cluster.arn}"
