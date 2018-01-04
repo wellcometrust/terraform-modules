@@ -29,7 +29,7 @@ resource "random_integer" "fallback_alb_priority" {
 }
 
 locals {
-  alb_priority = "${var.alb_priority == "" ? resource.random_integer.fallback_alb_priority : var.alb_priority}"
+  alb_priority = "${var.alb_priority == "" ? resource.random_integer.fallback_alb_priority.result : var.alb_priority}"
 }
 
 module "listener_rule_https" {
