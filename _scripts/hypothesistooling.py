@@ -221,7 +221,7 @@ def update_changelog_and_version():
 
     __version__ = new_version_string
 
-    open(VERSION_FILE, 'w').write(new_version)
+    open(VERSION_FILE, 'w').write(new_version_string)
 
     now = datetime.utcnow()
 
