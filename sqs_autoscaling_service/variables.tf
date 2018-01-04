@@ -21,7 +21,11 @@ variable "env_vars" {
 
 variable "env_vars_length" {}
 
-variable "alb_priority" {}
+variable "alb_priority" {
+  description = "ALB listener rule priority.  If blank, a priority will be randomly assigned."
+  default     = ""
+}
+
 variable "alb_listener_https_arn" {}
 variable "alb_listener_http_arn" {}
 variable "alb_cloudwatch_id" {}

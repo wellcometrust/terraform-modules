@@ -1,6 +1,5 @@
 variable "alb_priority" {
-  description = "ALB listener rule priority"
-  default     = "100"
+  description = "ALB listener rule priority.  If blank, a priority will be randomly assigned."
 }
 
 variable "desired_count" {
