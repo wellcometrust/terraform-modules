@@ -14,6 +14,8 @@ resource "aws_alb_target_group" "ecs_service" {
   }
 }
 
+# This is based on the example from the Terraform docs:
+# https://www.terraform.io/docs/providers/random/r/integer.html#example-usage
 resource "random_integer" "fallback_alb_priority" {
   min = 1
   max = 50000
