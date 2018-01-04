@@ -9,6 +9,7 @@ variable "listener_arn" {
 
 variable "alb_priority" {
   description = "ALB listener rule priority"
+  default     = "100"
 }
 
 variable "target_group_arn" {
