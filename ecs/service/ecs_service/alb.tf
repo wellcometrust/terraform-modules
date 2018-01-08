@@ -39,7 +39,7 @@ locals {
 
 resource "aws_alb_listener_rule" "path_rule" {
   count        = "${var.host_name == "" ? 2 : 0}"
-  listener_arn = "${element(locals.listener_arns)}"
+  listener_arn = "${element(local.listener_arns, count.index)}"
   priority     = "${local.alb_priority}"
 
   action {
@@ -55,7 +55,7 @@ resource "aws_alb_listener_rule" "path_rule" {
 
 resource "aws_alb_listener_rule" "path_host_rule" {
   count        = "${var.host_name != "" ? 2 : 0}"
-  listener_arn = "${element(locals.listener_arns)}"
+  listener_arn = "${element(local.listener_arns, count.index)}"
   priority     = "${local.alb_priority}"
 
   action {
