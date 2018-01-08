@@ -5,7 +5,7 @@ locals {
 }
 
 module "service" {
-  source              = "ecs_service"
+  source              = "./ecs_service"
   service_name        = "${var.name}"
   cluster_id          = "${var.cluster_id}"
   task_definition_arn = "${module.task.arn}"
@@ -31,7 +31,7 @@ module "service" {
 }
 
 module "task" {
-  source = "ecs_task"
+  source = "./ecs_task"
   name   = "${var.name}"
 
   volume_name      = "${var.volume_name}"

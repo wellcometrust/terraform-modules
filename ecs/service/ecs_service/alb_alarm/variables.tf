@@ -17,3 +17,15 @@ variable "topic_arn" {
 variable "enable_alarm" {}
 
 variable "metric" {}
+
+variable "threshold" {
+  default = 1
+}
+
+variable "comparison_operator" {
+  default = "GreaterThanOrEqualToThreshold"
+}
+
+variable "treat_missing_data" {
+  default = "missing"
+}
