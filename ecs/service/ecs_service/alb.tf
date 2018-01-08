@@ -30,22 +30,46 @@ resource "random_integer" "fallback_alb_priority" {
 
 locals {
   alb_priority = "${var.alb_priority != "" ? var.alb_priority : random_integer.fallback_alb_priority.result}"
+  listener_arns = ["${var.listener_http_arn}", "${var.listener_https_arn}"]
 }
 
-module "listener_rule_https" {
-  source           = "./listener_rule"
-  host_name        = "${var.host_name}"
-  listener_arn     = "${var.listener_https_arn}"
-  alb_priority     = "${local.alb_priority}"
-  target_group_arn = "${aws_alb_target_group.ecs_service.arn}"
-  path_pattern     = "${var.path_pattern}"
+# When using the module, the user can specify a path pattern and (optionally)
+# a hostname pattern.  We only want a path rule OR a hostname/path rule, but
+# not both.  We use the `count` parameter to only create one of these.
+
+resource "aws_alb_listener_rule" "path_rule" {
+  count        = "${var.host_name == "" ? 2 : 0}"
+  listener_arn = "${element(locals.listener_arns)}"
+  priority     = "${local.alb_priority}"
+
+  action {
+    type             = "forward"
+    target_group_arn = "${aws_alb_target_group.ecs_service.arn}"
+  }
+
+  condition {
+    field  = "path-pattern"
+    values = ["${var.path_pattern}"]
+  }
 }
 
-module "listener_rule_http" {
-  source           = "./listener_rule"
-  host_name        = "${var.host_name}"
-  listener_arn     = "${var.listener_http_arn}"
-  alb_priority     = "${local.alb_priority}"
-  target_group_arn = "${aws_alb_target_group.ecs_service.arn}"
-  path_pattern     = "${var.path_pattern}"
+resource "aws_alb_listener_rule" "path_host_rule" {
+  count        = "${var.host_name != "" ? 2 : 0}"
+  listener_arn = "${element(locals.listener_arns)}"
+  priority     = "${local.alb_priority}"
+
+  action {
+    type             = "forward"
+    target_group_arn = "${aws_alb_target_group.ecs_service.arn}"
+  }
+
+  condition {
+    field  = "path-pattern"
+    values = ["${var.path_pattern}"]
+  }
+
+  condition {
+    field  = "host-header"
+    values = ["${var.host_name}"]
+  }
 }
