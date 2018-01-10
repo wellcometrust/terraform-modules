@@ -44,6 +44,8 @@ module "service" {
   env_vars        = "${var.env_vars}"
   env_vars_length = "${var.env_vars_length}"
 
+  enable_alb_alarm = "${var.enable_alb_alarm}"
+
   loadbalancer_cloudwatch_id   = "${var.alb_cloudwatch_id}"
   server_error_alarm_topic_arn = "${var.alb_server_error_alarm_arn}"
   client_error_alarm_topic_arn = "${var.alb_client_error_alarm_arn}"

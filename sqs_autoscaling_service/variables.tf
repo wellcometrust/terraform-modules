@@ -31,3 +31,7 @@ variable "alb_listener_http_arn" {}
 variable "alb_cloudwatch_id" {}
 variable "alb_server_error_alarm_arn" {}
 variable "alb_client_error_alarm_arn" {}
+
+variable "enable_alb_alarm" {
+  default = 1
+}
