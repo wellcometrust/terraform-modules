@@ -1,10 +1,11 @@
 RELEASE_TYPE: patch
 
-This fixes a bug in the ALB alarms introduced in v6.1.0.
+This fixes a bug in the ALB alarms introduced in v6.1.0 for _ecs/service_.
 
-If the number of hosts in the target group was equal to the minimum healthy
-deployment percentage, the "not enough healthy hosts" alarm would fire -- even
-though this is normal behaviour, e.g. when ECS is changing task definitions.
+We added a new ALB alarm for "not enough healthy hosts".  Previously it would
+fire if the number of healthy hosts was _equal_ to the minimum allowed number
+(minimum healthy percentage * desired count) -- even though this is normal
+behaviour, e.g. when ECS is changing task definitions.
 
 Now the alarm only fires if the number of hosts drops _below_ the minimum
-healthy number.
+allowed number.
