@@ -44,7 +44,7 @@ module "unhealthy_hosts_alarm" {
 # alarm --- this is not an uptime-critical service.
 locals {
   healthy_host_threshold    = "${var.deployment_minimum_healthy_percent * var.desired_count / 100.0}"
-  enable_healthy_host_alarm = "${local.healthy_host_threshold > 0 && var.enable_alb_alarm}"
+  enable_healthy_host_alarm = "${ceil(local.healthy_host_threshold) > 0 && var.enable_alb_alarm}"
 }
 
 module "healthy_hosts_alarm" {
