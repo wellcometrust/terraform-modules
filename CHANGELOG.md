@@ -42,6 +42,8 @@ process.
 
 Autoscaling targets are now created consistently, and only once.
 
+See [wellcometrust/terraform-modules #34](https://github.com/wellcometrust/terraform-modules/pull/34).
+
 ## v5.2.1 - 2017-12-19
 
 This is a bugfix release.
@@ -62,3 +64,14 @@ The following modules have been renamed:
 *   _ecs_asg_ is now _ecs/asg_
 *   _ecs_alb_ is now _ecs/alb_
 *   _service_ is now _ecs/service_
+
+## v5.0.2 - 2017-12-15
+
+This is a bugfix release.
+
+This adds `create_before_destroy` to the autoscaling target in _autoscaling/app/ecs_.
+This should fix some issues when creating `aws_appautoscaling_policy`.
+
+## v5.0.1 - 2017-12-15
+
+This fixes a bug in v5.0.0 where the _sqs_autoscaling_service_ module was pointing to a non-existent version of the _service_ module.
