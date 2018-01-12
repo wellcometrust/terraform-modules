@@ -37,18 +37,17 @@ module "unhealthy_hosts_alarm" {
   lb_dimension = "${var.loadbalancer_cloudwatch_id}"
 }
 
-# The metric here is: if we have less than the minimum percent of
-# healthy hosts, we should alarm.
-#
-# If this is zero (i.e. it's okay to go down to no running hosts), we don't
-# alarm --- this is not an uptime-critical service.
 locals {
   healthy_host_threshold    = "${var.deployment_minimum_healthy_percent * var.desired_count / 100.0}"
-  enable_healthy_host_alarm = "${ceil(local.healthy_host_threshold) > 0 && var.enable_alb_alarm}"
 }
 
 module "healthy_hosts_alarm" {
-  enable_alarm = "${local.enable_healthy_host_alarm}"
+  # The rule here is: if we have less than the minimum percent of
+  # healthy hosts, we should alarm.
+  #
+  # If this is zero (i.e. it's okay to go down to no running hosts), we don't
+  # alarm --- this is not an uptime-critical service.
+  enable_alarm = "${ceil(local.healthy_host_threshold) > 0 && var.enable_alb_alarm ? 1 : 0}"
 
   source = "./alb_alarm"
   name   = "${var.service_name}-alb-not-enough-healthy-hosts"
