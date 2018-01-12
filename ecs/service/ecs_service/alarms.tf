@@ -42,7 +42,7 @@ module "unhealthy_hosts_alarm" {
 #
 # If this is zero (i.e. it's okay to go down to no running hosts), we don't
 # alarm --- this is not an uptime-critical service.
-local {
+locals {
   healthy_host_threshold    = "${var.deployment_minimum_healthy_percent * var.desired_count / 100.0}"
   enable_healthy_host_alarm = "${local.healthy_host_threshold > 0 && var.enable_alb_alarm}"
 }
