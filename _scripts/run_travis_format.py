@@ -7,6 +7,8 @@ In particular, this script will autoformat Terraform, then commit
 and push the results.
 """
 
+from __future__ import print_function
+
 import os
 import subprocess
 
