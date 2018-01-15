@@ -46,7 +46,7 @@ if __name__ == '__main__':
             '-in', 'deploy_key.enc',
             '-out', 'deploy_key', '-d'
         ])
-        subprocess.check_call(['chmod', '400', 'id_rsa'])
+        subprocess.check_call(['chmod', '400', 'deploy_key'])
 
         # We checkout the branch before we add the commit, so we don't
         # include the merge commit that Travis makes.
