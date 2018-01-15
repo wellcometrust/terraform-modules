@@ -13,7 +13,7 @@ branches:
 
 jobs:
   include:
-    - env: TASK=check-format
+    - env: TASK=travis-format
     - env: TASK=check-release-file
     - env: TASK=deploy
       stage: deploy
