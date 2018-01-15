@@ -12,7 +12,7 @@ from __future__ import print_function
 import os
 import subprocess
 
-from tooling import changed_files, git, make
+from hypothesistooling import changed_files, git, make
 
 
 if __name__ == '__main__':
