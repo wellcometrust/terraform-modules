@@ -257,3 +257,28 @@ def update_for_pending_release():
         'commit',
         '-m', 'Bump version to %s and update changelog' % (__version__,)
     )
+
+
+def changed_files(*args):
+    """
+    Returns a set of changed files in a given commit range.
+
+    :param commit_range: Arguments to pass to ``git diff``.
+    """
+    files = set()
+    command = ['git', 'diff', '--name-only'] + list(args)
+    diff_output = subprocess.check_output(command).decode('ascii')
+    for line in diff_output.splitlines():
+        filepath = line.strip()
+        if filepath:
+            files.add(filepath)
+    return files
+
+
+def make(task, dry_run=False):
+    if dry_run:
+        command = ['make', '--dry-run', task]
+    else:
+        command = ['make', task]
+    print('*** Running %r' % command, flush=True)
+    subprocess.check_call(command)

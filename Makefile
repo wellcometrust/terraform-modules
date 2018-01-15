@@ -5,8 +5,11 @@ format:
 check-format: format
 	git diff --exit-code
 
+travis-format:
+	python3 _scripts/run_travis_format.py
+
 check-release-file:
-	python _scripts/check-release-file.py
+	python3 _scripts/check-release-file.py
 
 deploy:
-	python _scripts/deploy.py
+	python3 _scripts/deploy.py

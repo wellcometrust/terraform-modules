@@ -37,19 +37,26 @@ module "unhealthy_hosts_alarm" {
   lb_dimension = "${var.loadbalancer_cloudwatch_id}"
 }
 
+locals {
+  healthy_host_threshold = "${var.deployment_minimum_healthy_percent * var.desired_count / 100.0}"
+}
+
 module "healthy_hosts_alarm" {
-  enable_alarm = "${var.enable_alb_alarm}"
+  # The rule here is: if we have less than the minimum percent of
+  # healthy hosts, we should alarm.
+  #
+  # If this is zero (i.e. it's okay to go down to no running hosts), we don't
+  # alarm --- this is not an uptime-critical service.
+  enable_alarm = "${ceil(local.healthy_host_threshold) > 0 && var.enable_alb_alarm ? 1 : 0}"
 
   source = "./alb_alarm"
   name   = "${var.service_name}-alb-not-enough-healthy-hosts"
 
-  comparison_operator = "LessThanOrEqualToThreshold"
+  comparison_operator = "LessThanThreshold"
   metric              = "HealthyHostCount"
   topic_arn           = "${var.server_error_alarm_topic_arn}"
 
-  # The metric here is: if we have less than the desired healthy number
-  # of hosts, we should alarm.
-  threshold = "${var.deployment_minimum_healthy_percent * var.desired_count / 100.0}"
+  threshold = "${local.healthy_host_threshold}"
 
   # There have been scenarios where HealthyHostCount doesn't report any data
   # (e.g. when an invalid container definition was pushed).  In this case,
