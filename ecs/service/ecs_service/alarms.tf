@@ -38,7 +38,7 @@ module "unhealthy_hosts_alarm" {
 }
 
 locals {
-  healthy_host_threshold    = "${var.deployment_minimum_healthy_percent * var.desired_count / 100.0}"
+  healthy_host_threshold = "${var.deployment_minimum_healthy_percent * var.desired_count / 100.0}"
 }
 
 module "healthy_hosts_alarm" {
