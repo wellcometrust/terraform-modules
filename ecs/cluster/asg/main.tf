@@ -31,6 +31,8 @@ module "launch_config" {
   public_ip             = "${var.public_ip}"
   ebs_volume_type       = "${var.ebs_volume_type}"
   ebs_iops              = "${var.ebs_iops}"
+
+  instance_security_groups = "${var.instance_security_groups}"
 }
 
 module "instance_profile" {
