@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v6.2.0 - 2018-01-17
+
+This adds a new parameter `enable_alb_alarm` to the *sqs_autoscaling_alarm* module.
+It is passed through directly to the underlying *ecs/service* module.
+
+It defaults to `true`; set it to `false` to disable ALB alarms in autoscaled services.
+
 ## v6.1.1 - 2018-01-15
 
 This fixes a bug in the ALB alarms introduced in v6.1.0 for _ecs/service_.
