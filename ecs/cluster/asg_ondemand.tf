@@ -37,4 +37,6 @@ module "cluster_asg_on_demand" {
   publish_to_sns_policy = "${var.ec2_terminating_topic_publish_policy}"
 
   alarm_topic_arn = "${var.ec2_instance_terminating_for_too_long_alarm_arn}"
+
+  instance_security_groups = "${var.instance_security_groups}"
 }

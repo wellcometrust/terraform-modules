@@ -60,3 +60,9 @@ variable "alb_log_bucket_id" {}
 variable "ec2_terminating_topic_arn" {}
 variable "ec2_terminating_topic_publish_policy" {}
 variable "ec2_instance_terminating_for_too_long_alarm_arn" {}
+
+variable "instance_security_groups" {
+  description = "Security groups to add to the launch config for the ASG"
+  type        = "list"
+  default     = []
+}

@@ -1,9 +1,7 @@
 resource "aws_launch_configuration" "ondemand_launch_config" {
   count = "${var.use_spot == true ? 0 : "${var.ebs_device_name == "" ? 1 : 0}" }"
 
-  security_groups = [
-    "${aws_security_group.instance_sg.id}",
-  ]
+  security_groups = ["${aws_security_group.instance_sg.id}", "${var.instance_security_groups}"]
 
   key_name                    = "${var.key_name}"
   image_id                    = "${var.image_id}"

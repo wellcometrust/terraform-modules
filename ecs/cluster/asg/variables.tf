@@ -87,3 +87,9 @@ variable "ebs_volume_type" {
 variable "ebs_iops" {
   default = ""
 }
+
+variable "instance_security_groups" {
+  description = "Security groups to add to the launch config for the ASG"
+  type        = "list"
+  default     = []
+}
