@@ -35,4 +35,3 @@ resource "null_resource" "check_write_max_capacity" {
   count = "${var.enable_write_scaling ? (var.write_max_capacity == "" ? 1 : 0) : 0}"
   "ERROR: If enable_write_scaling=true, you need to provide write_max_capacity" = true
 }
-
