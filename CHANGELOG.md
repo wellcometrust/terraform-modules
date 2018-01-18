@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v6.3.0 - 2018-01-18
+
+This adds a new module: _autoscaling/dynamodb_, which allows you to define auto scaling rules for DynamoDB tables.
+See the [module README](autoscaling/dynamodb/README.md) for usage details.
+
 ## v6.2.0 - 2018-01-17
 
 This adds a new parameter `enable_alb_alarm` to the *sqs_autoscaling_alarm* module.
