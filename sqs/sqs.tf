@@ -1,7 +1,7 @@
 locals {
   redrive_policy = {
     deadLetterTargetArn = "${aws_sqs_queue.dlq.arn}"
-    maxReceiveCount     = "${var.max_message_size}"
+    maxReceiveCount     = "${var.max_receive_count}"
   }
 }
 
