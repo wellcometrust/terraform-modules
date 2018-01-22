@@ -1,6 +1,6 @@
 resource "aws_sqs_queue" "q" {
-  name           = "${var.queue_name}"
-  policy         = "${data.aws_iam_policy_document.write_to_queue.json}"
+  name   = "${var.queue_name}"
+  policy = "${data.aws_iam_policy_document.write_to_queue.json}"
 
   visibility_timeout_seconds = "${var.visibility_timeout_seconds}"
   message_retention_seconds  = "${var.message_retention_seconds}"
