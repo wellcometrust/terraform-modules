@@ -31,7 +31,7 @@ variable "public_ip" {
 }
 
 variable "admin_cidr_ingress" {
-  type = "list"
+  type        = "list"
   description = "CIDR for SSH access to EC2 instances"
 }
 
