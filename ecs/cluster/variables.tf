@@ -7,7 +7,8 @@ variable "key_name" {
 }
 
 variable "admin_cidr_ingress" {
-  default     = "0.0.0.0/0"
+  type        = "list"
+  default     = ["0.0.0.0/0"]
   description = "CIDR for SSH access to EC2 instances"
 }
 
