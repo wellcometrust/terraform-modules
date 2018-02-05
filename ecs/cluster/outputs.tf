@@ -15,5 +15,5 @@ output "alb_listener_http_arn" {
 }
 
 output "asg_security_group_ids" {
-  value = ["${module.cluster_asg_on_demand.instance_sg_id}","${module.cluster_asg_spot.instance_sg_id}"]
+  value = ["${module.cluster_asg_on_demand.instance_sg_id}", "${module.cluster_asg_spot.instance_sg_id}"]
 }
