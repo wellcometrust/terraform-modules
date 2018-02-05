@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v6.4.1 - 2018-02-05
+
+This release adds a `asg_security_group_ids` output on the ecs/cluster module. It is a list containing the list of security groups that instances in the cluster belong to
+
 ## v6.4.0 - 2018-01-22
 
 This release exposes some new parameters on the _sqs_ module:
