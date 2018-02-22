@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v7.0.1 - 2018-02-22
+
+This release adds `min_capacity` and `max_capacity` to the `sqs_autoscaling_service` to allow to customise the minimum and maximum number of tasks per service.
+
 ## v6.4.1 - 2018-02-05
 
 This release adds a `asg_security_group_ids` output on the ecs/cluster module. It is a list containing the list of security groups that instances in the cluster belong to
