@@ -35,9 +35,11 @@ variable "alb_client_error_alarm_arn" {}
 variable "enable_alb_alarm" {
   default = 1
 }
+
 variable "min_capacity" {
   default = 0
 }
+
 variable "max_capacity" {
   default = 3
 }
