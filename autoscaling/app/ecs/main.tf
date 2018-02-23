@@ -16,6 +16,10 @@ resource "aws_appautoscaling_policy" "scale_up" {
   }
 
   depends_on = ["aws_appautoscaling_target.service_scale_target"]
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_appautoscaling_policy" "scale_down" {
@@ -36,6 +40,10 @@ resource "aws_appautoscaling_policy" "scale_down" {
   }
 
   depends_on = ["aws_appautoscaling_target.service_scale_target"]
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_appautoscaling_target" "service_scale_target" {
