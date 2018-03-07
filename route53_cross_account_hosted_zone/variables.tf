@@ -6,6 +6,7 @@ variable "account_id" {
   description = "ID of account to trust"
 }
 
-variable "hosted_zone_id" {
+variable "hosted_zone_ids" {
+  type        = "list"
   description = "ID of hosted zone to make available"
 }
