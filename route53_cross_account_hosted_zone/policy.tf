@@ -1,6 +1,6 @@
 resource "aws_iam_role_policy" "policy" {
-  name = "${var.role_name}-route53-policy"
-  role = "${aws_iam_role.role.id}"
+  name  = "${var.role_name}-route53-policy"
+  role  = "${aws_iam_role.role.id}"
   count = "${var.hosted_zone_ids}"
 
   policy = <<EOF
