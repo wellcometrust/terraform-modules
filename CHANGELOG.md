@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v8.0.0 - 2018-03-07
+
+This update allows you to specify multiple hosted zones within one hosted zone role.
+
 ## v7.0.1 - 2018-02-22
 
 This release adds `min_capacity` and `max_capacity` to the `sqs_autoscaling_service` to allow to customise the minimum and maximum number of tasks per service.
