@@ -7,6 +7,6 @@ variable "account_id" {
 }
 
 variable "hosted_zone_ids" {
-  type = "list"
+  type        = "list"
   description = "ID of hosted zone to make available"
 }
