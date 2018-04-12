@@ -7,6 +7,11 @@ variable "template_name" {
   default     = "default"
 }
 
+variable "task_definition_template_path" {
+  description = "A custom task definition template to use"
+  default     = ""
+}
+
 variable "nginx_uri" {
   description = "URI of container image for nginx"
   default     = "wellcome/nginx:latest"

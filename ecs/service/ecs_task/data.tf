@@ -1,5 +1,30 @@
 data "template_file" "definition" {
+  count = "${var.task_definition_template_path == "" ? 1 : 0}"
+
   template = "${file("${path.module}/templates/${var.template_name}.json.template")}"
+
+  vars {
+    log_group_region     = "${var.aws_region}"
+    log_group_name       = "${aws_cloudwatch_log_group.task.name}"
+    nginx_log_group_name = "${aws_cloudwatch_log_group.nginx_task.name}"
+
+    app_uri                  = "${var.app_uri}"
+    nginx_uri                = "${var.nginx_uri}"
+    primary_container_port   = "${var.primary_container_port}"
+    secondary_container_port = "${var.secondary_container_port}"
+    volume_name              = "${var.volume_name}"
+    container_path           = "${var.container_path}"
+    environment_vars         = "${local.env_var_string}"
+
+    cpu    = "${var.cpu}"
+    memory = "${var.memory}"
+  }
+}
+
+data "template_file" "custom_definition" {
+  count = "${var.task_definition_template_path == "" ? 0 : 1}"
+
+  template = "${file("${var.task_definition_template_path}")}"
 
   vars {
     log_group_region     = "${var.aws_region}"
