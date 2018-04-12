@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v8.0.1 - 2018-04-12
+
+This release adds `task_definition_template_path` to the `ecs_task` to allow
+the use of a custom task definition file.
+
 ## v8.0.0 - 2018-03-07
 
 This update allows you to specify multiple hosted zones within one hosted zone role.
