@@ -133,3 +133,8 @@ variable "log_group_name_prefix" {
   description = "Cloudwatch log group name prexix"
   default     = "platform"
 }
+
+variable "task_definition_template_path" {
+  description = "A custom task definition template to use"
+  default     = ""
+}

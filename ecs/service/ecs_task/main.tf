@@ -1,6 +1,6 @@
 resource "aws_ecs_task_definition" "task" {
   family                = "${var.name}_task_definition"
-  container_definitions = "${data.template_file.definition.rendered}"
+  container_definitions = "${element(concat(data.template_file.custom_definition.*.rendered, data.template_file.definition.*.rendered), 0)}"
   task_role_arn         = "${local.task_role_arn}"
 
   volume {

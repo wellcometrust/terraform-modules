@@ -47,6 +47,9 @@ module "task" {
   secondary_container_port = "${var.secondary_container_port}"
   container_path           = "${var.container_path}"
 
+  use_task_definition_template_path = "${var.use_task_definition_template_path}"
+  task_definition_template_path     = "${var.task_definition_template_path}"
+
   service_vars = {
     HTTPS_DOMAIN = "${var.https_domain}"
     APP_PORT     = "${var.secondary_container_port}"
