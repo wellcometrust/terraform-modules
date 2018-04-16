@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v8.0.2 - 2018-04-16
+
+This release removes the unused variable `use_task_definition_template_path`
+introduced from the last release.
+
 ## v8.0.1 - 2018-04-12
 
 This release adds `task_definition_template_path` to the `ecs_task` to allow
