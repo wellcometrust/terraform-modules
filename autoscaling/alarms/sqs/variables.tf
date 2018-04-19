@@ -20,17 +20,13 @@ variable "max_capacity" {
   default = 3
 }
 
-variable "high_period" {
-  default = 60
-}
+variable "high_period" {}
 
 variable "high_threshold" {
   default = 1
 }
 
-variable "low_period" {
-  default = 600
-}
+variable "low_period" {}
 
 variable "low_threshold" {
   default = 1
