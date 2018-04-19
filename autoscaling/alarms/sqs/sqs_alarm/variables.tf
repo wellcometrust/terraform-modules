@@ -6,5 +6,5 @@ variable "threshold" {}
 variable "target_arn" {}
 
 variable "treat_missing_data" {
-  default = "ignore"
+  default = "missing"
 }

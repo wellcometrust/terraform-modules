@@ -1,7 +1,8 @@
 resource "aws_cloudwatch_metric_alarm" "queue" {
   alarm_name          = "${var.name}-queue_${var.comparison_operator}"
   comparison_operator = "${var.comparison_operator}"
-  evaluation_periods  = "1"
+  evaluation_periods  = "${var.period / 60}"
+  datapoints_to_alarm = "${var.period / 60}"
   metric_name         = "ApproximateNumberOfMessagesVisible"
 
   dimensions {
@@ -11,7 +12,7 @@ resource "aws_cloudwatch_metric_alarm" "queue" {
   statistic = "Average"
   namespace = "AWS/SQS"
 
-  period    = "${var.period}"
+  period    = "60"
   threshold = "${var.threshold}"
 
   treat_missing_data = "${var.treat_missing_data}"
