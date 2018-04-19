@@ -32,7 +32,7 @@ variable "key_name" {
 
 variable "user_data" {
   description = "User data for ec2 container hosts"
-  default = ""
+  default     = ""
 }
 
 variable "public_ip" {
