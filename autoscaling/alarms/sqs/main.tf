@@ -22,7 +22,7 @@ module "queue_low" {
   threshold = "${var.low_threshold}"
 
   comparison_operator = "LessThanThreshold"
-  treat_missing_data  = "breaching"
+  treat_missing_data  = "ignore"
 
   target_arn = "${var.scale_down_arn}"
 }
