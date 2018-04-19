@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v8.0.3 - 2018-04-19
+
+This release fixes a suspected bug in SQS autoscaling where both scale down and scale up alarms where triggered at the same time.
+
 ## v8.0.2 - 2018-04-16
 
 This release removes the unused variable `use_task_definition_template_path`
