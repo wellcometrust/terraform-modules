@@ -12,7 +12,7 @@ resource "aws_cloudwatch_metric_alarm" "ecs_cpureservation_high" {
   statistic = "Average"
   namespace = "AWS/ECS"
 
-  period    = "60}"
+  period    = "60"
   threshold = "${var.threshold}"
 
   treat_missing_data = "${var.treat_missing_data}"
