@@ -1,18 +1,20 @@
 module "cluster_asg_spot_autoscaling" {
-  source = "git::https://github.com/wellcometrust/terraform.git//autoscaling/asg?ref=v1.1.0"
+  source = "../../autoscaling/asg"
   name   = "${var.name}_spot"
 
   scalegroup_name = "${module.cluster_asg_spot.asg_name}"
 }
 
 module "cluster_asg_spot_cpureservation_autoscaling_alarms" {
-  source = "git::https://github.com/wellcometrust/terraform.git//autoscaling/alarms/cpureservation?ref=v1.1.0"
+  source = "../../autoscaling/alarms/cpureservation"
   name   = "${var.name}_spot"
 
   cluster_name = "${aws_ecs_cluster.cluster.name}"
 
-  scale_up_arn   = "${module.cluster_asg_spot_autoscaling.scale_up_arn}"
-  scale_down_arn = "${module.cluster_asg_spot_autoscaling.scale_down_arn}"
+  scale_up_arn           = "${module.cluster_asg_spot_autoscaling.scale_up_arn}"
+  scale_down_arn         = "${module.cluster_asg_spot_autoscaling.scale_down_arn}"
+  high_period_in_minutes = "${var.scale_up_period_in_minutes}"
+  low_period_in_minutes  = "${var.scale_down_period_in_minutes}"
 }
 
 module "cluster_asg_spot" {

@@ -1,12 +1,12 @@
 module "cluster_asg_on_demand_autoscaling" {
-  source = "git::https://github.com/wellcometrust/terraform.git//autoscaling/asg?ref=v1.1.0"
+  source = "../../autoscaling/asg"
   name   = "${var.name}_on_demand"
 
   scalegroup_name = "${module.cluster_asg_on_demand.asg_name}"
 }
 
 module "cluster_asg_on_demand_asg_totalinstances_autoscaling_alarms" {
-  source = "git::https://github.com/wellcometrust/terraform.git//autoscaling/alarms/asg_totalinstances?ref=v1.1.0"
+  source = "../../autoscaling/alarms/asg_totalinstances"
   name   = "${var.name}_on_demand"
 
   asg_name = "${module.cluster_asg_spot.asg_name}"

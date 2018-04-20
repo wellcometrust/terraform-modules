@@ -43,3 +43,11 @@ variable "min_capacity" {
 variable "max_capacity" {
   default = 3
 }
+
+variable "scale_up_period_in_minutes" {
+  default = 1
+}
+
+variable "scale_down_period_in_minutes" {
+  default = 10
+}
