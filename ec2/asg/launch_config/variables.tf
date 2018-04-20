@@ -36,10 +36,10 @@ variable "admin_cidr_ingress" {
   description = "CIDR for SSH access to EC2 instances"
 }
 
-variable "instance_security_groups" {
-  type        = "list"
-  description = "A list of the security groups to apply to an instance."
-}
+# variable "instance_security_groups" {
+#   type        = "list"
+#   description = "A list of the security groups to apply to an instance."
+# }
 
 variable "use_spot" {}
-variable spot_price {}
+variable "spot_price" {}

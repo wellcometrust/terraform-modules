@@ -56,6 +56,8 @@ variable "use_spot" {
   default = 0
 }
 
-variable spot_price {
+variable "spot_price" {
   default = "0"
 }
+
+variable "admin_cidr_ingress" {}

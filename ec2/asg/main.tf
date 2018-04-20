@@ -24,7 +24,7 @@ module "launch_config" {
   instance_type            = "${var.instance_type}"
   admin_cidr_ingress       = "${var.admin_cidr_ingress}"
   public_ip                = "${var.public_ip}"
-  instance_security_groups = "[${var.}]"
+#  instance_security_groups = "[${var.security_groups}]"
 }
 
 module "instance_profile" {
