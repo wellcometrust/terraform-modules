@@ -22,7 +22,7 @@ module "launch_config" {
   use_spot                 = "${var.use_spot}"
   spot_price               = "${var.spot_price}"
   instance_type            = "${var.instance_type}"
-  admin_cidr_ingress       = "${var.admin_cidr_ingress}"
+  admin_cidr_ingress       = ["${var.admin_cidr_ingress}"]
   public_ip                = "${var.public_ip}"
 #  instance_security_groups = "[${var.security_groups}]"
 }
