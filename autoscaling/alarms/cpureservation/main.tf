@@ -4,7 +4,7 @@ module "cpureservation_high" {
 
   cluster_name = "${var.cluster_name}"
 
-  period    = "${var.high_period}"
+  period_in_minutes    = "${var.high_period_in_minutes}"
   threshold = "${var.high_threshold}"
 
   comparison_operator = "GreaterThanOrEqualToThreshold"
@@ -19,7 +19,7 @@ module "cpureservation_low" {
 
   cluster_name = "${var.cluster_name}"
 
-  period    = "${var.low_period}"
+  period_in_minutes    = "${var.low_period_in_minutes}"
   threshold = "${var.low_threshold}"
 
   comparison_operator = "LessThanThreshold"

@@ -4,7 +4,7 @@ module "queue_high" {
 
   queue_name = "${var.queue_name}"
 
-  period    = "${var.high_period}"
+  period_in_minutes    = "${var.high_period_in_minutes}"
   threshold = "${var.high_threshold}"
 
   comparison_operator = "GreaterThanOrEqualToThreshold"
@@ -18,7 +18,7 @@ module "queue_low" {
 
   queue_name = "${var.queue_name}"
 
-  period    = "${var.low_period}"
+  period_in_minutes    = "${var.low_period_in_minutes}"
   threshold = "${var.low_threshold}"
 
   comparison_operator = "LessThanThreshold"

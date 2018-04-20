@@ -21,17 +21,13 @@ variable "scale_down_adjustment" {
   default = -1
 }
 
-variable "high_period" {
-  default = "60"
-}
+variable "high_period_in_minutes" {}
 
 variable "high_threshold" {
   default = "80"
 }
 
-variable "low_period" {
-  default = "300"
-}
+variable "low_period_in_minutes" {}
 
 variable "low_threshold" {
   default = "80"

@@ -18,8 +18,8 @@ module "sqs_autoscaling_alarms" {
   scale_up_arn   = "${module.appautoscaling.scale_up_arn}"
   scale_down_arn = "${module.appautoscaling.scale_down_arn}"
 
-  high_period = "${var.scale_up_period}"
-  low_period  = "${var.scale_down_period}"
+  high_period_in_minutes = "${var.scale_up_period_in_minutes}"
+  low_period_in_minutes  = "${var.scale_down_period_in_minutes}"
 }
 
 data "aws_ecs_cluster" "cluster" {

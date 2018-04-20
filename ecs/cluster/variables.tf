@@ -65,3 +65,10 @@ variable "ec2_instance_terminating_for_too_long_alarm_arn" {}
 variable "efs_filesystem_id" {
   default = "no_name_set"
 }
+
+variable "scale_up_period_in_minutes" {
+  default = 1
+}
+variable "scale_down_period_in_minutes" {
+  default = 5
+}
