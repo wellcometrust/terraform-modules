@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v8.1.0 - 2018-04-20
+
+* Make scale up and down period for an sqs_autoscaling_service be configurable
+* Fix a bug in the way the cloudwatch metrics alarm are defined which caused them to scale down (or up) before the scaledown period had passed
+* Make the ecs cluster use the submodules from the same release
+
 ## v8.0.3 - 2018-04-19
 
 This release fixes a suspected bug in SQS autoscaling where both scale down and scale up alarms where triggered at the same time.
