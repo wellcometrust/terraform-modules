@@ -42,3 +42,8 @@ variable "s3_key" {
 variable "memory_size" {
   default = 128
 }
+
+variable "log_retention_in_days" {
+  description = "The number of days to keep CloudWatch logs"
+  default     = ""
+}

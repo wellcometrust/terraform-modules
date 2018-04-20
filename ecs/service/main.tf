@@ -59,4 +59,5 @@ module "task" {
   config_vars_length = "${var.env_vars_length}"
 
   log_group_name_prefix = "${var.log_group_name_prefix}"
+  log_retention_in_days = "${var.log_retention_in_days}"
 }

@@ -32,3 +32,8 @@ variable "log_group_name_prefix" {
   description = "Cloudwatch log group name prexix"
   default     = "platform"
 }
+
+variable "log_retention_in_days" {
+  description = "The number of days to keep CloudWatch logs"
+  default     = ""
+}
