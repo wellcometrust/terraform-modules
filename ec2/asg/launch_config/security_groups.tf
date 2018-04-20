@@ -37,7 +37,7 @@ resource "aws_security_group" "full_egress" {
 
 resource "random_id" "sg_append" {
   keepers = {
-    sg_id = "${var.random_key}"
+    sg_id = "${var.asg_name}"
   }
 
   byte_length = 8

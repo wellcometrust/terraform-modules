@@ -1,7 +1,3 @@
-output "instance_sg_id" {
-  value = "${module.launch_config.instance_sg_id}"
-}
-
 output "asg_name" {
   value = "${module.cloudformation_stack.asg_name}"
 }
