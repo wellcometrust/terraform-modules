@@ -69,6 +69,7 @@ variable "efs_filesystem_id" {
 variable "scale_up_period_in_minutes" {
   default = 1
 }
+
 variable "scale_down_period_in_minutes" {
   default = 5
 }

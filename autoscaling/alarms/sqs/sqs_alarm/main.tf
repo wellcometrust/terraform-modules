@@ -8,7 +8,8 @@ resource "aws_cloudwatch_metric_alarm" "queue" {
   // Our datapoints are hardcoded to represent statistics
   // over one minute (see below), so the evaluation period
   // is defined in minutes
-  evaluation_periods  = "${var.period_in_minutes}"
+  evaluation_periods = "${var.period_in_minutes}"
+
   datapoints_to_alarm = "${var.period_in_minutes}"
   metric_name         = "ApproximateNumberOfMessagesVisible"
 
@@ -22,7 +23,8 @@ resource "aws_cloudwatch_metric_alarm" "queue" {
   // This is the period over which the statistic is calculated
   // An evaluation over this period produces one datapoint
   // This is NOT the period during which the threshold is evaluated
-  period    = "60"
+  period = "60"
+
   threshold = "${var.threshold}"
 
   treat_missing_data = "${var.treat_missing_data}"

@@ -11,10 +11,10 @@ module "cluster_asg_spot_cpureservation_autoscaling_alarms" {
 
   cluster_name = "${aws_ecs_cluster.cluster.name}"
 
-  scale_up_arn   = "${module.cluster_asg_spot_autoscaling.scale_up_arn}"
-  scale_down_arn = "${module.cluster_asg_spot_autoscaling.scale_down_arn}"
+  scale_up_arn           = "${module.cluster_asg_spot_autoscaling.scale_up_arn}"
+  scale_down_arn         = "${module.cluster_asg_spot_autoscaling.scale_down_arn}"
   high_period_in_minutes = "${var.scale_up_period_in_minutes}"
-  low_period_in_minutes = "${var.scale_down_period_in_minutes}"
+  low_period_in_minutes  = "${var.scale_down_period_in_minutes}"
 }
 
 module "cluster_asg_spot" {

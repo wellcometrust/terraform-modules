@@ -4,8 +4,8 @@ module "cpureservation_high" {
 
   cluster_name = "${var.cluster_name}"
 
-  period_in_minutes    = "${var.high_period_in_minutes}"
-  threshold = "${var.high_threshold}"
+  period_in_minutes = "${var.high_period_in_minutes}"
+  threshold         = "${var.high_threshold}"
 
   comparison_operator = "GreaterThanOrEqualToThreshold"
   treat_missing_data  = "${var.treat_missing_data_high}"
@@ -19,8 +19,8 @@ module "cpureservation_low" {
 
   cluster_name = "${var.cluster_name}"
 
-  period_in_minutes    = "${var.low_period_in_minutes}"
-  threshold = "${var.low_threshold}"
+  period_in_minutes = "${var.low_period_in_minutes}"
+  threshold         = "${var.low_threshold}"
 
   comparison_operator = "LessThanThreshold"
   treat_missing_data  = "${var.treat_missing_data_low}"
