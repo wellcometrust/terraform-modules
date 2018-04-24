@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v9.0.0 - 2018-04-24
+
+This release adds a `dev_user` module for provisioning developer users.
+
+In addition modules for provisioning other user types are moved inside the same namespace.
+
 ## v8.1.0 - 2018-04-20
 
 * Make scale up and down period for an sqs_autoscaling_service be configurable
