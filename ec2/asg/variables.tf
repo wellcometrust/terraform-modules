@@ -60,4 +60,12 @@ variable "spot_price" {
   default = "0"
 }
 
-variable "admin_cidr_ingress" {}
+variable "admin_cidr_ingress" {
+  type    = "list"
+  default = []
+}
+
+variable "instance_security_groups" {
+  type    = "list"
+  default = []
+}
