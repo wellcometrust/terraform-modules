@@ -56,5 +56,7 @@ module "service" {
   server_error_alarm_topic_arn = "${var.alb_server_error_alarm_arn}"
   client_error_alarm_topic_arn = "${var.alb_client_error_alarm_arn}"
 
+  log_retention_in_days = "${var.log_retention_in_days}"
+
   https_domain = "services.wellcomecollection.org"
 }

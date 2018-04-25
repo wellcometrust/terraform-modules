@@ -134,6 +134,11 @@ variable "log_group_name_prefix" {
   default     = "platform"
 }
 
+variable "log_retention_in_days" {
+  description = "The number of days to keep CloudWatch logs"
+  default     = ""
+}
+
 variable "task_definition_template_path" {
   description = "A custom task definition template to use"
   default     = ""
