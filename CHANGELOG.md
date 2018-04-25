@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v9.1.0 - 2018-04-25
+
+This release adds the `log_retention_in_days` parameter to the following modules:
+
+*   _ecs/service/ecs_task_
+*   _ecs/service_
+*   _ecs_script_task_
+*   _lambda_
+*   _sqs_autoscaling_service_
+*   _userdata_
+
+which controls the log retention policies for CloudWatch log groups.
+
+It defaults to none (i.e. retain logs forever).
+
 ## v9.0.0 - 2018-04-24
 
 This release adds a `dev_user` module for provisioning developer users.
