@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## v9.2.0 - 2018-04-26
+
+This release adds a V2 ASG module intended to supersede the existing ECS only ASG description in the `ecs` module.
+
+## Usage:
+
+```hcl
+module "test" {
+  source = "../terraform-modules/ec2/asg"
+  name   = "tf-asg-v2"
+
+  image_id = "ami-0bc19972"
+  key_name = "${var.key_name}"
+
+  subnet_list = "${module.vpc.subnets}"
+  vpc_id      = "${module.vpc.vpc_id}"
+}
+```
+
 ## v9.1.0 - 2018-04-25
 
 This release adds the `log_retention_in_days` parameter to the following modules:
