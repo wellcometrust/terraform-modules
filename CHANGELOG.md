@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v9.3.0 - 2018-04-30
+
+This release fixes an issue with adding tags to ASGs previouisly merged.
+
 ## v9.2.0 - 2018-04-26
 
 This release adds a V2 ASG module intended to supersede the existing ECS only ASG description in the `ecs` module.
