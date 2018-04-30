@@ -14,7 +14,6 @@ module "launch_config" {
   source = "launch_config"
 
   instance_profile_name    = "${module.instance_profile.name}"
-  instance_security_groups = "[${var.instance_security_groups}]"
 
   vpc_id             = "${var.vpc_id}"
   asg_name           = "${var.name}"
