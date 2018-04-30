@@ -23,13 +23,13 @@
             ]
           }
         ],
+        "Tags" : [{
+            "Key" : "name",
+            "Value" : "${asg_name}",
+            "PropagateAtLaunch" : "true"
+        }],
         "VPCZoneIdentifier": ${vpc_zone_identifier}
       },
-      "Tags" : [{
-         "Key" : "name",
-         "Value" : "${asg_name}",
-         "PropagateAtLaunch" : "true"
-      }],
       "UpdatePolicy": {
         "AutoScalingRollingUpdate": {
           "MinInstancesInService": "${asg_min_size}",
