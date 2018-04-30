@@ -23,6 +23,11 @@
             ]
           }
         ],
+        "Tags" : [{
+            "Key" : "name",
+            "Value" : "${asg_name}",
+            "PropagateAtLaunch" : "true"
+        }],
         "VPCZoneIdentifier": ${vpc_zone_identifier}
       },
       "Tags" : [{
