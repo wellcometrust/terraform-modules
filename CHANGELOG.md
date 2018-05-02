@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v9.4.0 - 2018-05-02
+
+This release adds a data science infra module.
+
 ## v9.3.0 - 2018-04-30
 
 This release fixes an issue with adding tags to ASGs previouisly merged.
