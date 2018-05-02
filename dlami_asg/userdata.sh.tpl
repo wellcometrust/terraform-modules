@@ -28,7 +28,7 @@ c.NotebookApp.password = u'${hashed_password}'
 EOF
 
 # Select the version of pip for our default environment.
-PIP=/home/ubuntu/anaconda3/envs/tensorflow_p36/bin/pip
+PIP=/home/ubuntu/anaconda3/envs/${default_environment}/bin/pip
 
 $PIP install --upgrade pip
 $PIP install \

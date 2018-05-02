@@ -24,10 +24,11 @@ data "template_file" "userdata" {
   template = "${file("${path.module}/userdata.sh.tpl")}"
 
   vars {
-    notebook_user   = "jupyter"
-    notebook_port   = "8888"
-    hashed_password = "${var.hashed_password}"
-    bucket_name     = "${var.bucket_name}"
+    notebook_user       = "jupyter"
+    notebook_port       = "8888"
+    hashed_password     = "${var.hashed_password}"
+    bucket_name         = "${var.bucket_name}"
+    default_environment = "${var.default_environment}"
   }
 }
 

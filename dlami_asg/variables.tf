@@ -25,3 +25,5 @@ variable ami_id {
 variable "instance_type" {
   default = "t2.large"
 }
+
+variable "default_environment" {}
