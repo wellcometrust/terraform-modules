@@ -143,3 +143,8 @@ variable "task_definition_template_path" {
   description = "A custom task definition template to use"
   default     = ""
 }
+
+variable "launch_type" {
+  default = "EC2"
+  description = "Cluster launch type, can be 'EC2' or 'FARGATE', defaults to EC2"
+}
