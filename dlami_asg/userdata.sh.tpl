@@ -2,6 +2,7 @@
 
 set -o errexit
 set -o nounset
+set -o xtrace
 
 # Create jupyter user
 adduser ${notebook_user} --gecos "" --disabled-password
