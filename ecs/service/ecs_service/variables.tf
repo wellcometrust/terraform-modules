@@ -55,17 +55,17 @@ variable "host_name" {
 
 variable "server_error_alarm_topic_arn" {
   description = "ARN of the topic where to send notification for 5xx ALB state"
-  default = ""
+  default     = ""
 }
 
 variable "client_error_alarm_topic_arn" {
   description = "ARN of the topic where to send notification for 4xx ALB state"
-  default = ""
+  default     = ""
 }
 
 variable "loadbalancer_cloudwatch_id" {
   description = "LoadBalancer ARN Suffix"
-  default = ""
+  default     = ""
 }
 
 variable "enable_alb_alarm" {
@@ -73,7 +73,7 @@ variable "enable_alb_alarm" {
 }
 
 variable "launch_type" {
-  default = "EC2"
+  default     = "EC2"
   description = "Cluster launch type, can be 'EC2' or 'FARGATE', defaults to EC2"
 }
 

@@ -145,6 +145,6 @@ variable "task_definition_template_path" {
 }
 
 variable "launch_type" {
-  default = "EC2"
+  default     = "EC2"
   description = "Cluster launch type, can be 'EC2' or 'FARGATE', defaults to EC2"
 }
