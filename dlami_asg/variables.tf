@@ -27,3 +27,4 @@ variable "instance_type" {
 }
 
 variable "default_environment" {}
+variable "spot_price" {}

@@ -9,7 +9,7 @@ module "compute" {
   vpc_id      = "${var.vpc_id}"
 
   use_spot   = 1
-  spot_price = "0.4"
+  spot_price = "${var.spot_price}"
 
   asg_min     = "0"
   asg_desired = "${var.enabled ? 1 : 0}"
