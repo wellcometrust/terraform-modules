@@ -77,3 +77,19 @@ variable "scale_up_period_in_minutes" {
 variable "scale_down_period_in_minutes" {
   default = 5
 }
+
+variable "ebs_device_name" {
+  default = ""
+}
+
+variable "ebs_size" {
+  default = 8
+}
+
+variable "ebs_volume_type" {
+  default = "standard"
+}
+
+variable "ebs_iops" {
+  default = ""
+}
