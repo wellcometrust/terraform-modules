@@ -17,8 +17,8 @@ data "template_file" "template" {
 }
 
 locals {
-  has_efs_mount   = "${var.efs_filesystem_id == "no_name_set" ? false :true}"
-  has_ebs_mount   = "${var.ebs_block_device == "no_name_set" ? false :true}"
+  has_efs_mount   = "${var.efs_filesystem_id == "" ? false :true}"
+  has_ebs_mount   = "${var.ebs_block_device == "" ? false :true}"
   has_ebs_and_efs_mount   = "${local.has_efs_mount == true ? "${local.has_ebs_mount == true ? true: false}" :false}"
   has_no_mount    = "${local.has_efs_mount == false ? "${local.has_ebs_mount == false ? true: false}" :false}"
   template_name_no_mount   = "ecs-agent"
