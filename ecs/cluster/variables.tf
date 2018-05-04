@@ -66,6 +66,10 @@ variable "efs_filesystem_id" {
   default = "no_name_set"
 }
 
+variable "ebs_block_device" {
+  default = "no_name_set"
+}
+
 variable "scale_up_period_in_minutes" {
   default = 1
 }
