@@ -14,6 +14,8 @@ resource "aws_ecs_service" "service" {
     container_port   = "${var.container_port}"
   }
 
+  launch_type = "${var.launch_type}"
+
   lifecycle {
     # Unfortunately, when changing a service, this prevents the creation of the
     # service with the error:
