@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v10.0.0 - 2018-05-08
+
+This release makes spot price a mandatory variable.
+
 ## v9.5.0 - 2018-05-02
 
 This release adds a `default_environment` parameter to the `dlami_asg` module,
