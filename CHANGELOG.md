@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v10.1.0 - 2018-05-08
+
+This change adds the ability to set the ECS Service launch type to FARGATE
+
 ## v10.0.0 - 2018-05-08
 
 This release makes spot price a mandatory variable.
