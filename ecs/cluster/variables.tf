@@ -89,3 +89,7 @@ variable "ebs_volume_type" {
 variable "ebs_iops" {
   default = ""
 }
+
+variable "log_retention_in_days" {
+  default = ""
+}
