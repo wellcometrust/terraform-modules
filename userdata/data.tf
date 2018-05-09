@@ -1,5 +1,5 @@
 data "template_file" "template" {
-  template = "${file("${path.module}/templates/${local.template_name}.yml.template")}"
+  template = "${file("${path.module}/templates/${data.template_file.userdata_template_name.rendered}.yml.template")}"
 
   vars {
     aws_region                   = "${var.aws_region}"
@@ -16,12 +16,18 @@ data "template_file" "template" {
   }
 }
 
+data "template_file" "userdata_template_name" {
+  template = "ecs-agent$${ebs_suffix}$${efs_suffix}"
+
+  vars {
+    ebs_suffix = "${local.has_ebs_mount == true ? "-with-ebs" : ""}"
+    efs_suffix = "${local.has_efs_mount == true ? "-with-efs" : ""}"
+  }
+}
+
 locals {
   has_efs_mount   = "${var.efs_filesystem_id == "" ? false :true}"
   has_ebs_mount   = "${var.ebs_block_device == "" ? false :true}"
-  template_name_no_mount   = "ecs-agent"
-  template_name_ebs   = "${local.template_name_no_mount}${local.has_ebs_mount == true ? "-with-ebs" : ""}"
-  template_name   = "${local.template_name_ebs}${local.has_efs_mount == true ?"-with-efs": ""}"
   efs_mount_directory = "${local.has_efs_mount == true ? "/mnt/efs": ""}"
   ebs_mount_directory = "${local.has_ebs_mount == true ?"/mnt/ebs" : ""}"
   mount_directories = ["${local.efs_mount_directory}", "${local.ebs_mount_directory}"]
