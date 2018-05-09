@@ -79,6 +79,7 @@ variable "ebs_device_name" {
 }
 
 variable "ebs_size" {
+  description = "Size of the EBS volume in GB"
   default = 8
 }
 
