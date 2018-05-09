@@ -44,6 +44,6 @@ module "cluster_asg_spot" {
 
   ebs_device_name = "${var.ebs_device_name}"
   ebs_volume_type = "${var.ebs_volume_type}"
-  ebs_size = "${var.ebs_size}"
-  ebs_iops = "${var.ebs_iops}"
+  ebs_size        = "${var.ebs_size}"
+  ebs_iops        = "${var.ebs_iops}"
 }

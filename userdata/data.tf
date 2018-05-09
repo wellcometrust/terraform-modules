@@ -26,9 +26,9 @@ data "template_file" "userdata_template_name" {
 }
 
 locals {
-  has_efs_mount   = "${var.efs_filesystem_id == "" ? false :true}"
-  has_ebs_mount   = "${var.ebs_block_device == "" ? false :true}"
+  has_efs_mount       = "${var.efs_filesystem_id == "" ? false :true}"
+  has_ebs_mount       = "${var.ebs_block_device == "" ? false :true}"
   efs_mount_directory = "${local.has_efs_mount == true ? "/mnt/efs": ""}"
   ebs_mount_directory = "${local.has_ebs_mount == true ?"/mnt/ebs" : ""}"
-  mount_directories = ["${local.efs_mount_directory}", "${local.ebs_mount_directory}"]
+  mount_directories   = ["${local.efs_mount_directory}", "${local.ebs_mount_directory}"]
 }
