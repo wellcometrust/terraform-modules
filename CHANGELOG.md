@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v10.2.0 - 2018-05-10
+
+Allow instances with both EBS and EFS volumes.
+
 ## v10.1.0 - 2018-05-08
 
 This change adds the ability to set the ECS Service launch type to FARGATE
