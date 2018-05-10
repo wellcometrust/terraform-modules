@@ -37,4 +37,9 @@ module "cluster_asg_on_demand" {
   publish_to_sns_policy = "${var.ec2_terminating_topic_publish_policy}"
 
   alarm_topic_arn = "${var.ec2_instance_terminating_for_too_long_alarm_arn}"
+
+  ebs_device_name = "${var.ebs_device_name}"
+  ebs_volume_type = "${var.ebs_volume_type}"
+  ebs_size        = "${var.ebs_size}"
+  ebs_iops        = "${var.ebs_iops}"
 }

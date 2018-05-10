@@ -63,7 +63,7 @@ variable "ec2_terminating_topic_publish_policy" {}
 variable "ec2_instance_terminating_for_too_long_alarm_arn" {}
 
 variable "efs_filesystem_id" {
-  default = "no_name_set"
+  default = ""
 }
 
 variable "scale_up_period_in_minutes" {
@@ -72,4 +72,25 @@ variable "scale_up_period_in_minutes" {
 
 variable "scale_down_period_in_minutes" {
   default = 5
+}
+
+variable "ebs_device_name" {
+  default = ""
+}
+
+variable "ebs_size" {
+  description = "Size of the EBS volume in GB"
+  default     = 8
+}
+
+variable "ebs_volume_type" {
+  default = "standard"
+}
+
+variable "ebs_iops" {
+  default = ""
+}
+
+variable "log_retention_in_days" {
+  default = ""
 }

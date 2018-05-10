@@ -9,11 +9,11 @@ variable "aws_region" {
 
 variable "efs_filesystem_id" {
   description = "If the userdata requires an EFS mount point, this is it"
-  default     = "no_name_set"
+  default     = ""
 }
 
 variable "ebs_block_device" {
-  default = "no_name_set"
+  default = ""
 }
 
 variable "cache_cleaner_cloudwatch_log_group" {
