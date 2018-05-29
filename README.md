@@ -11,8 +11,6 @@ Currently in use on:
 
 Reference your module source as shown below. Use `ref=v1.0.0` to pin your module at a particular version.
 
-This repo will use [Semantic Versioning](http://semver.org/) to version releases.
-
 ### Example
 
 ```tf
@@ -32,3 +30,17 @@ module "router_alb" {
   alb_access_log_bucket = "${aws_s3_bucket.alb-logs.id}"
 }
 ```
+## Developing
+
+PRs will need to include a `RELEASE.md` file in the root of the repo following this structure:
+
+```md
+RELEASE_TYPE: major 
+
+This is a description of the changes in the PR!
+```
+
+Release type can be "major", "minor" or "patch" following [Semantic Versioning](http://semver.org/) guidelines.
+
+Merged PRs are automatically tagged with the appropriate version change.
+
