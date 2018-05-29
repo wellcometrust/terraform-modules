@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v10.2.1 - 2018-05-29
+
+Adds [beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to the default list of packages installed in the deep learning ami
+
 ## v10.2.0 - 2018-05-10
 
 Allow instances with both EBS and EFS volumes.
