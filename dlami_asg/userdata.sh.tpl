@@ -36,7 +36,8 @@ $PIP install \
             seaborn==0.8.1 \
             scikit-learn==0.19.1 \
             tqdm==4.19.7 \
-            beautifulsoup4==4.6.0
+            beautifulsoup4==4.6.0 \
+            networkx==2.1
 
 # Install s3contents.  This needs to be installed in the top-level anaconda
 # environment, or it won't be available to Jupyter, and it will fail to start.
