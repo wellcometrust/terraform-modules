@@ -54,6 +54,7 @@ module "task" {
     HTTPS_DOMAIN = "${var.https_domain}"
     APP_PORT     = "${var.secondary_container_port}"
     NGINX_PORT   = "${var.primary_container_port}"
+    APP_NAME     = "${var.app_uri}"
   }
 
   config_vars        = "${var.env_vars}"
