@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v10.2.3 - 2018-06-04
+
+This change adds an `APP_NAME` environment variable to the task definition of tasks created with the `ecs` module. The `APP_NAME` variable is set to the value of the container uri used as the primary container in the service.
+
 ## v10.2.2 - 2018-05-30
 
 Adds networkx to the default list of packages installed in the deep learning ami
