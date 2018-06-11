@@ -5,6 +5,9 @@ from hypothesistooling import modified_files
 
 REPO_NAME = 'terraform-modules'
 
+TRAVIS_KEY = os.environ['encrypted_83630750896a_key']
+TRAVIS_IV = os.environ['encrypted_83630750896a_iv']
+
 
 def has_source_changes(version=None):
     if version is None:
