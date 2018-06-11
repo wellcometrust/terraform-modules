@@ -25,11 +25,6 @@ import subprocess
 
 import hypothesistooling as tools
 
-sys.path.append(os.path.dirname(__file__))  # noqa
-
-
-PENDING_STATUS = ('started', 'created')
-
 
 if __name__ == '__main__':
     last_release = tools.latest_version()
