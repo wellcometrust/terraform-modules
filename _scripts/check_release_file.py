@@ -22,13 +22,12 @@ from __future__ import division, print_function, absolute_import
 import os
 import sys
 
+import config
 import hypothesistooling as tools
-
-sys.path.append(os.path.dirname(__file__))  # noqa
 
 
 if __name__ == '__main__':
-    if tools.has_source_changes():
+    if config.has_source_changes():
         if not tools.has_release():
             print(
                 'There are source changes but no RELEASE.md. Please create '

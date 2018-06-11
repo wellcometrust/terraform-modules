@@ -23,6 +23,8 @@ import sys
 import subprocess
 from datetime import datetime, timedelta
 
+from config import REPO_NAME
+
 
 def tags():
     result = [t.decode('ascii') for t in subprocess.check_output([
@@ -95,16 +97,6 @@ def changelog():
         return i.read()
 
 
-def has_source_changes(version=None):
-    if version is None:
-        version = latest_version()
-
-    tf_files = [
-        f for f in modified_files() if f.strip().endswith('.tf')
-    ]
-    return len(tf_files) != 0
-
-
 def git(*args):
     subprocess.check_call(('git',) + args)
 
@@ -116,7 +108,7 @@ def create_tag_and_push():
     git('config', 'core.sshCommand', 'ssh -i deploy_key')
     git(
         'remote', 'add', 'ssh-origin',
-        'git@github.com:wellcometrust/terraform-modules.git'
+        'git@github.com:wellcometrust/%s.git' % REPO_NAME
     )
     git('tag', __version__)
 
