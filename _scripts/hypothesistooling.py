@@ -24,12 +24,6 @@ import subprocess
 from datetime import datetime, timedelta
 
 
-def current_branch():
-    return subprocess.check_output([
-        'git', 'rev-parse', '--abbrev-ref', 'HEAD'
-    ]).decode('ascii').strip()
-
-
 def tags():
     result = [t.decode('ascii') for t in subprocess.check_output([
         'git', 'tag'
@@ -41,18 +35,6 @@ def tags():
 
 ROOT = subprocess.check_output([
     'git', 'rev-parse', '--show-toplevel']).decode('ascii').strip()
-
-
-__version__ = None
-__version_info__ = None
-
-VERSION_FILE = os.path.join(ROOT, 'version.txt')
-
-__version__ = open(VERSION_FILE).read().strip()
-__version_info__ = [int(i) for i in __version__.lstrip('v').split('.')]
-
-assert __version__ is not None
-assert __version_info__ is not None
 
 
 def latest_version():
@@ -79,6 +61,16 @@ def latest_version():
 
     assert latest in tags()
     return latest
+
+
+__version__ = None
+__version_info__ = None
+
+__version__ = latest_version()
+__version_info__ = [int(i) for i in __version__.lstrip('v').split('.')]
+
+assert __version__ is not None
+assert __version_info__ is not None
 
 
 def hash_for_name(name):
@@ -219,10 +211,6 @@ def update_changelog_and_version():
     new_version = tuple(new_version)
     new_version_string = 'v' + '.'.join(map(str, new_version))
 
-    __version__ = new_version_string
-
-    open(VERSION_FILE, 'w').write(new_version_string)
-
     now = datetime.utcnow()
 
     date = max([
@@ -251,7 +239,7 @@ def update_for_pending_release():
     update_changelog_and_version()
 
     git('rm', RELEASE_FILE)
-    git('add', CHANGELOG_FILE, VERSION_FILE)
+    git('add', CHANGELOG_FILE)
 
     git(
         'commit',
