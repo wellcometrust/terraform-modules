@@ -61,7 +61,10 @@ variable "config_vars" {
   type        = "map"
 }
 
-variable "config_vars_length" {}
+variable "config_vars_length" {
+  description = "[Deprecated] Length of the config_vars map"
+  default     = 0
+}
 
 variable "memory" {
   description = "How much memory to allocate to the app"
