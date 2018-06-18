@@ -24,7 +24,7 @@
           }
         ],
         "Tags" : [{
-            "Key" : "name",
+            "Key" : "Name",
             "Value" : "${asg_name}",
             "PropagateAtLaunch" : "true"
         }],

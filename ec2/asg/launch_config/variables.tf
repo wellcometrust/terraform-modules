@@ -31,9 +31,16 @@ variable "public_ip" {
   description = "Associate public IP address?"
 }
 
-variable "admin_cidr_ingress" {
+variable "controlled_access_cidr_ingress" {
   type        = "list"
+  default     = []
   description = "CIDR for SSH access to EC2 instances"
+}
+
+variable "ssh_ingress_security_groups" {
+  type    = "list"
+  default = []
+  description = "SSH ingresss security group"
 }
 
 # variable "instance_security_groups" {

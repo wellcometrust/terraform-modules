@@ -17,3 +17,7 @@ output "instance_profile_name" {
 output "instance_profile_role_name" {
   value = "${module.instance_profile.role_name}"
 }
+
+output "ssh_controlled_ingress_sg" {
+  value = "${module.launch_config.ssh_controlled_ingress_sg}"
+}

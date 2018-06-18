@@ -1,9 +1,13 @@
 module "asg" {
   source = "../../../ec2/asg"
 
-  name = "${var.cluster_name}"
+  name = "${var.asg_name}"
 
   image_id = "${var.image_id}"
+
+  controlled_access_cidr_ingress = ["${var.controlled_access_cidr_ingress}"]
+
+  ssh_ingress_security_groups = ["${var.instance_security_groups}"]
 
   subnet_list = ["${var.subnets}"]
   vpc_id      = "${var.vpc_id}"
