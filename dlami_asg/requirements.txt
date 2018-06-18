@@ -11,7 +11,7 @@ bleach==2.1.3             # via nbconvert
 boto3==1.7.40             # via s3contents, s3fs
 botocore==1.10.40         # via boto3, s3fs, s3transfer
 cachetools==2.1.0         # via google-auth
-certifi==2018.4.16        # via requests
+certifi==2018.1.18
 chardet==3.0.4            # via requests
 cycler==0.10.0            # via matplotlib
 decorator==4.3.0          # via gcsfs, ipython, networkx, traitlets

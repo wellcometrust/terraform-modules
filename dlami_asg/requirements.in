@@ -8,3 +8,16 @@ tqdm==4.19.7
 # Install s3contents.  This needs to be installed in the top-level anaconda
 # environment, or it won't be available to Jupyter, and it will fail to start.
 s3contents
+
+# certifi is a dependency of requests, which is a dependency of s3contents
+#
+# If we try to install the latest version in Ubuntu, we get an error:
+#
+#   Cannot uninstall 'certifi'. It is a distutils installed project and thus
+#   we cannot accurately determine which files belong to it which would lead
+#   to only a partial uninstall.
+#
+# Rather than try to uninstall it, for now we pin to the already-installed
+# version and don't try to replace it.
+#
+certifi==2018.1.18
