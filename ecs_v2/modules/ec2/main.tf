@@ -1,5 +1,5 @@
 module "asg" {
-  source = "../../ec2/asg"
+  source = "../../../ec2/asg"
 
   name = "${var.cluster_name}"
 

@@ -20,18 +20,6 @@ resource "aws_ecs_service" "service" {
   }
 }
 
-resource "aws_security_group" "sg" {
-  name   = "${var.service_name}"
-  vpc_id = "${var.vpc_id}"
-
-  ingress {
-    protocol    = "-1"
-    from_port   = 0
-    to_port     = 0
-    cidr_blocks = ["${var.vpc_cidr_block}"]
-  }
-}
-
 resource "aws_service_discovery_service" "service_discovery" {
   name = "${var.service_name}"
 
