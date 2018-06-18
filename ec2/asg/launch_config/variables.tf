@@ -38,8 +38,8 @@ variable "controlled_access_cidr_ingress" {
 }
 
 variable "ssh_ingress_security_groups" {
-  type    = "list"
-  default = []
+  type        = "list"
+  default     = []
   description = "SSH ingresss security group"
 }
 
