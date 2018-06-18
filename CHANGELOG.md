@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v10.3.0 - 2018-06-18
+
+This release deprecates the following variables:
+
+*   `config_vars_length` in `ecs/service/ecs_task`
+*   `env_vars_length` in `ecs/service`
+*   `env_vars_length` in `sqs_autoscaling_service`
+
+Their existence was always a nasty hack around some Terraform interpolation
+issues, and it looks like we can get rid of them.  They can be safely removed
+with no effect.
+
 ## v10.2.3 - 2018-06-04
 
 This change adds an `APP_NAME` environment variable to the task definition of tasks created with the `ecs` module. The `APP_NAME` variable is set to the value of the container uri used as the primary container in the service.
