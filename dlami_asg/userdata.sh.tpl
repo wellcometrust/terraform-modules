@@ -21,7 +21,7 @@ ${requirements}
 EOF
 
 $PIP install --upgrade pip
-$PIP install /home/${notebook_user}/requirements.txt > /home/${notebook_user}/pip_install.log 2>&1
+$PIP install --requirement /home/${notebook_user}/requirements.txt > /home/${notebook_user}/pip_install.log 2>&1
 
 # Start notebook server
 runuser --login ${notebook_user} --command '/home/ubuntu/anaconda3/bin/jupyter notebook'
