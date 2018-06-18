@@ -23,5 +23,9 @@ EOF
 $PIP install --upgrade pip
 $PIP install --requirement /home/${notebook_user}/requirements.txt > /home/${notebook_user}/pip_install.log 2>&1
 
+# Install s3contents.  This needs to be installed in the top-level anaconda
+# environment, or it won't be available to Jupyter, and it will fail to start.
+/home/ubuntu/anaconda3/bin/pip install s3contents
+
 # Start notebook server
 runuser --login ${notebook_user} --command '/home/ubuntu/anaconda3/bin/jupyter notebook'
