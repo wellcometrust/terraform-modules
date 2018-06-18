@@ -31,11 +31,16 @@ data "template_file" "jupyter_config" {
   }
 }
 
+data "template_file" "requirements" {
+  template = "${file("${path.module}/requirements.txt")}"
+}
+
 data "template_file" "userdata" {
   template = "${file("${path.module}/userdata.sh.tpl")}"
 
   vars {
     jupyter_notebook_config = "${data.template_file.jupyter_config.rendered}"
+    requirements            = "${data.template_file.requirements.rendered}"
     notebook_user           = "jupyter"
     default_environment     = "${var.default_environment}"
   }
