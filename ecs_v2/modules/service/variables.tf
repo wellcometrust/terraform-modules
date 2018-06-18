@@ -28,4 +28,8 @@ variable "deployment_maximum_percent" {
   default = "200"
 }
 
+variable service_discovery_failure_threshold {
+  default = 1
+}
+
 variable "launch_type" {}
