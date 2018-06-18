@@ -8,9 +8,9 @@ resource "aws_security_group" "ssh_controlled_ingress" {
     from_port = 22
     to_port   = 22
 
-    cidr_blocks = [
-      "${var.admin_cidr_ingress}",
-    ]
+    cidr_blocks = ["${var.controlled_access_cidr_ingress}"]
+
+    security_groups = ["${var.ssh_ingress_security_groups}"]
   }
 
   lifecycle {

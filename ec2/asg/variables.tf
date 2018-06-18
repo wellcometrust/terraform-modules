@@ -60,13 +60,13 @@ variable "spot_price" {
   default = "0"
 }
 
-variable "admin_cidr_ingress" {
+variable "controlled_access_cidr_ingress" {
   type        = "list"
-  default     = ["0.0.0.0/0"]
+  default     = []
   description = "CIDR for SSH access to EC2 instances"
 }
 
-variable "instance_security_groups" {
+variable "ssh_ingress_security_groups" {
   type    = "list"
   default = []
 }
