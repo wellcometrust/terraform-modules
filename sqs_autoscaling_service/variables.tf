@@ -19,7 +19,10 @@ variable "env_vars" {
   type        = "map"
 }
 
-variable "env_vars_length" {}
+variable "env_vars_length" {
+  description = "[Deprecated] Length of the env_vars map"
+  default     = 0
+}
 
 variable "alb_priority" {
   description = "ALB listener rule priority.  If blank, a priority will be randomly assigned."

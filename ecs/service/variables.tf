@@ -88,7 +88,10 @@ variable "env_vars" {
   default     = {}
 }
 
-variable "env_vars_length" {}
+variable "env_vars_length" {
+  description = "[Deprecated] Length of the env_vars map"
+  default     = 0
+}
 
 variable "host_name" {
   description = "Hostname to be matched in the host condition"
