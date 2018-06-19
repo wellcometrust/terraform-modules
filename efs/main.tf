@@ -1,6 +1,12 @@
+data "aws_availability_zones" "available" {}
+
 resource "aws_efs_file_system" "efs" {
   creation_token   = "${var.name}_efs"
   performance_mode = "${var.performance_mode}"
+
+  tags {
+    Name = "${var.name}"
+  }
 }
 
 resource "aws_efs_mount_target" "mount_target" {
@@ -21,5 +27,9 @@ resource "aws_security_group" "efs_mnt" {
     to_port   = 2049
 
     security_groups = ["${var.efs_access_security_group_ids}"]
+  }
+
+  tags {
+    Name = "${var.name}"
   }
 }

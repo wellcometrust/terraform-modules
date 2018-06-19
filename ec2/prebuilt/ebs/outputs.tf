@@ -1,0 +1,27 @@
+output "asg_name" {
+  value = "${module.cloudformation_stack.asg_name}"
+}
+
+output "asg_desired" {
+  value = "${var.asg_desired}"
+}
+
+output "asg_max" {
+  value = "${var.asg_max}"
+}
+
+output "instance_profile_name" {
+  value = "${module.instance_profile.name}"
+}
+
+output "instance_profile_role_name" {
+  value = "${module.instance_profile.role_name}"
+}
+
+output "ssh_controlled_ingress_sg" {
+  value = "${module.security_groups.ssh_controlled_ingress}"
+}
+
+output "ebs_volume_id" {
+  value = "${module.launch_config.ebs_volume_id}"
+}
