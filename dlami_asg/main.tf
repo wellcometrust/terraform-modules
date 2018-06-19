@@ -20,15 +20,29 @@ module "compute" {
   user_data = "${data.template_file.userdata.rendered}"
 }
 
+data "template_file" "jupyter_config" {
+  template = "${file("${path.module}/jupyter_notebook_config.py")}"
+
+  vars {
+    notebook_user   = "jupyter"
+    notebook_port   = "8888"
+    hashed_password = "${var.hashed_password}"
+    bucket_name     = "${var.bucket_name}"
+  }
+}
+
+data "template_file" "requirements" {
+  template = "${file("${path.module}/requirements.txt")}"
+}
+
 data "template_file" "userdata" {
   template = "${file("${path.module}/userdata.sh.tpl")}"
 
   vars {
-    notebook_user       = "jupyter"
-    notebook_port       = "8888"
-    hashed_password     = "${var.hashed_password}"
-    bucket_name         = "${var.bucket_name}"
-    default_environment = "${var.default_environment}"
+    jupyter_notebook_config = "${data.template_file.jupyter_config.rendered}"
+    requirements            = "${data.template_file.requirements.rendered}"
+    notebook_user           = "jupyter"
+    default_environment     = "${var.default_environment}"
   }
 }
 

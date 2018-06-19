@@ -81,3 +81,12 @@ ssh -N -f -L localhost:8888:localhost:8888 ubuntu@ec2.host.name
 # Visit localhost:8888 in your browser default password "password"
 
 ```
+
+## Debugging
+
+When an instance boots, it attempts to install a series of Python modules
+with pip.  If this installation fails, it will prevent the Jupyter server
+from starting.
+
+The pip install log is written to `/home/jupyter/pip_install.log`.  If your
+Jupyter server isn't starting, try looking here first.
