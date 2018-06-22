@@ -7,10 +7,6 @@ variable "hashed_password" {
 
 variable "bucket_name" {}
 
-variable "vpc_subnets" {
-  type = "list"
-}
-
 variable "name" {}
 
 variable "enabled" {

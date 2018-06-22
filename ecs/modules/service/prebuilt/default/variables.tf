@@ -36,4 +36,6 @@ variable service_discovery_failure_threshold {
   default = 1
 }
 
-variable "launch_type" {}
+variable "launch_type" {
+  default = "FARGATE"
+}
