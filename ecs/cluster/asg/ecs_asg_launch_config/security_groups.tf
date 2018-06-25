@@ -1,7 +1,7 @@
 resource "aws_security_group" "instance_sg" {
   description = "controls direct access to application instances"
   vpc_id      = "${var.vpc_id}"
-  name        = "${var.asg_name}_instance_sg_${random_id.sg_append.hex}"
+  name_prefix = "${var.asg_name}_instance_sg"
 
   ingress {
     protocol  = "tcp"
@@ -38,8 +38,8 @@ resource "aws_security_group" "instance_sg" {
 resource "aws_security_group" "http" {
   description = "Allow HTTP access to the ELB"
 
-  vpc_id = "${var.vpc_id}"
-  name   = "${var.asg_name}_loadbalancer_sg_http_${random_id.sg_append.hex}"
+  vpc_id      = "${var.vpc_id}"
+  name_prefix = "${var.asg_name}_loadbalancer_sg_http"
 
   ingress {
     protocol  = "tcp"
@@ -69,8 +69,8 @@ resource "aws_security_group" "http" {
 resource "aws_security_group" "https" {
   description = "Allow HTTPS access to the ELB"
 
-  vpc_id = "${var.vpc_id}"
-  name   = "${var.asg_name}_loadbalancer_sg_https_${random_id.sg_append.hex}"
+  vpc_id      = "${var.vpc_id}"
+  name_prefix = "${var.asg_name}_loadbalancer_sg_https"
 
   ingress {
     protocol  = "tcp"
@@ -95,12 +95,4 @@ resource "aws_security_group" "https" {
   lifecycle {
     create_before_destroy = true
   }
-}
-
-resource "random_id" "sg_append" {
-  keepers = {
-    sg_id = "${var.random_key}"
-  }
-
-  byte_length = 8
 }
