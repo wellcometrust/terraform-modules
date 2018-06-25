@@ -1,11 +1,3 @@
-variable "vpc_id" {
-  description = "VPC for EC2 autoscaling group security group"
-}
-
-variable "asg_name" {
-  description = "Name of the ASG to create"
-}
-
 variable "key_name" {
   description = "SSH key pair name for instance sign-in"
 }
