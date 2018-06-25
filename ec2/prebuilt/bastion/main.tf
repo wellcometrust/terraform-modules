@@ -38,5 +38,5 @@ module "security_groups" {
 module "instance_profile" {
   source = "../../modules/instance_profile"
 
-  name   = "${var.name}"
+  name = "${var.name}"
 }

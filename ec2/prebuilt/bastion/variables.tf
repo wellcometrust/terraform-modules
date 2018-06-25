@@ -36,7 +36,7 @@ variable "image_id" {
   description = "ID of the AMI to use on the instances"
 
   # Amazon Linux AMI
-  default     = "ami-9cbe9be5"
+  default = "ami-9cbe9be5"
 }
 
 variable "asg_min" {

@@ -23,7 +23,7 @@ module "launch_config" {
   associate_public_ip_address = true
   instance_security_groups    = ["${module.security_groups.instance_security_groups}"]
 
-  spot_price               = "${var.spot_price}"
+  spot_price = "${var.spot_price}"
 }
 
 module "security_groups" {
@@ -39,7 +39,7 @@ module "security_groups" {
 module "instance_profile" {
   source = "../../modules/instance_profile"
 
-  name   = "${var.name}"
+  name = "${var.name}"
 }
 
 data "template_file" "requirements" {
