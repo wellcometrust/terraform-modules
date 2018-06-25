@@ -1,6 +1,4 @@
 resource "aws_launch_configuration" "launch_config" {
-  spot_price = "${var.spot_price}"
-
   security_groups = ["${var.instance_security_groups}"]
 
   key_name                    = "${var.key_name}"
@@ -9,6 +7,8 @@ resource "aws_launch_configuration" "launch_config" {
   iam_instance_profile        = "${var.instance_profile_name}"
   user_data                   = "${var.user_data}"
   associate_public_ip_address = "${var.associate_public_ip_address}"
+
+  spot_price = "${var.spot_price}"
 
   lifecycle {
     create_before_destroy = true
