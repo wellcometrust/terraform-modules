@@ -1,5 +1,5 @@
 variable "cidr_block" {
-  description = "Name of the ECS service to create"
+  description = "CIDR block for VPC"
 }
 
 variable "az_count" {
