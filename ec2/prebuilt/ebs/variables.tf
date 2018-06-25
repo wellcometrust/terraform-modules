@@ -35,7 +35,7 @@ variable "user_data" {
   default     = ""
 }
 
-variable "public_ip" {
+variable "associate_public_ip_address" {
   description = "Associate public IP address?"
   default     = true
 }

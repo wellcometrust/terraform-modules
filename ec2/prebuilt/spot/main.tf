@@ -13,18 +13,16 @@ module "cloudformation_stack" {
 module "launch_config" {
   source = "../../modules/launch_config/spot"
 
+  key_name              = "${var.key_name}"
+  image_id              = "${var.image_id}"
+  instance_type         = "${var.instance_type}"
   instance_profile_name = "${module.instance_profile.name}"
+  user_data             = "${var.user_data}"
 
-  vpc_id                      = "${var.vpc_id}"
-  asg_name                    = "${var.name}"
-  image_id                    = "${var.image_id}"
-  user_data                   = "${var.user_data}"
-  key_name                    = "${var.key_name}"
-  instance_type               = "${var.instance_type}"
-  associate_public_ip_address = "${var.public_ip}"
+  associate_public_ip_address = "${var.associate_public_ip_address}"
+  instance_security_groups    = ["${module.security_groups.instance_security_groups}"]
 
-  instance_security_groups = ["${module.security_groups.instance_security_groups}"]
-  spot_price               = "${var.spot_price}"
+  spot_price = "${var.spot_price}"
 }
 
 module "security_groups" {
