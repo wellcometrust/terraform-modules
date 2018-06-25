@@ -1,7 +1,6 @@
 resource "aws_security_group" "ssh_controlled_ingress" {
-  description = "controls direct access to application instances"
+  description = "${var.asg_name}: SSH access to instances"
   vpc_id      = "${var.vpc_id}"
-  name        = "${var.asg_name}_ssh_controlled_ingress_${random_id.sg_append.hex}"
 
   ingress {
     protocol  = "tcp"
@@ -19,9 +18,8 @@ resource "aws_security_group" "ssh_controlled_ingress" {
 }
 
 resource "aws_security_group" "full_egress" {
-  description = "controls direct access to application instances"
+  description = "${var.asg_name}: Direct access to instances"
   vpc_id      = "${var.vpc_id}"
-  name        = "${var.asg_name}_full_egress_${random_id.sg_append.hex}"
 
   egress {
     from_port   = 0
@@ -33,12 +31,4 @@ resource "aws_security_group" "full_egress" {
   lifecycle {
     create_before_destroy = true
   }
-}
-
-resource "random_id" "sg_append" {
-  keepers = {
-    sg_id = "${var.asg_name}"
-  }
-
-  byte_length = 8
 }
