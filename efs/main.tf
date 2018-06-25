@@ -11,9 +11,8 @@ resource "aws_efs_mount_target" "mount_target" {
 }
 
 resource "aws_security_group" "efs_mnt" {
-  description = "security groupt for efs mounts"
+  description = "${var.name}: EFS mounts"
   vpc_id      = "${var.vpc_id}"
-  name        = "${var.name}_efs_sg"
 
   ingress {
     protocol  = "tcp"

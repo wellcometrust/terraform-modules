@@ -1,5 +1,5 @@
 resource "aws_security_group" "database_sg" {
-  description = "controls direct access to application instances"
+  description = "${var.database_name}: Direct access to instances"
   vpc_id      = "${var.vpc_id}"
   name        = "${var.database_name}_sg"
 
