@@ -44,10 +44,6 @@ variable "vpc_id" {
   description = "VPC for EC2 autoscaling group security group"
 }
 
-variable "random_key" {
-  default = "initial"
-}
-
 variable "image_id" {
   description = "ID of the AMI to use on the instances"
 }
