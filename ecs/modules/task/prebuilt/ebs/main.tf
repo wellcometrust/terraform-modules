@@ -16,21 +16,8 @@ module "env_vars" {
   env_vars = "${var.env_vars}"
 }
 
-locals {
-  ebs_volume_name = "ebs"
-
-  mount_points = [
-    {
-      sourceVolume  = "${local.ebs_volume_name}"
-      containerPath = "${var.ebs_container_path}"
-    },
-  ]
-}
-
 module "task_definition" {
   source = "../../modules/task_definition"
-
-  mount_points = "${local.mount_points}"
 
   log_group_name = "${module.log_group.name}"
   env_var_string = "${module.env_vars.env_vars_string}"
@@ -43,6 +30,19 @@ module "task_definition" {
 
   cpu    = "${var.cpu}"
   memory = "${var.memory}"
+
+  mount_points = "${local.mount_points}"
+}
+
+locals {
+  ebs_volume_name = "ebs"
+
+  mount_points = [
+    {
+      sourceVolume  = "${local.ebs_volume_name}"
+      containerPath = "${var.ebs_container_path}"
+    },
+  ]
 }
 
 resource "aws_ecs_task_definition" "task" {
@@ -53,7 +53,12 @@ resource "aws_ecs_task_definition" "task" {
   execution_role_arn = "${module.iam_roles.task_execution_role_arn}"
 
   network_mode             = "awsvpc"
+
+  # For now, using EBS/EFS means we need to be on EC2 instance.
   requires_compatibilities = ["EC2"]
+
+  cpu    = "${var.cpu}"
+  memory = "${var.memory}"
 
   volume {
     name      = "${local.ebs_volume_name}"
@@ -64,7 +69,4 @@ resource "aws_ecs_task_definition" "task" {
     type       = "memberOf"
     expression = "attribute:ebs.volume exists"
   }
-
-  cpu    = "${var.cpu}"
-  memory = "${var.memory}"
 }

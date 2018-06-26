@@ -25,6 +25,8 @@ resource "aws_iam_role_policy" "ecs_service" {
 data "aws_iam_policy_document" "ecs_service" {
   statement {
     actions = [
+      # By default, we use task networking, so every task gets a
+      # network interface.
       "ec2:AttachNetworkInterface",
       "ec2:CreateNetworkInterface",
       "ec2:CreateNetworkInterfacePermission",
@@ -32,11 +34,8 @@ data "aws_iam_policy_document" "ecs_service" {
       "ec2:DeleteNetworkInterfacePermission",
       "ec2:Describe*",
       "ec2:DetachNetworkInterface",
-      "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-      "elasticloadbalancing:DeregisterTargets",
-      "elasticloadbalancing:Describe*",
-      "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
-      "elasticloadbalancing:RegisterTargets",
+
+      # These are needed for service discovery (which uses Route53).
       "route53:ChangeResourceRecordSets",
       "route53:CreateHealthCheck",
       "route53:DeleteHealthCheck",
@@ -50,6 +49,7 @@ data "aws_iam_policy_document" "ecs_service" {
       "servicediscovery:UpdateInstanceCustomHealthStatus",
     ]
 
+    # TODO: Can we scope this more tightly?
     resources = [
       "*",
     ]

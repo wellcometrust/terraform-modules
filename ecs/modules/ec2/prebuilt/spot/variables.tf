@@ -30,3 +30,5 @@ variable "ssh_ingress_security_groups" {
   type    = "list"
   default = []
 }
+
+variable "spot_price" {}

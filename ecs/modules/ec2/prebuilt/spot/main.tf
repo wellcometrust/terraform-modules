@@ -15,7 +15,7 @@ module "asg" {
   key_name    = "${var.key_name}"
   user_data   = "${data.template_file.userdata.rendered}"
 
-  spot_price = "0.5"
+  spot_price = "${var.spot_price}"
 }
 
 data "template_file" "userdata" {

@@ -57,7 +57,9 @@ resource "aws_ecs_task_definition" "task" {
   task_role_arn      = "${module.iam_roles.task_role_arn}"
   execution_role_arn = "${module.iam_roles.task_execution_role_arn}"
 
-  network_mode             = "awsvpc"
+  network_mode = "awsvpc"
+
+  # For now, using EBS/EFS means we need to be on EC2 instance.
   requires_compatibilities = ["EC2"]
 
   placement_constraints {

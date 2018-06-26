@@ -9,12 +9,6 @@ resource "aws_ecs_service" "service" {
 
   launch_type = "${var.launch_type}"
 
-  load_balancer {
-    target_group_arn = "${aws_alb_target_group.ecs_service.arn}"
-    container_name   = "${var.container_name}"
-    container_port   = "${var.container_port}"
-  }
-
   network_configuration = {
     subnets          = ["${var.subnets}"]
     security_groups  = ["${var.security_group_ids}"]
@@ -23,6 +17,12 @@ resource "aws_ecs_service" "service" {
 
   service_registries {
     registry_arn = "${aws_service_discovery_service.service_discovery.arn}"
+  }
+
+  load_balancer {
+    target_group_arn = "${aws_alb_target_group.ecs_service.arn}"
+    container_name   = "${var.container_name}"
+    container_port   = "${var.container_port}"
   }
 }
 

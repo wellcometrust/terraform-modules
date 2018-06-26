@@ -3,15 +3,15 @@ data "aws_iam_policy_document" "instance_policy" {
     sid = "ecsInstanceRole"
 
     actions = [
-      "ecs:StartTelemetrySession",
+      "ecr:BatchGetImage",
+      "ecr:GetAuthorizationToken",
+      "ecr:GetDownloadUrlForLayer",
       "ecs:DeregisterContainerInstance",
       "ecs:DiscoverPollEndpoint",
       "ecs:Poll",
       "ecs:RegisterContainerInstance",
+      "ecs:StartTelemetrySession",
       "ecs:Submit*",
-      "ecr:GetAuthorizationToken",
-      "ecr:BatchGetImage",
-      "ecr:GetDownloadUrlForLayer",
     ]
 
     resources = [
