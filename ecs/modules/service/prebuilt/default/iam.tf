@@ -28,6 +28,7 @@ data "aws_iam_policy_document" "ecs_service" {
       # By default, we use task networking, so every task gets a
       # network interface.
       "ec2:AttachNetworkInterface",
+
       "ec2:CreateNetworkInterface",
       "ec2:CreateNetworkInterfacePermission",
       "ec2:DeleteNetworkInterface",
@@ -37,6 +38,7 @@ data "aws_iam_policy_document" "ecs_service" {
 
       # These are needed for service discovery (which uses Route53).
       "route53:ChangeResourceRecordSets",
+
       "route53:CreateHealthCheck",
       "route53:DeleteHealthCheck",
       "route53:Get*",
