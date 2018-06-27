@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v11.0.0 - 2018-06-27
+
+Major overhaul of many modules.
+
+*   `network`: Public & private subnets
+*   `ec2`: Run Autoscaling groups with prebuilt modules for EBS/EFS
+*   `ecs`: Support for fargate, private services, use of EFS/EBS from container host
+
+Removed some unused and out of place modules.
+
 ## v10.3.1 - 2018-06-19
 
 This release fixes a bug in `dlami_asg`, where instances would fail to start
