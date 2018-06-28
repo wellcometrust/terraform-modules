@@ -12,6 +12,7 @@ from __future__ import print_function
 import os
 import subprocess
 
+from config import TRAVIS_KEY, TRAVIS_IV
 from hypothesistooling import changed_files, git, make
 
 
@@ -41,8 +42,8 @@ if __name__ == '__main__':
         # Unencrypt the SSH key.
         subprocess.check_call([
             'openssl', 'aes-256-cbc',
-            '-K', os.environ['encrypted_83630750896a_key'],
-            '-iv', os.environ['encrypted_83630750896a_iv'],
+            '-K', TRAVIS_KEY,
+            '-iv', TRAVIS_IV,
             '-in', 'deploy_key.enc',
             '-out', 'deploy_key', '-d'
         ])

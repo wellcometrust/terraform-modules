@@ -23,11 +23,7 @@ import sys
 import subprocess
 from datetime import datetime, timedelta
 
-
-def current_branch():
-    return subprocess.check_output([
-        'git', 'rev-parse', '--abbrev-ref', 'HEAD'
-    ]).decode('ascii').strip()
+from config import REPO_NAME
 
 
 def tags():
@@ -41,18 +37,6 @@ def tags():
 
 ROOT = subprocess.check_output([
     'git', 'rev-parse', '--show-toplevel']).decode('ascii').strip()
-
-
-__version__ = None
-__version_info__ = None
-
-VERSION_FILE = os.path.join(ROOT, 'version.txt')
-
-__version__ = open(VERSION_FILE).read().strip()
-__version_info__ = [int(i) for i in __version__.lstrip('v').split('.')]
-
-assert __version__ is not None
-assert __version_info__ is not None
 
 
 def latest_version():
@@ -81,6 +65,16 @@ def latest_version():
     return latest
 
 
+__version__ = None
+__version_info__ = None
+
+__version__ = latest_version()
+__version_info__ = [int(i) for i in __version__.lstrip('v').split('.')]
+
+assert __version__ is not None
+assert __version_info__ is not None
+
+
 def hash_for_name(name):
     return subprocess.check_output([
         'git', 'rev-parse', name
@@ -103,16 +97,6 @@ def changelog():
         return i.read()
 
 
-def has_source_changes(version=None):
-    if version is None:
-        version = latest_version()
-
-    tf_files = [
-        f for f in modified_files() if f.strip().endswith('.tf')
-    ]
-    return len(tf_files) != 0
-
-
 def git(*args):
     subprocess.check_call(('git',) + args)
 
@@ -124,7 +108,7 @@ def create_tag_and_push():
     git('config', 'core.sshCommand', 'ssh -i deploy_key')
     git(
         'remote', 'add', 'ssh-origin',
-        'git@github.com:wellcometrust/terraform-modules.git'
+        'git@github.com:wellcometrust/%s.git' % REPO_NAME
     )
     git('tag', __version__)
 
@@ -219,10 +203,6 @@ def update_changelog_and_version():
     new_version = tuple(new_version)
     new_version_string = 'v' + '.'.join(map(str, new_version))
 
-    __version__ = new_version_string
-
-    open(VERSION_FILE, 'w').write(new_version_string)
-
     now = datetime.utcnow()
 
     date = max([
@@ -251,7 +231,7 @@ def update_for_pending_release():
     update_changelog_and_version()
 
     git('rm', RELEASE_FILE)
-    git('add', CHANGELOG_FILE, VERSION_FILE)
+    git('add', CHANGELOG_FILE)
 
     git(
         'commit',

@@ -25,18 +25,11 @@ import subprocess
 
 import hypothesistooling as tools
 
-sys.path.append(os.path.dirname(__file__))  # noqa
-
-
-PENDING_STATUS = ('started', 'created')
-
 
 if __name__ == '__main__':
     last_release = tools.latest_version()
 
-    print('Current version: %s. Latest released version: %s' % (
-        tools.__version__, last_release
-    ))
+    print('Latest released version: %s' % last_release)
 
     HEAD = tools.hash_for_name('HEAD')
     MASTER = tools.hash_for_name('origin/master')
@@ -63,19 +56,13 @@ if __name__ == '__main__':
         sys.exit(1)
 
     print('Decrypting secrets')
-
-    # We'd normally avoid the use of shell=True, but this is more or less
-    # intended as an opaque string that was given to us by Travis that happens
-    # to be a shell command that we run, and there are a number of good reasons
-    # this particular instance is harmless and would be high effort to
-    # convert (principally: Lack of programmatic generation of the string and
-    # extensive use of environment variables in it), so we're making an
-    # exception here.
-    subprocess.check_call(
-        'openssl aes-256-cbc -K $encrypted_83630750896a_key '
-        '-iv $encrypted_83630750896a_iv -in deploy_key.enc -out deploy_key -d',
-        shell=True
-    )
+    subprocess.check_call([
+        'openssl', 'aes-256-cbc',
+        '-K', TRAVIS_KEY,
+        '-iv', TRAVIS_IV,
+        '-in', 'deploy_key.enc',
+        '-out', 'deploy_key', '-d'
+    ])
     subprocess.check_call(['chmod', '400', 'deploy_key'])
 
     print('Release seems good. Pushing to GitHub now.')
