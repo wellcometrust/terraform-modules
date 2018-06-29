@@ -43,11 +43,10 @@ module "service" {
 }
 
 module "task" {
-  source = "..\/..\/..\/task\/prebuilt\/single_container"
+  source = "../../../task/prebuilt/single_container"
 
   task_name = "${var.service_name}"
 
-  container_name  = "${var.container_name}"
   container_port  = "${var.container_port}"
   container_image = "${var.container_image}"
 
@@ -55,8 +54,6 @@ module "task" {
   cpu    = "${var.cpu}"
 
   env_vars = "${var.env_vars}"
-
-  launch_types = ["${var.launch_type}"]
 
   aws_region = "${var.aws_region}"
 }

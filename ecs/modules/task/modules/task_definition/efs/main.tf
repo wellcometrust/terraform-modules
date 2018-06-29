@@ -1,5 +1,5 @@
 module "iam_roles" {
-  source = "../../modules/iam_roles"
+  source = "../../iam_roles"
 
   task_name = "${var.task_name}"
 }

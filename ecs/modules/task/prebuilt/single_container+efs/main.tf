@@ -20,7 +20,7 @@ module "container_definition" {
 }
 
 module "task_definition" {
-  source = "../../modules/task_definition/efs"
+  source    = "../../modules/task_definition/efs"
   task_name = "${var.task_name}"
 
   task_definition_rendered = "${module.container_definition.rendered}"

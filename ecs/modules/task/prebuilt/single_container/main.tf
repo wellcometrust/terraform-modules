@@ -18,7 +18,7 @@ module "container_definition" {
 }
 
 module "task_definition" {
-  source = "../../modules/task_definition/default"
+  source    = "../../modules/task_definition/default"
   task_name = "${var.task_name}"
 
   task_definition_rendered = "${module.container_definition.rendered}"

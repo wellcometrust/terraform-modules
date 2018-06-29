@@ -7,10 +7,7 @@
     "memory": ${sidecar_memory},
     "cpu": ${sidecar_cpu},
     "networkMode": "awsvpc",
-    "portMappings": [{
-        "containerPort": ${sidecar_container_port}
-    }],
-    "links": ${sidecar_links},
+    "portMappings": ${sidecar_port_mappings},
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
@@ -29,10 +26,7 @@
     "name": "${app_container_name}",
     "environment": ${app_environment_vars},
     "networkMode": "awsvpc",
-    "portMappings": [{
-        "containerPort": ${app_container_port}
-    }],
-    "links": ${app_links},
+    "portMappings": ${app_port_mappings},
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {

@@ -7,9 +7,7 @@
     "name": "${container_name}",
     "environment": ${environment_vars},
     "networkMode": "awsvpc",
-    "portMappings": [{
-        "containerPort": ${container_port}
-    }],
+    "portMappings": ${port_mappings},
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {

@@ -1,20 +1,22 @@
 variable "aws_region" {}
 
 variable "task_name" {}
+
 variable "log_group_prefix" {
   description = "Cloudwatch log group name prefix"
   default     = "ecs"
 }
 
 variable "sidecar_is_proxy" {
-  default = false
+  default = "false"
 }
 
 # App
 
 variable "app_container_image" {}
-variable "app_container_port" {
-  default = "1337"
+
+variable "app_port_mappings_string" {
+  default = "[]"
 }
 
 variable "app_cpu" {}
@@ -34,8 +36,9 @@ variable "app_env_vars" {
 # Sidecar
 
 variable "sidecar_container_image" {}
-variable "sidecar_container_port" {
-  default = "1337"
+
+variable "sidecar_port_mappings_string" {
+  default = "[]"
 }
 
 variable "sidecar_cpu" {}

@@ -10,24 +10,45 @@ module "container_definition" {
   app_cpu    = "${var.app_cpu}"
   app_memory = "${var.app_memory}"
 
-  app_container_image = "${var.app_container_image}"
-  app_container_port  = "${var.app_container_port}"
-  app_env_vars        = "${var.app_env_vars}"
-
-  sidecar_container_image = "${var.sidecar_container_image}"
-  sidecar_container_port  = "${var.sidecar_container_port}"
+  app_container_image      = "${var.app_container_image}"
+  app_port_mappings_string = "${module.app_port_mappings.port_mappings_string}"
+  app_env_vars             = "${var.app_env_vars}"
 
   sidecar_memory = "${var.sidecar_memory}"
   sidecar_cpu    = "${var.sidecar_cpu}"
-  sidecar_env_vars = "${var.sidecar_env_vars}"
+
+  sidecar_container_image      = "${var.sidecar_container_image}"
+  sidecar_port_mappings_string = "${module.sidecar_port_mappings.port_mappings_string}"
+  sidecar_env_vars             = "${var.sidecar_env_vars}"
+
+  sidecar_is_proxy = "${var.sidecar_is_proxy}"
 }
 
 module "task_definition" {
-  source = "../../modules/task_definition/default"
+  source    = "../../modules/task_definition/default"
   task_name = "${var.task_name}"
 
   task_definition_rendered = "${module.container_definition.rendered}"
 
   cpu    = "${var.cpu}"
   memory = "${var.memory}"
+}
+
+locals {
+  expose_app_port     = "${var.sidecar_is_proxy == "false" ? "true" : "false"}"
+  expose_sidecar_port = "${var.sidecar_is_proxy == "false" ? "false" : "true"}"
+}
+
+module "app_port_mappings" {
+  source         = "../../modules/port_mappings"
+  container_port = "${var.app_container_port}"
+
+  expose_port = "${local.expose_app_port}"
+}
+
+module "sidecar_port_mappings" {
+  source         = "../../modules/port_mappings"
+  container_port = "${var.sidecar_container_port}"
+
+  expose_port = "${local.expose_sidecar_port}"
 }

@@ -17,6 +17,7 @@ variable "container_port" {}
 variable "cpu" {
   default = 512
 }
+
 variable "memory" {
   default = 1024
 }
