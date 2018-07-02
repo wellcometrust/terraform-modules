@@ -16,7 +16,7 @@ variable "asg_desired" {
 
 variable "asg_max" {
   description = "Max number of instances"
-  default = "2"
+  default     = "2"
 }
 
 variable "instance_type" {

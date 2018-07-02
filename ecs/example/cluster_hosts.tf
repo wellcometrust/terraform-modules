@@ -13,7 +13,7 @@ module "ec2_hosts_ondemand" {
   key_name = "wellcomedigitalplatform"
 
   instance_type = "t2.large"
-  asg_desired = "2"
+  asg_desired   = "2"
 }
 
 # EC2 Cluster hosts - spot
