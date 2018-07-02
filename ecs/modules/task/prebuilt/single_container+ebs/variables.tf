@@ -12,7 +12,9 @@ variable "log_group_prefix" {
 }
 
 variable "container_image" {}
-variable "container_port" {}
+variable "container_port" {
+  default = "false"
+}
 
 variable "cpu" {
   default = 512

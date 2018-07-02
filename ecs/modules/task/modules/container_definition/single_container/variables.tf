@@ -7,7 +7,9 @@ variable "env_vars" {
 }
 
 variable "task_name" {}
-variable "task_port" {}
+variable "task_port" {
+  default = "false"
+}
 
 variable "log_group_prefix" {
   description = "Cloudwatch log group name prefix"

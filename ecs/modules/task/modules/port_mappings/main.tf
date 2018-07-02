@@ -1,4 +1,6 @@
-variable "container_port" {}
+variable "container_port" {
+  default = "false"
+}
 
 variable "host_port" {
   default = "0"
@@ -30,8 +32,9 @@ locals {
   }
 
   port_mapping_without_host_string = "[${replace(jsonencode(local.port_mapping_without_host), "/\"([0-9]+\\.?[0-9]*)\"/", "$1")}]"
+  port_mapping_string_without_check = "${var.expose_port == "false" ? local.port_mapping_without_host_string : local.port_mapping_with_host_string}"
 
-  port_mapping_string = "${var.expose_port == "false" ? local.port_mapping_without_host_string : local.port_mapping_with_host_string}"
+  port_mapping_string = "${var.container_port == "false" ? "{}" : local.port_mapping_string_without_check}"
 }
 
 output "port_mappings_string" {
