@@ -23,8 +23,6 @@ module "container_definition" {
   sidecar_memory   = "${var.sidecar_memory}"
   sidecar_cpu      = "${var.sidecar_cpu}"
   sidecar_env_vars = "${var.sidecar_env_vars}"
-
-  sidecar_is_proxy = "${var.sidecar_is_proxy}"
 }
 
 module "task_definition" {
