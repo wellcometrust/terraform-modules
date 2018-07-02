@@ -20,8 +20,6 @@ module "container_definition" {
   sidecar_container_image      = "${var.sidecar_container_image}"
   sidecar_port_mappings_string = "${module.sidecar_port_mappings.port_mappings_string}"
   sidecar_env_vars             = "${var.sidecar_env_vars}"
-
-  sidecar_is_proxy = "${var.sidecar_is_proxy}"
 }
 
 module "task_definition" {
