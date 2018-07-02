@@ -35,6 +35,9 @@ module "task_definition" {
 
   efs_container_path = "${var.efs_container_path}"
   efs_host_path      = "${var.efs_host_path}"
+
+  cpu    = "${var.cpu}"
+  memory = "${var.memory}"
 }
 
 locals {

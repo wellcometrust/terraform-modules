@@ -7,10 +7,6 @@ variable "log_group_prefix" {
   default     = "ecs"
 }
 
-variable "sidecar_is_proxy" {
-  default = "false"
-}
-
 # App
 
 variable "app_container_image" {}

@@ -22,4 +22,7 @@ module "task_definition" {
   task_name = "${var.task_name}"
 
   task_definition_rendered = "${module.container_definition.rendered}"
+
+  cpu    = "${var.cpu}"
+  memory = "${var.memory}"
 }

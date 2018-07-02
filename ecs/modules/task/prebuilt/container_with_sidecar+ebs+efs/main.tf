@@ -38,6 +38,9 @@ module "task_definition" {
 
   ebs_container_path = "${var.ebs_container_path}"
   ebs_host_path      = "${var.ebs_host_path}"
+
+  cpu    = "${var.cpu}"
+  memory = "${var.memory}"
 }
 
 locals {
