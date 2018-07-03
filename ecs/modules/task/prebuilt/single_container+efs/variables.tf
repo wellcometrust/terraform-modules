@@ -12,6 +12,7 @@ variable "log_group_prefix" {
 }
 
 variable "container_image" {}
+
 variable "container_port" {
   default = "false"
 }
