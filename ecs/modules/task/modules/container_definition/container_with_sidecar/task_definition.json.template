@@ -6,7 +6,6 @@
     "image": "${sidecar_container_image}",
     "memory": ${sidecar_memory},
     "cpu": ${sidecar_cpu},
-    "networkMode": "awsvpc",
     "portMappings": ${sidecar_port_mappings},
     "logConfiguration": {
         "logDriver": "awslogs",
@@ -25,7 +24,6 @@
     "cpu": ${app_cpu},
     "name": "${app_container_name}",
     "environment": ${app_environment_vars},
-    "networkMode": "awsvpc",
     "portMappings": ${app_port_mappings},
     "logConfiguration": {
         "logDriver": "awslogs",
