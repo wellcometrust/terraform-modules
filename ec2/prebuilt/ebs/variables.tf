@@ -68,3 +68,7 @@ variable "ebs_size" {
   # 1GB
   default = "1"
 }
+
+variable "ebs_volume_type" {
+  default = "standard"
+}

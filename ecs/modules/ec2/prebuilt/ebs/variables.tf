@@ -59,3 +59,7 @@ variable "ebs_size" {
 variable "ebs_host_path" {
   default = "/ebs"
 }
+
+variable "ebs_volume_type" {
+  default = "standard"
+}

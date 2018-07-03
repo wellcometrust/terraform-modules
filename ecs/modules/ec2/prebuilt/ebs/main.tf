@@ -21,7 +21,8 @@ module "asg" {
 
   instance_type = "${var.instance_type}"
 
-  ebs_size = "${var.ebs_size}"
+  ebs_size        = "${var.ebs_size}"
+  ebs_volume_type = "${var.ebs_volume_type}"
 }
 
 data "template_file" "userdata" {
