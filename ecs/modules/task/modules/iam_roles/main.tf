@@ -5,8 +5,6 @@ resource "aws_iam_role" "task_role" {
 
 data "aws_iam_policy_document" "assume_ecs_role" {
   statement {
-    sid = "${var.task_name}_assume_ecs_role"
-
     actions = [
       "sts:AssumeRole",
     ]
@@ -30,8 +28,6 @@ resource "aws_iam_role_policy" "execution_role_policy" {
 
 data "aws_iam_policy_document" "task_execution_role" {
   statement {
-    sid = "${var.task_name}_task_execution_role"
-
     actions = [
       "ecr:GetAuthorizationToken",
       "ecr:BatchCheckLayerAvailability",
