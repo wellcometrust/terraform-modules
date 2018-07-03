@@ -1,9 +1,12 @@
 resource "aws_iam_role" "task_role" {
+  name = "${var.task_name}_task_role"
   assume_role_policy = "${data.aws_iam_policy_document.assume_ecs_role.json}"
 }
 
 data "aws_iam_policy_document" "assume_ecs_role" {
   statement {
+    sid = "${var.task_name}_assume_ecs_role"
+
     actions = [
       "sts:AssumeRole",
     ]
@@ -16,6 +19,7 @@ data "aws_iam_policy_document" "assume_ecs_role" {
 }
 
 resource "aws_iam_role" "execution_role" {
+  name = "${var.task_name}_execution_role"
   assume_role_policy = "${data.aws_iam_policy_document.assume_ecs_role.json}"
 }
 
@@ -26,6 +30,8 @@ resource "aws_iam_role_policy" "execution_role_policy" {
 
 data "aws_iam_policy_document" "task_execution_role" {
   statement {
+    sid = "${var.task_name}_task_execution_role"
+
     actions = [
       "ecr:GetAuthorizationToken",
       "ecr:BatchCheckLayerAvailability",

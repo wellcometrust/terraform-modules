@@ -1,6 +1,6 @@
 data "aws_iam_policy_document" "instance_policy" {
   statement {
-    sid = "ecsInstanceRole"
+    sid = "${var.cluster_name}_instance_policy"
 
     actions = [
       "ecr:BatchGetImage",
