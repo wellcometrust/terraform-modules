@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.1.0 - 2018-07-04
+
+Allow multiple containers in task definitions and add support for DAEMON tasks.
+
 ## v11.0.0 - 2018-06-27
 
 Major overhaul of many modules.
