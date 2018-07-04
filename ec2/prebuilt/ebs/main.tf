@@ -22,7 +22,8 @@ module "launch_config" {
   associate_public_ip_address = "${var.associate_public_ip_address}"
   instance_security_groups    = ["${module.security_groups.instance_security_groups}"]
 
-  ebs_size = "${var.ebs_size}"
+  ebs_size        = "${var.ebs_size}"
+  ebs_volume_type = "${var.ebs_volume_type}"
 }
 
 module "security_groups" {

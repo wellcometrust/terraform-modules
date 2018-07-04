@@ -11,6 +11,9 @@ module "ec2_hosts_ondemand" {
 
   subnets  = "${module.network.private_subnets}"
   key_name = "wellcomedigitalplatform"
+
+  instance_type = "t2.large"
+  asg_desired   = "2"
 }
 
 # EC2 Cluster hosts - spot
@@ -26,6 +29,8 @@ module "ec2_host_spot" {
 
   subnets  = "${module.network.private_subnets}"
   key_name = "wellcomedigitalplatform"
+
+  spot_price = "0.5"
 }
 
 # EC2 Cluster hosts - ebs
@@ -92,4 +97,6 @@ module "ec2_ebs_efs_host" {
 
   efs_fs_id = "${module.efs.efs_id}"
   region    = "${local.aws_region}"
+
+  asg_desired = "2"
 }

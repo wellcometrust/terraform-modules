@@ -1,0 +1,22 @@
+[
+  {
+    "cpu": ${cpu},
+    "memory": ${memory},
+    "essential": true,
+    "image": "${container_image}",
+    "name": "${container_name}",
+    "environment": ${environment_vars},
+    "networkMode": "awsvpc",
+    "portMappings": ${port_mappings},
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "${log_group_name}",
+            "awslogs-region": "${log_group_region}",
+            "awslogs-stream-prefix": "${log_group_prefix}"
+        }
+    },
+    "mountPoints": ${mount_points}
+  }
+]
+

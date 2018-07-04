@@ -21,7 +21,7 @@ resource "aws_service_discovery_private_dns_namespace" "namespace" {
 }
 
 module "task" {
-  source = "../modules/task/prebuilt/default"
+  source = "../modules/task/prebuilt/single_container"
 
   aws_region = "${local.aws_region}"
   task_name  = "${local.namespace}"
@@ -30,20 +30,42 @@ module "task" {
   container_port  = "80"
 }
 
+module "task_with_sidecar" {
+  source = "../modules/task/prebuilt/container_with_sidecar"
+
+  aws_region = "${local.aws_region}"
+  task_name  = "${local.namespace}_with_sidecar"
+
+  memory = "2048"
+  cpu    = "1024"
+
+  app_container_image = "strm/helloworld-http"
+  app_container_port  = "80"
+
+  app_cpu    = "512"
+  app_memory = "1024"
+
+  sidecar_container_image = "memcached"
+  sidecar_container_port  = "11211"
+
+  sidecar_cpu    = "512"
+  sidecar_memory = "1024"
+}
+
 # Fargate service - public
 
 module "ecs_fargate_public" {
   source = "../modules/service/prebuilt/load_balanced"
 
-  service_name       = "${local.namespace}_fargate_public"
+  service_name       = "${local.namespace}_with_lb"
   task_desired_count = "1"
 
   task_definition_arn = "${module.task.task_definition_arn}"
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_lb_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  container_name = "${module.task.container_name}"
-  container_port = "${module.task.container_port}"
+  container_name = "${module.task.task_name}"
+  container_port = "80"
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
@@ -54,6 +76,32 @@ module "ecs_fargate_public" {
   healthcheck_path = "/"
 
   launch_type = "FARGATE"
+}
+
+# Fargate service - public - with sidecar
+
+module "ecs_fargate_public_with_sidecar" {
+  source = "../modules/service/prebuilt/load_balanced"
+
+  service_name       = "${local.namespace}_with_lb_with_sidecar"
+  task_desired_count = "1"
+
+  task_definition_arn = "${module.task_with_sidecar.task_definition_arn}"
+
+  security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}", "${aws_security_group.service_lb_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
+
+  container_name = "${module.task_with_sidecar.app_task_name}"
+  container_port = "80"
+
+  ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
+
+  vpc_id  = "${module.network.vpc_id}"
+  subnets = "${module.network.private_subnets}"
+
+  namespace_id     = "${aws_service_discovery_private_dns_namespace.namespace.id}"
+  healthcheck_path = "/"
+
+  launch_type = "EC2"
 }
 
 # Fargate service - private
@@ -68,7 +116,7 @@ module "ecs_fargate_private" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  container_port = "${module.task.container_port}"
+  container_port = "${module.task.task_port}"
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
@@ -92,8 +140,8 @@ module "ecs_ec2_public" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_lb_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  container_name = "${module.task.container_name}"
-  container_port = "${module.task.container_port}"
+  container_name = "${module.task.task_name}"
+  container_port = "${module.task.task_port}"
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
@@ -118,7 +166,7 @@ module "ecs_ec2_private" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  container_port = "${module.task.container_port}"
+  container_port = "${module.task.task_port}"
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
@@ -133,7 +181,7 @@ module "ecs_ec2_private" {
 # EC2 service - private - ebs
 
 module "ebs_task" {
-  source = "../modules/task/prebuilt/ebs"
+  source = "../modules/task/prebuilt/single_container+ebs"
 
   aws_region = "${local.aws_region}"
   task_name  = "${local.namespace}_ec2_private_ebs"
@@ -155,7 +203,7 @@ module "ecs_ec2_private_ebs" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  container_port = "${module.ebs_task.container_port}"
+  container_port = "${module.task.task_port}"
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
@@ -170,7 +218,7 @@ module "ecs_ec2_private_ebs" {
 # EC2 service - private - efs
 
 module "efs_task" {
-  source = "../modules/task/prebuilt/efs"
+  source = "../modules/task/prebuilt/single_container+efs"
 
   aws_region = "${local.aws_region}"
   task_name  = "${local.namespace}_ec2_private_efs"
@@ -192,7 +240,7 @@ module "ecs_ec2_private_efs" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  container_port = "${module.efs_task.container_port}"
+  container_port = "${module.efs_task.task_port}"
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
@@ -207,7 +255,7 @@ module "ecs_ec2_private_efs" {
 # EC2 service - private - ebs+efs
 
 module "ebs_efs_task" {
-  source = "../modules/task/prebuilt/ebs+efs"
+  source = "../modules/task/prebuilt/single_container+ebs+efs"
 
   aws_region = "${local.aws_region}"
   task_name  = "${local.namespace}_ec2_private_ebs_efs"
@@ -232,7 +280,7 @@ module "ecs_ec2_private_ebs_efs" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  container_port = "${module.ebs_efs_task.container_port}"
+  container_port = "${module.ebs_efs_task.task_port}"
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 

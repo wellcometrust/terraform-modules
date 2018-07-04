@@ -1,0 +1,38 @@
+[
+  {
+    "essential": true,
+    "name": "${sidecar_container_name}",
+    "environment": ${sidecar_environment_vars},
+    "image": "${sidecar_container_image}",
+    "memory": ${sidecar_memory},
+    "cpu": ${sidecar_cpu},
+    "portMappings": ${sidecar_port_mappings},
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "${sidecar_log_group_name}",
+            "awslogs-region": "${log_group_region}",
+            "awslogs-stream-prefix": "${log_group_prefix}"
+        }
+    },
+    "mountPoints": ${sidecar_mount_points}
+  },
+  {
+    "essential": true,
+    "image": "${app_container_image}",
+    "memory": ${app_memory},
+    "cpu": ${app_cpu},
+    "name": "${app_container_name}",
+    "environment": ${app_environment_vars},
+    "portMappings": ${app_port_mappings},
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "${app_log_group_name}",
+            "awslogs-region": "${log_group_region}",
+            "awslogs-stream-prefix": "${log_group_prefix}"
+        }
+    },
+    "mountPoints": ${app_mount_points}
+  }
+]
