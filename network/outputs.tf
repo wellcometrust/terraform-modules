@@ -9,3 +9,7 @@ output "public_subnets" {
 output "vpc_id" {
   value = "${aws_vpc.vpc.id}"
 }
+
+output "num_subnets" {
+  value = "${var.az_count}"
+}
