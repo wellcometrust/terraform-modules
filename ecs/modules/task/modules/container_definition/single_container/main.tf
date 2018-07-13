@@ -41,4 +41,5 @@ module "env_vars" {
   source = "../../env_vars"
 
   env_vars = "${var.env_vars}"
+  env_vars_length = "${var.env_vars_length}"
 }

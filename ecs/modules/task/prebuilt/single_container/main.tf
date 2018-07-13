@@ -15,6 +15,8 @@ module "container_definition" {
   memory = "${var.memory}"
 
   task_port = "${var.container_port}"
+
+  env_vars_length = "${var.env_vars_length}"
 }
 
 module "task_definition" {

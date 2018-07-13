@@ -76,3 +76,6 @@ variable "security_group_ids" {
 variable "namespace_id" {
   default = "ecs"
 }
+variable "env_vars_length" {
+  default = 0
+}

@@ -47,7 +47,7 @@
 # docs: https://www.terraform.io/docs/configuration/interpolation.html
 
 data "template_file" "name_val_pair" {
-  count    = "${length(var.env_vars)}"
+  count    = "${var.env_vars_length}"
   template = "{\"name\": $${jsonencode(key)}, \"value\": $${jsonencode(value)}}"
 
   vars {

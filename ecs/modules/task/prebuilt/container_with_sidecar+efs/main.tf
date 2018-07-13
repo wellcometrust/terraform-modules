@@ -23,6 +23,9 @@ module "container_definition" {
   sidecar_memory   = "${var.sidecar_memory}"
   sidecar_cpu      = "${var.sidecar_cpu}"
   sidecar_env_vars = "${var.sidecar_env_vars}"
+
+  app_env_vars_length = "${var.app_env_vars_length}"
+  sidecar_env_vars_length = "${var.sidecar_env_vars_length}"
 }
 
 module "task_definition" {

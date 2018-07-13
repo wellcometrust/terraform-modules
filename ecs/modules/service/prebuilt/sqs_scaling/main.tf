@@ -54,6 +54,7 @@ module "task" {
   cpu    = "${var.cpu}"
 
   env_vars = "${var.env_vars}"
+  env_vars_length = "${var.env_vars_length}"
 
   aws_region = "${var.aws_region}"
 }
