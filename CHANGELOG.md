@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.3.0 - 2018-07-16
+
+Update port mappings module in /ecs to presume awsvpc networking.
+
 ## v11.2.0 - 2018-07-16
 
 Force specifying number of environment variavles when passing them to tasks
