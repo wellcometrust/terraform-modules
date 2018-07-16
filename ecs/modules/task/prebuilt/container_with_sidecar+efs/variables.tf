@@ -38,3 +38,11 @@ variable "aws_region" {}
 
 variable "efs_host_path" {}
 variable "efs_container_path" {}
+
+variable "app_env_vars_length" {
+  default = 0
+}
+
+variable "sidecar_env_vars_length" {
+  default = 0
+}

@@ -40,7 +40,7 @@ resource "aws_appautoscaling_policy" "scale_down" {
 
 resource "aws_appautoscaling_target" "service_scale_target" {
   service_namespace  = "ecs"
-  resource_id        = "service/${var.cluster_name}/${var.service_name}"
+  resource_id        = "${local.resource_id}"
   scalable_dimension = "ecs:service:DesiredCount"
   role_arn           = "${aws_iam_role.ecs_autoscale_role.arn}"
 

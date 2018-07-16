@@ -16,7 +16,8 @@ module "container_definition" {
 
   mount_points = "${module.task_definition.mount_points}"
 
-  task_port = "${var.container_port}"
+  task_port       = "${var.container_port}"
+  env_vars_length = "${var.env_vars_length}"
 }
 
 module "task_definition" {

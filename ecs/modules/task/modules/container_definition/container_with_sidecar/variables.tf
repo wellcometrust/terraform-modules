@@ -29,6 +29,10 @@ variable "app_env_vars" {
   default     = {}
 }
 
+variable "sidecar_env_vars_length" {
+  default = 0
+}
+
 # Sidecar
 
 variable "sidecar_container_image" {}
@@ -49,4 +53,8 @@ variable "sidecar_env_vars" {
   description = "Environment variables to pass to the container"
   type        = "map"
   default     = {}
+}
+
+variable "app_env_vars_length" {
+  default = 0
 }
