@@ -35,9 +35,11 @@ variable "sidecar_is_proxy" {
 }
 
 variable "aws_region" {}
+
 variable "app_env_vars_length" {
   default = 0
 }
+
 variable "sidecar_env_vars_length" {
   default = 0
 }

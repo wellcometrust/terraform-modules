@@ -21,7 +21,7 @@ module "container_definition" {
   sidecar_port_mappings_string = "${module.sidecar_port_mappings.port_mappings_string}"
   sidecar_env_vars             = "${var.sidecar_env_vars}"
 
-  app_env_vars_length = "${var.app_env_vars_length}"
+  app_env_vars_length     = "${var.app_env_vars_length}"
   sidecar_env_vars_length = "${var.sidecar_env_vars_length}"
 }
 

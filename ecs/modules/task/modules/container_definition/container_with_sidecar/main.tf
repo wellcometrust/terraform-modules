@@ -55,8 +55,8 @@ module "sidecar_log_group" {
 }
 
 module "sidecar_env_vars" {
-  source   = "../../env_vars"
-  env_vars = "${var.sidecar_env_vars}"
+  source          = "../../env_vars"
+  env_vars        = "${var.sidecar_env_vars}"
   env_vars_length = "${var.sidecar_env_vars_length}"
 }
 
@@ -68,7 +68,7 @@ module "app_log_group" {
 }
 
 module "app_env_vars" {
-  source   = "../../env_vars"
-  env_vars = "${var.app_env_vars}"
+  source          = "../../env_vars"
+  env_vars        = "${var.app_env_vars}"
   env_vars_length = "${var.app_env_vars_length}"
 }
