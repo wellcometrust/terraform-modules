@@ -46,13 +46,9 @@ locals {
 module "app_port_mappings" {
   source         = "../../modules/port_mappings"
   container_port = "${var.app_container_port}"
-
-  expose_port = "${local.expose_app_port}"
 }
 
 module "sidecar_port_mappings" {
   source         = "../../modules/port_mappings"
   container_port = "${var.sidecar_container_port}"
-
-  expose_port = "${local.expose_sidecar_port}"
 }
