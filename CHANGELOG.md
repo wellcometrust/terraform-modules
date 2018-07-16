@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.2.0 - 2018-07-16
+
+Force specifying number of environment variavles when passing them to tasks
+
 ## v11.1.0 - 2018-07-04
 
 Allow multiple containers in task definitions and add support for DAEMON tasks.
