@@ -6,10 +6,6 @@ variable "host_port" {
   default = "0"
 }
 
-variable "expose_port" {
-  default = "false"
-}
-
 variable "protocol" {
   description = "Valid values are 'tcp' or 'udp'"
   default     = "tcp"
@@ -26,15 +22,7 @@ locals {
 
   port_mapping_with_host_string = "[${replace(jsonencode(local.port_mapping_with_host), "/\"([0-9]+\\.?[0-9]*)\"/", "$1")}]"
 
-  port_mapping_without_host = {
-    ContainerPort = "${var.container_port}"
-    Protocol      = "${var.protocol}"
-  }
-
-  port_mapping_without_host_string  = "[${replace(jsonencode(local.port_mapping_without_host), "/\"([0-9]+\\.?[0-9]*)\"/", "$1")}]"
-  port_mapping_string_without_check = "${var.expose_port == "false" ? local.port_mapping_without_host_string : local.port_mapping_with_host_string}"
-
-  port_mapping_string = "${var.container_port == "false" ? "[]" : local.port_mapping_string_without_check}"
+  port_mapping_string = "${var.container_port == "false" ? "[]" : local.port_mapping_with_host_string}"
 }
 
 output "port_mappings_string" {
