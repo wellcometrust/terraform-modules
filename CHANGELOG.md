@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.3.1 - 2018-07-16
+
+Fix duplicate instance role policy names
+
 ## v11.3.0 - 2018-07-16
 
 Update port mappings module in /ecs to presume awsvpc networking.
