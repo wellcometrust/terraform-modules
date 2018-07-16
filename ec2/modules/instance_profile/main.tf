@@ -19,7 +19,7 @@ data "aws_iam_policy_document" "instance_policy" {
 }
 
 resource "aws_iam_role_policy" "instance" {
-  name   = "${var.name}_instance_role_policy"
+  name = "${var.name}_instance_role_policy"
 
   role   = "${aws_iam_role.role.name}"
   policy = "${data.aws_iam_policy_document.instance_policy.json}"
