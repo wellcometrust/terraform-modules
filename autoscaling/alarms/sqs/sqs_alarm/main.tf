@@ -11,13 +11,13 @@ resource "aws_cloudwatch_metric_alarm" "queue" {
   evaluation_periods = "${var.period_in_minutes}"
 
   datapoints_to_alarm = "${var.period_in_minutes}"
-  metric_name         = "ApproximateNumberOfMessagesVisible"
+  metric_name         = "${var.metric_name}"
 
   dimensions {
     QueueName = "${var.queue_name}"
   }
 
-  statistic = "Average"
+  statistic = "${var.statistic}"
   namespace = "AWS/SQS"
 
   // This is the period over which the statistic is calculated
