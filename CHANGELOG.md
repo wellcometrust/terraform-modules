@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.4.1 - 2018-07-17
+
+Modify SQS autoscaling to scale down on messages deleted <= 0 instead of messages visible on the queue.
+
 ## v11.4.0 - 2018-07-17
 
 Fix computed map issue for rds
