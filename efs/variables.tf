@@ -20,3 +20,7 @@ variable "performance_mode" {
   description = "EFS Performance mode (generalPurpose or maxIO)"
   default     = "generalPurpose"
 }
+
+variable "num_subnets" {
+  description = "Number of subnets"
+}
