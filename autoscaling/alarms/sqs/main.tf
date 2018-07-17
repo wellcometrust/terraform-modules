@@ -9,9 +9,9 @@ module "queue_high" {
 
   comparison_operator = "GreaterThanOrEqualToThreshold"
 
-  target_arn = "${var.scale_up_arn}"
+  target_arn  = "${var.scale_up_arn}"
   metric_name = "ApproximateNumberOfMessagesVisible"
-  statistic = "Maximum"
+  statistic   = "Maximum"
 }
 
 module "queue_low" {
@@ -25,7 +25,7 @@ module "queue_low" {
 
   comparison_operator = "LessThanThreshold"
 
-  target_arn = "${var.scale_down_arn}"
+  target_arn  = "${var.scale_down_arn}"
   metric_name = "NumberOfMessagesDeleted"
-  statistic = "Sum"
+  statistic   = "Sum"
 }
