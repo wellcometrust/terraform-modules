@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.4.0 - 2018-07-17
+
+Fix computed map issue for rds
+
 ## v11.3.1 - 2018-07-16
 
 Fix duplicate instance role policy names
