@@ -11,7 +11,7 @@ module "queue_high" {
 
   target_arn = "${var.scale_up_arn}"
   metric_name = "ApproximateNumberOfMessagesVisible"
-  statistic = "Average"
+  statistic = "Maximum"
 }
 
 module "queue_low" {
