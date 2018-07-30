@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.5.0 - 2018-07-30
+
+This adds an output for the `lambda` module, so that the `invoke_arn` property of the `aws_lambda_function` can be integrated with API Gateway.
+
 ## v11.4.1 - 2018-07-17
 
 Modify SQS autoscaling to scale down on messages deleted <= 0 instead of messages visible on the queue.
