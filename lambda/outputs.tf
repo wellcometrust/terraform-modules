@@ -12,3 +12,8 @@ output "role_name" {
   description = "Name of the IAM role for this Lambda"
   value       = "${aws_iam_role.iam_role.name}"
 }
+
+output "invoke_arn" {
+  description = "The ARN to be used for invoking Lambda Function from API Gateway"
+  value       = "${aws_lambda_function.lambda_function.invoke_arn}"
+}
