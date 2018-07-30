@@ -49,3 +49,6 @@ variable "enable_alb_alarm" {
 variable "server_error_alarm_topic_arn" {
   default = ""
 }
+variable "client_error_alarm_topic_arn" {
+  default = ""
+}
