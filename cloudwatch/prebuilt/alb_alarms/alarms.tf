@@ -1,5 +1,6 @@
+
 module "alb_target_500_errors" {
-  enable_alarm = 1
+  enable_alarm = "${var.enable_alb_alarm}"
 
   source = "../../modules/alb"
   name   = "${var.service_name}-alb-target-500-errors"
@@ -12,7 +13,7 @@ module "alb_target_500_errors" {
 }
 
 module "alb_target_400_errors" {
-  enable_alarm = 1
+  enable_alarm = "${var.enable_alb_alarm}"
 
   source = "../../modules/alb"
   name   = "${var.service_name}-alb-target-400-errors"
@@ -25,7 +26,7 @@ module "alb_target_400_errors" {
 }
 
 module "unhealthy_hosts_alarm" {
-  enable_alarm = 1
+  enable_alarm = "${var.enable_alb_alarm}"
 
   source = "../../modules/alb"
   name   = "${var.service_name}-alb-unhealthy-hosts"
@@ -44,7 +45,7 @@ module "alb_alarm" {
   #
   # If this is zero (i.e. it's okay to go down to no running hosts), we don't
   # alarm --- this is not an uptime-critical service.
-  enable_alarm = "${ceil(var.healthy_host_threshold) > 0}"
+  enable_alarm = "${ceil(var.healthy_host_threshold) > 0 && var.enable_alb_alarm ? 1 : 0}"
   tg_dimension = "${var.target_group_id}"
   lb_dimension = "${var.loadbalancer_cloudwatch_id}"
   name   = "${var.service_name}-alb-not-enough-healthy-hosts"

@@ -12,3 +12,6 @@ variable "client_error_alarm_topic_arn" {
 
 variable "healthy_host_threshold" {
 }
+variable "enable_alb_alarm" {
+  default = 1
+}
