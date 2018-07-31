@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.6.0 - 2018-07-31
+
+Add cloudwatch alb alarm modules
+
 ## v11.5.0 - 2018-07-30
 
 This adds an output for the `lambda` module, so that the `invoke_arn` property of the `aws_lambda_function` can be integrated with API Gateway.
