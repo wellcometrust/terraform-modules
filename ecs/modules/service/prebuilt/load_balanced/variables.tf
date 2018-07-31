@@ -40,15 +40,19 @@ variable service_discovery_failure_threshold {
 variable "namespace_id" {
   default = "ecs"
 }
+
 variable "loadbalancer_cloudwatch_id" {
   default = ""
 }
+
 variable "enable_alb_alarm" {
   default = 0
 }
+
 variable "server_error_alarm_topic_arn" {
   default = ""
 }
+
 variable "client_error_alarm_topic_arn" {
   default = ""
 }

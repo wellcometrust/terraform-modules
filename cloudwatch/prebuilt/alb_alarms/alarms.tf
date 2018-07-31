@@ -1,4 +1,3 @@
-
 module "alb_target_500_errors" {
   enable_alarm = "${var.enable_alb_alarm}"
 
@@ -40,15 +39,17 @@ module "unhealthy_hosts_alarm" {
 
 module "alb_alarm" {
   source = "../../modules/alb"
+
   # The rule here is: if we have less than the minimum percent of
   # healthy hosts, we should alarm.
   #
   # If this is zero (i.e. it's okay to go down to no running hosts), we don't
   # alarm --- this is not an uptime-critical service.
   enable_alarm = "${ceil(var.healthy_host_threshold) > 0 && var.enable_alb_alarm ? 1 : 0}"
-  tg_dimension = "${var.target_group_id}"
-  lb_dimension = "${var.loadbalancer_cloudwatch_id}"
-  name   = "${var.service_name}-alb-not-enough-healthy-hosts"
+
+  tg_dimension        = "${var.target_group_id}"
+  lb_dimension        = "${var.loadbalancer_cloudwatch_id}"
+  name                = "${var.service_name}-alb-not-enough-healthy-hosts"
   comparison_operator = "LessThanThreshold"
   metric              = "HealthyHostCount"
   topic_arn           = "${var.server_error_alarm_topic_arn}"
