@@ -11,5 +11,5 @@ locals {
 
 resource "null_resource" "topic_count_check" {
   count = "${local.incorrect_topic_count}"
-  "ERROR: You need to update the value of the topic_count variable" = true
+  "ERROR: You need to update the value of the topic_count variable in your SNS module" = true
 }
