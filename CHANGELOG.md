@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v11.6.1 - 2018-08-24
+
+This adds better error reporting to the `sqs` module, so it errors if
+you set the `topic_count` variable incorrectly.
+
 ## v11.6.0 - 2018-07-31
 
 Add cloudwatch alb alarm modules
