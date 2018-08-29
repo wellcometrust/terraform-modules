@@ -54,7 +54,6 @@ data "template_file" "jupyter_config" {
     notebook_port   = "8888"
     hashed_password = "${var.hashed_password}"
     bucket_name     = "${var.bucket_name}"
-    efs_mount_id    = "${var.efs_mount_id}"
   }
 }
 
@@ -66,6 +65,7 @@ data "template_file" "userdata" {
     requirements            = "${data.template_file.requirements.rendered}"
     notebook_user           = "jupyter"
     default_environment     = "${var.default_environment}"
+    efs_mount_id            = "${var.efs_mount_id}"
   }
 }
 
