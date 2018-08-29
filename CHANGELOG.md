@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v11.7.0 - 2018-08-29
+
+Add userdata configuration to mount an EFS volume in the data science VMs
+upon startup.
+
 ## v11.6.1 - 2018-08-24
 
 This adds better error reporting to the `sqs` module, so it errors if
