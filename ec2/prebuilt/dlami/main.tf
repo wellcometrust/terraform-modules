@@ -54,6 +54,7 @@ data "template_file" "jupyter_config" {
     notebook_port   = "8888"
     hashed_password = "${var.hashed_password}"
     bucket_name     = "${var.bucket_name}"
+    efs_mount_id    = "${var.efs_mount_id}"
   }
 }
 

@@ -27,5 +27,23 @@ $PIP install --requirement /home/${notebook_user}/requirements.txt > /home/${not
 # environment, or it won't be available to Jupyter, and it will fail to start.
 /home/ubuntu/anaconda3/bin/pip install s3contents
 
+# Set up the EFS mount.
+#
+# Install utilities for creating an EFS mount on Ubuntu.
+# Based on README instructions https://github.com/aws/efs-utils
+git clone https://github.com/aws/efs-utils
+pushd efs-utils
+  git checkout 7ba8784
+
+  sudo apt-get update
+  sudo apt-get --yes install binutils
+  ./build-deb.sh
+  sudo apt-get --yes install ./build/amazon-efs-utils*deb
+
+  # See https://docs.aws.amazon.com/efs/latest/ug/mounting-fs.html
+  sudo mkdir -p /mnt/efs
+  sudo mount -t efs ${efs_mount_id}:/ /mnt/efs
+popd
+
 # Start notebook server
 runuser --login ${notebook_user} --command '/home/ubuntu/anaconda3/bin/jupyter notebook'

@@ -58,3 +58,5 @@ variable "hashed_password" {
 variable "bucket_name" {
   description = "Bucket for storing Jupyter notebooks with s3contents plugin"
 }
+
+variable "efs_mount_id" {}
