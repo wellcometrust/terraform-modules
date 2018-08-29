@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.7.2 - 2018-08-29
+
+And let the Jupyter notebook user in the dlami write to the EFS mount.
+
 ## v11.7.1 - 2018-08-29
 
 Okay, but now with the dlami variables in the right place.
