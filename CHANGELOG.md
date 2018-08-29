@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.7.1 - 2018-08-29
+
+Okay, but now with the dlami variables in the right place.
+
 ## v11.7.0 - 2018-08-29
 
 Add userdata configuration to mount an EFS volume in the data science VMs
