@@ -1,5 +1,5 @@
 locals {
-  enable_index_read_scaling = "${var.enable_read_scaling && var.index_name != ""? 1 : 0}"
+  enable_index_read_scaling  = "${var.enable_read_scaling && var.index_name != ""? 1 : 0}"
   enable_index_write_scaling = "${var.enable_write_scaling && var.index_name != ""? 1 : 0}"
 }
 
