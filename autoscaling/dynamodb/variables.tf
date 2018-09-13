@@ -41,3 +41,7 @@ variable "write_max_capacity" {
   description = "Maximum provisioned write capacity"
   default     = ""
 }
+
+variable "index_name" {
+  default = ""
+}
