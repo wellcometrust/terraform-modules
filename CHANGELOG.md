@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.8.0 - 2018-09-13
+
+Allow optional scaling of a gsi in a dynamo table
+
 ## v11.7.2 - 2018-08-29
 
 And let the Jupyter notebook user in the dlami write to the EFS mount.
