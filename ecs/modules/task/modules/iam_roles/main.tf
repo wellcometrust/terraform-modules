@@ -42,7 +42,3 @@ data "aws_iam_policy_document" "task_execution_role" {
     ]
   }
 }
-
-data "aws_iam_role" "task_role" {
-  name = "${aws_iam_role.task_role.name}"
-}

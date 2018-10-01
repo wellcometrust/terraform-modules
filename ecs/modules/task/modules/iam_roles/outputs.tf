@@ -3,7 +3,7 @@ output "name" {
 }
 
 output "task_role_arn" {
-  value = "${data.aws_iam_role.task_role.arn}"
+  value = "${aws_iam_role.task_role.arn}"
 }
 
 output "task_execution_role_arn" {
