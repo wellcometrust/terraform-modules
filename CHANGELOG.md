@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.8.1 - 2018-10-01
+
+Fix a bug with calling a data block instead of resource for ecs iam roles
+
 ## v11.8.0 - 2018-09-13
 
 Allow optional scaling of a gsi in a dynamo table
