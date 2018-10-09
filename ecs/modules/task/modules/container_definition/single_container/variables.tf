@@ -27,6 +27,11 @@ variable "mount_points" {
   default = []
 }
 
+variable "command" {
+  type    = "list"
+  default = []
+}
+
 variable "env_vars_length" {
   default = 0
 }

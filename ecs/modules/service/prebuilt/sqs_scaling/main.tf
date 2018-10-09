@@ -57,4 +57,6 @@ module "task" {
   env_vars_length = "${var.env_vars_length}"
 
   aws_region = "${var.aws_region}"
+
+  command = "${var.command}"
 }
