@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.9.0 - 2018-10-09
+
+Adds support for `command` and `mount_points` to the ecs single_container task definition.
+
 ## v11.8.1 - 2018-10-01
 
 Fix a bug with calling a data block instead of resource for ecs iam roles
