@@ -80,3 +80,8 @@ variable "namespace_id" {
 variable "env_vars_length" {
   default = 0
 }
+
+variable "command" {
+  type    = "list"
+  default = []
+}
