@@ -30,3 +30,13 @@ variable "aws_region" {}
 variable "env_vars_length" {
   default = 0
 }
+
+variable "mount_points" {
+  type    = "list"
+  default = []
+}
+
+variable "command" {
+  type    = "list"
+  default = []
+}

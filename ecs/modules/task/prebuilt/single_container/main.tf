@@ -16,6 +16,9 @@ module "container_definition" {
 
   task_port = "${var.container_port}"
 
+  mount_points = "${var.mount_points}"
+  command      = "${var.command}"
+
   env_vars_length = "${var.env_vars_length}"
 }
 

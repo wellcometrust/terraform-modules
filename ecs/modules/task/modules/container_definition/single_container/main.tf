@@ -2,6 +2,7 @@ locals {
   mount_points   = "${jsonencode(var.mount_points)}"
   log_group_name = "${var.task_name}"
   container_name = "app"
+  command        = "${jsonencode(var.command)}"
 }
 
 data "template_file" "definition" {
@@ -17,6 +18,8 @@ data "template_file" "definition" {
 
     port_mappings    = "${module.port_mappings.port_mappings_string}"
     environment_vars = "${module.env_vars.env_vars_string}"
+
+    command = "${local.command}"
 
     cpu    = "${var.cpu}"
     memory = "${var.memory}"
