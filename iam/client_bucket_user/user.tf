@@ -1,10 +1,15 @@
+locals {
+  user_keybase_key = "keybase:${var.username}"
+  user_pgp_key = "${var.pgp_key == "" ? local.user_keybase_key : var.pgp_key}"
+}
+
 resource "aws_iam_user" "client" {
   name = "${var.username}"
 }
 
 resource "aws_iam_access_key" "client" {
   user    = "${aws_iam_user.client.name}"
-  pgp_key = "keybase:${var.username}"
+  pgp_key = "${local.user_pgp_key}"
 }
 
 resource "aws_iam_user_policy" "client_s3_client_transfer_bucket_listbucket_r3store" {
