@@ -1,6 +1,6 @@
 locals {
   user_keybase_key = "keybase:${var.username}"
-  user_pgp_key = "${var.pgp_key == "" ? local.user_keybase_key : var.pgp_key}"
+  user_pgp_key     = "${var.pgp_key == "" ? local.user_keybase_key : var.pgp_key}"
 }
 
 resource "aws_iam_user" "client" {
