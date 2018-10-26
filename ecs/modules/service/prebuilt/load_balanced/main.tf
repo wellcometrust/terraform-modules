@@ -20,7 +20,7 @@ resource "aws_ecs_service" "service" {
   }
 
   load_balancer {
-    target_group_arn = "${aws_alb_target_group.ecs_service.arn}"
+    target_group_arn = "${aws_alb_target_group.http_target_group.arn}"
     container_name   = "${var.container_name}"
     container_port   = "${var.container_port}"
   }
@@ -43,7 +43,8 @@ resource "aws_service_discovery_service" "service_discovery" {
   }
 }
 
-resource "aws_alb_target_group" "ecs_service" {
+resource "aws_alb_target_group" "http_target_group" {
+  count = "${var.target_group_protocol == "HTTP"? 1: 0}"
   # We use snake case in a lot of places, but ALB Target Group names can
   # only contain alphanumerics and hyphens.
   name = "${replace(var.service_name, "_", "-")}"
@@ -58,5 +59,22 @@ resource "aws_alb_target_group" "ecs_service" {
     protocol = "HTTP"
     path     = "${var.healthcheck_path}"
     matcher  = "200"
+  }
+}
+
+resource "aws_alb_target_group" "tcp_target_group" {
+  count = "${var.target_group_protocol == "TCP"? 1: 0}"
+  # We use snake case in a lot of places, but ALB Target Group names can
+  # only contain alphanumerics and hyphens.
+  name = "${replace(var.service_name, "_", "-")}"
+
+  target_type = "ip"
+
+  protocol = "TCP"
+  port     = "${var.container_port}"
+  vpc_id   = "${var.vpc_id}"
+
+  health_check {
+    protocol = "TCP"
   }
 }

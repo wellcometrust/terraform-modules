@@ -56,3 +56,7 @@ variable "server_error_alarm_topic_arn" {
 variable "client_error_alarm_topic_arn" {
   default = ""
 }
+
+variable "target_group_protocol" {
+  default = "HTTP"
+}
