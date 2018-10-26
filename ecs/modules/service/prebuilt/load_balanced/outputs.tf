@@ -1,5 +1,5 @@
 output "service_name" {
-  value = "${aws_ecs_service.service.name}"
+  value = "${var.service_name}"
 }
 
 output "target_group_name" {

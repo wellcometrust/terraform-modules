@@ -1,4 +1,5 @@
-resource "aws_ecs_service" "service" {
+resource "aws_ecs_service" "http_tg_service" {
+  count = "${var.target_group_protocol == "HTTP"? 1: 0}"
   name            = "${var.service_name}"
   cluster         = "${var.ecs_cluster_id}"
   task_definition = "${var.task_definition_arn}"
@@ -19,7 +20,35 @@ resource "aws_ecs_service" "service" {
     registry_arn = "${aws_service_discovery_service.service_discovery.arn}"
   }
   load_balancer {
-    target_group_arn = "${var.target_group_protocol == "HTTP"? aws_alb_target_group.http_target_group.arn : aws_lb_target_group.tcp_target_group.arn}"
+    target_group_arn = "${aws_alb_target_group.http_target_group.arn}"
+    container_name   = "${var.container_name}"
+    container_port   = "${var.container_port}"
+  }
+}
+
+resource "aws_ecs_service" "tcp_tg_service" {
+  count = "${var.target_group_protocol == "TCP"? 1: 0}"
+  name            = "${var.service_name}"
+  cluster         = "${var.ecs_cluster_id}"
+  task_definition = "${var.task_definition_arn}"
+  desired_count   = "${var.task_desired_count}"
+
+  deployment_minimum_healthy_percent = "${var.deployment_minimum_healthy_percent}"
+  deployment_maximum_percent         = "${var.deployment_maximum_percent}"
+
+  launch_type = "${var.launch_type}"
+
+  network_configuration = {
+    subnets          = ["${var.subnets}"]
+    security_groups  = ["${var.security_group_ids}"]
+    assign_public_ip = false
+  }
+
+  service_registries {
+    registry_arn = "${aws_service_discovery_service.service_discovery.arn}"
+  }
+  load_balancer {
+    target_group_arn = "${aws_lb_target_group.tcp_target_group.arn}"
     container_name   = "${var.container_name}"
     container_port   = "${var.container_port}"
   }
