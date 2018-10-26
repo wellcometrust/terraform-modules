@@ -18,9 +18,8 @@ resource "aws_ecs_service" "service" {
   service_registries {
     registry_arn = "${aws_service_discovery_service.service_discovery.arn}"
   }
-
   load_balancer {
-    target_group_arn = "${aws_alb_target_group.http_target_group.arn}"
+    target_group_arn = "${var.target_group_protocol == "HTTP"? aws_alb_target_group.http_target_group.arn : aws_lb_target_group.tcp_target_group.arn}"
     container_name   = "${var.container_name}"
     container_port   = "${var.container_port}"
   }
