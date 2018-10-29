@@ -1,5 +1,5 @@
 resource "aws_ecs_service" "http_tg_service" {
-  count = "${var.target_group_protocol == "HTTP"? 1: 0}"
+  count           = "${var.target_group_protocol == "HTTP"? 1: 0}"
   name            = "${var.service_name}"
   cluster         = "${var.ecs_cluster_id}"
   task_definition = "${var.task_definition_arn}"
@@ -19,6 +19,7 @@ resource "aws_ecs_service" "http_tg_service" {
   service_registries {
     registry_arn = "${aws_service_discovery_service.service_discovery.arn}"
   }
+
   load_balancer {
     target_group_arn = "${aws_alb_target_group.http_target_group.arn}"
     container_name   = "${var.container_name}"
@@ -27,7 +28,7 @@ resource "aws_ecs_service" "http_tg_service" {
 }
 
 resource "aws_ecs_service" "tcp_tg_service" {
-  count = "${var.target_group_protocol == "TCP"? 1: 0}"
+  count           = "${var.target_group_protocol == "TCP"? 1: 0}"
   name            = "${var.service_name}"
   cluster         = "${var.ecs_cluster_id}"
   task_definition = "${var.task_definition_arn}"
@@ -47,6 +48,7 @@ resource "aws_ecs_service" "tcp_tg_service" {
   service_registries {
     registry_arn = "${aws_service_discovery_service.service_discovery.arn}"
   }
+
   load_balancer {
     target_group_arn = "${aws_lb_target_group.tcp_target_group.arn}"
     container_name   = "${var.container_name}"
@@ -73,6 +75,7 @@ resource "aws_service_discovery_service" "service_discovery" {
 
 resource "aws_alb_target_group" "http_target_group" {
   count = "${var.target_group_protocol == "HTTP"? 1: 0}"
+
   # We use snake case in a lot of places, but ALB Target Group names can
   # only contain alphanumerics and hyphens.
   name = "${local.target_group_name}"
@@ -92,6 +95,7 @@ resource "aws_alb_target_group" "http_target_group" {
 
 resource "aws_lb_target_group" "tcp_target_group" {
   count = "${var.target_group_protocol == "TCP"? 1: 0}"
+
   # We use snake case in a lot of places, but ALB Target Group names can
   # only contain alphanumerics and hyphens.
   name = "${local.target_group_name}"
