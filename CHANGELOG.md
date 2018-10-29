@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.10.0 - 2018-10-29
+
+Allow to optionally create TCP target groups for services
+
 ## v11.9.0 - 2018-10-09
 
 Adds support for `command` and `mount_points` to the ecs single_container task definition.
