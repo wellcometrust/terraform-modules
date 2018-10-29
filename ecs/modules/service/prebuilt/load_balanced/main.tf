@@ -75,7 +75,7 @@ resource "aws_alb_target_group" "http_target_group" {
   count = "${var.target_group_protocol == "HTTP"? 1: 0}"
   # We use snake case in a lot of places, but ALB Target Group names can
   # only contain alphanumerics and hyphens.
-  name = "${replace(var.service_name, "_", "-")}"
+  name = "${local.target_group_name}"
 
   target_type = "ip"
 
@@ -94,7 +94,7 @@ resource "aws_lb_target_group" "tcp_target_group" {
   count = "${var.target_group_protocol == "TCP"? 1: 0}"
   # We use snake case in a lot of places, but ALB Target Group names can
   # only contain alphanumerics and hyphens.
-  name = "${replace(var.service_name, "_", "-")}"
+  name = "${local.target_group_name}"
 
   target_type = "ip"
 

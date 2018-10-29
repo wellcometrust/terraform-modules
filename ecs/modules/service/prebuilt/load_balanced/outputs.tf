@@ -3,5 +3,5 @@ output "service_name" {
 }
 
 output "target_group_name" {
-  value = "${replace(var.service_name, "_", "-")}"
+  value = "${local.target_group_name}"
 }
