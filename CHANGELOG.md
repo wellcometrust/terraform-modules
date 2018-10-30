@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.11.0 - 2018-10-30
+
+Adds support for optional PGP key for client_bucket_user
+
 ## v11.10.0 - 2018-10-29
 
 Allow to optionally create TCP target groups for services
