@@ -2,7 +2,7 @@ variable "s3_bucket" {}
 variable "s3_key" {}
 variable "description" {}
 variable "name" {}
-variable "iam_role_arn" {}
+variable "iam_role_name" {}
 variable "module_name" {}
 variable "timeout" {}
 variable "memory_size" {}
