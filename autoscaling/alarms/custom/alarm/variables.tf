@@ -11,6 +11,7 @@ variable "treat_missing_data" {
 }
 
 variable "namespace" {}
+
 variable "period" {
   default = "60"
 }

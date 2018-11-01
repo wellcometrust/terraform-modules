@@ -39,6 +39,7 @@ variable "namespace_id" {}
 variable "min_capacity" {
   default = 1
 }
+
 variable "max_capacity" {
   default = 3
 }
@@ -53,6 +54,7 @@ variable "security_group_ids" {
 }
 
 variable "high_metric_name" {}
+
 variable "low_metric_name" {
   value = ""
 }

@@ -21,7 +21,7 @@ variable "container_image" {}
 variable "container_port" {}
 
 variable "env_vars" {
-  type    = "map"
+  type = "map"
 }
 
 variable "env_vars_length" {}
@@ -42,6 +42,7 @@ variable "memory" {
 variable "launch_type" {
   default = "FARGATE"
 }
+
 variable "target_group_protocol" {
   default = "HTTP"
 }
