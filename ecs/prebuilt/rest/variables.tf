@@ -43,7 +43,9 @@ variable "launch_type" {
   default = "FARGATE"
 }
 variable "target_group_protocol" {
-  default = "TCP"
+  default = "HTTP"
 }
 
 variable "service_egress_security_group_id" {}
+
+variable "target_group_listener_arn" {}

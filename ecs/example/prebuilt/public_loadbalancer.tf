@@ -12,7 +12,6 @@ resource "aws_alb" "public_services" {
 
 data "aws_lb_target_group" "target_group" {
   name = "${module.example_rest_service.target_group_name}"
-  depends_on = ["module.example_rest_service"]
 }
 
 resource "aws_alb_listener" "http_80" {

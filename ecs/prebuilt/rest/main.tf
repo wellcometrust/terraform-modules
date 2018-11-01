@@ -20,6 +20,8 @@ module "service" {
 
   launch_type           = "${var.launch_type}"
   target_group_protocol = "${var.target_group_protocol}"
+
+  target_group_listener_arn = "${var.target_group_listener_arn}"
 }
 
 module "task" {
