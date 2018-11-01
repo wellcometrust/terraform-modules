@@ -47,3 +47,22 @@ variable "log_retention_in_days" {
   description = "The number of days to keep CloudWatch logs"
   default     = ""
 }
+
+data "aws_s3_bucket_object" "package" {
+  bucket = "${var.s3_bucket}"
+  key    = "${var.s3_key}"
+}
+
+variable "security_group_ids" {
+  type    = "list"
+  default = []
+}
+
+variable "subnet_ids" {
+  type    = "list"
+  default = []
+}
+
+variable "lambda_type" {
+  default = "public"
+}
