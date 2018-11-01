@@ -3,10 +3,10 @@ locals {
   namespace      = "ecsV3"
   aws_region     = "eu-west-1"
 
-  namespace_id   = "${aws_service_discovery_private_dns_namespace.namespace.id}"
-  cluster_id     = "${aws_ecs_cluster.cluster.id}"
-  cluster_name   = "${aws_ecs_cluster.cluster.name}"
-  vpc_id         = "${module.network.vpc_id}"
+  namespace_id = "${aws_service_discovery_private_dns_namespace.namespace.id}"
+  cluster_id   = "${aws_ecs_cluster.cluster.id}"
+  cluster_name = "${aws_ecs_cluster.cluster.name}"
+  vpc_id       = "${module.network.vpc_id}"
 
   private_subnets = "${module.network.private_subnets}"
 }
@@ -26,4 +26,3 @@ resource "aws_service_discovery_private_dns_namespace" "namespace" {
   name = "${local.namespace}"
   vpc  = "${module.network.vpc_id}"
 }
-

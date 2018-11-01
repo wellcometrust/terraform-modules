@@ -1,7 +1,7 @@
 module "example_rest_service" {
   source = "../../prebuilt/rest"
 
-  service_name = "example_rest_service"
+  service_name    = "example_rest_service"
   container_image = "strm/helloworld-http"
 
   namespace_id = "${local.namespace_id}"
@@ -12,12 +12,12 @@ module "example_rest_service" {
 
   container_port = "80"
 
-  env_vars = {}
+  env_vars        = {}
   env_vars_length = 0
 
   security_group_ids = [
     "${aws_security_group.interservice_security_group.id}",
-    "${aws_security_group.service_lb_security_group.id}"
+    "${aws_security_group.service_lb_security_group.id}",
   ]
 
   service_egress_security_group_id = "${aws_security_group.service_egress_security_group.id}"
@@ -28,7 +28,7 @@ module "example_rest_service" {
 module "example_scaling_service" {
   source = "../../prebuilt/scaling"
 
-  service_name = "example_scaling_service"
+  service_name    = "example_scaling_service"
   container_image = "strm/helloworld-http"
 
   namespace_id = "${local.namespace_id}"
@@ -39,12 +39,12 @@ module "example_scaling_service" {
 
   container_port = "80"
 
-  env_vars = {}
+  env_vars        = {}
   env_vars_length = 0
 
   security_group_ids = [
     "${aws_security_group.interservice_security_group.id}",
-    "${aws_security_group.service_lb_security_group.id}"
+    "${aws_security_group.service_lb_security_group.id}",
   ]
 
   service_egress_security_group_id = "${aws_security_group.service_egress_security_group.id}"
