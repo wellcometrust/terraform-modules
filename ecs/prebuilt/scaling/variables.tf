@@ -24,7 +24,9 @@ variable "memory" {
 
 variable "env_vars_length" {}
 
-variable "aws_region" {}
+variable "aws_region" {
+  default = "eu-west-1"
+}
 
 variable "vpc_id" {}
 
