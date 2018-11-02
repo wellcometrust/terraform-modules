@@ -29,7 +29,6 @@ module "lambda_vpc" {
   s3_key    = "${local.lambda_file_key}"
 }
 
-
 module "sns_trigger_public" {
   source = "../modules/triggers/sns"
 
