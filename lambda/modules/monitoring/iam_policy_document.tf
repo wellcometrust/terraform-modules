@@ -10,3 +10,15 @@ data "aws_iam_policy_document" "cloudwatch_logs" {
     ]
   }
 }
+
+data "aws_iam_policy_document" "lambda_dlq" {
+  statement {
+    actions = [
+      "sqs:SendMessage",
+    ]
+
+    resources = [
+      "${aws_sqs_queue.lambda_dlq.arn}",
+    ]
+  }
+}
