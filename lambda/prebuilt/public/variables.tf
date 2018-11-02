@@ -39,7 +39,7 @@ variable "memory_size" {
 }
 
 variable "log_retention_in_days" {
-  default = "15"
+  default = "14"
 }
 
 variable "alarm_topic_arn" {}

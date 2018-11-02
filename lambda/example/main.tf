@@ -13,12 +13,10 @@ module "lambda_public" {
 module "lambda_vpc" {
   source = "../prebuilt/vpc"
 
-  name = "${local.namespace}_lambda_public"
+  name = "${local.namespace}_lambda_vpc"
   description = "An example public lambda"
 
   alarm_topic_arn = "${module.alarm_topic.arn}"
-
-  lambda_type = "vpc"
 
   subnet_ids = "${module.network.private_subnets}"
   security_group_ids = [

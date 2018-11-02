@@ -5,15 +5,17 @@ data "aws_s3_bucket_object" "package" {
 
 module "iam" {
   source = "../../modules/iam"
-  name = "${var.name}"
+  name   = "${var.name}"
 }
 
 module "monitoring" {
   source = "../../modules/monitoring"
-  name = "${var.name}"
+  name   = "${var.name}"
+
   alarm_topic_arn = "${var.alarm_topic_arn}"
 
   iam_role_name = "${module.iam.role_name}"
+
   log_retention_in_days = "${var.log_retention_in_days}"
 }
 
@@ -41,8 +43,8 @@ resource "aws_lambda_function" "lambda_function" {
   }
 
   vpc_config {
-    security_group_ids = "${var.security_group_ids}"
-    subnet_ids         = "${var.subnet_ids}"
+    security_group_ids = ["${var.security_group_ids}"]
+    subnet_ids         = ["${var.subnet_ids}"]
   }
 
   environment {

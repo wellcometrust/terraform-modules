@@ -1,3 +1,9 @@
+locals {
+  vpc_cidr_block = "10.33.0.0/16"
+  namespace      = "lambda-v2"
+  aws_region     = "eu-west-1"
+}
+
 # Topics required by module
 
 module "trigger_topic" {
@@ -19,7 +25,7 @@ locals {
 }
 
 resource "aws_s3_bucket" "example_bucket" {
-  bucket = "${local.namespace}_MyExampleBucket"
+  bucket = "${local.namespace}-my-example-bucket"
   acl    = "private"
 }
 
