@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v11.12.0 - 2018-11-02
+
+Allow to optionally create lambdas in a VPC
+
 ## v11.11.0 - 2018-10-30
 
 Adds support for optional PGP key for client_bucket_user
