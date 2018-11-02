@@ -8,10 +8,14 @@ resource "random_id" "statement_id" {
   byte_length = 8
 }
 
+data "aws_lambda_function" "function" {
+  function_name = "${var.lambda_function_name}"
+}
+
 resource "aws_lambda_permission" "allow_sns_trigger" {
   statement_id  = "${random_id.statement_id.hex}"
   action        = "lambda:InvokeFunction"
-  function_name = "${var.lambda_function_arn}"
+  function_name = "${data.aws_lambda_function.function.function_name}"
   principal     = "sns.amazonaws.com"
   source_arn    = "${var.sns_trigger_arn}"
   depends_on    = ["aws_sns_topic_subscription.topic_lambda"]
@@ -20,5 +24,5 @@ resource "aws_lambda_permission" "allow_sns_trigger" {
 resource "aws_sns_topic_subscription" "topic_lambda" {
   topic_arn = "${var.sns_trigger_arn}"
   protocol  = "lambda"
-  endpoint  = "${var.lambda_function_arn}"
+  endpoint  = "${data.aws_lambda_function.function.arn}"
 }

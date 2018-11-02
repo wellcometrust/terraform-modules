@@ -26,13 +26,8 @@ variable "timeout" {
   default     = 3
 }
 
-variable "alarm_topic_arn" {
-  description = "ARN of the topic where to send notification for lambda errors"
-}
-
 variable "s3_bucket" {
   description = "The S3 bucket containing the function's deployment package"
-  default     = "platform-infra"
 }
 
 variable "s3_key" {
@@ -44,6 +39,15 @@ variable "memory_size" {
 }
 
 variable "log_retention_in_days" {
-  description = "The number of days to keep CloudWatch logs"
-  default     = ""
+  default = "14"
+}
+
+variable "alarm_topic_arn" {}
+
+variable "security_group_ids" {
+  type = "list"
+}
+
+variable "subnet_ids" {
+  type = "list"
 }
