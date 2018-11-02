@@ -38,3 +38,4 @@ resource "aws_alb_listener_rule" "path_rule_80" {
     values = ["/"]
   }
 }
+

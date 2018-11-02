@@ -32,7 +32,7 @@ module "example_scaling_service" {
   container_image = "strm/helloworld-http"
 
   namespace_id = "${local.namespace_id}"
-  cluster_name = "${local.cluster_id}"
+  cluster_name = "${local.cluster_name}"
   vpc_id       = "${local.vpc_id}"
 
   subnets = "${local.private_subnets}"
@@ -50,6 +50,7 @@ module "example_scaling_service" {
   service_egress_security_group_id = "${aws_security_group.service_egress_security_group.id}"
 
   metric_namespace = "MyCustomMetric"
+
   high_metric_name = "SomeValue"
   low_metric_name  = "SomeOtherValue"
 }

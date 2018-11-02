@@ -37,7 +37,7 @@ module "service" {
 }
 
 module "task" {
-  source = "../../../task/prebuilt/single_container"
+  source = "../../modules/task/prebuilt/single_container"
 
   task_name = "${var.service_name}"
 

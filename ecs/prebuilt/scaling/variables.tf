@@ -56,7 +56,7 @@ variable "security_group_ids" {
 variable "high_metric_name" {}
 
 variable "low_metric_name" {
-  value = ""
+  default = ""
 }
 
 variable "metric_namespace" {}
