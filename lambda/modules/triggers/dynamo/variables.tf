@@ -2,8 +2,8 @@ variable "stream_arn" {
   description = "ARN of the DynamoDB stream"
 }
 
-variable "function_arn" {
-  description = "ARN of the AWS Lambda function to trigger"
+variable "lambda_function_name" {
+  description = "Name of the Lambda function to be triggered"
 }
 
 variable "function_role" {

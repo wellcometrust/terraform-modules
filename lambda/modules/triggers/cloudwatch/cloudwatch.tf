@@ -1,3 +1,7 @@
+data "aws_lambda_function" "function" {
+  function_name = "${var.lambda_function_name}"
+}
+
 /* Configures a Cloudwatch trigger for a Lambda */
 
 resource "random_id" "cloudwatch_trigger_name" {
@@ -8,7 +12,7 @@ resource "random_id" "cloudwatch_trigger_name" {
 resource "aws_lambda_permission" "allow_cloudwatch_trigger" {
   statement_id  = "${random_id.cloudwatch_trigger_name.id}"
   action        = "lambda:InvokeFunction"
-  function_name = "${var.lambda_function_name}"
+  function_name = "${data.aws_lambda_function.function.function_name}"
   principal     = "events.amazonaws.com"
   source_arn    = "${var.cloudwatch_trigger_arn}"
 }
@@ -18,7 +22,7 @@ resource "aws_lambda_permission" "allow_cloudwatch_trigger" {
 resource "aws_cloudwatch_event_target" "event_trigger_custom" {
   count = "${var.custom_input}"
   rule  = "${var.cloudwatch_trigger_name}"
-  arn   = "${var.lambda_function_arn}"
+  arn   = "${data.aws_lambda_function.function.arn}"
   input = "${var.input}"
 }
 

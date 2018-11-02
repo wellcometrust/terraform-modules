@@ -28,3 +28,20 @@ module "lambda_vpc" {
   s3_bucket = "${aws_s3_bucket.example_bucket.bucket}"
   s3_key    = "${local.lambda_file_key}"
 }
+
+
+module "sns_trigger_public" {
+  source = "../modules/triggers/sns"
+
+  lambda_function_name = "${module.lambda_public.function_name}"
+
+  sns_trigger_arn = "${module.trigger_topic.arn}"
+}
+
+module "sns_trigger_vpc" {
+  source = "../modules/triggers/sns"
+
+  lambda_function_name = "${module.lambda_vpc.function_name}"
+
+  sns_trigger_arn = "${module.trigger_topic.arn}"
+}
