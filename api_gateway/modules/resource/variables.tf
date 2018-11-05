@@ -4,13 +4,16 @@ variable "api_root_resource_id" {}
 
 variable "authorizer_id" {}
 
-variable "cognito_api_identifier" {}
-variable "vpc_link_id" {}
+variable "resource_name" {}
 
-variable "load_balancer_port" {}
+variable "cognito_api_id" {}
 
-variable "hostname" {}
+variable "proxied_hostname" {}
 
+variable "forward_port" {}
 variable "forward_path" {}
 
-variable "resource_name" {}
+variable "target_arns" {
+  type = "list"
+}
+variable "namespace" {}
