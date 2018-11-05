@@ -48,5 +48,3 @@ variable "target_group_protocol" {
 }
 
 variable "service_egress_security_group_id" {}
-
-variable "target_group_listener_arn" {}

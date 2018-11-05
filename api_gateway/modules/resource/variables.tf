@@ -16,4 +16,5 @@ variable "forward_path" {}
 variable "target_arns" {
   type = "list"
 }
+
 variable "namespace" {}

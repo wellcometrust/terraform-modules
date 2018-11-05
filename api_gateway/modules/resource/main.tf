@@ -16,9 +16,9 @@ resource "aws_api_gateway_method" "any_method" {
 }
 
 resource "aws_api_gateway_integration" "any" {
-  rest_api_id             = "${var.api_id}"
-  resource_id             = "${aws_api_gateway_resource.any.id}"
-  http_method             = "${aws_api_gateway_method.any_method.http_method}"
+  rest_api_id = "${var.api_id}"
+  resource_id = "${aws_api_gateway_resource.any.id}"
+  http_method = "${aws_api_gateway_method.any_method.http_method}"
 
   integration_http_method = "ANY"
   type                    = "HTTP_PROXY"
@@ -36,9 +36,9 @@ resource "aws_api_gateway_resource" "subpaths" {
 }
 
 resource "aws_api_gateway_method" "subpaths_any_method" {
-  rest_api_id          = "${var.api_id}"
-  resource_id          = "${aws_api_gateway_resource.subpaths.id}"
-  http_method          = "ANY"
+  rest_api_id = "${var.api_id}"
+  resource_id = "${aws_api_gateway_resource.subpaths.id}"
+  http_method = "ANY"
 
   authorization        = "COGNITO_USER_POOLS"
   authorizer_id        = "${var.authorizer_id}"
@@ -50,9 +50,9 @@ resource "aws_api_gateway_method" "subpaths_any_method" {
 }
 
 resource "aws_api_gateway_integration" "subpaths" {
-  rest_api_id             = "${var.api_id}"
-  resource_id             = "${aws_api_gateway_resource.subpaths.id}"
-  http_method             = "${aws_api_gateway_method.subpaths_any_method.http_method}"
+  rest_api_id = "${var.api_id}"
+  resource_id = "${aws_api_gateway_resource.subpaths.id}"
+  http_method = "${aws_api_gateway_method.subpaths_any_method.http_method}"
 
   integration_http_method = "ANY"
   type                    = "HTTP_PROXY"

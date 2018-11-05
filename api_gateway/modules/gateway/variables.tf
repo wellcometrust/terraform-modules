@@ -1,6 +1,6 @@
 variable "name" {}
 
 variable "endpoint_config_types" {
-  type = "list"
+  type    = "list"
   default = ["REGIONAL"]
 }
