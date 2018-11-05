@@ -56,7 +56,6 @@ resource "aws_ecs_service" "tcp_tg_service" {
     container_name   = "${var.container_name}"
     container_port   = "${var.container_port}"
   }
-
 }
 
 data "aws_lb_listener" "listener" {
