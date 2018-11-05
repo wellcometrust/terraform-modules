@@ -11,12 +11,12 @@ resource "aws_cognito_user_pool" "pool" {
 }
 
 resource "aws_cognito_user_pool_domain" "domain" {
-  domain       = "my_auth_domain"
+  domain       = "apigwexample"
   user_pool_id = "${aws_cognito_user_pool.pool.id}"
 }
 
 resource "aws_cognito_user_pool_client" "example" {
-  name = "${local.namespace} - Example client"
+  name = "apigwexample"
 
   allowed_oauth_flows = [
     "client_credentials",
@@ -29,6 +29,8 @@ resource "aws_cognito_user_pool_client" "example" {
   allowed_oauth_scopes = [
     "${aws_cognito_resource_server.api.scope_identifiers}",
   ]
+
+  allowed_oauth_flows_user_pool_client = true
 
   supported_identity_providers = ["COGNITO"]
 
@@ -46,7 +48,7 @@ resource "aws_cognito_resource_server" "api" {
 
   scope = [
     {
-      scope_name        = "a_scope"
+      scope_name        = "example"
       scope_description = "An example scope"
     },
   ]

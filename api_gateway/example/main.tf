@@ -1,25 +1,19 @@
-locals {
-  namespace  = "api-gw-example"
-  aws_region = "eu-west-1"
-  subnets    = []
-}
-
 module "resource" {
   source = "../modules/resource"
 
-  namespace = "${local.namespace}"
-  resource_name = "somepath"
+  namespace     = "${local.namespace}"
+  resource_name = "${local.external_path}"
 
   api_id               = "${module.gateway.id}"
   api_root_resource_id = "${module.gateway.root_resource_id}"
 
-  cognito_api_id = "${aws_cognito_resource_server.api.id}"
+  cognito_api_id = "${aws_cognito_resource_server.api.identifier}"
   authorizer_id  = "${aws_api_gateway_authorizer.cognito.id}"
 
-  proxied_hostname = ""
+  proxied_hostname = "www.example.com"
 
-  forward_port     = ""
-  forward_path     = ""
+  forward_port     = "${local.internal_port}"
+  forward_path     = "${local.internal_path}"
 
   target_arns = ["${module.nlb.arn}"]
 }
@@ -28,12 +22,9 @@ module "gateway" {
   source = "../modules/gateway"
 
   name  = "Example API"
-  stage = "v1"
 }
 
-module "nlb" {
-  source = "../../load_balancer/network"
-
-  namespace = "${local.namespace}"
-  private_subnets = "${local.subnets}"
+resource "aws_api_gateway_deployment" "deployment" {
+  rest_api_id = "${module.gateway.id}"
+  stage_name  = "v1"
 }

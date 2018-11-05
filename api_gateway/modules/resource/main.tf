@@ -58,7 +58,7 @@ resource "aws_api_gateway_integration" "subpaths" {
   type                    = "HTTP_PROXY"
   connection_type         = "VPC_LINK"
   connection_id           = "${aws_api_gateway_vpc_link.link.id}"
-  uri                     = "${local.uri}/{proxy}"
+  uri                     = "${local.uri}{proxy}"
 
   request_parameters = {
     integration.request.path.proxy = "method.request.path.proxy"

@@ -57,7 +57,6 @@ resource "aws_ecs_service" "tcp_tg_service" {
     container_port   = "${var.container_port}"
   }
 
-  depends_on = ["data.aws_lb_listener.listener"]
 }
 
 data "aws_lb_listener" "listener" {
