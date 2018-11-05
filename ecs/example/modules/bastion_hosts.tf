@@ -1,7 +1,7 @@
 # EC2 Bastion hosts
 
 module "ec2_bastion" {
-  source = "../../ec2/prebuilt/bastion"
+  source = "../../../ec2/prebuilt/bastion"
 
   vpc_id = "${module.network.vpc_id}"
 

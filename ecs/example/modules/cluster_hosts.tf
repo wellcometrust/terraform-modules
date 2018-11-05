@@ -1,7 +1,7 @@
 # EC2 Cluster hosts - ondemand
 
 module "ec2_hosts_ondemand" {
-  source = "../modules/ec2/prebuilt/ondemand"
+  source = "../../modules/ec2/prebuilt/ondemand"
 
   cluster_name = "${aws_ecs_cluster.cluster.name}"
   vpc_id       = "${module.network.vpc_id}"
@@ -19,7 +19,7 @@ module "ec2_hosts_ondemand" {
 # EC2 Cluster hosts - spot
 
 module "ec2_host_spot" {
-  source = "../modules/ec2/prebuilt/spot"
+  source = "../../modules/ec2/prebuilt/spot"
 
   cluster_name = "${aws_ecs_cluster.cluster.name}"
   vpc_id       = "${module.network.vpc_id}"
@@ -36,7 +36,7 @@ module "ec2_host_spot" {
 # EC2 Cluster hosts - ebs
 
 module "ec2_ebs_host" {
-  source = "../modules/ec2/prebuilt/ebs"
+  source = "../../modules/ec2/prebuilt/ebs"
 
   cluster_name = "${aws_ecs_cluster.cluster.name}"
   vpc_id       = "${module.network.vpc_id}"
@@ -51,7 +51,7 @@ module "ec2_ebs_host" {
 # EC2 Cluster hosts - efs
 
 module "efs" {
-  source = "../../efs"
+  source = "../../../efs"
 
   name = "ecsV2"
 
@@ -59,10 +59,12 @@ module "efs" {
   subnets = "${module.network.private_subnets}"
 
   efs_access_security_group_ids = ["${aws_security_group.efs_security_group.id}"]
+
+  num_subnets = "2"
 }
 
 module "ec2_efs_host" {
-  source = "../modules/ec2/prebuilt/efs"
+  source = "../../modules/ec2/prebuilt/efs"
 
   cluster_name = "${aws_ecs_cluster.cluster.name}"
   vpc_id       = "${module.network.vpc_id}"
@@ -82,7 +84,7 @@ module "ec2_efs_host" {
 # EC2 Cluster hosts - ebs+efs
 
 module "ec2_ebs_efs_host" {
-  source = "../modules/ec2/prebuilt/ebs+efs"
+  source = "../../modules/ec2/prebuilt/ebs+efs"
 
   cluster_name = "${aws_ecs_cluster.cluster.name}"
   vpc_id       = "${module.network.vpc_id}"
