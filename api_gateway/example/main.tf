@@ -12,8 +12,8 @@ module "resource" {
 
   proxied_hostname = "www.example.com"
 
-  forward_port     = "${local.internal_port}"
-  forward_path     = "${local.internal_path}"
+  forward_port = "${local.internal_port}"
+  forward_path = "${local.internal_path}"
 
   target_arns = ["${module.nlb.arn}"]
 }
@@ -21,7 +21,7 @@ module "resource" {
 module "gateway" {
   source = "../modules/gateway"
 
-  name  = "Example API"
+  name = "Example API"
 }
 
 resource "aws_api_gateway_deployment" "deployment" {

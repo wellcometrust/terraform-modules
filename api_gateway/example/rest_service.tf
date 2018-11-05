@@ -17,7 +17,7 @@ module "example_rest_service" {
 
   security_group_ids = [
     "${aws_security_group.interservice_security_group.id}",
-    "${aws_security_group.service_lb_ingress_security_group.id}"
+    "${aws_security_group.service_lb_ingress_security_group.id}",
   ]
 
   target_group_protocol = "TCP"

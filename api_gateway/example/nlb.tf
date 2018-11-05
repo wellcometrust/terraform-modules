@@ -3,7 +3,7 @@
 module "nlb" {
   source = "../../load_balancer/network"
 
-  namespace = "${local.namespace}"
+  namespace       = "${local.namespace}"
   private_subnets = "${local.subnets}"
 }
 

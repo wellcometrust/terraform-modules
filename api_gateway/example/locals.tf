@@ -1,6 +1,6 @@
 locals {
   vpc_cidr_block = "10.78.0.0/16"
-  namespace  = "api-gw-example"
+  namespace      = "api-gw-example"
   aws_region     = "eu-west-1"
 
   namespace_id = "${aws_service_discovery_private_dns_namespace.namespace.id}"

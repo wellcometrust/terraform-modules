@@ -17,7 +17,7 @@ resource "aws_security_group" "service_egress_security_group" {
 
 resource "aws_security_group" "service_lb_ingress_security_group" {
   name        = "${local.namespace}-service_lb_ingress_security_group"
-  description = "Allow traffic between services"
+  description = "Allow traffic between services and NLB"
   vpc_id      = "${module.network.vpc_id}"
 
   ingress {
