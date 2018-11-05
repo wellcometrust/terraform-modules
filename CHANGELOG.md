@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v12.0.0 - 2018-11-05
+
+ECS modules redone to simplify rest/scaling approach
+
 ## v11.12.0 - 2018-11-02
 
 Allow to optionally create lambdas in a VPC
