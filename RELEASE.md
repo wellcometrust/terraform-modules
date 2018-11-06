@@ -1,3 +1,3 @@
-RELEASE_TYPE: major 
+RELEASE_TYPE: minor
 
-Adds API Gateway module
+This adds the `function_arn` output to the prebuilt Lambda modules.
