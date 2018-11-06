@@ -21,8 +21,6 @@ module "example_rest_service" {
   ]
 
   service_egress_security_group_id = "${aws_security_group.service_egress_security_group.id}"
-
-  target_group_listener_arn = "${aws_alb_listener.http_80.arn}"
 }
 
 module "example_scaling_service" {

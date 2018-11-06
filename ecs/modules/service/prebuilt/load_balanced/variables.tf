@@ -60,5 +60,3 @@ variable "client_error_alarm_topic_arn" {
 variable "target_group_protocol" {
   default = "HTTP"
 }
-
-variable "target_group_listener_arn" {}
