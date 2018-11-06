@@ -1,5 +1,5 @@
 module "resource" {
-  source = "../modules/resource"
+  source = "../modules/resource/auth"
 
   namespace     = "${local.namespace}"
   resource_name = "${local.external_path}"
