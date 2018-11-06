@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v12.1.0 - 2018-11-06
+
+This adds the `function_arn` output to the prebuilt Lambda modules.
+
 ## v12.0.0 - 2018-11-05
 
 ECS modules redone to simplify rest/scaling approach
