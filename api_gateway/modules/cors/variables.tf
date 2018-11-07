@@ -79,3 +79,5 @@ variable "allowed_max_age" {
   type        = "string"
   default     = "7200"
 }
+
+variable "http_method" {}
