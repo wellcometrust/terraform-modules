@@ -2,6 +2,7 @@ variable "api_id" {}
 variable "resource_id" {}
 
 variable "http_method" {}
+
 variable "integration_method" {
   default = "ANY"
 }
@@ -17,7 +18,8 @@ variable "hostname" {}
 variable "proxy" {
   default = true
 }
+
 variable "request_parameters" {
-  type = "map"
+  type    = "map"
   default = {}
 }

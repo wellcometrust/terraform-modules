@@ -1,4 +1,4 @@
-locals{
+locals {
   auth_count    = "${var.authorization == "" ? 0 : 1}"
   no_auth_count = "${var.authorization == "" ? 1 : 0}"
 }

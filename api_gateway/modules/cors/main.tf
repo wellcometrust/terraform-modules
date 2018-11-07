@@ -18,7 +18,6 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-
 resource "aws_api_gateway_integration_response" "cors" {
   rest_api_id = "${var.api_id}"
   resource_id = "${var.api_resource_id}"
@@ -49,6 +48,6 @@ resource "aws_api_gateway_method_response" "cors" {
     "method.response.header.Access-Control-Allow-Origin"  = true
     "method.response.header.Access-Control-Max-Age"       = true
 
-    "method.response.header.Content-Type"                 = true
+    "method.response.header.Content-Type" = true
   }
 }
