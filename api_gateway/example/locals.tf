@@ -11,7 +11,7 @@ locals {
   nlb_listener_port       = "80"
   nlb_listener_port_stage = "8080"
 
-  container_port    = "80"
+  container_port = "80"
 
   external_path = "example"
 
