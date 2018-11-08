@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v12.1.1 - 2018-11-08
+
+*module.rds.aws_rds_cluster_instance*
+
+set `publicly_accessible  = true` to `false`
+
 ## v12.1.0 - 2018-11-06
 
 This adds the `function_arn` output to the prebuilt Lambda modules.
