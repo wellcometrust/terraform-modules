@@ -1,5 +1,14 @@
 data "aws_availability_zones" "available" {}
 
+locals {
+  public_az_count = "${var.public_access == true ? var.az_count : 0}"
+  
+  egress_igw_count = "${var.public_access == true ? 0 : 1}"
+  bidi_igw_count   = "${var.public_access == true ? 1 : 0}"
+
+  gateway_id = "${var.public_access == true ? aws_internet_gateway.gw-bidi.id : aws_egress_only_internet_gateway.gw-egress.id}"
+}
+
 resource "aws_vpc" "vpc" {
   cidr_block           = "${var.cidr_block}"
   enable_dns_hostnames = true
@@ -9,7 +18,13 @@ resource "aws_vpc" "vpc" {
   }
 }
 
-resource "aws_internet_gateway" "gw" {
+resource "aws_egress_only_internet_gateway" "gw-egress" {
+  count = "${local.egress_igw_count}"
+  vpc_id = "${aws_vpc.vpc.id}"
+}
+
+resource "aws_internet_gateway" "gw-bidi" {
+  count = "${local.bidi_igw_count}"
   vpc_id = "${aws_vpc.vpc.id}"
 
   tags {
@@ -20,13 +35,13 @@ resource "aws_internet_gateway" "gw" {
 resource "aws_route" "internet_access" {
   route_table_id         = "${aws_vpc.vpc.main_route_table_id}"
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = "${aws_internet_gateway.gw.id}"
+  gateway_id             = "${local.gateway_id}"
 }
 
 # Public subnets
 
 resource "aws_subnet" "public" {
-  count             = "${var.az_count}"
+  count             = "${local.public_az_count}"
   cidr_block        = "${cidrsubnet(aws_vpc.vpc.cidr_block, var.cidr_block_bits, count.index)}"
   availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
   vpc_id            = "${aws_vpc.vpc.id}"
@@ -78,7 +93,7 @@ resource "aws_route" "private_route" {
 
 resource "aws_subnet" "private" {
   count             = "${var.az_count}"
-  cidr_block        = "${cidrsubnet(aws_vpc.vpc.cidr_block, 8, (count.index + var.az_count))}"
+  cidr_block        = "${cidrsubnet(aws_vpc.vpc.cidr_block, 8, (count.index + local.public_az_count))}"
   availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
   vpc_id            = "${aws_vpc.vpc.id}"
 
