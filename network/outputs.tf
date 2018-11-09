@@ -13,3 +13,7 @@ output "vpc_id" {
 output "num_subnets" {
   value = "${var.az_count}"
 }
+
+output "igw_id" {
+  value = "${aws_internet_gateway.gw.id}"
+}

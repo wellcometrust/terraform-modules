@@ -27,7 +27,7 @@ resource "aws_route" "internet_access" {
 
 resource "aws_subnet" "public" {
   count             = "${var.az_count}"
-  cidr_block        = "${cidrsubnet(aws_vpc.vpc.cidr_block, 8, count.index)}"
+  cidr_block        = "${cidrsubnet(aws_vpc.vpc.cidr_block, var.cidr_block_bits, count.index)}"
   availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
   vpc_id            = "${aws_vpc.vpc.id}"
 
