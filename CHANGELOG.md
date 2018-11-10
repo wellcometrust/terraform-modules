@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v13.0.0 - 2018-11-10
+
+Refactoring API GW module for further flexibility
+
 ## v12.1.1 - 2018-11-08
 
 *module.rds.aws_rds_cluster_instance*
