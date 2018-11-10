@@ -1,66 +1,20 @@
-# Root resource
-
-resource "aws_api_gateway_resource" "any" {
+resource "aws_api_gateway_resource" "resource" {
   rest_api_id = "${var.api_id}"
-  parent_id   = "${var.api_root_resource_id}"
-  path_part   = "${var.resource_name}"
+  parent_id   = "${var.parent_id}"
+  path_part   = "${var.path_part}"
 }
 
-resource "aws_api_gateway_method" "any_method" {
-  rest_api_id          = "${var.api_id}"
-  resource_id          = "${aws_api_gateway_resource.any.id}"
-  http_method          = "ANY"
-  authorization        = "COGNITO_USER_POOLS"
+module "method" {
+  source = "../method"
+
+  api_id      = "${var.api_id}"
+  resource_id = "${aws_api_gateway_resource.resource.id}"
+
+  authorization        = "${var.authorization}"
   authorizer_id        = "${var.authorizer_id}"
-  authorization_scopes = ["${local.auth_scope}"]
-}
+  authorization_scopes = ["${var.auth_scopes}"]
 
-resource "aws_api_gateway_integration" "any" {
-  rest_api_id = "${var.api_id}"
-  resource_id = "${aws_api_gateway_resource.any.id}"
-  http_method = "${aws_api_gateway_method.any_method.http_method}"
+  http_method = "${var.http_method}"
 
-  integration_http_method = "ANY"
-  type                    = "HTTP_PROXY"
-  connection_type         = "VPC_LINK"
-  connection_id           = "${aws_api_gateway_vpc_link.link.id}"
-  uri                     = "${local.uri}"
-}
-
-# All subpaths
-
-resource "aws_api_gateway_resource" "subpaths" {
-  rest_api_id = "${var.api_id}"
-  parent_id   = "${aws_api_gateway_resource.any.id}"
-  path_part   = "{proxy+}"
-}
-
-resource "aws_api_gateway_method" "subpaths_any_method" {
-  rest_api_id = "${var.api_id}"
-  resource_id = "${aws_api_gateway_resource.subpaths.id}"
-  http_method = "ANY"
-
-  authorization        = "COGNITO_USER_POOLS"
-  authorizer_id        = "${var.authorizer_id}"
-  authorization_scopes = ["${local.auth_scope}"]
-
-  request_parameters = {
-    "method.request.path.proxy" = true
-  }
-}
-
-resource "aws_api_gateway_integration" "subpaths" {
-  rest_api_id = "${var.api_id}"
-  resource_id = "${aws_api_gateway_resource.subpaths.id}"
-  http_method = "${aws_api_gateway_method.subpaths_any_method.http_method}"
-
-  integration_http_method = "ANY"
-  type                    = "HTTP_PROXY"
-  connection_type         = "VPC_LINK"
-  connection_id           = "${aws_api_gateway_vpc_link.link.id}"
-  uri                     = "${local.uri}{proxy}"
-
-  request_parameters = {
-    integration.request.path.proxy = "method.request.path.proxy"
-  }
+  request_parameters = "${var.request_parameters}"
 }

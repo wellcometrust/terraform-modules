@@ -25,10 +25,9 @@ variable "authorizer_id" {
   default = "not_real"
 }
 
-variable "auth_scopes" {
+variable "authorization_scopes" {
   type    = "list"
   default = []
 }
 
-variable "path_part" {}
-variable "parent_id" {}
+variable "resource_id" {}

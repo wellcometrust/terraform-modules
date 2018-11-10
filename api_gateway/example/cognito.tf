@@ -48,7 +48,7 @@ resource "aws_cognito_resource_server" "api" {
 
   scope = [
     {
-      scope_name        = "example"
+      scope_name        = "${local.scope_name}"
       scope_description = "An example scope"
     },
   ]
@@ -61,6 +61,6 @@ resource "aws_cognito_resource_server" "api" {
 resource "aws_api_gateway_authorizer" "cognito" {
   name          = "cognito"
   type          = "COGNITO_USER_POOLS"
-  rest_api_id   = "${module.gateway.id}"
+  rest_api_id   = "${aws_api_gateway_rest_api.api.id}"
   provider_arns = ["${aws_cognito_user_pool.pool.arn}"]
 }

@@ -8,11 +8,15 @@ locals {
   cluster_name = "${aws_ecs_cluster.cluster.name}"
   vpc_id       = "${module.network.vpc_id}"
 
-  internal_port = "80"
-  internal_path = ""
+  nlb_listener_port       = "80"
+  nlb_listener_port_stage = "8080"
 
-  external_port = "80"
+  container_port = "80"
+
   external_path = "example"
+
+  scope_name = "example"
+  scope_id   = "${aws_cognito_resource_server.api.identifier}/${local.scope_name}"
 
   subnets = "${module.network.private_subnets}"
 }
