@@ -6,5 +6,3 @@ variable "variables" {
   type    = "map"
   default = {}
 }
-
-variable "cert_domain_name" {}
