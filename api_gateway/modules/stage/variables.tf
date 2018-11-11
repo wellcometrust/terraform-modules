@@ -6,3 +6,7 @@ variable "variables" {
   type    = "map"
   default = {}
 }
+
+variable "base_path" {
+  default = "/"
+}
