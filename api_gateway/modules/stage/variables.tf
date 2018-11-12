@@ -7,4 +7,6 @@ variable "variables" {
   default = {}
 }
 
-variable "cert_domain_name" {}
+variable "base_path" {
+  default = "/"
+}
