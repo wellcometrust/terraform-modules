@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v13.1.0 - 2018-11-12
+
+Allow custom domains to be created seperately from stages.
+
 ## v13.0.0 - 2018-11-10
 
 Refactoring API GW module for further flexibility
