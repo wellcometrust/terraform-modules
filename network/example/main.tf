@@ -1,12 +1,3 @@
-module "private-vpc" {
-  source = "../prebuilt/vpc/private-egress-only"
-
-  name = "example-private-vpc"
-
-  cidr_block         = "172.16.0.0/24"
-  cidrsubnet_newbits = "4"
-}
-
 module "public-private-vpc" {
   source = "../prebuilt/vpc/public-private-igw"
 
