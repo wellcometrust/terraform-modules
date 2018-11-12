@@ -1,6 +1,6 @@
 module "subnets" {
   source = "../../../modules/subnets"
-  name = "${var.name}"
+  name   = "${var.name}"
 
   vpc_id = "${var.vpc_id}"
 

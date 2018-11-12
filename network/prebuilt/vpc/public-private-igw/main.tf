@@ -4,7 +4,7 @@ resource "aws_vpc" "vpc" {
 
 module "public_subnets" {
   source = "../../subnets/public-igw"
-  name = "${var.name}-public"
+  name   = "${var.name}-public"
 
   vpc_id = "${aws_vpc.vpc.id}"
 
@@ -16,7 +16,7 @@ module "public_subnets" {
 
 module "private_subnets" {
   source = "../../../modules/subnets"
-  name = "${var.name}-private"
+  name   = "${var.name}-private"
 
   vpc_id = "${aws_vpc.vpc.id}"
 
@@ -28,10 +28,10 @@ module "private_subnets" {
 
 module "nat" {
   source = "../../../modules/nat"
-  name = "${var.name}"
+  name   = "${var.name}"
 
   vpc_id = "${aws_vpc.vpc.id}"
 
-  subnet_id     = "${module.public_subnets.subnets[0]}"
+  subnet_id      = "${module.public_subnets.subnets[0]}"
   route_table_id = "${module.private_subnets.route_table_id}"
 }

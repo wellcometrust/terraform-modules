@@ -3,7 +3,7 @@ data "aws_availability_zones" "zones" {}
 resource "aws_subnet" "subnet" {
   count = "${var.az_count}"
 
-  cidr_block        = "${cidrsubnet(var.cidr_block, var.cidrsubnet_newbits, count.index)}"
+  cidr_block = "${cidrsubnet(var.cidr_block, var.cidrsubnet_newbits, count.index)}"
 
   availability_zone = "${data.aws_availability_zones.zones.names[(count.index % (data.aws_availability_zones.zones.count + 1))]}"
   vpc_id            = "${var.vpc_id}"
