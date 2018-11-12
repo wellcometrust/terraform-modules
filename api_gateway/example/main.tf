@@ -32,7 +32,7 @@ module "domain_stage" {
 module "prod" {
   source = "../modules/stage"
 
-  domain_name      = "${module.domain_prod.domain_name}"
+  domain_name = "${module.domain_prod.domain_name}"
 
   stage_name = "prod"
   api_id     = "${aws_api_gateway_rest_api.api.id}"
@@ -45,7 +45,7 @@ module "prod" {
 module "stage" {
   source = "../modules/stage"
 
-  domain_name      = "${module.domain_stage.domain_name}"
+  domain_name = "${module.domain_stage.domain_name}"
 
   stage_name = "stage"
   api_id     = "${aws_api_gateway_rest_api.api.id}"
