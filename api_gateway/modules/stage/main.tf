@@ -3,7 +3,7 @@ resource "aws_api_gateway_deployment" "stage" {
   stage_name  = "${var.stage_name}"
 
   variables {
-    "depends" = "${join(",", var.depends_on)}"
+    "depends" = "${md5(join(",", var.depends_on))}"
   }
 }
 
