@@ -40,6 +40,13 @@ module "prod" {
   variables = {
     port = "${local.nlb_listener_port}"
   }
+
+  depends_on = [
+    "${module.auth_resource_integration.uri}",
+    "${module.auth_subresource_integration.uri}",
+    "${module.root_resource_integration.uri}",
+    "${module.resource_integration.uri}",
+  ]
 }
 
 module "stage" {
@@ -53,6 +60,13 @@ module "stage" {
   variables = {
     port = "${local.nlb_listener_port_stage}"
   }
+
+  depends_on = [
+    "${module.auth_resource_integration.uri}",
+    "${module.auth_subresource_integration.uri}",
+    "${module.root_resource_integration.uri}",
+    "${module.resource_integration.uri}",
+  ]
 }
 
 # Simple - no auth

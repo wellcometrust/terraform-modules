@@ -7,6 +7,10 @@ variable "variables" {
   default = {}
 }
 
+variable "depends_on" {
+  type = "list"
+}
+
 variable "base_path" {
   default = "/"
 }
