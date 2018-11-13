@@ -11,11 +11,28 @@ resource "aws_api_gateway_rest_api" "api" {
   }
 }
 
-module "prod" {
-  source = "../modules/stage"
+# Custom domains
+
+module "domain_prod" {
+  source = "../modules/domain"
 
   domain_name      = "api.wellcomecollection.org"
   cert_domain_name = "api.wellcomecollection.org"
+}
+
+module "domain_stage" {
+  source = "../modules/domain"
+
+  domain_name      = "api-stage.wellcomecollection.org"
+  cert_domain_name = "api.wellcomecollection.org"
+}
+
+# Stages
+
+module "prod" {
+  source = "../modules/stage"
+
+  domain_name = "${module.domain_prod.domain_name}"
 
   stage_name = "prod"
   api_id     = "${aws_api_gateway_rest_api.api.id}"
@@ -35,8 +52,7 @@ module "prod" {
 module "stage" {
   source = "../modules/stage"
 
-  domain_name      = "api-stage.wellcomecollection.org"
-  cert_domain_name = "api.wellcomecollection.org"
+  domain_name = "${module.domain_stage.domain_name}"
 
   stage_name = "stage"
   api_id     = "${aws_api_gateway_rest_api.api.id}"

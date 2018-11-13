@@ -11,3 +11,6 @@ variable "cert_domain_name" {}
 variable "depends_on" {
   type = "list"
 }
+variable "base_path" {
+  default = "/"
+}
