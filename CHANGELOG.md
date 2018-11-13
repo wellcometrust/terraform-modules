@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v14.1.0 - 2018-11-13
+
+Rework api-gw deps so as to avoid borken deploys
+
 ## v14.0.0 - 2018-11-13
 
 Complete re-work of network module to provide the ability to vary network infra.
