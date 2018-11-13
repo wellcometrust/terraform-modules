@@ -7,8 +7,6 @@ variable "variables" {
   default = {}
 }
 
-variable "cert_domain_name" {}
-
 variable "depends_on" {
   type = "list"
 }
