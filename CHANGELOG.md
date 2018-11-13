@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v14.0.0 - 2018-11-13
+
+Complete re-work of network module to provide the ability to vary network infra.
+
 ## v13.1.0 - 2018-11-12
 
 Allow custom domains to be created seperately from stages.
