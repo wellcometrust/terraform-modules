@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v14.2.0 - 2018-11-13
+
+Proxy integration for api gateway, uses HTTP_PROXY not HTTP type
+
 ## v14.1.0 - 2018-11-13
 
 Rework api-gw deps so as to avoid borken deploys
