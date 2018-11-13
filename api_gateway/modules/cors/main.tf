@@ -30,7 +30,7 @@ resource "aws_api_gateway_integration_response" "cors" {
     "method.response.header.Access-Control-Allow-Origin"  = "'${var.allowed_origin}'"
     "method.response.header.Access-Control-Max-Age"       = "'${var.allowed_max_age}'"
 
-    "method.response.header.Content-Type" = "'integration.response.header.Content-Type'"
+    "method.response.header.Content-Type" = "integration.response.header.Content-Type"
   }
 
   depends_on = ["aws_api_gateway_method_response.cors"]
