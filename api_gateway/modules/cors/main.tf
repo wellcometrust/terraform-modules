@@ -18,7 +18,6 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-
 resource "aws_api_gateway_integration_response" "cors" {
   rest_api_id = "${var.api_id}"
   resource_id = "${var.api_resource_id}"

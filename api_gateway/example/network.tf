@@ -3,15 +3,15 @@ resource "aws_ecs_cluster" "cluster" {
 }
 
 module "network" {
-  source     = "../../network/prebuilt/vpc/public-private-igw"
-  name       = "${local.namespace}"
+  source = "../../network/prebuilt/vpc/public-private-igw"
+  name   = "${local.namespace}"
 
-  az_count   = "1"
+  az_count = "1"
 
-  cidr_block_public = "172.42.0.0/23"
+  cidr_block_public         = "172.42.0.0/23"
   cidrsubnet_newbits_public = "1"
 
-  cidr_block_private = "172.43.0.0/23"
+  cidr_block_private         = "172.43.0.0/23"
   cidrsubnet_newbits_private = "1"
 
   cidr_block_vpc = "${local.vpc_cidr_block}"

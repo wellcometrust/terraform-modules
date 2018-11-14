@@ -1,6 +1,7 @@
 variable "api_id" {}
 variable "resource_id" {}
 variable "http_method" {}
+
 variable "aws_region" {
   default = "eu-west-1"
 }

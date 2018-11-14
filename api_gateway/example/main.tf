@@ -48,7 +48,7 @@ module "prod" {
     "${module.auth_subresource_integration.uri}",
     "${module.root_resource_integration.uri}",
     "${module.resource_integration.uri}",
-    "${module.root_resource_method_static.integration_id}"
+    "${module.root_resource_method_static.integration_id}",
   ]
 }
 

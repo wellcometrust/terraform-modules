@@ -6,5 +6,5 @@ resource "aws_api_gateway_integration" "resource_s3_integration" {
   type                    = "AWS"
   uri                     = "arn:aws:apigateway:${var.aws_region}:s3:path//${var.bucket_name}/${var.s3_key}"
 
-  credentials             = "${var.static_resource_role_arn}"
+  credentials = "${var.static_resource_role_arn}"
 }

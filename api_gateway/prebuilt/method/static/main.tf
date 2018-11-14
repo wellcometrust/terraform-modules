@@ -7,7 +7,6 @@ module "method" {
   resource_id = "${var.resource_id}"
 }
 
-
 module "static_integration" {
   source = "../../../modules/integration/static"
 
@@ -17,7 +16,7 @@ module "static_integration" {
   bucket_name = "${var.bucket_name}"
   s3_key      = "${var.s3_key}"
 
-  api_id = "${var.api_id}"
+  api_id      = "${var.api_id}"
   http_method = "${module.method.http_method}"
 
   static_resource_role_arn = "${var.static_resource_role_arn}"
