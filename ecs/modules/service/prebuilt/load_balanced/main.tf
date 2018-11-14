@@ -1,3 +1,26 @@
+resource "aws_ecs_service" "no_tg_service" {
+  count           = "${var.target_group_protocol == "NONE"? 1: 0}"
+  name            = "${var.service_name}"
+  cluster         = "${var.ecs_cluster_id}"
+  task_definition = "${var.task_definition_arn}"
+  desired_count   = "${var.task_desired_count}"
+
+  deployment_minimum_healthy_percent = "${var.deployment_minimum_healthy_percent}"
+  deployment_maximum_percent         = "${var.deployment_maximum_percent}"
+
+  launch_type = "${var.launch_type}"
+
+  network_configuration = {
+    subnets          = ["${var.subnets}"]
+    security_groups  = ["${var.security_group_ids}"]
+    assign_public_ip = false
+  }
+
+  service_registries {
+    registry_arn = "${aws_service_discovery_service.service_discovery.arn}"
+  }
+}
+
 resource "aws_ecs_service" "http_tg_service" {
   count           = "${var.target_group_protocol == "HTTP"? 1: 0}"
   name            = "${var.service_name}"
