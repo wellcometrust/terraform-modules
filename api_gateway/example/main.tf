@@ -16,15 +16,15 @@ resource "aws_api_gateway_rest_api" "api" {
 module "domain_prod" {
   source = "../modules/domain"
 
-  domain_name      = "api.wellcomecollection.org"
-  cert_domain_name = "api.wellcomecollection.org"
+  domain_name      = "monitoring.wellcomecollection.org"
+  cert_domain_name = "monitoring.wellcomecollection.org"
 }
 
 module "domain_stage" {
   source = "../modules/domain"
 
-  domain_name      = "api-stage.wellcomecollection.org"
-  cert_domain_name = "api.wellcomecollection.org"
+  domain_name      = "monitoring-stage.wellcomecollection.org"
+  cert_domain_name = "monitoring.wellcomecollection.org"
 }
 
 # Stages
@@ -34,18 +34,21 @@ module "prod" {
 
   domain_name = "${module.domain_prod.domain_name}"
 
-  stage_name = "prod"
+  stage_name = "notreallyprod"
   api_id     = "${aws_api_gateway_rest_api.api.id}"
 
   variables = {
     port = "${local.nlb_listener_port}"
   }
 
+  base_path = ""
+
   depends_on = [
     "${module.auth_resource_integration.uri}",
     "${module.auth_subresource_integration.uri}",
     "${module.root_resource_integration.uri}",
     "${module.resource_integration.uri}",
+    "${module.root_resource_method_static.integration_id}"
   ]
 }
 
@@ -54,7 +57,7 @@ module "stage" {
 
   domain_name = "${module.domain_stage.domain_name}"
 
-  stage_name = "stage"
+  stage_name = "notreallystage"
   api_id     = "${aws_api_gateway_rest_api.api.id}"
 
   variables = {
@@ -69,7 +72,7 @@ module "stage" {
   ]
 }
 
-# Simple - no auth
+# Simple - no auth - proxy
 
 module "root_resource_method" {
   source = "../modules/method"
@@ -123,7 +126,7 @@ module "simple_integration" {
   }
 }
 
-# No auth
+# No auth - proxy
 
 module "resource" {
   source = "../modules/resource"
@@ -179,7 +182,7 @@ module "subresource_integration" {
   }
 }
 
-# Auth
+# Auth - proxy
 
 module "auth_resource" {
   source = "../modules/resource"
@@ -241,4 +244,25 @@ module "auth_subresource_integration" {
   request_parameters = {
     integration.request.path.proxy = "method.request.path.proxy"
   }
+}
+
+# Simple - no auth - static
+
+resource "aws_api_gateway_resource" "static_resource" {
+  rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+  parent_id   = "${aws_api_gateway_rest_api.api.root_resource_id}"
+  path_part   = "content"
+}
+
+module "root_resource_method_static" {
+  source = "../prebuilt/method/static"
+
+  api_id      = "${aws_api_gateway_rest_api.api.id}"
+  resource_id = "${aws_api_gateway_resource.static_resource.id}"
+
+  aws_region  = "${local.aws_region}"
+  bucket_name = "${local.bucket_name}"
+  s3_key      = "${local.key}"
+
+  static_resource_role_arn = "${aws_iam_role.static_resource_role.arn}"
 }
