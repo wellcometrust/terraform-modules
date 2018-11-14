@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v15.0.0 - 2018-11-14
+
+- Optional target group for prebuilt rest ECS module
+- Static resource for API Gateway
+- CORS module for API Gateway
+
 ## v14.2.0 - 2018-11-13
 
 Proxy integration for api gateway, uses HTTP_PROXY not HTTP type
