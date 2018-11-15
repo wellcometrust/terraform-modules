@@ -1,5 +1,9 @@
 data "aws_availability_zones" "zones" {}
 
+locals {
+  availability = "${var.map_public_ips_on_launch == true ? "public" : "private"}"
+}
+
 resource "aws_subnet" "subnet" {
   count = "${var.az_count}"
 
@@ -12,6 +16,7 @@ resource "aws_subnet" "subnet" {
 
   tags {
     Name = "${var.name}-${data.aws_availability_zones.zones.names[(count.index % (data.aws_availability_zones.zones.count + 1))]}-${count.index}"
+    Availability = "${local.availability}"
   }
 }
 
