@@ -2,13 +2,15 @@ data "aws_availability_zones" "zones" {}
 
 locals {
   availability = "${var.map_public_ips_on_launch == true ? "public" : "private"}"
-  
+
   az_count = "${data.aws_availability_zones.zones.count}"
   az_names = "${data.aws_availability_zones.zones.names}"
+
+  subnet_count = "${var.az_count == "" ? local.az_count : var.az_count}"
 }
 
 resource "aws_subnet" "subnet" {
-  count = "${var.az_count}"
+  count = "${local.subnet_count}"
 
   cidr_block = "${cidrsubnet(var.cidr_block, var.cidrsubnet_newbits, count.index)}"
 
@@ -32,7 +34,7 @@ resource "aws_route_table" "table" {
 }
 
 resource "aws_route_table_association" "network" {
-  count          = "${var.az_count}"
+  count          = "${local.subnet_count}"
   subnet_id      = "${element(aws_subnet.subnet.*.id, count.index)}"
   route_table_id = "${aws_route_table.table.id}"
 }
