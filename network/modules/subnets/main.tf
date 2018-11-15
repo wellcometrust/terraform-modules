@@ -9,13 +9,13 @@ resource "aws_subnet" "subnet" {
 
   cidr_block = "${cidrsubnet(var.cidr_block, var.cidrsubnet_newbits, count.index)}"
 
-  availability_zone = "${data.aws_availability_zones.zones.names[(count.index % (data.aws_availability_zones.zones.count + 1))]}"
+  availability_zone = "${data.aws_availability_zones.zones.names[(count.index % (data.aws_availability_zones.zones.count))]}"
   vpc_id            = "${var.vpc_id}"
 
   map_public_ip_on_launch = "${var.map_public_ips_on_launch}"
 
   tags {
-    Name = "${var.name}-${data.aws_availability_zones.zones.names[(count.index % (data.aws_availability_zones.zones.count + 1))]}-${count.index}"
+    Name = "${var.name}-${data.aws_availability_zones.zones.names[(count.index % (data.aws_availability_zones.zones.count))]}-${count.index}"
     Availability = "${local.availability}"
   }
 }
