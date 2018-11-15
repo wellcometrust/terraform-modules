@@ -24,6 +24,9 @@ module "service" {
 
   launch_type           = "${var.launch_type}"
   target_group_protocol = "${var.target_group_protocol}"
+
+  listener_port = "${var.listener_port}"
+  lb_arn        = "${var.lb_arn}"
 }
 
 module "task" {

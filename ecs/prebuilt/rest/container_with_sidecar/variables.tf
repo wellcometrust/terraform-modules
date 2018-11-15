@@ -77,3 +77,6 @@ variable "target_container" {
   description = "Container to point load balancer at (can be 'app' or 'sidecar')"
   default     = "app"
 }
+
+variable "lb_arn" {}
+variable "listener_port" {}

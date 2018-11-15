@@ -116,6 +116,19 @@ resource "aws_alb_target_group" "http_target_group" {
   }
 }
 
+resource "aws_lb_listener" "listener" {
+  count = "${var.target_group_protocol == "HTTP"? 1: 0}"
+
+  load_balancer_arn = "${var.lb_arn}"
+  port              = "${var.listener_port}"
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = "${aws_lb_target_group.tcp_target_group.arn}"
+  }
+}
+
 resource "aws_lb_target_group" "tcp_target_group" {
   count = "${var.target_group_protocol == "TCP"? 1: 0}"
 
@@ -131,5 +144,18 @@ resource "aws_lb_target_group" "tcp_target_group" {
 
   health_check {
     protocol = "TCP"
+  }
+}
+
+resource "aws_lb_listener" "listener" {
+  count = "${var.target_group_protocol == "TCP"? 1: 0}"
+
+  load_balancer_arn = "${var.lb_arn}"
+  port              = "${var.listener_port}"
+  protocol          = "TCP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = "${aws_lb_target_group.tcp_target_group.arn}"
   }
 }
