@@ -26,12 +26,14 @@ variable "app_env_vars" {
   description = "Environment variables to pass to the container"
   type        = "map"
 }
+
 variable "app_env_vars_length" {}
 
 variable "sidecar_env_vars" {
   description = "Environment variables to pass to the container"
   type        = "map"
 }
+
 variable "sidecar_env_vars_length" {}
 
 variable "command" {
@@ -42,6 +44,7 @@ variable "command" {
 variable "cpu" {
   default = "1024"
 }
+
 variable "memory" {
   default = "2048"
 }
@@ -49,15 +52,19 @@ variable "memory" {
 variable "app_cpu" {
   default = "512"
 }
+
 variable "app_memory" {
   default = "1024"
 }
+
 variable "sidecar_cpu" {
   default = "512"
 }
+
 variable "sidecar_memory" {
   default = "1024"
 }
+
 variable "launch_type" {
   default = "FARGATE"
 }
@@ -68,5 +75,5 @@ variable "service_egress_security_group_id" {}
 
 variable "target_container" {
   description = "Container to point load balancer at (can be 'app' or 'sidecar')"
-  default = "app"
+  default     = "app"
 }

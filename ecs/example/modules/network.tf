@@ -12,19 +12,19 @@ resource "aws_ecs_cluster" "cluster" {
 }
 
 module "network" {
-  source     = "../../../network/prebuilt/vpc/public-private-igw"
-  name       = "ecsV2"
+  source = "../../../network/prebuilt/vpc/public-private-igw"
+  name   = "ecsV2"
 
   cidr_block = "${local.vpc_cidr_block}"
 
-  az_count   = "1"
+  az_count = "1"
 
   cidr_block_vpc = "${local.vpc_cidr_block}"
 
-  cidr_block_public = "${local.cidr_block_public}"
+  cidr_block_public          = "${local.cidr_block_public}"
   cidrsubnet_newbits_private = "0"
 
-  cidr_block_private = "${local.cidr_block_private}"
+  cidr_block_private        = "${local.cidr_block_private}"
   cidrsubnet_newbits_public = "0"
 }
 
