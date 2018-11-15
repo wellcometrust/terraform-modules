@@ -1,5 +1,5 @@
 variable "az_count" {
-  default = "4"
+  default = ""
 }
 
 variable "vpc_id" {}

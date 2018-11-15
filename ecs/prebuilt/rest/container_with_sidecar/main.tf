@@ -12,8 +12,8 @@ module "service" {
 
   security_group_ids = ["${local.security_group_ids}"]
 
-  container_name = "${local.task_port}"
-  container_port = "${local.task_name}"
+  container_name = "${local.task_name}"
+  container_port = "${local.task_port}"
 
   ecs_cluster_id = "${data.aws_ecs_cluster.cluster.id}"
 
@@ -24,6 +24,9 @@ module "service" {
 
   launch_type           = "${var.launch_type}"
   target_group_protocol = "${var.target_group_protocol}"
+
+  listener_port = "${var.listener_port}"
+  lb_arn        = "${var.lb_arn}"
 }
 
 module "task" {
