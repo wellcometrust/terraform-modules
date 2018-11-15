@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v16.1.0 - 2018-11-15
+
+Various bugfixes for lambda, network & ecs modules
+
 ## v16.0.0 - 2018-11-15
 
 This change adds a rest/container_with_sidecar option to prebuilt ecs service modules
