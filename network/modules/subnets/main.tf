@@ -20,7 +20,7 @@ resource "aws_subnet" "subnet" {
   map_public_ip_on_launch = "${var.map_public_ips_on_launch}"
 
   tags {
-    Name = "${var.name}-${local.az_names[(count.index % (local.az_count + 1))]}-${count.index}"
+    Name         = "${var.name}-${local.az_names[(count.index % (local.az_count + 1))]}-${count.index}"
     Availability = "${local.availability}"
   }
 }
