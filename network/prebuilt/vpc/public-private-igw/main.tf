@@ -1,5 +1,9 @@
 resource "aws_vpc" "vpc" {
   cidr_block = "${var.cidr_block_vpc}"
+
+  tags {
+    Name = "${var.name}"
+  }
 }
 
 module "public_subnets" {
