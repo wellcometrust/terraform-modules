@@ -3,7 +3,7 @@ data "aws_availability_zones" "zones" {}
 locals {
   availability = "${var.map_public_ips_on_launch == true ? "public" : "private"}"
 
-  az_count = "${data.aws_availability_zones.zones.count}"
+  az_count = "${length(data.aws_availability_zones.zones.names)}"
   az_names = "${data.aws_availability_zones.zones.names}"
 
   subnet_count = "${var.az_count == "" ? local.az_count : var.az_count}"
