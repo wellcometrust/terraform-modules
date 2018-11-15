@@ -9,9 +9,9 @@ variable "cidrsubnet_newbits_public" {}
 variable "cidrsubnet_newbits_private" {}
 
 variable "public_az_count" {
-  default = "4"
+  default = ""
 }
 
 variable "private_az_count" {
-  default = "4"
+  default = ""
 }
