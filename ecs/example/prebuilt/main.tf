@@ -1,5 +1,5 @@
 module "example_rest_service" {
-  source = "../../prebuilt/rest"
+  source = "../../prebuilt/rest/single_container"
 
   service_name    = "example_rest_service"
   container_image = "strm/helloworld-http"
@@ -21,6 +21,8 @@ module "example_rest_service" {
   ]
 
   service_egress_security_group_id = "${aws_security_group.service_egress_security_group.id}"
+
+  target_group_protocol = "HTTP"
 }
 
 module "example_scaling_service" {

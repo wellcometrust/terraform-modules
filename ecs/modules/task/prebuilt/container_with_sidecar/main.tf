@@ -35,11 +35,6 @@ module "task_definition" {
   memory = "${var.memory}"
 }
 
-locals {
-  expose_app_port     = "${var.sidecar_is_proxy == "false" ? "true" : "false"}"
-  expose_sidecar_port = "${var.sidecar_is_proxy == "false" ? "false" : "true"}"
-}
-
 module "app_port_mappings" {
   source         = "../../modules/port_mappings"
   container_port = "${var.app_container_port}"

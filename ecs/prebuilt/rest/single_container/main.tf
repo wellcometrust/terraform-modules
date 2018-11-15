@@ -3,7 +3,7 @@ data "aws_ecs_cluster" "cluster" {
 }
 
 module "service" {
-  source = "../../modules/service/prebuilt/load_balanced"
+  source = "../../../modules/service/prebuilt/load_balanced"
 
   service_name       = "${var.service_name}"
   task_desired_count = "1"
@@ -27,7 +27,7 @@ module "service" {
 }
 
 module "task" {
-  source = "../../modules/task/prebuilt/single_container"
+  source = "../../../modules/task/prebuilt/single_container"
 
   cpu    = "${var.cpu}"
   memory = "${var.memory}"
