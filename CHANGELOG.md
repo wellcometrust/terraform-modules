@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v16.0.0 - 2018-11-15
+
+This change adds a rest/container_with_sidecar option to prebuilt ecs service modules
+In addition it moves the single container version to rest/single_container.
+
 ## v15.0.0 - 2018-11-14
 
 - Optional target group for prebuilt rest ECS module
