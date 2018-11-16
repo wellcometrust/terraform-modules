@@ -23,6 +23,9 @@ module "example_rest_service" {
   service_egress_security_group_id = "${aws_security_group.service_egress_security_group.id}"
 
   target_group_protocol = "HTTP"
+
+  lb_arn        = "${aws_alb.public_services.arn}"
+  listener_port = "${aws_alb_listener.http_80.port}"
 }
 
 module "example_scaling_service" {

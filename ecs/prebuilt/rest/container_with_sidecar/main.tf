@@ -6,7 +6,7 @@ module "service" {
   source = "../../../modules/service/prebuilt/load_balanced"
 
   service_name       = "${var.service_name}"
-  task_desired_count = "1"
+  task_desired_count = "${var.task_desired_count}"
 
   task_definition_arn = "${module.task.task_definition_arn}"
 

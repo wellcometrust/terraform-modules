@@ -80,3 +80,7 @@ variable "target_container" {
 
 variable "lb_arn" {}
 variable "listener_port" {}
+
+variable "task_desired_count" {
+  default = "1"
+}
