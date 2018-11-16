@@ -46,3 +46,10 @@ variable "launch_type" {
 variable "target_group_protocol" {}
 
 variable "service_egress_security_group_id" {}
+
+variable "task_desired_count" {
+  default = "1"
+}
+
+variable "listener_port" {}
+variable "lb_arn" {}

@@ -5,8 +5,7 @@ data "aws_ecs_cluster" "cluster" {
 module "service" {
   source = "../../../modules/service/prebuilt/load_balanced"
 
-  service_name       = "${var.service_name}"
-  task_desired_count = "1"
+  service_name = "${var.service_name}"
 
   task_definition_arn = "${module.task.task_definition_arn}"
 
@@ -24,6 +23,11 @@ module "service" {
 
   launch_type           = "${var.launch_type}"
   target_group_protocol = "${var.target_group_protocol}"
+
+  task_desired_count = "${var.task_desired_count}"
+
+  listener_port = "${var.listener_port}"
+  lb_arn        = "${var.lb_arn}"
 }
 
 module "task" {
