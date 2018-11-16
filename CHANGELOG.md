@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v16.1.2 - 2018-11-16
+
+More bugfixes in the lambda module:
+* Don't use data block for iam_role because it can result in race conditions
+* Use different name for cloudwatch policy document and dlq policy document
+* Prepend lambda to the iam role name
+
 ## v16.1.1 - 2018-11-16
 
 Adds outputs to the network modules that expose route table ids in outputs (sol you can add routes)!
