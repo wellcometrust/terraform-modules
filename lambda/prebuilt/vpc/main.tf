@@ -19,10 +19,6 @@ module "monitoring" {
   log_retention_in_days = "${var.log_retention_in_days}"
 }
 
-data "aws_iam_role" "role" {
-  name = "${module.iam.role_name}"
-}
-
 resource "aws_lambda_function" "lambda_function" {
   description   = "${var.description}"
   function_name = "${var.name}"
@@ -31,7 +27,7 @@ resource "aws_lambda_function" "lambda_function" {
   s3_key            = "${var.s3_key}"
   s3_object_version = "${data.aws_s3_bucket_object.package.version_id}"
 
-  role    = "${data.aws_iam_role.role.arn}"
+  role    = "${module.iam.role_arn}"
   handler = "${var.module_name == "" ? "${var.name}.main": "${var.module_name}.main"}"
   runtime = "python3.6"
   timeout = "${var.timeout}"
