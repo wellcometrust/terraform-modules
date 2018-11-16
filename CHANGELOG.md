@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v16.1.3 - 2018-11-16
+
+Updates the ECS example modules & provides task_count as a defaulted variable
+
 ## v16.1.2 - 2018-11-16
 
 More bugfixes in the lambda module:
