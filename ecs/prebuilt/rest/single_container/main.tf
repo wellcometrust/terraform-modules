@@ -5,7 +5,7 @@ data "aws_ecs_cluster" "cluster" {
 module "service" {
   source = "../../../modules/service/prebuilt/load_balanced"
 
-  service_name       = "${var.service_name}"
+  service_name = "${var.service_name}"
 
   task_definition_arn = "${module.task.task_definition_arn}"
 
