@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v16.1.1 - 2018-11-16
+
+Adds outputs to the network modules that expose route table ids in outputs (sol you can add routes)!
+
 ## v16.1.0 - 2018-11-15
 
 Various bugfixes for lambda, network & ecs modules
