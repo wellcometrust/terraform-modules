@@ -30,6 +30,7 @@ module "network" {
   cidr_block_vpc = "${local.vpc_cidr_block}"
 }
 
+
 resource "aws_service_discovery_private_dns_namespace" "namespace" {
   name = "${local.namespace}"
   vpc  = "${module.network.vpc_id}"
