@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v16.1.4 - 2018-11-17
+
+Adds the ability to remove base path mapping in stage.
+
 ## v16.1.3 - 2018-11-16
 
 Updates the ECS example modules & provides task_count as a defaulted variable
