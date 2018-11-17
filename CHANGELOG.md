@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v16.1.5 - 2018-11-17
+
+Removes variables from deployment (as they will blat stage vars).
+
 ## v16.1.4 - 2018-11-17
 
 Adds the ability to remove base path mapping in stage.
