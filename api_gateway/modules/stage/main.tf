@@ -14,10 +14,3 @@ resource "aws_api_gateway_stage" "stage" {
 
   variables = "${var.variables}"
 }
-
-resource "aws_api_gateway_base_path_mapping" "stage" {
-  api_id      = "${var.api_id}"
-  stage_name  = "${aws_api_gateway_deployment.stage.stage_name}"
-  domain_name = "${var.domain_name}"
-  base_path   = "${var.base_path}"
-}
