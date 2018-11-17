@@ -1,3 +1,3 @@
 RELEASE_TYPE: patch 
 
-Adds the ability to remove base path mapping in stage.
+Removes variables from deployment (as they will blat stage vars).
