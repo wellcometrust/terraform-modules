@@ -1,6 +1,9 @@
 variable "domain_name" {}
 variable "api_id" {}
-variable "stage_name" {}
+
+variable "stage_name" {
+  default = ""
+}
 
 variable "variables" {
   type    = "map"
@@ -12,5 +15,5 @@ variable "depends_on" {
 }
 
 variable "base_path" {
-  default = "/"
+  default = ""
 }
