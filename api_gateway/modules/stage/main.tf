@@ -16,7 +16,7 @@ resource "aws_api_gateway_stage" "stage" {
 }
 
 locals {
-  base_bath_mappings ="${var.stage_name == "" ? 1 : 0}"
+  base_bath_mappings = "${var.stage_name == "" ? 1 : 0}"
 }
 
 resource "aws_api_gateway_base_path_mapping" "stage" {
