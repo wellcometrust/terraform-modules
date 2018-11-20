@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v16.1.6 - 2018-11-20
+
+Fix load_balanced ecs module http target group
+
 ## v16.1.5 - 2018-11-17
 
 Removes variables from deployment (as they will blat stage vars).
