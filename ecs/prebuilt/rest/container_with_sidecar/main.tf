@@ -1,7 +1,3 @@
-data "aws_ecs_cluster" "cluster" {
-  cluster_name = "${var.cluster_name}"
-}
-
 module "service" {
   source = "../../../modules/service/prebuilt/load_balanced"
 
