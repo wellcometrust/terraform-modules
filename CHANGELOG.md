@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v16.1.7 - 2018-11-24
+
+enable_dns_hostnames by default
+
 ## v16.1.6 - 2018-11-20
 
 Fix load_balanced ecs module http target group
