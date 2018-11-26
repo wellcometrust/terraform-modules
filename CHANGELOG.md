@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v16.1.8 - 2018-11-26
+
+Small fix for prebuilt ECS modules removing data blocks.
+
 ## v16.1.7 - 2018-11-24
 
 enable_dns_hostnames by default
