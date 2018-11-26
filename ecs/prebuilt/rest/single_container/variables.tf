@@ -5,6 +5,8 @@ variable "security_group_ids" {
 }
 
 variable "cluster_name" {}
+variable "cluster_id" {}
+
 variable "vpc_id" {}
 
 variable "subnets" {

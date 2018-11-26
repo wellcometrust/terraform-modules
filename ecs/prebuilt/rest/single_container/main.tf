@@ -1,7 +1,3 @@
-data "aws_ecs_cluster" "cluster" {
-  cluster_name = "${var.cluster_name}"
-}
-
 module "service" {
   source = "../../../modules/service/prebuilt/load_balanced"
 
@@ -14,7 +10,7 @@ module "service" {
   container_name = "${module.task.task_name}"
   container_port = "${module.task.task_port}"
 
-  ecs_cluster_id = "${data.aws_ecs_cluster.cluster.id}"
+  ecs_cluster_id = "${var.cluster_id}"
 
   vpc_id  = "${var.vpc_id}"
   subnets = "${var.subnets}"
