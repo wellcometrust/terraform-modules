@@ -18,7 +18,3 @@ variable "cache_enabled" {
 variable "cache_size" {
   default = "1.6"
 }
-
-variable "cache_ttl_in_seconds" {
-  default = "60"
-}

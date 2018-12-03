@@ -13,14 +13,3 @@ resource "aws_api_gateway_stage" "stage" {
   cache_cluster_size = "${var.cache_size}"
   variables = "${var.variables}"
 }
-
-resource "aws_api_gateway_method_settings" "s" {
-  rest_api_id = "${var.api_id}"
-  stage_name  = "${var.stage_name}"
-  method_path = "*/*"
-
-  settings {
-    caching_enabled = "${var.cache_enabled}"
-  cache_ttl_in_seconds = "${var.cache_ttl_in_seconds}"
-  }
-}
