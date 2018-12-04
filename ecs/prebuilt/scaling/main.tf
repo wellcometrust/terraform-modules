@@ -30,6 +30,8 @@ module "service" {
   launch_type         = "${var.launch_type}"
 
   cluster_name = "${var.cluster_name}"
+  cluster_id   = "${var.cluster_id}"
+
   service_name = "${var.service_name}"
 
   min_capacity = "${var.min_capacity}"
