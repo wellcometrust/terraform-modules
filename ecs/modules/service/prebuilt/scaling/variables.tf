@@ -7,7 +7,10 @@ variable "max_capacity" {
 }
 
 variable "vpc_id" {}
+
+variable "cluster_id" {}
 variable "cluster_name" {}
+
 variable "service_name" {}
 
 variable "container_port" {
