@@ -1,3 +1,9 @@
+module "iam" {
+  source = "../../modules/iam"
+
+  service_name = "${aws_ecs_service.service.name}"
+}
+
 resource "aws_ecs_service" "service" {
   name            = "${var.service_name}_daemon"
   cluster         = "${var.ecs_cluster_id}"
