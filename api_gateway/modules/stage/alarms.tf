@@ -1,7 +1,7 @@
 resource "aws_cloudwatch_metric_alarm" "5xx_alarm" {
   count = "${var.enable_alarm}"
 
-  alarm_name          = "${var.stage_name}"
+  alarm_name          = "${var.api_name}_${var.stage_name}_500_alarm"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "1"
   metric_name         = "5XXError"
