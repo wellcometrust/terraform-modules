@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v17.0.0 - 2018-12-04
+
+Splits the load_balanced module into tcp & http variants for easier composition.
+
 ## v16.1.8 - 2018-11-26
 
 Small fix for prebuilt ECS modules removing data blocks.
