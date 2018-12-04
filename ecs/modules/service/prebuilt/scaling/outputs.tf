@@ -1,5 +1,5 @@
 output "service_name" {
-  value = "${module.service.service_name}"
+  value = "${module.service.name}"
 }
 
 output "scale_up_arn" {
