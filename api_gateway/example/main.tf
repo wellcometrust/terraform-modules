@@ -32,15 +32,16 @@ module "domain_stage" {
 module "prod" {
   source = "../modules/stage"
 
+  domain_name = "${module.domain_prod.domain_name}"
+
   stage_name = "notreallyprod"
   api_id     = "${aws_api_gateway_rest_api.api.id}"
-  api_name = "${aws_api_gateway_rest_api.api.name}"
-  enable_alarm = true
-  alarm_topic_arn = "${module.alarm_topic.arn}"
 
   variables = {
     port = "${local.nlb_listener_port}"
   }
+
+  base_path = ""
 
   depends_on = [
     "${module.auth_resource_integration.uri}",
@@ -54,7 +55,10 @@ module "prod" {
 module "stage" {
   source = "../modules/stage"
 
+  domain_name = "${module.domain_stage.domain_name}"
+
   stage_name = "notreallystage"
+  api_id     = "${aws_api_gateway_rest_api.api.id}"
 
   variables = {
     port = "${local.nlb_listener_port_stage}"
@@ -66,8 +70,6 @@ module "stage" {
     "${module.root_resource_integration.uri}",
     "${module.resource_integration.uri}",
   ]
-  api_id     = "${aws_api_gateway_rest_api.api.id}"
-  api_name = "${aws_api_gateway_rest_api.api.name}"
 }
 
 # Simple - no auth - proxy

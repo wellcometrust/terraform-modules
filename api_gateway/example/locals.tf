@@ -1,5 +1,5 @@
 locals {
-  vpc_cidr_block = "172.42.0.0/16"
+  vpc_cidr_block = "172.16.0.0/23"
   namespace      = "api-gw-example"
   aws_region     = "eu-west-1"
 
