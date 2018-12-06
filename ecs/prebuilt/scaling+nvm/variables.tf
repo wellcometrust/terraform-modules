@@ -11,10 +11,6 @@ variable "env_vars" {
   type = "map"
 }
 
-variable "launch_type" {
-  default = "FARGATE"
-}
-
 variable "cpu" {
   default = 512
 }
@@ -61,11 +57,6 @@ variable "low_metric_name" {
 }
 
 variable "metric_namespace" {}
-
-variable "command" {
-  type    = "list"
-  default = []
-}
 
 variable "container_port" {
   default = "80"

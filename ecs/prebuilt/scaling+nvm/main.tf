@@ -27,7 +27,6 @@ module "service" {
   task_definition_arn = "${module.task.task_definition_arn}"
   task_desired_count  = "${var.desired_task_count}"
   container_port      = "${var.container_port}"
-  launch_type         = "${var.launch_type}"
 
   cluster_name = "${var.cluster_name}"
   cluster_id   = "${var.cluster_id}"
