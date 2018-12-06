@@ -12,5 +12,10 @@ variable "cpu" {
 
 variable "task_definition_rendered" {}
 
-variable "nvm_host_path" {}
-variable "nvm_container_path" {}
+variable "nvm_host_path" {
+  default = "/nvm"
+}
+
+variable "nvm_container_path" {
+  default = "/tmp"
+}
