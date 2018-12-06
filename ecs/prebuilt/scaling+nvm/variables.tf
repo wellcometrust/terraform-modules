@@ -74,6 +74,7 @@ variable "container_port" {
 variable "nvm_host_path" {
   default = "/nvm"
 }
+
 variable "nvm_container_path" {
   default = "/tmp"
 }

@@ -30,6 +30,7 @@ variable "aws_region" {}
 variable "nvm_host_path" {
   default = "/nvm"
 }
+
 variable "nvm_container_path" {
   default = "/tmp"
 }
