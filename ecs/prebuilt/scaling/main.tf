@@ -54,6 +54,8 @@ module "task" {
 
   aws_region = "${var.aws_region}"
 
+  launch_types = ["${var.launch_type}"]
+
   command = "${var.command}"
 }
 

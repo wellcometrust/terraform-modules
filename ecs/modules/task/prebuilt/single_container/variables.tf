@@ -40,3 +40,8 @@ variable "command" {
   type    = "list"
   default = []
 }
+
+variable "launch_types" {
+  type    = "list"
+  default = ["FARGATE", "EC2"]
+}

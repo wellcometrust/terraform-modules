@@ -28,6 +28,8 @@ module "task_definition" {
 
   task_definition_rendered = "${module.container_definition.rendered}"
 
+  launch_types = ["${var.launch_types}"]
+
   cpu    = "${var.cpu}"
   memory = "${var.memory}"
 }
