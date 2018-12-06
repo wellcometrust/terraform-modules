@@ -1,12 +1,11 @@
 variable "api_id" {}
 
-
-variable "api_name" {
-}
+variable "api_name" {}
 
 variable "alarm_topic_arn" {
   default = ""
 }
+
 variable "variables" {
   type    = "map"
   default = {}
