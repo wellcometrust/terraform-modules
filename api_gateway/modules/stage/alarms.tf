@@ -1,5 +1,9 @@
+locals {
+  enable_alarm = "${var.alarm_topic_arn != ""? 1 : 0}"
+}
+
 resource "aws_cloudwatch_metric_alarm" "5xx_alarm" {
-  count = "${var.enable_alarm}"
+  count = "${local.enable_alarm}"
 
   alarm_name          = "${var.api_name}_${var.stage_name}_500_alarm"
   comparison_operator = "GreaterThanThreshold"
