@@ -8,4 +8,4 @@ output "task_role_name" {
 
 output "task_role_arn" {
   value = "${module.iam.role_arn}"
-}z
+}
