@@ -33,6 +33,8 @@ module "service" {
 
   service_name = "${var.service_name}"
 
+  launch_type = "EC2"
+
   min_capacity = "${var.min_capacity}"
   max_capacity = "${var.max_capacity}"
 }
