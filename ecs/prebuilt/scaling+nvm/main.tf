@@ -54,12 +54,8 @@ module "task" {
 
   aws_region = "${var.aws_region}"
 
-  launch_types = ["${var.launch_type}"]
-
   nvm_container_path = "${var.nvm_container_path}"
   nvm_host_path      = "${var.nvm_host_path}"
-
-  command = "${var.command}"
 }
 
 locals {
