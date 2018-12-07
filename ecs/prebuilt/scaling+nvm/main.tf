@@ -27,19 +27,20 @@ module "service" {
   task_definition_arn = "${module.task.task_definition_arn}"
   task_desired_count  = "${var.desired_task_count}"
   container_port      = "${var.container_port}"
-  launch_type         = "${var.launch_type}"
 
   cluster_name = "${var.cluster_name}"
   cluster_id   = "${var.cluster_id}"
 
   service_name = "${var.service_name}"
 
+  launch_type = "EC2"
+
   min_capacity = "${var.min_capacity}"
   max_capacity = "${var.max_capacity}"
 }
 
 module "task" {
-  source = "../../modules/task/prebuilt/single_container"
+  source = "../../modules/task/prebuilt/single_container+nvm"
 
   task_name = "${var.service_name}"
 
@@ -54,9 +55,8 @@ module "task" {
 
   aws_region = "${var.aws_region}"
 
-  launch_types = ["${var.launch_type}"]
-
-  command = "${var.command}"
+  nvm_container_path = "${var.nvm_container_path}"
+  nvm_host_path      = "${var.nvm_host_path}"
 }
 
 locals {

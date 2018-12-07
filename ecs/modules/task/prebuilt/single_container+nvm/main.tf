@@ -14,21 +14,20 @@ module "container_definition" {
   cpu    = "${var.cpu}"
   memory = "${var.memory}"
 
-  task_port = "${var.container_port}"
+  mount_points = "${module.task_definition.mount_points}"
 
-  mount_points = "${var.mount_points}"
-  command      = "${var.command}"
-
+  task_port       = "${var.container_port}"
   env_vars_length = "${var.env_vars_length}"
 }
 
 module "task_definition" {
-  source    = "../../modules/task_definition/default"
+  source    = "../../modules/task_definition/nvm"
   task_name = "${var.task_name}"
 
   task_definition_rendered = "${module.container_definition.rendered}"
 
-  launch_types = ["${var.launch_types}"]
+  nvm_container_path = "${var.nvm_container_path}"
+  nvm_host_path      = "${var.nvm_host_path}"
 
   cpu    = "${var.cpu}"
   memory = "${var.memory}"

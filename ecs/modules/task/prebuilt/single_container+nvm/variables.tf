@@ -27,21 +27,14 @@ variable "memory" {
 
 variable "aws_region" {}
 
+variable "nvm_host_path" {
+  default = "/nvm"
+}
+
+variable "nvm_container_path" {
+  default = "/tmp"
+}
+
 variable "env_vars_length" {
   default = 0
-}
-
-variable "mount_points" {
-  type    = "list"
-  default = []
-}
-
-variable "command" {
-  type    = "list"
-  default = []
-}
-
-variable "launch_types" {
-  type    = "list"
-  default = ["FARGATE", "EC2"]
 }

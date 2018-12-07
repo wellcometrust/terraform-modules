@@ -1,7 +1,3 @@
-data "aws_ecs_cluster" "cluster" {
-  cluster_name = "${var.cluster_name}"
-}
-
 module "service" {
   source = "../default"
 
@@ -14,7 +10,7 @@ module "service" {
   subnets            = ["${var.subnets}"]
 
   container_port = "${var.container_port}"
-  ecs_cluster_id = "${data.aws_ecs_cluster.cluster.id}"
+  ecs_cluster_id = "${var.cluster_id}"
 
   task_desired_count = "${var.task_desired_count}"
   namespace_id       = "${var.namespace_id}"
