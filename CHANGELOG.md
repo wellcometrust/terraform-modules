@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v17.1.0 - 2018-12-07
+
+Scaling ECS prebuild needs id & name for cluster because data blocks are rubbish
+
 ## v17.0.0 - 2018-12-04
 
 Splits the load_balanced module into tcp & http variants for easier composition.
