@@ -10,7 +10,7 @@ resource "aws_iam_access_key" "access_key" {
 
 resource "aws_iam_user_policy" "terraform_root" {
   user   = "${aws_iam_user.terraform_root.name}"
-  policy = "${data.aws_iam_policy.admin}"
+  policy = "${data.aws_iam_policy.admin.policy}"
 }
 
 data "aws_iam_policy" "admin" {
