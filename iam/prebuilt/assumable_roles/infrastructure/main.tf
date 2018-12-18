@@ -6,7 +6,7 @@ module "infrastructure" {
 
 resource "aws_iam_role_policy" "infrastructure" {
   role   = "${module.infrastructure.arn}"
-  policy = "${data.aws_iam_policy.read_only.arn}"
+  policy = "${data.aws_iam_policy.read_only.policy}"
 }
 
 resource "aws_iam_role_policy" "dev_go_hog_wild" {

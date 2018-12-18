@@ -6,7 +6,7 @@ module "read_only" {
 
 resource "aws_iam_role_policy" "read_only" {
   role   = "${module.read_only.arn}"
-  policy = "${data.aws_iam_policy.read_only.arn}"
+  policy = "${data.aws_iam_policy.read_only.policy}"
 }
 
 data "aws_iam_policy" "read_only" {
