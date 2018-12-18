@@ -5,7 +5,7 @@ module "admin" {
 }
 
 resource "aws_iam_role_policy" "admin" {
-  role   = "${module.admin.arn}"
+  role   = "${module.admin.name}"
   policy = "${data.aws_iam_policy.admin.policy}"
 }
 

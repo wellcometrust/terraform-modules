@@ -5,7 +5,7 @@ module "billing" {
 }
 
 resource "aws_iam_role_policy" "admin" {
-  role   = "${module.billing.arn}"
+  role   = "${module.billing.name}"
   policy = "${data.aws_iam_policy.billing.policy}"
 }
 

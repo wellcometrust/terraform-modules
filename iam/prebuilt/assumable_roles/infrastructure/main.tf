@@ -5,7 +5,7 @@ module "infrastructure" {
 }
 
 resource "aws_iam_role_policy" "infrastructure" {
-  role   = "${module.infrastructure.arn}"
+  role   = "${module.infrastructure.name}"
   policy = "${data.aws_iam_policy.read_only.policy}"
 }
 
