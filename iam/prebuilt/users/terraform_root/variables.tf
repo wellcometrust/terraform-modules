@@ -1,0 +1,1 @@
+variable "pgp_key" {}
