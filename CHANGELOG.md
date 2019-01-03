@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v18.2.3 - 2019-01-03
+
+* Force creation of new api gateway deployment by using variables instead of description.
+* Output aws_api_gateway_integration_response.resource_id for static resources.
+
 ## v18.2.2 - 2019-01-03
 
 Adds some addition outputs to the VHS module for the contained dynamo table.
