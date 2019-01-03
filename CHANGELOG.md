@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v18.2.2 - 2019-01-03
+
+Adds some addition outputs to the VHS module for the contained dynamo table.
+
 ## v18.2.1 - 2019-01-03
 
 Adds a module for the VHS (https://github.com/wellcometrust/scala-storage).
