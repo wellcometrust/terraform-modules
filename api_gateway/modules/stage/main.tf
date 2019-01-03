@@ -11,4 +11,8 @@ resource "aws_api_gateway_stage" "stage" {
   deployment_id = "${aws_api_gateway_deployment.stage.id}"
 
   variables = "${merge(var.variables, map("dependencies_md5", md5(join(",", var.depends_on))))}"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
