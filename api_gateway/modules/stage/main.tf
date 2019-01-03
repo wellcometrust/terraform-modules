@@ -3,6 +3,9 @@ resource "aws_api_gateway_deployment" "stage" {
   stage_name  = "${var.stage_name}"
 
   variables = "${merge(var.variables, map("dependencies_md5", md5(join(",", var.depends_on))))}"
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_api_gateway_stage" "stage" {
@@ -12,7 +15,5 @@ resource "aws_api_gateway_stage" "stage" {
 
   variables = "${merge(var.variables, map("dependencies_md5", md5(join(",", var.depends_on))))}"
 
-  lifecycle {
-    create_before_destroy = true
-  }
+
 }
