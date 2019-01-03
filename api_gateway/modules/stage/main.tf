@@ -1,7 +1,9 @@
 locals {
+  dependencies_md5 = "${md5(join(",", var.depends_on))}"
+
   // Add hash of dependencies to the variables block to force
   // new deployment if dependencies change
-  variables = "${merge(var.variables, map("dependencies_md5", md5(join(",", var.depends_on))))}"
+  variables = "${merge(var.variables, map("dependencies_md5", local.dependencies_md5))}"
 }
 
 resource "aws_api_gateway_deployment" "stage" {
