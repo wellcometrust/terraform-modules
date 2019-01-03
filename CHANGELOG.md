@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v18.2.0 - 2019-01-03
+
+Adds a `kms/key` module.
+
+This module allows creation of a KMS key and permissions for use.
+
 ## v18.1.0 - 2019-01-03
 
 Simplifies users module
