@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v18.1.0 - 2019-01-03
+
+Simplifies users module
+
 ## v18.0.0 - 2018-12-18
 
 Addition of account template in IAM modules
