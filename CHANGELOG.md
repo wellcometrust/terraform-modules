@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v18.2.1 - 2019-01-03
+
+Adds a module for the VHS (https://github.com/wellcometrust/scala-storage).
+
 ## v18.2.0 - 2019-01-03
 
 Adds a `kms/key` module.
