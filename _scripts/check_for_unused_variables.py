@@ -3,7 +3,8 @@
 """
 This script makes a rough attempt to spot unused variables in our Terraform modules.
 
-It relies on the convention that variables are declared in `variables.tf`.
+It relies on the convention that variables are declared in `variables.tf`,
+and will miss any variables declared elsewhere.
 """
 
 import os
@@ -45,7 +46,7 @@ if unseen_vars_by_root:
     for root, unseen_variable_names in sorted(unseen_vars_by_root.items()):
         print(root)
         for varname in sorted(unseen_variable_names):
-            print(f" * {varname}")
+            print(" * " + varname)
         print("")
     print("=== Unused variables ===")
     sys.exit(1)

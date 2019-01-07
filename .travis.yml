@@ -11,6 +11,9 @@ branches:
   only:
     - master
 
+install:
+  - pip3 install pyhcl
+
 jobs:
   include:
     - env: TASK=travis-format
