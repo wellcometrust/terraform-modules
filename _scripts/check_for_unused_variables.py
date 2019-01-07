@@ -8,9 +8,8 @@ and will miss any variables declared elsewhere.
 """
 
 import os
+import re
 import sys
-
-import hcl
 
 
 unseen_vars_by_root  = {}
@@ -19,9 +18,25 @@ for root, _, filenames in os.walk("."):
     if "variables.tf" not in filenames:
         continue
 
-    data = hcl.load(open(os.path.join(root, "variables.tf")))
+    variables_path = os.path.join(root, "variables.tf")
 
-    variable_names = list(data["variable"].keys())
+    # Work out the list of variables defined in this file.  We use a proper
+    # HCL parser if we can, but fall back to regexes if not.
+    try:
+        import hcl
+    except ImportError:
+        pass
+        VARIABLE_RE = re.compile(r'^\s*variable "(?P<varname>[a-z0-9_]+)"\s*{')
+
+        variable_names = []
+        for line in open(variables_path):
+            m = VARIABLE_RE.search(line)
+            if m is not None:
+                variable_names.append(m.group("varname"))
+    else:
+        data = hcl.load(open(variables_path))
+        variable_names = list(data["variable"].keys())
+
     unseen_variable_names = set(variable_names)
 
     for f in filenames:
