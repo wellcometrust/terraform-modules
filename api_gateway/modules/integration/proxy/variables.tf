@@ -15,10 +15,6 @@ variable "forward_path" {}
 
 variable "hostname" {}
 
-variable "proxy" {
-  default = true
-}
-
 variable "request_parameters" {
   type    = "map"
   default = {}

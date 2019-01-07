@@ -13,14 +13,6 @@ variable "authorization" {
   default = ""
 }
 
-variable "proxy" {
-  default = false
-}
-
-variable "cognito_api_id" {
-  default = "not_real"
-}
-
 variable "authorizer_id" {
   default = "not_real"
 }
