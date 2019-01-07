@@ -29,10 +29,6 @@ variable "security_group_ids" {
   type = "list"
 }
 
-variable "assign_public_ip" {
-  default = false
-}
-
 variable "container_name" {}
 variable "lb_arn" {}
 variable "listener_port" {}

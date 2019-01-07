@@ -10,11 +10,6 @@ variable "cpu" {
   default     = 512
 }
 
-variable "launch_types" {
-  type    = "list"
-  default = ["FARGATE", "EC2"]
-}
-
 variable "task_definition_rendered" {}
 
 variable "efs_host_path" {}

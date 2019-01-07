@@ -11,10 +11,6 @@ variable "subnets" {
   type = "list"
 }
 
-variable "container_port" {}
-
-variable "vpc_id" {}
-
 variable "namespace_id" {
   default = "ecs"
 }
