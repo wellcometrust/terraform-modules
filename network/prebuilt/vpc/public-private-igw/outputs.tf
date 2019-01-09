@@ -17,3 +17,7 @@ output "private_route_table_id" {
 output "vpc_id" {
   value = "${aws_vpc.vpc.id}"
 }
+
+output "endpoint_security_group_id" {
+  value = "${aws_security_group.security_group.id}"
+}
