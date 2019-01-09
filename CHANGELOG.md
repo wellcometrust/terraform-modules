@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v19.0.0 - 2019-01-09
+
+This release removes a bunch of variables from modules when they weren't
+being used by the module code, and adds a script to prevent unused variables
+creeping back in later.
+
 ## v18.2.3 - 2019-01-03
 
 * Force creation of new api gateway deployment by using variables instead of description.
