@@ -13,14 +13,6 @@ variable "treat_missing_data_low" {
   default = "missing"
 }
 
-variable "scale_up_adjustment" {
-  default = 1
-}
-
-variable "scale_down_adjustment" {
-  default = -1
-}
-
 variable "high_period_in_minutes" {}
 
 variable "high_threshold" {

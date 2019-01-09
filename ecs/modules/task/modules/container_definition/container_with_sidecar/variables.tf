@@ -44,11 +44,6 @@ variable "sidecar_port_mappings_string" {
 variable "sidecar_cpu" {}
 variable "sidecar_memory" {}
 
-variable "sidecar_mount_points" {
-  type    = "list"
-  default = []
-}
-
 variable "sidecar_env_vars" {
   description = "Environment variables to pass to the container"
   type        = "map"

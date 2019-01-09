@@ -6,6 +6,7 @@ check-format: format
 	git diff --exit-code
 
 travis-format:
+	python3 _scripts/check_for_unused_variables.py
 	python3 _scripts/run_travis_format.py
 
 check-release-file:
