@@ -37,8 +37,6 @@ module "nat" {
   source = "../../../modules/nat"
   name   = "${var.name}"
 
-  vpc_id = "${aws_vpc.vpc.id}"
-
   subnet_id      = "${module.public_subnets.subnets[0]}"
   route_table_id = "${module.private_subnets.route_table_id}"
 }
