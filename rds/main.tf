@@ -3,7 +3,7 @@ resource "aws_rds_cluster_instance" "cluster_instances" {
 
   identifier           = "${var.cluster_identifier}-${count.index}"
   cluster_identifier   = "${aws_rds_cluster.default.id}"
-  instance_class       = "db.t2.small"
+  instance_class       = "${var.instance_class}"
   db_subnet_group_name = "${aws_db_subnet_group.default.name}"
   publicly_accessible  = false
 }

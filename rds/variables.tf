@@ -17,3 +17,7 @@ variable "admin_cidr_ingress" {}
 variable "db_access_security_group" {
   type = "list"
 }
+
+variable "instance_class" {
+  default = "db.t2.small"
+}
