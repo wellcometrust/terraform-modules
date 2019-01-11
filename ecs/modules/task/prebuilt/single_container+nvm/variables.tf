@@ -1,11 +1,5 @@
 variable "task_name" {}
 
-variable "env_vars" {
-  description = "Environment variables to pass to the container"
-  type        = "map"
-  default     = {}
-}
-
 variable "log_group_prefix" {
   description = "Cloudwatch log group name prefix"
   default     = "ecs"
@@ -35,6 +29,22 @@ variable "nvm_container_path" {
   default = "/tmp"
 }
 
+variable "env_vars" {
+  description = "Environment variables to pass to the container"
+  type        = "map"
+  default     = {}
+}
+
 variable "env_vars_length" {
+  default = 0
+}
+
+variable "secret_env_vars" {
+  description = "Secret environment variables to pass to the container"
+  type        = "map"
+  default     = {}
+}
+
+variable "secret_env_vars_length" {
   default = 0
 }

@@ -12,7 +12,11 @@ module "container_definition" {
 
   app_container_image      = "${var.app_container_image}"
   app_port_mappings_string = "${module.app_port_mappings.port_mappings_string}"
+
   app_env_vars             = "${var.app_env_vars}"
+  app_env_vars_length     = "${var.app_env_vars_length}"
+  secret_app_env_vars = "${var.secret_app_env_vars}"
+  secret_app_env_vars_length = "${var.secret_app_env_vars_length}"
 
   // Only the app container gets mount points
   app_mount_points = "${module.task_definition.mount_points}"
@@ -22,10 +26,11 @@ module "container_definition" {
 
   sidecar_memory   = "${var.sidecar_memory}"
   sidecar_cpu      = "${var.sidecar_cpu}"
-  sidecar_env_vars = "${var.sidecar_env_vars}"
 
-  app_env_vars_length     = "${var.app_env_vars_length}"
+  sidecar_env_vars             = "${var.sidecar_env_vars}"
   sidecar_env_vars_length = "${var.sidecar_env_vars_length}"
+  secret_sidecar_env_vars = "${var.secret_sidecar_env_vars}"
+  secret_sidecar_env_vars_length = "${var.secret_sidecar_env_vars_length}"
 }
 
 module "task_definition" {

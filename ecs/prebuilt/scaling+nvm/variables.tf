@@ -10,6 +10,12 @@ variable "service_egress_security_group_id" {}
 variable "env_vars" {
   type = "map"
 }
+variable "env_vars_length" {}
+
+variable "secret_env_vars" {
+  type = "map"
+}
+variable "secret_env_vars_length" {}
 
 variable "cpu" {
   default = 512
@@ -18,8 +24,6 @@ variable "cpu" {
 variable "memory" {
   default = 1024
 }
-
-variable "env_vars_length" {}
 
 variable "aws_region" {
   default = "eu-west-1"

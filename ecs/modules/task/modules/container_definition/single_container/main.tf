@@ -46,3 +46,10 @@ module "env_vars" {
   env_vars        = "${var.env_vars}"
   env_vars_length = "${var.env_vars_length}"
 }
+
+module "secrets" {
+  source = "../../secrets"
+
+  secret_env_vars        = "${var.secret_env_vars}"
+  secret_env_vars_length = "${var.secret_env_vars_length}"
+}

@@ -7,8 +7,6 @@ module "container_definition" {
 
   task_name = "${var.task_name}"
 
-  env_vars = "${var.env_vars}"
-
   log_group_prefix = "${var.log_group_prefix}"
 
   cpu    = "${var.cpu}"
@@ -17,7 +15,12 @@ module "container_definition" {
   mount_points = "${module.task_definition.mount_points}"
 
   task_port       = "${var.container_port}"
+
+  env_vars = "${var.env_vars}"
   env_vars_length = "${var.env_vars_length}"
+
+  secret_env_vars_length = "${var.secret_env_vars_length}"
+  secret_env_vars = "${var.secret_env_vars}"
 }
 
 module "task_definition" {
