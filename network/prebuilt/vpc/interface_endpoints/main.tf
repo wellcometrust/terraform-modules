@@ -6,15 +6,6 @@
 # start to push significant traffic through the NAT Gateway, we should just
 # add them.
 
-module "api_gw_endpoint" {
-  source  = "./endpoint"
-  service = "execute-api"
-
-  security_group_ids = ["${var.security_group_id}"]
-  subnet_ids         = "${var.subnet_ids}"
-  vpc_id             = "${var.vpc_id}"
-}
-
 module "cloudwatch_endpoint" {
   source  = "./endpoint"
   service = "monitoring"
