@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## v19.2.0 - 2019-01-14
+
+Fixes for VHS dynamo module
+
+## v19.1.2 - 2019-01-14
+
+Allow variable billing mode for VHS dynamo
+
+## v19.1.1 - 2019-01-14
+
+Optionally (and by default) protect ECR repos from deletion.
+
+## v19.1.0 - 2019-01-14
+
+*   When using `ecs/modules/security_groups`, skip creating a security group
+    to grant SSH access to instances if there aren't any CIDR blocks or
+    security groups that the ingress rule applies to.
+
+*   New module: `network/prebuilt/vpc/egress_security_group`, which
+    creates a security group that allows all egress traffic and sets up
+    VPC interface endpoints.
+
+*   New module: `network/prebuilt/vpc/interface_endpoints`, which creates
+    some common VPC interface endpoints.
+
+*   The `network/prebuilt/vpc/public-private-igw` module automatically created
+    VPC gateway endpoints for S3 and DynamoDB.
+
 ## v19.0.0 - 2019-01-09
 
 This release removes a bunch of variables from modules when they weren't
