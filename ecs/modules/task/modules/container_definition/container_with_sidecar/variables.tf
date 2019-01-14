@@ -23,15 +23,11 @@ variable "app_mount_points" {
   default = []
 }
 
-variable "app_env_vars" {
-  description = "Environment variables to pass to the container"
-  type        = "map"
-  default     = {}
-}
+variable "app_env_vars" {}
+variable "app_env_vars_length" {}
 
-variable "sidecar_env_vars_length" {
-  default = 0
-}
+variable "secret_app_env_vars" {}
+variable "secret_app_env_vars_length" {}
 
 # Sidecar
 
@@ -44,12 +40,13 @@ variable "sidecar_port_mappings_string" {
 variable "sidecar_cpu" {}
 variable "sidecar_memory" {}
 
-variable "sidecar_env_vars" {
-  description = "Environment variables to pass to the container"
-  type        = "map"
-  default     = {}
+variable "sidecar_mount_points" {
+  type    = "list"
+  default = []
 }
 
-variable "app_env_vars_length" {
-  default = 0
-}
+variable "sidecar_env_vars" {}
+variable "sidecar_env_vars_length" {}
+
+variable "secret_sidecar_env_vars" {}
+variable "secret_sidecar_env_vars_length" {}

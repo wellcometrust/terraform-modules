@@ -6,6 +6,7 @@
     "image": "${container_image}",
     "name": "${container_name}",
     "environment": ${environment_vars},
+    "secrets": ${secrets},
     "networkMode": "awsvpc",
     "portMappings": ${port_mappings},
     "command": ${command},

@@ -19,6 +19,20 @@ variable "app_env_vars" {
   default     = {}
 }
 
+variable "app_env_vars_length" {
+  default = 0
+}
+
+variable "secret_app_env_vars" {
+  description = "Secret environment variables to pass to the container"
+  type        = "map"
+  default     = {}
+}
+
+variable "secret_app_env_vars_length" {
+  default = "0"
+}
+
 variable "sidecar_container_image" {}
 variable "sidecar_container_port" {}
 variable "sidecar_cpu" {}
@@ -30,6 +44,20 @@ variable "sidecar_env_vars" {
   default     = {}
 }
 
+variable "sidecar_env_vars_length" {
+  default = 0
+}
+
+variable "secret_sidecar_env_vars" {
+  description = "Secret environment variables to pass to the container"
+  type        = "map"
+  default     = {}
+}
+
+variable "secret_sidecar_env_vars_length" {
+  default = "0"
+}
+
 variable "sidecar_is_proxy" {
   default = "false"
 }
@@ -38,11 +66,3 @@ variable "aws_region" {}
 
 variable "efs_host_path" {}
 variable "efs_container_path" {}
-
-variable "app_env_vars_length" {
-  default = 0
-}
-
-variable "sidecar_env_vars_length" {
-  default = 0
-}

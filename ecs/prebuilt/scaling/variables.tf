@@ -11,6 +11,14 @@ variable "env_vars" {
   type = "map"
 }
 
+variable "env_vars_length" {}
+
+variable "secret_env_vars" {
+  type = "map"
+}
+
+variable "secret_env_vars_length" {}
+
 variable "launch_type" {
   default = "FARGATE"
 }
@@ -22,8 +30,6 @@ variable "cpu" {
 variable "memory" {
   default = 1024
 }
-
-variable "env_vars_length" {}
 
 variable "aws_region" {
   default = "eu-west-1"
