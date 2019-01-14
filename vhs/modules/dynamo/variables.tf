@@ -5,5 +5,5 @@ variable "table_name_prefix" {
 variable "name" {}
 
 variable "protected" {
-  default = "true"
+  default = 1
 }
