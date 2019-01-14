@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.3.0 - 2019-01-14
+
+Adds secrets to ecs task defs.
+
 ## v19.2.0 - 2019-01-14
 
 Fixes for VHS dynamo module
