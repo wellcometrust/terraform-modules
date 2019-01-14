@@ -4,6 +4,6 @@ variable "table_name_prefix" {
 
 variable "name" {}
 
-variable "billing_mode" {
-  description = "Should be either PAY_PER_REQUEST or PROVISIONED"
+variable "protected" {
+  default = true
 }
