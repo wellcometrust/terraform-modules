@@ -3,7 +3,3 @@ variable "table_name_prefix" {
 }
 
 variable "name" {}
-
-variable "protected" {
-  default = 1
-}

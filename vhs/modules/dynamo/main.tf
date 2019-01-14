@@ -10,8 +10,4 @@ resource "aws_dynamodb_table" "table" {
     name = "id"
     type = "S"
   }
-
-  lifecycle {
-    prevent_destroy = "${var.protected}"
-  }
 }
