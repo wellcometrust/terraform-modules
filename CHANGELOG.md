@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.2.0 - 2019-01-14
+
+Fixes for VHS dynamo module
+
 ## v19.1.2 - 2019-01-14
 
 Allow variable billing mode for VHS dynamo
