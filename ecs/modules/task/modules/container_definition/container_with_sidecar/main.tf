@@ -1,6 +1,6 @@
 locals {
   app_mount_points     = "${jsonencode(var.app_mount_points)}"
-  sidecar_mount_points = "${jsonencode(var.app_mount_points)}"
+  sidecar_mount_points = "${jsonencode(var.sidecar_mount_points)}"
 
   app_log_group_name     = "${var.task_name}"
   sidecar_log_group_name = "sidecar_${var.task_name}"
