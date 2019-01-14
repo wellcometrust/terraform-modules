@@ -17,11 +17,11 @@ module "container_definition" {
   mount_points = "${var.mount_points}"
   command      = "${var.command}"
 
-  env_vars = "${var.env_vars}"
+  env_vars        = "${var.env_vars}"
   env_vars_length = "${var.env_vars_length}"
 
   secret_env_vars_length = "${var.secret_env_vars_length}"
-  secret_env_vars = "${var.secret_env_vars}"
+  secret_env_vars        = "${var.secret_env_vars}"
 }
 
 module "task_definition" {

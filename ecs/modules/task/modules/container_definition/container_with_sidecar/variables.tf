@@ -50,4 +50,3 @@ variable "sidecar_env_vars_length" {}
 
 variable "secret_sidecar_env_vars" {}
 variable "secret_sidecar_env_vars_length" {}
-

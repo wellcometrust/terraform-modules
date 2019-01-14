@@ -58,7 +58,6 @@ variable "secret_sidecar_env_vars_length" {
   default = "0"
 }
 
-
 variable "sidecar_is_proxy" {
   default = "false"
 }

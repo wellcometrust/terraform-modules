@@ -65,7 +65,7 @@ module "sidecar_env_vars" {
 }
 
 module "sidecar_secret_env_vars" {
-  source          = "../../secrets"
+  source                 = "../../secrets"
   secret_env_vars        = "${var.secret_sidecar_env_vars}"
   secret_env_vars_length = "${var.secret_sidecar_env_vars_length}"
 }
@@ -84,7 +84,7 @@ module "app_env_vars" {
 }
 
 module "app_secret_env_vars" {
-  source          = "../../secrets"
+  source                 = "../../secrets"
   secret_env_vars        = "${var.secret_app_env_vars}"
   secret_env_vars_length = "${var.secret_app_env_vars_length}"
 }

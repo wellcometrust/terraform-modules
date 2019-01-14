@@ -27,7 +27,7 @@ module "example_scaling_service" {
   high_metric_name = "SomeValue"
   low_metric_name  = "SomeOtherValue"
 
-  secret_env_vars = {}
+  secret_env_vars        = {}
   secret_env_vars_length = 0
 
   cluster_id = "${aws_ecs_cluster.cluster.id}"

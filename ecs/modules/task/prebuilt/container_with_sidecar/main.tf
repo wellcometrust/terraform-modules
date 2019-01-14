@@ -19,14 +19,14 @@ module "container_definition" {
   sidecar_container_image      = "${var.sidecar_container_image}"
   sidecar_port_mappings_string = "${module.sidecar_port_mappings.port_mappings_string}"
 
-  app_env_vars             = "${var.app_env_vars}"
-  app_env_vars_length     = "${var.app_env_vars_length}"
-  secret_app_env_vars = "${var.secret_app_env_vars}"
+  app_env_vars               = "${var.app_env_vars}"
+  app_env_vars_length        = "${var.app_env_vars_length}"
+  secret_app_env_vars        = "${var.secret_app_env_vars}"
   secret_app_env_vars_length = "${var.secret_app_env_vars_length}"
 
-  sidecar_env_vars             = "${var.sidecar_env_vars}"
-  sidecar_env_vars_length = "${var.sidecar_env_vars_length}"
-  secret_sidecar_env_vars = "${var.secret_sidecar_env_vars}"
+  sidecar_env_vars               = "${var.sidecar_env_vars}"
+  sidecar_env_vars_length        = "${var.sidecar_env_vars_length}"
+  secret_sidecar_env_vars        = "${var.secret_sidecar_env_vars}"
   secret_sidecar_env_vars_length = "${var.secret_sidecar_env_vars_length}"
 }
 
