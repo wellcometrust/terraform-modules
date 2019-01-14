@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.1.1 - 2019-01-14
+
+Optionally (and by default) protect ECR repos from deletion.
+
 ## v19.1.0 - 2019-01-14
 
 *   When using `ecs/modules/security_groups`, skip creating a security group
