@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.1.2 - 2019-01-14
+
+Allow variable billing mode for VHS dynamo
+
 ## v19.1.1 - 2019-01-14
 
 Optionally (and by default) protect ECR repos from deletion.
