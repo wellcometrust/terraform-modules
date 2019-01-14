@@ -5,5 +5,5 @@ variable "bucket_name_prefix" {
 }
 
 variable "protected" {
-  default = true
+  default = "true"
 }
