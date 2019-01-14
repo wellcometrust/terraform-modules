@@ -30,7 +30,7 @@ variable "secret_app_env_vars" {
 }
 
 variable "secret_app_env_vars_length" {
-  default = "0"
+  default = 0
 }
 
 variable "sidecar_container_image" {}
@@ -55,7 +55,7 @@ variable "secret_sidecar_env_vars" {
 }
 
 variable "secret_sidecar_env_vars_length" {
-  default = "0"
+  default = 0
 }
 
 variable "sidecar_is_proxy" {
