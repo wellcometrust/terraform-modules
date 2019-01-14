@@ -8,5 +8,5 @@ variable "namespace" {
 
 variable "protected" {
   description = "Protect resource from deletion"
-  default = true
+  default     = true
 }
