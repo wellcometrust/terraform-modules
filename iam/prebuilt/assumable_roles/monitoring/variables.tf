@@ -1,0 +1,3 @@
+variable "principals" {
+  type = "list"
+}
