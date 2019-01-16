@@ -19,7 +19,7 @@ module "infrastructure" {
 }
 
 module "monitoring" {
-  source     = "../assumable_roles/read_only"
+  source     = "../assumable_roles/monitoring"
   principals = ["${var.monitoring_principals}"]
 }
 
