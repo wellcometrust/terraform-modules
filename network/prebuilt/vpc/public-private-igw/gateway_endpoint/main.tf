@@ -1,6 +1,6 @@
 variable "service" {}
 variable "vpc_id" {}
-variable "route_table_ids" {}
+variable "route_table_ids" { type = "list" }
 
 data "aws_vpc_endpoint_service" "service" {
   service = "${var.service}"
