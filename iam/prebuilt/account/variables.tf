@@ -10,6 +10,10 @@ variable "developer_principals" {
   type = "list"
 }
 
+variable "monitoring_principals" {
+  type = "list"
+}
+
 variable "infrastructure_principals" {
   type = "list"
 }
