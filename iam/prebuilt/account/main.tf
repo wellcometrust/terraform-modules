@@ -18,6 +18,11 @@ module "infrastructure" {
   principals = ["${var.infrastructure_principals}"]
 }
 
+module "monitoring" {
+  source     = "../assumable_roles/read_only"
+  principals = ["${var.monitoring_principals}"]
+}
+
 module "read_only" {
   source     = "../assumable_roles/read_only"
   principals = ["${var.read_only_principals}"]
