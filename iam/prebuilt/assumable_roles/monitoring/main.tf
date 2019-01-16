@@ -27,7 +27,7 @@ data "aws_iam_policy_document" "ecs" {
       "ecs:List*",
       "ecr:Get*",
       "ecr:Describe*",
-      "ecr:List*"
+      "ecr:List*",
     ]
 
     resources = [
