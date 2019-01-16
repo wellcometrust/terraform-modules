@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.5.0 - 2019-01-16
+
+Adds route table associations to gateway_endpoints in prebuilt VPC
+
 ## v19.4.0 - 2019-01-16
 
 Adds monitoring assume role
