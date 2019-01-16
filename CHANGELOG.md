@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.4.0 - 2019-01-16
+
+Adds monitoring assume role
+
 ## v19.3.0 - 2019-01-14
 
 Adds secrets to ecs task defs.
