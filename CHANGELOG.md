@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.5.1 - 2019-01-17
+
+Adds a name output to the ecr module.
+
 ## v19.5.0 - 2019-01-16
 
 Adds route table associations to gateway_endpoints in prebuilt VPC
