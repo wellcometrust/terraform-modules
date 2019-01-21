@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.5.2 - 2019-01-21
+
+Allows console users to switch role!
+
 ## v19.5.1 - 2019-01-17
 
 Adds a name output to the ecr module.
