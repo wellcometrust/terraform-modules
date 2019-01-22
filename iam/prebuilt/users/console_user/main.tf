@@ -138,16 +138,20 @@ data "aws_iam_policy_document" "deny_no_mfa" {
       "iam:ListServiceSpecificCredentials",
       "iam:ListMFADevices",
       "iam:GetAccountSummary",
-      "sts:*"
+      "sts:*",
     ]
 
     resources = [
-      "*"]
+      "*",
+    ]
 
     condition {
       test = "BoolIfExists"
+
       values = [
-        "false"]
+        "false",
+      ]
+
       variable = "aws:MultiFactorAuthPresent"
     }
   }
@@ -155,7 +159,7 @@ data "aws_iam_policy_document" "deny_no_mfa" {
 
 data "aws_iam_policy_document" "sts" {
   "statement" {
-    effect = "Allow"
+    effect    = "Allow"
     actions   = ["sts:*"]
     resources = ["*"]
   }
