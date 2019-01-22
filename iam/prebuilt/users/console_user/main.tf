@@ -22,11 +22,9 @@ resource "aws_iam_user_policy" "mfa" {
   policy = "${data.aws_iam_policy_document.mfa.json}"
 }
 
-data "aws_iam_policy_document" "sts" {
-  "statement" {
-    actions   = ["sts:*"]
-    resources = ["*"]
-  }
+resource "aws_iam_user_policy" "deny_no_mfa" {
+  user   = "${aws_iam_user.user.name}"
+  policy = "${data.aws_iam_policy_document.deny_no_mfa.json}"
 }
 
 data "aws_iam_policy_document" "mfa" {
@@ -116,15 +114,19 @@ data "aws_iam_policy_document" "mfa" {
 
     condition {
       test     = "Bool"
-      values   = [true]
+      values   = ["true"]
       variable = "aws:MultiFactorAuthPresent"
     }
   }
+}
 
+data "aws_iam_policy_document" "deny_no_mfa" {
   "statement" {
     effect = "Deny"
 
     not_actions = [
+      "iam:ChangePassword",
+      "iam:CreateLoginProfile",
       "iam:CreateVirtualMFADevice",
       "iam:ListVirtualMFADevices",
       "iam:EnableMFADevice",
@@ -136,17 +138,25 @@ data "aws_iam_policy_document" "mfa" {
       "iam:ListServiceSpecificCredentials",
       "iam:ListMFADevices",
       "iam:GetAccountSummary",
-      "sts:GetSessionToken",
-      "iam:ChangePassword",
-      "iam:CreateLoginProfile"
+      "sts:*"
     ]
 
-    resources = ["*"]
+    resources = [
+      "*"]
 
     condition {
-      test     = "Bool"
-      values   = [false]
+      test = "BoolIfExists"
+      values = [
+        "false"]
       variable = "aws:MultiFactorAuthPresent"
     }
+  }
+}
+
+data "aws_iam_policy_document" "sts" {
+  "statement" {
+    effect = "Allow"
+    actions   = ["sts:*"]
+    resources = ["*"]
   }
 }
