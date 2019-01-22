@@ -1,5 +1,7 @@
 # Wellcome Trust Terraform modules
 
+[![Build Status](https://travis-ci.org/wellcometrust/terraform-modules.svg?branch=master)](https://travis-ci.org/wellcometrust/terraform-modules)
+
 Some [https://www.terraform.io/](Terraform) modules developed at the Wellcome Trust.
 
 Currently in use on:
