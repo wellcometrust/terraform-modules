@@ -137,6 +137,8 @@ data "aws_iam_policy_document" "mfa" {
       "iam:ListMFADevices",
       "iam:GetAccountSummary",
       "sts:GetSessionToken",
+      "iam:ChangePassword",
+      "iam:CreateLoginProfile"
     ]
 
     resources = ["*"]
