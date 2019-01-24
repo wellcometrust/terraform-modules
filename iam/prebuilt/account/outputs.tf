@@ -14,6 +14,14 @@ output "billing_role_name" {
   value = "${module.billing.name}"
 }
 
+output "ci_role_arn" {
+  value = "${module.ci.arn}"
+}
+
+output "ci_role_name" {
+  value = "${module.ci.name}"
+}
+
 output "developer_role_arn" {
   value = "${module.developer.arn}"
 }

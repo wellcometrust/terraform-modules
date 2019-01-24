@@ -8,6 +8,11 @@ module "billing" {
   principals = ["${var.billing_principals}"]
 }
 
+module "ci" {
+  source     = "../assumable_roles/ci"
+  principals = ["${var.ci_principals}"]
+}
+
 module "developer" {
   source     = "../assumable_roles/developer"
   principals = ["${var.developer_principals}"]

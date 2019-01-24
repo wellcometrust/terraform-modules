@@ -6,6 +6,10 @@ variable "billing_principals" {
   type = "list"
 }
 
+variable "ci_principals" {
+  type = "list"
+}
+
 variable "developer_principals" {
   type = "list"
 }
