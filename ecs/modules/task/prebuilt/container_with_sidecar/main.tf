@@ -28,6 +28,8 @@ module "container_definition" {
   sidecar_env_vars_length        = "${var.sidecar_env_vars_length}"
   secret_sidecar_env_vars        = "${var.secret_sidecar_env_vars}"
   secret_sidecar_env_vars_length = "${var.secret_sidecar_env_vars_length}"
+
+  execution_role_name = "${module.task_definition.task_execution_role_name}"
 }
 
 module "task_definition" {

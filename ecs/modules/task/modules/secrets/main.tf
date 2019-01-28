@@ -1,13 +1,19 @@
 data "template_file" "name_val_pair" {
-  // TODO: This module has the same issue as env_vars
-  // with requiring the env_vars_length to be passed in
+  # This module constructs a JSON string in the same way as the `env_vars`
+  # module, and has the same issue that requires us to pass the length of
+  # the env_vars map as a variable.
   count = "${var.secret_env_vars_length}"
 
-  template = "{\"name\": $${jsonencode(key)}, \"valueFrom\": $${jsonencode(value)}}"
+  template = <<EOF
+  {
+    "name": $${jsonencode(key)},
+    "valueFrom": $${jsonencode(value)}
+  }
+EOF
 
   vars {
     key   = "${element(keys(var.secret_env_vars), count.index)}"
-    value = "${element(values(var.secret_env_vars), count.index)}"
+    value = "/aws/reference/secretsmanager/${element(values(var.secret_env_vars), count.index)}"
   }
 }
 

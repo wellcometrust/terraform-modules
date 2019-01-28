@@ -4,3 +4,5 @@ variable "secret_env_vars" {
 }
 
 variable "secret_env_vars_length" {}
+
+variable "execution_role_name" {}

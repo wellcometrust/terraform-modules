@@ -21,3 +21,7 @@ output "app_task_port" {
 output "sidecar_task_port" {
   value = "${var.sidecar_container_port}"
 }
+
+output "task_execution_role_name" {
+  value = "${module.task_definition.task_execution_role_name}"
+}

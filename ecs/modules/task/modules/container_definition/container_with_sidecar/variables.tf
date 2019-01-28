@@ -71,3 +71,5 @@ variable "secret_sidecar_env_vars" {
 variable "secret_sidecar_env_vars_length" {
   default = 0
 }
+
+variable "execution_role_name" {}
