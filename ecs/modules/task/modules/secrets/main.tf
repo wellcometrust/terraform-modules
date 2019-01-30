@@ -12,7 +12,10 @@ data "template_file" "name_val_pair" {
 EOF
 
   vars {
-    key   = "${element(keys(var.secret_env_vars), count.index)}"
+    key = "${element(keys(var.secret_env_vars), count.index)}"
+
+    # This prefix allows us to access a SecretsManager secret via SSM.
+    # See https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-ps-secretsmanager.html
     value = "/aws/reference/secretsmanager/${element(values(var.secret_env_vars), count.index)}"
   }
 }
