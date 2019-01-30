@@ -18,6 +18,9 @@ for root, _, filenames in os.walk("."):
     if "variables.tf" not in filenames:
         continue
 
+    if ".terraform" in root:
+        continue
+
     variables_path = os.path.join(root, "variables.tf")
 
     # Work out the list of variables defined in this file.  We use a proper
@@ -44,6 +47,9 @@ for root, _, filenames in os.walk("."):
         # next directory.
         if not unseen_variable_names:
             break
+
+        if not f.endswith(".tf"):
+            continue
 
         # Otherwise read the file and look for instances of any variable
         # we haven't seen being used yet.

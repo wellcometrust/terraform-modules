@@ -13,3 +13,7 @@ output "task_execution_role_arn" {
 output "task_role_name" {
   value = "${module.iam_roles.name}"
 }
+
+output "task_execution_role_name" {
+  value = "${module.iam_roles.task_execution_role_name}"
+}

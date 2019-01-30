@@ -23,11 +23,20 @@ variable "app_mount_points" {
   default = []
 }
 
-variable "app_env_vars" {}
+variable "app_env_vars" {
+  type = "map"
+}
+
 variable "app_env_vars_length" {}
 
-variable "secret_app_env_vars" {}
-variable "secret_app_env_vars_length" {}
+variable "secret_app_env_vars" {
+  type    = "map"
+  default = {}
+}
+
+variable "secret_app_env_vars_length" {
+  default = 0
+}
 
 # Sidecar
 
@@ -45,8 +54,22 @@ variable "sidecar_mount_points" {
   default = []
 }
 
-variable "sidecar_env_vars" {}
-variable "sidecar_env_vars_length" {}
+variable "sidecar_env_vars" {
+  type    = "map"
+  default = {}
+}
 
-variable "secret_sidecar_env_vars" {}
-variable "secret_sidecar_env_vars_length" {}
+variable "sidecar_env_vars_length" {
+  default = 0
+}
+
+variable "secret_sidecar_env_vars" {
+  type    = "map"
+  default = {}
+}
+
+variable "secret_sidecar_env_vars_length" {
+  default = 0
+}
+
+variable "execution_role_name" {}
