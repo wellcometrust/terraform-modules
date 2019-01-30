@@ -13,7 +13,8 @@ locals {
   # This allows us to scope the execution role so each app can only read
   # the secrets that it actually uses.
   #
-  ssm_resources     = "${formatlist("${local.ssm_arn_prefix}/%s", "${values(var.secret_env_vars)}")}"
+  ssm_resources = "${formatlist("${local.ssm_arn_prefix}/%s", "${values(var.secret_env_vars)}")}"
+
   secrets_resources = "${formatlist("${local.secrets_arn_prefix}:%s*", "${values(var.secret_env_vars)}")}"
 }
 
