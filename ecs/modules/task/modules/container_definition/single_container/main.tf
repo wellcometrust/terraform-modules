@@ -16,6 +16,8 @@ data "template_file" "definition" {
     container_image = "${var.container_image}"
     container_name  = "${local.container_name}"
 
+    secrets = "${module.secrets.env_vars_string}"
+
     port_mappings    = "${module.port_mappings.port_mappings_string}"
     environment_vars = "${module.env_vars.env_vars_string}"
 
