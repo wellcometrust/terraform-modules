@@ -6,8 +6,6 @@ variable "max_capacity" {
   default = 3
 }
 
-variable "vpc_id" {}
-
 variable "cluster_id" {}
 variable "cluster_name" {}
 
