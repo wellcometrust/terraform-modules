@@ -1,6 +1,6 @@
 locals {
   vpc_cidr_block = "10.120.0.0/16"
-  namespace      = "ecsV2"
+  namespace      = "ecs-example"
   aws_region     = "eu-west-1"
 
   cidr_block_public  = "10.120.1.0/23"
@@ -13,19 +13,18 @@ resource "aws_ecs_cluster" "cluster" {
 
 module "network" {
   source = "../../../network/prebuilt/vpc/public-private-igw"
-  name   = "ecsV2"
+  name   = "${local.namespace}"
 
-  cidr_block = "${local.vpc_cidr_block}"
+  cidr_block_vpc = "172.17.0.0/24"
 
-  az_count = "1"
+  cidr_block_public         = "172.17.0.0/25"
+  cidrsubnet_newbits_public = "3"
 
-  cidr_block_vpc = "${local.vpc_cidr_block}"
+  cidr_block_private         = "172.17.0.128/25"
+  cidrsubnet_newbits_private = "3"
 
-  cidr_block_public          = "${local.cidr_block_public}"
-  cidrsubnet_newbits_private = "0"
-
-  cidr_block_private        = "${local.cidr_block_private}"
-  cidrsubnet_newbits_public = "0"
+  public_az_count  = "3"
+  private_az_count = "3"
 }
 
 resource "aws_service_discovery_private_dns_namespace" "namespace" {

@@ -1,7 +1,7 @@
 module "public-private-vpc" {
   source = "../prebuilt/vpc/public-private-igw"
 
-  name = "example-private-vpc"
+  name = "example-vpc"
 
   cidr_block_vpc = "172.17.0.0/24"
 
@@ -10,4 +10,7 @@ module "public-private-vpc" {
 
   cidr_block_private         = "172.17.0.128/25"
   cidrsubnet_newbits_private = "3"
+
+  public_az_count = "3"
+  private_az_count = "3"
 }

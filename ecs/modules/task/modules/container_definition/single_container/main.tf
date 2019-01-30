@@ -52,4 +52,6 @@ module "secrets" {
 
   secret_env_vars        = "${var.secret_env_vars}"
   secret_env_vars_length = "${var.secret_env_vars_length}"
+
+  execution_role_name = "${var.execution_role_name}"
 }

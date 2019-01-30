@@ -22,6 +22,8 @@ module "container_definition" {
 
   secret_env_vars_length = "${var.secret_env_vars_length}"
   secret_env_vars        = "${var.secret_env_vars}"
+
+  execution_role_name = "${module.task_definition.task_execution_role_name}"
 }
 
 module "task_definition" {
