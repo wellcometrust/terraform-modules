@@ -51,8 +51,19 @@ data "aws_iam_policy_document" "iam_user_group_deny" {
     effect = "Deny"
 
     actions = [
-      "iam:*User*",
-      "iam:*Group*",
+      "iam:CreateUser*",
+      "iam:DeleteUser*",
+      "iam:AttachUser*",
+      "iam:PutUser*",
+      "iam:AddUser*",
+      "iam:RemoveUser*",
+      "iam:TagUser*",
+      "iam:UntagUser*",
+      "iam:CreateGroup*",
+      "iam:DeleteGroup*",
+      "iam:PutGroup*",
+      "iam:UpdateGroup*",
+      "iam:DetachGroup*",
     ]
 
     resources = [
