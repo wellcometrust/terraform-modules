@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v19.6.0 - 2019-01-30
+
+Fix a silly bug in the `container_with_sidecar` module that meant environment variables didn't work.
+
+Add IAM permissions to the `tasks/secrets` module, so your execution role has the permissions it needs to read secrets.
+
 ## v19.5.2 - 2019-01-21
 
 Allows console users to switch role!
