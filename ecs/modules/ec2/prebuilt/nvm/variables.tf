@@ -24,7 +24,6 @@ variable "subnets" {
 }
 
 variable "vpc_id" {}
-variable "key_name" {}
 
 variable "image_id" {
   default = "ami-0627e141ce928067c"
@@ -32,6 +31,11 @@ variable "image_id" {
 
 variable "instance_type" {
   default = "i3.2xlarge"
+}
+
+variable "key_name" {
+  description = "SSH key name for SSH access.  Leave blank if not using SSH."
+  default     = ""
 }
 
 variable "controlled_access_cidr_ingress" {

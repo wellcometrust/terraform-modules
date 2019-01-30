@@ -29,10 +29,14 @@ variable "subnets" {
 }
 
 variable "vpc_id" {}
-variable "key_name" {}
 
 variable "image_id" {
   default = "ami-c91624b0"
+}
+
+variable "key_name" {
+  description = "SSH key name for SSH access.  Leave blank if not using SSH."
+  default     = ""
 }
 
 variable "controlled_access_cidr_ingress" {
