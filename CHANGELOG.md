@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.7.0 - 2019-01-30
+
+Allow omitting the `key_name` variable in the prebuilt EC2 modules (if you're not allowing SSH access to the instances).
+
 ## v19.6.0 - 2019-01-30
 
 Fix a silly bug in the `container_with_sidecar` module that meant environment variables didn't work.
