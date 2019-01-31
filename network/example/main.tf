@@ -11,6 +11,6 @@ module "public-private-vpc" {
   cidr_block_private         = "172.17.0.128/25"
   cidrsubnet_newbits_private = "3"
 
-  public_az_count = "3"
+  public_az_count  = "3"
   private_az_count = "3"
 }
