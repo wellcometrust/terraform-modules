@@ -10,8 +10,6 @@ module "ecs_fargate" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  container_port = "${module.task.task_port}"
-
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
   vpc_id  = "${module.network.vpc_id}"
@@ -33,8 +31,6 @@ module "ecs_ec2" {
   task_definition_arn = "${module.task.task_definition_arn}"
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
-
-  container_port = "${module.task.task_port}"
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
@@ -71,8 +67,6 @@ module "ecs_ec2_ebs" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  container_port = "${module.task.task_port}"
-
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
   vpc_id  = "${module.network.vpc_id}"
@@ -107,8 +101,6 @@ module "ecs_ec2_efs" {
   task_definition_arn = "${module.efs_task.task_definition_arn}"
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
-
-  container_port = "${module.efs_task.task_port}"
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
@@ -147,8 +139,6 @@ module "ecs_ec2_ebs_efs" {
   task_definition_arn = "${module.ebs_efs_task.task_definition_arn}"
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
-
-  container_port = "${module.ebs_efs_task.task_port}"
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 

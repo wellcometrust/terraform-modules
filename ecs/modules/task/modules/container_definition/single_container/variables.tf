@@ -26,6 +26,8 @@ variable "command" {
   default = []
 }
 
+variable "execution_role_name" {}
+
 variable "env_vars" {
   description = "Environment variables to pass to the container"
   type        = "map"
