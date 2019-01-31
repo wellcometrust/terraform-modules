@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.7.2 - 2019-01-31
+
+Should fix some issues with default & scaling ECS services
+
 ## v19.7.1 - 2019-01-31
 
 Allow users assuming the developer prebuilt role to read but not write user/group iam
