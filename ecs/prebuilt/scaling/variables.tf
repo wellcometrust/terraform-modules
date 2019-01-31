@@ -35,8 +35,6 @@ variable "aws_region" {
   default = "eu-west-1"
 }
 
-variable "vpc_id" {}
-
 variable "subnets" {
   type = "list"
 }
