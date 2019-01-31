@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.7.1 - 2019-01-31
+
+Allow users assuming the developer prebuilt role to read but not write user/group iam
+
 ## v19.7.0 - 2019-01-30
 
 Allow omitting the `key_name` variable in the prebuilt EC2 modules (if you're not allowing SSH access to the instances).
