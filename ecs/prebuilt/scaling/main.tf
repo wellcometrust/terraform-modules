@@ -59,7 +59,3 @@ module "task" {
 
   command = "${var.command}"
 }
-
-locals {
-  security_group_ids = "${concat(list(var.service_egress_security_group_id), var.security_group_ids)}"
-}

@@ -5,8 +5,6 @@ variable "service_name" {}
 
 variable "container_image" {}
 
-variable "service_egress_security_group_id" {}
-
 variable "env_vars" {
   type = "map"
 }
