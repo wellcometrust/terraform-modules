@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.7.3 - 2019-02-04
+
+Security groups in prebuild ecs scaling is confusing.
+
 ## v19.7.2 - 2019-01-31
 
 Should fix some issues with default & scaling ECS services
