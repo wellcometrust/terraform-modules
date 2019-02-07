@@ -17,7 +17,7 @@ module "task_with_sidecar" {
   memory = "2048"
   cpu    = "1024"
 
-  app_container_image = "strm/helloworld-http"
+  app_container_image = "${module.images.services["service_one"]}"
   app_container_port  = "80"
 
   app_cpu    = "512"

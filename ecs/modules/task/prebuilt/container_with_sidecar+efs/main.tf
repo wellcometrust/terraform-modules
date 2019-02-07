@@ -21,6 +21,8 @@ module "container_definition" {
   // Only the app container gets mount points
   app_mount_points = "${module.task_definition.mount_points}"
 
+  execution_role_name = "${module.task_definition.task_execution_role_name}"
+
   sidecar_container_image      = "${var.sidecar_container_image}"
   sidecar_port_mappings_string = "${module.sidecar_port_mappings.port_mappings_string}"
 
