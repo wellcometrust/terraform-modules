@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.8.0 - 2019-02-07
+
+Adds an images module to ECS tf
+
 ## v19.7.3 - 2019-02-04
 
 Security groups in prebuild ecs scaling is confusing.
