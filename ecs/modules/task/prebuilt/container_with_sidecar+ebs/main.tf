@@ -18,6 +18,8 @@ module "container_definition" {
   secret_app_env_vars        = "${var.secret_app_env_vars}"
   secret_app_env_vars_length = "${var.secret_app_env_vars_length}"
 
+  execution_role_name = "${module.task_definition.task_execution_role_name}"
+
   // Only the app container gets mount points
   app_mount_points = "${module.task_definition.mount_points}"
 

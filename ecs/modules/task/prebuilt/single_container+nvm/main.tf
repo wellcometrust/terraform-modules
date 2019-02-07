@@ -14,6 +14,8 @@ module "container_definition" {
 
   mount_points = "${module.task_definition.mount_points}"
 
+  execution_role_name = "${module.task_definition.task_execution_role_name}"
+
   task_port = "${var.container_port}"
 
   env_vars        = "${var.env_vars}"

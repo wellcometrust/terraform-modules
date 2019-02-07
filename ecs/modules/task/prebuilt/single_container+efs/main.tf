@@ -16,6 +16,8 @@ module "container_definition" {
 
   task_port = "${var.container_port}"
 
+  execution_role_name = "${module.task_definition.task_execution_role_name}"
+
   env_vars        = "${var.env_vars}"
   env_vars_length = "${var.env_vars_length}"
 

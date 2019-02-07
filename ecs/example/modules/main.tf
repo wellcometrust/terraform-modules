@@ -12,7 +12,6 @@ module "ecs_fargate" {
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
-  vpc_id  = "${module.network.vpc_id}"
   subnets = "${module.network.private_subnets}"
 
   namespace_id = "${aws_service_discovery_private_dns_namespace.namespace.id}"
@@ -34,7 +33,6 @@ module "ecs_ec2" {
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
-  vpc_id  = "${module.network.vpc_id}"
   subnets = "${module.network.private_subnets}"
 
   namespace_id = "${aws_service_discovery_private_dns_namespace.namespace.id}"
@@ -50,7 +48,7 @@ module "ebs_task" {
   aws_region = "${local.aws_region}"
   task_name  = "${local.namespace}_ec2_private_ebs"
 
-  container_image = "strm/helloworld-http"
+  container_image = "${module.images.services["service_one"]}"
   container_port  = "80"
 
   ebs_host_path      = "${module.ec2_ebs_host.ebs_host_path}"
@@ -69,7 +67,6 @@ module "ecs_ec2_ebs" {
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
-  vpc_id  = "${module.network.vpc_id}"
   subnets = "${module.network.private_subnets}"
 
   namespace_id = "${aws_service_discovery_private_dns_namespace.namespace.id}"
@@ -85,7 +82,7 @@ module "efs_task" {
   aws_region = "${local.aws_region}"
   task_name  = "${local.namespace}_ec2_private_efs"
 
-  container_image = "strm/helloworld-http"
+  container_image = "${module.images.services["service_one"]}"
   container_port  = "80"
 
   efs_host_path      = "${module.ec2_efs_host.efs_host_path}"
@@ -104,7 +101,6 @@ module "ecs_ec2_efs" {
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
-  vpc_id  = "${module.network.vpc_id}"
   subnets = "${module.network.private_subnets}"
 
   namespace_id = "${aws_service_discovery_private_dns_namespace.namespace.id}"
@@ -120,7 +116,7 @@ module "ebs_efs_task" {
   aws_region = "${local.aws_region}"
   task_name  = "${local.namespace}_ec2_private_ebs_efs"
 
-  container_image = "strm/helloworld-http"
+  container_image = "${module.images.services["service_one"]}"
   container_port  = "80"
 
   efs_host_path      = "${module.ec2_ebs_efs_host.efs_host_path}"
@@ -142,7 +138,6 @@ module "ecs_ec2_ebs_efs" {
 
   ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
 
-  vpc_id  = "${module.network.vpc_id}"
   subnets = "${module.network.private_subnets}"
 
   namespace_id = "${aws_service_discovery_private_dns_namespace.namespace.id}"
