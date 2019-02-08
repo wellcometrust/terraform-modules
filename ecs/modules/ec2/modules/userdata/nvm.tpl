@@ -28,3 +28,24 @@ ECS_INSTANCE_ATTRIBUTES={"nvm.volume":"${nvm_volume_id}"}
 
 EOF
 --==BOUNDARY==--
+Content-Type: text/x-shellscript; charset="us-ascii"
+
+#!/bin/bash
+
+# Install monitoring dependencies
+sudo yum install unzip wget perl-Switch perl-DateTime perl-Sys-Syslog perl-LWP-Protocol-https perl-Digest-SHA -y
+
+# Download, unpack monitoring scripts
+wget -O ~ec2-user/CloudWatchMonitoringScripts-1.2.2.zip http://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.2.zip
+cd ~ec2-user && unzip CloudWatchMonitoringScripts-1.2.2.zip
+chown ec2-user:ec2-user ~ec2-user/aws-scripts-mon
+rm CloudWatchMonitoringScripts-1.2.2.zip
+
+# Setup cron to run them
+crontab -l > ~ec2-user/mycron
+echo "*/5 * * * * ~ec2-user/aws-scripts-mon/mon-put-instance-data.pl --disk-space-util --disk-path=/ --from-cron" >> ~ec2-user/mycron
+echo "*/5 * * * * ~ec2-user/aws-scripts-mon/mon-put-instance-data.pl --mem-used --mem-avail --swap-used" >> ~ec2-user/mycron
+crontab ~ec2-user/mycron
+
+EOF
+--==BOUNDARY==--
