@@ -21,7 +21,6 @@ module "service" {
 
   security_group_ids = ["${var.security_group_ids}"]
   subnets            = ["${var.subnets}"]
-  vpc_id             = "${var.vpc_id}"
   namespace_id       = "${var.namespace_id}"
 
   task_definition_arn = "${module.task.task_definition_arn}"
