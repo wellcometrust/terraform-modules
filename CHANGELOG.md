@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.9.0 - 2019-02-14
+
+Fixes a bug in `scaling+nvm` where it would complain about a `vpc_id` variable.
+
 ## v19.8.0 - 2019-02-07
 
 Adds an images module to ECS tf
