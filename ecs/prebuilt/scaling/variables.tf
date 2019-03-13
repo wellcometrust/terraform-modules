@@ -56,14 +56,6 @@ variable "security_group_ids" {
   default = []
 }
 
-variable "high_metric_name" {}
-
-variable "low_metric_name" {
-  default = ""
-}
-
-variable "metric_namespace" {}
-
 variable "command" {
   type    = "list"
   default = []

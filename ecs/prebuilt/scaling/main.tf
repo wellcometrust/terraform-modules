@@ -1,21 +1,3 @@
-locals {
-  high = "${var.high_metric_name}"
-  low  = "${var.low_metric_name == "" ? local.high : var.low_metric_name}"
-}
-
-module "autoscaling_alarms" {
-  source = "../../../autoscaling/alarms/custom"
-  name   = "${module.service.service_name}"
-
-  scale_up_arn   = "${module.service.scale_up_arn}"
-  scale_down_arn = "${module.service.scale_down_arn}"
-
-  high_metric_name = "${local.high}"
-  low_metric_name  = "${local.low}"
-
-  namespace = "${var.metric_namespace}"
-}
-
 module "service" {
   source = "../../modules/service/prebuilt/scaling"
 
