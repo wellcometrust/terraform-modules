@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.10.0 - 2019-03-13
+
+Removes custom scaling and adds a scaling alarm for queue length.
+
 ## v19.9.0 - 2019-02-14
 
 Fixes a bug in `scaling+nvm` where it would complain about a `vpc_id` variable.
