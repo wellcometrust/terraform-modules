@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.11.0 - 2019-03-21
+
+Ignore changes to desired task counts in the scaling ecs module in order that TF applies don't mess with task counts.
+
 ## v19.10.0 - 2019-03-13
 
 Removes custom scaling and adds a scaling alarm for queue length.
