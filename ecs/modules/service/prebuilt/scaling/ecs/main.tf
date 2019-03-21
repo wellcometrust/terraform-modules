@@ -9,7 +9,7 @@ resource "aws_ecs_service" "service" {
   cluster         = "${var.ecs_cluster_id}"
   task_definition = "${var.task_definition_arn}"
 
-  desired_count   = "${var.task_desired_count}"
+  desired_count = "${var.task_desired_count}"
 
   deployment_minimum_healthy_percent = "${var.deployment_minimum_healthy_percent}"
   deployment_maximum_percent         = "${var.deployment_maximum_percent}"
@@ -28,7 +28,7 @@ resource "aws_ecs_service" "service" {
 
   lifecycle {
     ignore_changes = [
-      "desired_count"
+      "desired_count",
     ]
   }
 }
