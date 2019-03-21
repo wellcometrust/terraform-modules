@@ -1,5 +1,5 @@
 module "service" {
-  source = "../default"
+  source = "ecs"
 
   service_name = "${var.service_name}"
 
