@@ -49,7 +49,7 @@ data "template_file" "definition" {
 
     sidecar_mount_points = "${local.sidecar_mount_points}"
 
-    user         = "${var.user}"
+    app_user     = "${var.app_user}"
     sidecar_user = "${var.sidecar_user}"
   }
 }
