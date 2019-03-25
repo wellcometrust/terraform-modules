@@ -48,6 +48,9 @@ data "template_file" "definition" {
     sidecar_memory = "${var.sidecar_memory}"
 
     sidecar_mount_points = "${local.sidecar_mount_points}"
+
+    user         = "${var.user}"
+    sidecar_user = "${var.sidecar_user}"
   }
 }
 

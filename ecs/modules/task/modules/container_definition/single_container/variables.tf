@@ -47,3 +47,7 @@ variable "secret_env_vars" {
 variable "secret_env_vars_length" {
   default = 0
 }
+
+variable "user" {
+  default = "root"
+}

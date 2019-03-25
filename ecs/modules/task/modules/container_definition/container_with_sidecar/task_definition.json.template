@@ -16,6 +16,7 @@
             "awslogs-stream-prefix": "${log_group_prefix}"
         }
     },
+    "user": "${sidecar_user}",
     "mountPoints": ${sidecar_mount_points}
   },
   {
@@ -35,6 +36,7 @@
             "awslogs-stream-prefix": "${log_group_prefix}"
         }
     },
+    "user": "${app_user}",
     "mountPoints": ${app_mount_points}
   }
 ]

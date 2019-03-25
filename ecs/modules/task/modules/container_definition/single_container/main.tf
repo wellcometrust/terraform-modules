@@ -27,6 +27,8 @@ data "template_file" "definition" {
     memory = "${var.memory}"
 
     mount_points = "${local.mount_points}"
+
+    user = "${var.user}"
   }
 }
 
