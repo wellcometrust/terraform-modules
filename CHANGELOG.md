@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.12.0 - 2019-03-26
+
+This release adds some defaults to a few variables in ECS-related modules, and adds the ability to set users in container definitions.
+
 ## v19.11.0 - 2019-03-21
 
 Ignore changes to desired task counts in the scaling ecs module in order that TF applies don't mess with task counts.
