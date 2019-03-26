@@ -24,10 +24,13 @@ variable "app_mount_points" {
 }
 
 variable "app_env_vars" {
-  type = "map"
+  type    = "map"
+  default = {}
 }
 
-variable "app_env_vars_length" {}
+variable "app_env_vars_length" {
+  default = 0
+}
 
 variable "secret_app_env_vars" {
   type    = "map"
