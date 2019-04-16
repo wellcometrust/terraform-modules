@@ -17,14 +17,14 @@ Here's an example of how to use the module:
 
 ```hcl
 module "config-recorder" {
-  source                        = ""
+  source                        = "git::https://github.com/wellcometrust/terraform.git//config?ref=v1.1.0"
   all_supported                 = "true"
   name                          = "config-recorder"
   include_global_resource_types = "true"
 }
 
 module "config-delivery-channel" {
-  source             = ""
+  source             = "git::https://github.com/wellcometrust/terraform.git//config?ref=v1.1.0"
   name               = "config-recorder"
   s3_key_prefix      = "${var.bucket_key_prefix}"
   s3_bucket_name     = "${aws_s3_bucket.wt-config-recorder-bucket.bucket}"
@@ -32,7 +32,7 @@ module "config-delivery-channel" {
 }
 
 module "config-recorder-status" {
-  source     = ""
+  source     = "git::https://github.com/wellcometrust/terraform.git//config?ref=v1.1.0"
   name       = "config-recorder"
   is_enabled = "true"
 }
