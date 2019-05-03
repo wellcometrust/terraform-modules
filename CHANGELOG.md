@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.13.0 - 2019-05-03
+
+Export the task role ARN from the prebuilt ECS modules, and make some of the other module outputs more consistent.
+
 ## v19.12.0 - 2019-03-26
 
 This release adds some defaults to a few variables in ECS-related modules, and adds the ability to set users in container definitions.
