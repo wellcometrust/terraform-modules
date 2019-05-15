@@ -15,7 +15,7 @@ output "task_role_name" {
 }
 
 output "task_role_arn" {
-  value = "${module.task.task_role_name}"
+  value = "${module.task.task_role_arn}"
 }
 
 output "scale_up_arn" {
