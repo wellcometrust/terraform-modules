@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.13.1 - 2019-05-15
+
+In the ecs/prebuilt/scaling modules, actually export the ARN as `task_role_arn`, not the name.
+
 ## v19.13.0 - 2019-05-03
 
 Export the task role ARN from the prebuilt ECS modules, and make some of the other module outputs more consistent.
