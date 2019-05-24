@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.13.2 - 2019-05-24
+
+Add cross account access permissions to be set for SNS topics
+
 ## v19.13.1 - 2019-05-15
 
 In the ecs/prebuilt/scaling modules, actually export the ARN as `task_role_arn`, not the name.
