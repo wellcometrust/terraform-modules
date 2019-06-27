@@ -2,6 +2,8 @@ module "billing" {
   source     = "../../../modules/assumable_role"
   name       = "billing"
   principals = ["${var.principals}"]
+  auth_type  = "${var.auth_type}"
+
 }
 
 resource "aws_iam_role_policy" "admin" {

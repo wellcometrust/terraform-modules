@@ -4,6 +4,7 @@ module "monitoring" {
   source     = "../../../modules/assumable_role"
   name       = "monitoring"
   principals = ["${var.principals}"]
+  auth_type  = "${var.auth_type}"
 }
 
 # Role policies

@@ -2,6 +2,7 @@ module "infrastructure" {
   source     = "../../../modules/assumable_role"
   name       = "infrastructure"
   principals = ["${var.principals}"]
+  auth_type  = "${var.auth_type}"
 }
 
 resource "aws_iam_role_policy" "infrastructure_read_only" {

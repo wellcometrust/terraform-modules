@@ -22,4 +22,10 @@ variable "read_only_principals" {
   type = "list"
 }
 
+variable "auth_type" {
+  default = "aws"
+}
+
 variable "pgp_key" {}
+
+

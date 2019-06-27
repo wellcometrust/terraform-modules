@@ -2,6 +2,7 @@ module "developer" {
   source     = "../../../modules/assumable_role"
   name       = "developer"
   principals = ["${var.principals}"]
+  auth_type  = "${var.auth_type}"
 }
 
 resource "aws_iam_role_policy" "developer_go_hog_wild" {

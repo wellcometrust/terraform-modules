@@ -37,15 +37,3 @@ output "read_only_role_arn" {
 output "read_only_role_name" {
   value = "${module.read_only.name}"
 }
-
-output "terraform_root_user_arn" {
-  value = "${module.terraform_root_user.arn}"
-}
-
-output "terraform_root_user_id" {
-  value = "${module.terraform_root_user.id}"
-}
-
-output "terraform_root_user_secret" {
-  value = "${module.terraform_root_user.secret}"
-}
