@@ -32,7 +32,7 @@ module "superdev_role" {
 
 module "superdev_role_policy" {
   source = "../../role_policies/assume_role"
-  role_name = "${module.admin_role.name}"
+  role_name = "${module.superdev_role.name}"
 
   assumable_roles = [
     "${module.read_only_role.arn}",
