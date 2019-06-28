@@ -20,4 +20,16 @@ data "aws_iam_policy_document" "assume_role" {
       variable = "SAML:aud"
     }
   }
+
+  # This statement allows you to "double hop" between assumed roles
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "AWS"
+      identifiers = ["${var.aws_principal}"]
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
 }

@@ -22,12 +22,14 @@ module "list_roles_user" {
   prefix  = "${var.prefix}"
 }
 
-# User role sets
+# Assumable Role Sets (ARS)
 
 module "superdev_role" {
   source    = "../../../modules/assumable_role/federated"
   name      = "${var.prefix}-ARS-superdev"
   principal = "${local.principal}"
+
+  aws_principal = "${var.aws_principal}"
 }
 
 module "superdev_role_policy" {
@@ -41,6 +43,23 @@ module "superdev_role_policy" {
   ]
 }
 
+module "dev_role" {
+  source    = "../../../modules/assumable_role/federated"
+  name      = "${var.prefix}-ARS-dev"
+  principal = "${local.principal}"
+
+  aws_principal = "${var.aws_principal}"
+}
+
+module "dev_role_policy" {
+  source = "../../role_policies/assume_role"
+  role_name = "${module.dev_role.name}"
+
+  assumable_roles = [
+    "${module.read_only_role.arn}",
+    "${module.developer_role.arn}"
+  ]
+}
 
 # Roles
 
@@ -48,6 +67,8 @@ module "admin_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-admin"
   principal  = "${local.principal}"
+
+  aws_principal = "${var.aws_principal}"
 }
 
 module "admin_role_policy" {
@@ -59,6 +80,8 @@ module "billing_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-billing"
   principal  = "${local.principal}"
+
+  aws_principal = "${var.aws_principal}"
 }
 
 module "billing_role_policy" {
@@ -70,6 +93,8 @@ module "developer_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-developer"
   principal  = "${local.principal}"
+
+  aws_principal = "${var.aws_principal}"
 }
 
 module "developer_role_policy" {
@@ -81,6 +106,8 @@ module "infrastructure_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-infrastructure"
   principal  = "${local.principal}"
+
+  aws_principal = "${var.aws_principal}"
 }
 
 module "infrastructure_role_policy" {
@@ -92,6 +119,8 @@ module "monitoring_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-monitoring"
   principal  = "${local.principal}"
+
+  aws_principal = "${var.aws_principal}"
 }
 
 module "monitoring_role_policy" {
@@ -103,6 +132,8 @@ module "read_only_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-read_only"
   principal  = "${local.principal}"
+
+  aws_principal = "${var.aws_principal}"
 }
 
 module "read_only_role_policy" {
