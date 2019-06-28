@@ -1,11 +1,3 @@
-data "aws_caller_identity" "current" {}
-
-locals {
-  account_id        = "${data.aws_caller_identity.current.account_id}"
-  iam_saml_provider = "${var.prefix}-saml_provider"
-  principal         = "arn:aws:iam::${local.account_id}:saml-provider/${local.iam_saml_provider}"
-}
-
 # Roles
 
 module "admin_role" {
@@ -35,7 +27,6 @@ module "billing_role_policy" {
 module "developer_role" {
   source     = "../../../modules/assumable_role/aws"
   name       = "${var.prefix}-developer"
-  principal  = "${local.principal}"
 
   principals = ["${var.aws_principal}"]
 }
@@ -48,7 +39,6 @@ module "developer_role_policy" {
 module "infrastructure_role" {
   source     = "../../../modules/assumable_role/aws"
   name       = "${var.prefix}-infrastructure"
-  principal  = "${local.principal}"
 
   principals = ["${var.aws_principal}"]
 }
@@ -61,7 +51,6 @@ module "infrastructure_role_policy" {
 module "monitoring_role" {
   source     = "../../../modules/assumable_role/aws"
   name       = "${var.prefix}-monitoring"
-  principal  = "${local.principal}"
 
   principals = ["${var.aws_principal}"]
 }
@@ -74,7 +63,6 @@ module "monitoring_role_policy" {
 module "read_only_role" {
   source     = "../../../modules/assumable_role/aws"
   name       = "${var.prefix}-read_only"
-  principal  = "${local.principal}"
 
   principals = ["${var.aws_principal}"]
 }
