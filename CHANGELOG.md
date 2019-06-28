@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.13.3 - 2019-06-28
+
+allow federated login for users.
+
 ## v19.13.2 - 2019-05-24
 
 Add cross account access permissions to be set for SNS topics
