@@ -8,7 +8,6 @@ module "billing" {
   source     = "../assumable_roles/billing"
   principals = ["${var.billing_principals}"]
   auth_type  = "${var.auth_type}"
-
 }
 
 module "developer" {

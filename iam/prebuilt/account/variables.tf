@@ -26,6 +26,3 @@ variable "auth_type" {
   default = "aws"
 }
 
-variable "pgp_key" {}
-
-
