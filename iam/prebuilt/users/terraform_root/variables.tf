@@ -1,1 +1,0 @@
-variable "pgp_key" {}

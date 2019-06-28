@@ -1,3 +1,0 @@
-variable "principals" {
-  type = "list"
-}
