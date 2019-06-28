@@ -58,7 +58,7 @@ module "developer_role_policy" {
 }
 
 module "infrastructure_role" {
-  source     = "../../../modules/assumable_role/infrastructure"
+  source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-infrastructure"
   principals = ["${local.principal}"]
 }
@@ -69,7 +69,7 @@ module "infrastructure_role_policy" {
 }
 
 module "monitoring_role" {
-  source     = "../../../modules/assumable_role/monitoring"
+  source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-monitoring"
   principals = ["${local.principal}"]
 }
@@ -80,7 +80,7 @@ module "monitoring_role_policy" {
 }
 
 module "read_only_role" {
-  source     = "../../../modules/assumable_role/read_only"
+  source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-read_only"
   principals = ["${local.principal}"]
 }
