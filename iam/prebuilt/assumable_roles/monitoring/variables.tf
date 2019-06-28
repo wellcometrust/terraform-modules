@@ -3,3 +3,7 @@ variable "principals" {
 }
 
 variable "auth_type" {}
+
+variable "name_prefix" {
+  default = ""
+}

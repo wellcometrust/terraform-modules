@@ -26,3 +26,6 @@ variable "auth_type" {
   default = "aws"
 }
 
+variable "name_prefix" {
+  default = ""
+}
