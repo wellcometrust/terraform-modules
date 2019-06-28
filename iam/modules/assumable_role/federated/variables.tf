@@ -1,5 +1,3 @@
 variable "name" {}
 
-variable "principals" {
-  type = "list"
-}
+variable "principal" {}

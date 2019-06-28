@@ -3,7 +3,7 @@ data "aws_caller_identity" "current" {}
 locals {
   account_id        = "${data.aws_caller_identity.current.account_id}"
   iam_saml_provider = "${var.prefix}-saml_provider"
-  principal = "arn:aws:iam::${local.account_id}:saml-provider/${local.iam_saml_provider}"
+  principal         = "arn:aws:iam::${local.account_id}:saml-provider/${local.iam_saml_provider}"
 }
 
 # SAML
@@ -27,7 +27,7 @@ module "list_roles_user" {
 module "admin_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-admin"
-  principals = ["${local.principal}"]
+  principal  = "${local.principal}"
 }
 
 module "admin_role_policy" {
@@ -38,7 +38,7 @@ module "admin_role_policy" {
 module "billing_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-billing"
-  principals = ["${local.principal}"]
+  principal  = "${local.principal}"
 }
 
 module "billing_role_policy" {
@@ -49,7 +49,7 @@ module "billing_role_policy" {
 module "developer_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-developer"
-  principals = ["${local.principal}"]
+  principal  = "${local.principal}"
 }
 
 module "developer_role_policy" {
@@ -60,7 +60,7 @@ module "developer_role_policy" {
 module "infrastructure_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-infrastructure"
-  principals = ["${local.principal}"]
+  principal  = "${local.principal}"
 }
 
 module "infrastructure_role_policy" {
@@ -71,7 +71,7 @@ module "infrastructure_role_policy" {
 module "monitoring_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-monitoring"
-  principals = ["${local.principal}"]
+  principal  = "${local.principal}"
 }
 
 module "monitoring_role_policy" {
@@ -82,7 +82,7 @@ module "monitoring_role_policy" {
 module "read_only_role" {
   source     = "../../../modules/assumable_role/federated"
   name       = "${var.prefix}-read_only"
-  principals = ["${local.principal}"]
+  principal  = "${local.principal}"
 }
 
 module "read_only_role_policy" {

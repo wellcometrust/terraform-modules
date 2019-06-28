@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "assume_role" {
 
     principals {
       type = "Federated"
-      identifiers = "${var.principals}"
+      identifiers = ["${var.principal}"]
     }
 
     condition {
