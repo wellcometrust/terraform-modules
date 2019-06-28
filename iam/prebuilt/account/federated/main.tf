@@ -24,11 +24,15 @@ module "list_roles_user" {
 
 # User role sets
 
-module "superdev" {
-  source = "../../role_policies/assume_role"
+module "superdev_role" {
+  source    = "../../../modules/assumable_role/federated"
+  name      = "${var.prefix}-ARS-superdev"
+  principal = "${local.principal}"
+}
 
-  # Assumable Role Set (ARS)
-  role_name = "${var.prefix}-ARS-superdev"
+module "superdev_role_policy" {
+  source = "../../role_policies/assume_role"
+  role_name = "${module.admin_role.name}"
 
   assumable_roles = [
     "${module.read_only_role.arn}",
