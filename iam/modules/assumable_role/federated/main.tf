@@ -12,6 +12,8 @@ data "aws_iam_policy_document" "assume_role" {
       identifiers = ["${var.principal}"]
     }
 
+    actions = ["sts:AssumeRoleWithSAML"]
+
     condition {
       test = "StringEquals"
       values = ["https://signin.aws.amazon.com/saml"]
