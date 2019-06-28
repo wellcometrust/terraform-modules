@@ -1,7 +1,3 @@
-output "federated_principal" {
-  value = "${local.principal}"
-}
-
 output "list_roles_user_id" {
   value = "${module.list_roles_user.user_id}"
 }
