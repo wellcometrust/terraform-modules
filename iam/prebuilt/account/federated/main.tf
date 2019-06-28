@@ -22,6 +22,22 @@ module "list_roles_user" {
   prefix  = "${var.prefix}"
 }
 
+# User role sets
+
+module "superdev" {
+  source = "../../role_policies/assume_role"
+
+  # Assumable Role Set (ARS)
+  role_name = "${var.prefix}-ARS-superdev"
+
+  assumable_roles = [
+    "${module.read_only_role.arn}",
+    "${module.developer_role.arn}",
+    "${module.admin_role.arn}"
+  ]
+}
+
+
 # Roles
 
 module "admin_role" {
