@@ -10,5 +10,5 @@ module "role_policy" {
   source = "../../prebuilt/role_policies/assume_role"
   role_name = "${module.role.name}"
 
-  assumable_roles = "${var.assumable_role_arns}"
+  assumable_roles = ["${var.assumable_role_arns}"]
 }

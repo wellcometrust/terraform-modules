@@ -11,6 +11,6 @@ data "aws_iam_policy_document" "role_assumer" {
       "sts:AssumeRole",
     ]
 
-    resources = "${var.assumable_roles}"
+    resources = ["${var.assumable_roles}"]
   }
 }
