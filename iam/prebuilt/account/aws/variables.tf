@@ -1,2 +1,4 @@
 variable "prefix" {}
-variable "principal" {}
+variable "principal" {
+  type = "list"
+}
