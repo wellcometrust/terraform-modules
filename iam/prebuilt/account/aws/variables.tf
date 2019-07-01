@@ -1,2 +1,2 @@
 variable "prefix" {}
-variable "aws_principal" {}
+variable "principal" {}
