@@ -1,3 +1,7 @@
+output "principal" {
+  value = "${local.principal}"
+}
+
 output "admin_role_arn" {
   value = "${module.admin_role.arn}"
 }

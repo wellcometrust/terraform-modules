@@ -1,3 +1,10 @@
+data "aws_caller_identity" "current" {}
+
+locals {
+  account_id = "${data.aws_caller_identity.current.account_id}"
+  principal  = "arn:aws:iam::${local.account_id}:root"
+}
+
 # Roles
 
 module "admin_role" {

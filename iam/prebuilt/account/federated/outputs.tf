@@ -1,4 +1,4 @@
-output "federated_principal" {
+output "principal" {
   value = "${local.principal}"
 }
 
