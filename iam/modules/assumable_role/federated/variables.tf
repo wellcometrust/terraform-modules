@@ -1,6 +1,6 @@
 variable "name" {}
 
-variable "principal" {}
+variable "federated_principal" {}
 
 variable "aws_principal" {}
 

@@ -1,15 +1,23 @@
-output "list_roles_user_id" {
-  value = "${module.list_roles_user.user_id}"
+output "admin_role_arn" {
+  value = "${module.admin_role.arn}"
 }
 
-output "list_roles_user_secret" {
-  value = "${module.list_roles_user.user_secret}"
+output "billing_role_arn" {
+  value = "${module.billing_role.arn}"
 }
 
-output "list_roles_name" {
-  value = "${module.list_roles_user.name}"
+output "developer_role_arn" {
+  value = "${module.developer_role.arn}"
 }
 
-output "list_roles_arn" {
-  value = "${module.list_roles_user.arn}"
+output "infrastructure_role_arn" {
+  value = "${module.infrastructure_role.arn}"
+}
+
+output "monitoring_role_arn" {
+  value = "${module.monitoring_role.arn}"
+}
+
+output "read_only_role_arn" {
+  value = "${module.read_only_role.arn}"
 }

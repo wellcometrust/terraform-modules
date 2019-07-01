@@ -1,7 +1,7 @@
 module "role" {
   source    = "../assumable_role/federated"
   name      = "${var.name}"
-  principal = "${var.federated_principal}"
+  federated_principal = "${var.federated_principal}"
 
   aws_principal = "${var.aws_principal}"
 }
