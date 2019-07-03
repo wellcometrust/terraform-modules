@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.13.4 - 2019-07-03
+
+allow federated login for users.
+
 ## v19.13.3 - 2019-06-28
 
 allow federated login for users.
