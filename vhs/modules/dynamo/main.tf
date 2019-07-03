@@ -1,6 +1,7 @@
 resource "aws_dynamodb_table" "table" {
   name             = "${var.table_name_prefix}${var.name}"
   hash_key         = "id"
+  range_key        = "version"
   stream_enabled   = true
   stream_view_type = "NEW_AND_OLD_IMAGES"
 
@@ -9,5 +10,10 @@ resource "aws_dynamodb_table" "table" {
   attribute {
     name = "id"
     type = "S"
+  }
+
+  attribute {
+    name = "version"
+    type = "N"
   }
 }
