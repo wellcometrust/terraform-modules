@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.13.5 - 2019-07-04
+
+add module for AWS Config
+
 ## v19.13.4 - 2019-07-03
 
 allow federated login for users.
