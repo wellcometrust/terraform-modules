@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.13.6 - 2019-07-04
+
+Add `version` as a range key to DynamoDB tables created by the vhs module.
+
 ## v19.13.5 - 2019-07-04
 
 add module for AWS Config
