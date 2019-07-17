@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.13.7 - 2019-07-17
+
+Improve the description of the security group created for RDS.
+
 ## v19.13.6 - 2019-07-04
 
 Add `version` as a range key to DynamoDB tables created by the vhs module.
