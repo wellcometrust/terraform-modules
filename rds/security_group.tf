@@ -1,5 +1,5 @@
 resource "aws_security_group" "database_sg" {
-  description = "controls direct access to application instances"
+  description = "Allow access to RDS from the admin CIDR ingress and DB security group"
   vpc_id      = "${var.vpc_id}"
   name        = "${var.database_name}_sg"
 
