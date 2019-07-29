@@ -36,18 +36,6 @@ module "developer_role_policy" {
   role_name = "${module.developer_role.name}"
 }
 
-module "infrastructure_role" {
-  source     = "../../../modules/assumable_role/aws"
-  name       = "${var.prefix}-infrastructure"
-
-  principals = ["${var.principal}"]
-}
-
-module "infrastructure_role_policy" {
-  source = "../../role_policies/infrastructure"
-  role_name = "${module.infrastructure_role.name}"
-}
-
 module "monitoring_role" {
   source     = "../../../modules/assumable_role/aws"
   name       = "${var.prefix}-monitoring"

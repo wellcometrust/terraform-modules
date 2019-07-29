@@ -10,10 +10,6 @@ output "developer_role_arn" {
   value = "${module.developer_role.arn}"
 }
 
-output "infrastructure_role_arn" {
-  value = "${module.infrastructure_role.arn}"
-}
-
 output "monitoring_role_arn" {
   value = "${module.monitoring_role.arn}"
 }
