@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.14.0 - 2019-07-29
+
+removes infra role from account prebuilt
+
 ## v19.13.7 - 2019-07-17
 
 Improve the description of the security group created for RDS.
