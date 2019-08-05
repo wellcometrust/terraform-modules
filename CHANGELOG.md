@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.15.0 - 2019-08-05
+
+Adds a prebuilt module for ECS service task combinations using the default base service.
+
 ## v19.14.0 - 2019-07-29
 
 removes infra role from account prebuilt
