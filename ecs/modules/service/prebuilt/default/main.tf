@@ -6,7 +6,7 @@ module "iam" {
 
 resource "aws_ecs_service" "service" {
   name            = "${var.service_name}"
-  cluster         = "${var.ecs_cluster_id}"
+  cluster         = "${var.cluster_id}"
   task_definition = "${var.task_definition_arn}"
   desired_count   = "${var.task_desired_count}"
 
