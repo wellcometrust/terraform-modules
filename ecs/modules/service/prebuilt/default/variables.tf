@@ -1,5 +1,5 @@
 variable "service_name" {}
-variable "ecs_cluster_id" {}
+variable "cluster_id" {}
 
 variable "task_desired_count" {
   default = 1

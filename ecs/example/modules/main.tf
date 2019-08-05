@@ -10,7 +10,7 @@ module "ecs_fargate" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
+  cluster_id = "${aws_ecs_cluster.cluster.id}"
 
   subnets = "${module.network.private_subnets}"
 
@@ -31,7 +31,7 @@ module "ecs_ec2" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
+  cluster_id = "${aws_ecs_cluster.cluster.id}"
 
   subnets = "${module.network.private_subnets}"
 
@@ -65,7 +65,7 @@ module "ecs_ec2_ebs" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
+  cluster_id = "${aws_ecs_cluster.cluster.id}"
 
   subnets = "${module.network.private_subnets}"
 
@@ -99,7 +99,7 @@ module "ecs_ec2_efs" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
+  cluster_id = "${aws_ecs_cluster.cluster.id}"
 
   subnets = "${module.network.private_subnets}"
 
@@ -136,7 +136,7 @@ module "ecs_ec2_ebs_efs" {
 
   security_group_ids = ["${aws_security_group.interservice_security_group.id}", "${aws_security_group.service_egress_security_group.id}"]
 
-  ecs_cluster_id = "${aws_ecs_cluster.cluster.id}"
+  cluster_id = "${aws_ecs_cluster.cluster.id}"
 
   subnets = "${module.network.private_subnets}"
 
