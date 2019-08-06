@@ -17,3 +17,7 @@ output "monitoring_role_arn" {
 output "read_only_role_arn" {
   value = "${module.read_only_role.arn}"
 }
+
+output "publisher_role_arn" {
+  value = "${module.publisher_role.arn}"
+}
