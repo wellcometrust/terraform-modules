@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "ecr_power_user" {
       "ecr:InitiateLayerUpload",
       "ecr:UploadLayerPart",
       "ecr:CompleteLayerUpload",
-      "ecr:PutImage"
+      "ecr:PutImage",
     ]
 
     resources = [
@@ -26,14 +26,13 @@ data "aws_iam_policy_document" "ecr_power_user" {
 data "aws_caller_identity" "current" {}
 
 data "aws_iam_policy_document" "ssm_parameter_store_power_user" {
- statement {
+  statement {
+    actions = [
+      "*",
+    ]
 
-   actions = [
-     "*"
-   ]
-
-   resources = [
-     "arn:aws:ssm:*:${data.aws_caller_identity.current.account_id}:parameter/*/images/*",
-   ]
- }
+    resources = [
+      "arn:aws:ssm:*:${data.aws_caller_identity.current.account_id}:parameter/*/images/*",
+    ]
+  }
 }

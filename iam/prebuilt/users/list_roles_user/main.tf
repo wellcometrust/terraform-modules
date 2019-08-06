@@ -13,8 +13,8 @@ resource "aws_iam_user_policy_attachment" "role_manager_list_roles_policy_attach
 }
 
 resource "aws_iam_policy" "list_roles" {
-  policy      = "${data.aws_iam_policy_document.list_roles.json}"
-  name        = "${var.prefix}-list_roles"
+  policy = "${data.aws_iam_policy_document.list_roles.json}"
+  name   = "${var.prefix}-list_roles"
 }
 
 data "aws_iam_policy_document" "list_roles" {
