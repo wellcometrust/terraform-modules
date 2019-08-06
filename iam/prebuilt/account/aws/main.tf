@@ -59,3 +59,15 @@ module "read_only_role_policy" {
   source = "../../role_policies/read_only"
   role_name = "${module.read_only_role.name}"
 }
+
+module "publisher_role" {
+  source     = "../../../modules/assumable_role/aws"
+  name       = "${var.prefix}-publisher"
+
+  principals = ["${var.principal}"]
+}
+
+module "publisher_role_policy" {
+  source = "../../role_policies/publisher"
+  role_name = "${module.publisher_role.name}"
+}
