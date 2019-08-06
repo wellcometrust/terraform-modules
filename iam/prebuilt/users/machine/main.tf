@@ -14,7 +14,7 @@ resource "aws_iam_user_policy" "ci" {
 
 data "aws_iam_policy_document" "ci" {
   statement {
-    actions = ["sts:AssumeRole"]
+    actions   = ["sts:AssumeRole"]
     resources = ["${var.assumable_roles}"]
   }
 }
