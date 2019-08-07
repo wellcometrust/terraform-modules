@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.16.0 - 2019-08-07
+
+Adds a "publisher" role to the account template for accounts to publish containers to ECR
+
 ## v19.15.0 - 2019-08-05
 
 Adds a prebuilt module for ECS service task combinations using the default base service.
