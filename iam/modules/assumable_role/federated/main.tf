@@ -8,15 +8,15 @@ data "aws_iam_policy_document" "assume_role" {
     effect = "Allow"
 
     principals {
-      type = "Federated"
+      type        = "Federated"
       identifiers = ["${var.federated_principal}"]
     }
 
     actions = ["sts:AssumeRoleWithSAML"]
 
     condition {
-      test = "StringEquals"
-      values = ["https://signin.aws.amazon.com/saml"]
+      test     = "StringEquals"
+      values   = ["https://signin.aws.amazon.com/saml"]
       variable = "SAML:aud"
     }
   }

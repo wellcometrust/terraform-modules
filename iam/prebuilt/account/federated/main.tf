@@ -17,7 +17,7 @@ resource "aws_iam_saml_provider" "saml_provider" {
 
 module "list_roles_user" {
   source = "../../users/list_roles_user"
-  
+
   pgp_key = "${var.pgp_key}"
   prefix  = "${var.prefix}"
 }
