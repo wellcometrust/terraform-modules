@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.16.1 - 2019-08-08
+
+Adds a max_session_duration to assumable roles in the iam module
+
 ## v19.16.0 - 2019-08-07
 
 Adds a "publisher" role to the account template for accounts to publish containers to ECR
