@@ -4,6 +4,8 @@ module "admin_role" {
   source = "../../../modules/assumable_role/aws"
   name   = "${var.prefix}-admin"
 
+  max_session_duration_in_seconds = "${var.max_session_duration_in_seconds}"
+
   principals = ["${var.principal}"]
 }
 
@@ -15,6 +17,8 @@ module "admin_role_policy" {
 module "billing_role" {
   source = "../../../modules/assumable_role/aws"
   name   = "${var.prefix}-billing"
+
+  max_session_duration_in_seconds = "${var.max_session_duration_in_seconds}"
 
   principals = ["${var.principal}"]
 }
@@ -28,6 +32,8 @@ module "developer_role" {
   source = "../../../modules/assumable_role/aws"
   name   = "${var.prefix}-developer"
 
+  max_session_duration_in_seconds = "${var.max_session_duration_in_seconds}"
+
   principals = ["${var.principal}"]
 }
 
@@ -39,6 +45,8 @@ module "developer_role_policy" {
 module "monitoring_role" {
   source = "../../../modules/assumable_role/aws"
   name   = "${var.prefix}-monitoring"
+
+  max_session_duration_in_seconds = "${var.max_session_duration_in_seconds}"
 
   principals = ["${var.principal}"]
 }
@@ -52,6 +60,8 @@ module "read_only_role" {
   source = "../../../modules/assumable_role/aws"
   name   = "${var.prefix}-read_only"
 
+  max_session_duration_in_seconds = "${var.max_session_duration_in_seconds}"
+
   principals = ["${var.principal}"]
 }
 
@@ -63,6 +73,8 @@ module "read_only_role_policy" {
 module "publisher_role" {
   source = "../../../modules/assumable_role/aws"
   name   = "${var.prefix}-publisher"
+
+  max_session_duration_in_seconds = "${var.max_session_duration_in_seconds}"
 
   principals = ["${var.principal}"]
 }
