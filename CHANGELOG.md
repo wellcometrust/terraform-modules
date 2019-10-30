@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.16.2 - 2019-10-30
+
+Export the `bucket_arn` from the VHS module.
+
 ## v19.16.1 - 2019-08-08
 
 Adds a max_session_duration to assumable roles in the iam module
