@@ -1,0 +1,2 @@
+variable "label" {}
+variable "project" {}
