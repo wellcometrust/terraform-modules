@@ -5,7 +5,7 @@ resource "aws_cloudwatch_metric_alarm" "queue_high" {
   threshold           = "1"
   alarm_description   = "Queue high"
 
-  alarm_actions = ["${var.queue_high_actions}"]
+  alarm_actions = "${var.queue_high_actions}"
 
   namespace   = "AWS/SQS"
   metric_name = "ApproximateNumberOfMessagesVisible"
