@@ -12,7 +12,7 @@ resource "aws_api_gateway_method" "auth" {
 
   authorization        = "${var.authorization}"
   authorizer_id        = "${var.authorizer_id}"
-  authorization_scopes = "${var.authorization_scopes}"
+  authorization_scopes = ["${var.authorization_scopes}"]
 
   request_parameters = "${var.request_parameters}"
 }
