@@ -7,5 +7,5 @@ output "integration_id" {
 }
 
 output "integration_response_resource_id" {
-  value = "${aws_api_gateway_integration_response.200.resource_id}"
+  value = "${aws_api_gateway_integration_response.http_200.resource_id}"
 }
