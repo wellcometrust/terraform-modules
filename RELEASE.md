@@ -11,4 +11,8 @@ Internal renaming, which might require a `terraform state mv`:
 
 *   `api_gateway/prebuilt/method/static`: no external changes
 
+Internal-only changes, should be invisible:
+
+*   `ecs/modules/service/prebuilt/scaling`
+
 These changes should be backwards compatible with terraform 0.11.14.
