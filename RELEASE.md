@@ -1,7 +1,14 @@
-RELEASE_TYPE: patch
+RELEASE_TYPE: major
 
-Bugfixes to support terraform 0.12:
+This is a collection of changes to support Terraform 0.12.
+All the modules should still work with Terraform 0.11, but there are some breaking changes that will require code changes.
 
-*   api_gateway/prebuilt/method/static/main.tf
+Breaking changes:
+
+*   `api_gateway/modules/stage`: the variable `depends_on` is now `dependencies`
+
+Internal renaming, which might require a `terraform state mv`:
+
+*   `api_gateway/prebuilt/method/static`: no external changes
 
 These changes should be backwards compatible with terraform 0.11.14.

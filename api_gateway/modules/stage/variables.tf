@@ -5,7 +5,7 @@ variable "variables" {
   default = {}
 }
 
-variable "depends_on" {
+variable "dependencies" {
   type = "list"
 }
 

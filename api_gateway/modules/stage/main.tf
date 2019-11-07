@@ -1,5 +1,5 @@
 locals {
-  dependencies_md5 = "${md5(join(",", var.depends_on))}"
+  dependencies_md5 = "${md5(join(",", var.dependencies))}"
 
   // Add hash of dependencies to the variables block to force
   // new deployment if dependencies change
