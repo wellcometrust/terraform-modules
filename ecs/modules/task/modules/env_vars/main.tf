@@ -60,7 +60,7 @@ data "template_file" "name_val_pair" {
 
   template = "{\"name\": $${jsonencode(key)}, \"value\": $${jsonencode(value)}}"
 
-  vars {
+  vars = {
     key   = "${element(keys(var.env_vars), count.index)}"
     value = "${element(values(var.env_vars), count.index)}"
   }

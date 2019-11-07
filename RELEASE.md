@@ -16,6 +16,7 @@ Internal-only changes, should be invisible:
 *   `ecs/modules/service/prebuilt/scaling`
 *   `ecs/modules/task/modules/container_definition/container_with_sidecar`
 *   `ecs/modules/task/modules/container_definition/single_container`
-*   `ecs/modules/task/modules/secrets/main.tf`
+*   `ecs/modules/task/modules/env_vars`
+*   `ecs/modules/task/modules/secrets`
 
 These changes should be backwards compatible with terraform 0.11.14.
