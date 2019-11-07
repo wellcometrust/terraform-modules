@@ -27,7 +27,7 @@ resource "aws_cloudwatch_metric_alarm" "queue_low" {
   threshold           = "1"
   alarm_description   = "Queue low"
 
-  alarm_actions = ["${var.queue_low_actions}"]
+  alarm_actions = "${var.queue_low_actions}"
 
   insufficient_data_actions = []
 
