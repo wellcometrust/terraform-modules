@@ -24,7 +24,7 @@ data "aws_iam_policy_document" "read_secrets" {
       "ssm:GetParameters",
     ]
 
-    resources = ["${local.ssm_resources}"]
+    resources = "${local.ssm_resources}"
   }
 
   statement {
@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "read_secrets" {
       "secretsmanager:GetSecretValue",
     ]
 
-    resources = ["${local.secrets_resources}"]
+    resources = "${local.secrets_resources}"
   }
 }
 

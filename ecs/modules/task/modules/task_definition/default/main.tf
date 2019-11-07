@@ -12,7 +12,7 @@ resource "aws_ecs_task_definition" "task" {
   execution_role_arn = "${module.iam_roles.task_execution_role_arn}"
 
   network_mode             = "awsvpc"
-  requires_compatibilities = ["${var.launch_types}"]
+  requires_compatibilities = "${var.launch_types}"
 
   cpu    = "${var.cpu}"
   memory = "${var.memory}"
