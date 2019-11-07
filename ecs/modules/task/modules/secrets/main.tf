@@ -11,7 +11,7 @@ data "template_file" "name_val_pair" {
   }
 EOF
 
-  vars {
+  vars = {
     key = "${element(keys(var.secret_env_vars), count.index)}"
 
     # This prefix allows us to access a SecretsManager secret via SSM.

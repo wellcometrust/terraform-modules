@@ -8,7 +8,7 @@ locals {
 data "template_file" "definition" {
   template = "${file("${path.module}/task_definition.json.template")}"
 
-  vars {
+  vars = {
     log_group_region = "${var.aws_region}"
     log_group_name   = "${module.log_group.name}"
     log_group_prefix = "${var.log_group_prefix}"
