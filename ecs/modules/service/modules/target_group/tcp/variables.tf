@@ -3,6 +3,6 @@ variable "container_port" {}
 variable "vpc_id" {}
 variable "lb_arn" {}
 variable "listener_port" {}
-variable "deregistraton_delay" {
+variable "deregistration_delay" {
   default = 300
 }

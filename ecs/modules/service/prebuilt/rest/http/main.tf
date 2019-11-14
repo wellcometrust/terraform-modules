@@ -23,7 +23,7 @@ module "target_group" {
   container_port = "${var.container_port}"
 
   healthcheck_path = "${var.healthcheck_path}"
-  deregistraton_delay = "${var.target_group_deregistration_delay}"
+  deregistration_delay = "${var.target_group_deregistration_delay}"
 }
 
 resource "aws_ecs_service" "service" {
