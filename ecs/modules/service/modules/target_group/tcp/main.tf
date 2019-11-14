@@ -7,6 +7,7 @@ resource "aws_lb_target_group" "tcp" {
   protocol = "TCP"
   port     = "${var.container_port}"
   vpc_id   = "${var.vpc_id}"
+  deregistration_delay = "${var.deregistraton_delay}"
 
   health_check {
     protocol = "TCP"
