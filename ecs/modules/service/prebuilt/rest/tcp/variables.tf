@@ -37,3 +37,7 @@ variable "container_name" {}
 variable "lb_arn" {}
 variable "listener_port" {}
 variable "namespace_id" {}
+
+variable "target_group_deregistration_delay" {
+  default = 300
+}

@@ -7,3 +7,6 @@ variable "listener_port" {}
 variable "healthcheck_path" {
   default = "/"
 }
+variable "deregistration_delay" {
+  default = 300
+}

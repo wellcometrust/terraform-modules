@@ -34,3 +34,7 @@ variable "lb_arn" {}
 variable "listener_port" {}
 variable "healthcheck_path" {}
 variable "namespace_id" {}
+
+variable "target_group_deregistration_delay" {
+  default = 300
+}
