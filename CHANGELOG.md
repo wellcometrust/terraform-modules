@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.16.3 - 2019-11-14
+
+Expose target group deregistration delay on ECS prebuilt REST services
+
 ## v19.16.2 - 2019-10-30
 
 Export the `bucket_arn` from the VHS module.
