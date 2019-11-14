@@ -22,7 +22,7 @@ module "target_group" {
   listener_port  = "${var.listener_port}"
   container_port = "${var.container_port}"
 
-  healthcheck_path = "${var.healthcheck_path}"
+  healthcheck_path     = "${var.healthcheck_path}"
   deregistration_delay = "${var.target_group_deregistration_delay}"
 }
 
