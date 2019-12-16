@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.17.0 - 2019-12-16
+
+Use topic_arns in the sqs module instead of topic_name to allow to subscribe to a topic in a different account than the one of the queue.
+
 ## v19.16.3 - 2019-11-14
 
 Expose target group deregistration delay on ECS prebuilt REST services
