@@ -6,7 +6,7 @@ variable "topic_count" {
   default = "1"
 }
 
-variable "topic_names" {
+variable "topic_arns" {
   type        = "list"
   description = "Topic name for the SNS topic to subscribe the queue to"
 }

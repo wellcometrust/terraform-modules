@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "write_to_queue" {
       test     = "ArnEquals"
       variable = "aws:SourceArn"
 
-      values = ["${formatlist("arn:aws:sns:%s:%s:%s",var.aws_region, var.account_id, var.topic_names)}"]
+      values = ["${var.topic_arns}"]
     }
   }
 }
