@@ -12,7 +12,7 @@ matplotlib==2.2.2         # via seaborn
 networkx==2.1
 numpy==1.14.5             # via matplotlib, pandas, scipy, seaborn
 pandas==0.23.1            # via seaborn
-pillow==5.1.0
+pillow==6.2.0
 pyparsing==2.2.0          # via matplotlib
 python-dateutil==2.7.3    # via matplotlib, pandas
 pytz==2018.4              # via matplotlib, pandas
