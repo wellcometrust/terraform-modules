@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "write_to_queue" {
       test     = "ArnEquals"
       variable = "aws:SourceArn"
 
-      values = var.topic_arns
+      values = "${var.topic_arns}"
     }
   }
 }
