@@ -12,15 +12,13 @@ data "aws_iam_policy_document" "write_to_queue" {
       "sqs:SendMessage",
     ]
 
-    resources = [
-      "arn:aws:sqs:${var.aws_region}:${var.account_id}:${var.queue_name}",
-    ]
+    resources = var.topic_arns
 
     condition {
       test     = "ArnEquals"
       variable = "aws:SourceArn"
 
-      values = ["${formatlist("arn:aws:sns:%s:%s:%s",var.aws_region, var.account_id, var.topic_names)}"]
+      values = var.topic_arns
     }
   }
 }
