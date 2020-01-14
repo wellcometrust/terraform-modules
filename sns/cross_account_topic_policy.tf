@@ -3,12 +3,12 @@ data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
 locals {
-  has_cross_account_subs = "${length(var.cross_account_subscription_ids) > 0}"
-  has_cross_account_pubs = "${length(var.cross_account_publication_ids) > 0}"
+  has_cross_account_subscriptions = "${length(var.cross_account_subscription_ids) > 0}"
+  has_cross_account_publications  = "${length(var.cross_account_publication_ids) > 0}"
 
-  cross_account_pub_and_sub        = "${local.has_cross_account_subs && local.has_cross_account_pubs}"
-  cross_account_publications_only  = "${local.has_cross_account_pubs && !local.has_cross_account_subs}"
-  cross_account_subscriptions_only = "${local.has_cross_account_subs && !local.has_cross_account_pubs}"
+  cross_account_pub_and_sub        = "${local.has_cross_account_subscriptions && local.has_cross_account_publications}"
+  cross_account_publications_only  = "${local.has_cross_account_publications && !local.has_cross_account_subscriptions}"
+  cross_account_subscriptions_only = "${local.has_cross_account_subscriptions && !local.has_cross_account_publications}"
 }
 
 resource "aws_sns_topic_policy" "cross_account_topic_pub_and_sub_policy" {
@@ -20,13 +20,13 @@ resource "aws_sns_topic_policy" "cross_account_topic_pub_and_sub_policy" {
 resource "aws_sns_topic_policy" "cross_account_topic_publications_only_policy" {
   count  = "${local.cross_account_publications_only ? 1 : 0}"
   arn    = "${aws_sns_topic.topic.arn}"
-  policy = "${data.aws_iam_policy_document.cross_account_sns_topic_policy_publications.json}"
+  policy = "${data.aws_iam_policy_document.cross_account_sns_topic_policy_publications_only.json}"
 }
 
 resource "aws_sns_topic_policy" "cross_account_topic_subscriptions_only_policy" {
   count  = "${local.cross_account_subscriptions_only ? 1 : 0}"
   arn    = "${aws_sns_topic.topic.arn}"
-  policy = "${data.aws_iam_policy_document.cross_account_sns_topic_policy_subscriptions.json}"
+  policy = "${data.aws_iam_policy_document.cross_account_sns_topic_policy_subscriptions_only.json}"
 }
 
 data "aws_iam_policy_document" "cross_account_sns_topic_policy_source" {
@@ -67,7 +67,7 @@ data "aws_iam_policy_document" "cross_account_sns_topic_policy_source" {
   }
 }
 
-data "aws_iam_policy_document" "cross_account_sns_topic_policy_subscriptions" {
+data "aws_iam_policy_document" "cross_account_sns_topic_policy_subscriptions_only" {
   source_json = "${data.aws_iam_policy_document.cross_account_sns_topic_policy_source.json}"
 
   statement {
@@ -94,7 +94,7 @@ data "aws_iam_policy_document" "cross_account_sns_topic_policy_subscriptions" {
   }
 }
 
-data "aws_iam_policy_document" "cross_account_sns_topic_policy_publications" {
+data "aws_iam_policy_document" "cross_account_sns_topic_policy_publications_only" {
   source_json = "${data.aws_iam_policy_document.cross_account_sns_topic_policy_source.json}"
 
   statement {
@@ -145,8 +145,8 @@ data "aws_iam_policy_document" "cross_account_sns_topic_policy_publications" {
 }
 
 data "aws_iam_policy_document" "cross_account_sns_topic_policy_pub_and_sub" {
-  source_json   = "${data.aws_iam_policy_document.cross_account_sns_topic_policy_subscriptions.json}"
-  override_json = "${data.aws_iam_policy_document.cross_account_sns_topic_policy_publications.json}"
+  source_json   = "${data.aws_iam_policy_document.cross_account_sns_topic_policy_subscriptions_only.json}"
+  override_json = "${data.aws_iam_policy_document.cross_account_sns_topic_policy_publications_only.json}"
 
   statement {
     sid = "PublishAccess"
