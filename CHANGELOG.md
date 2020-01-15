@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v19.18.0 - 2020-01-15
+
+Allow AWS accounts to publish to an SNS topic in a different account. Use the cross_account_publication_ids parameter to the sns module.
+
 ## v19.17.0 - 2019-12-16
 
 Use topic_arns in the sqs module instead of topic_name to allow to subscribe to a topic in a different account than the one of the queue.
