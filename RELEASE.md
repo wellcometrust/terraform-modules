@@ -1,3 +1,3 @@
 RELEASE_TYPE: minor
 
-Add ability to specify accounts which can publish to an SNS topic
+Allow AWS accounts to publish to an SNS topic in a different account. Use the cross_account_publication_ids parameter to the sns module.
